@@ -1,0 +1,19 @@
+[project]
+name = "pokemon-booster-opener-tools"
+version = "0.1.0"
+description = "Helper Python utilities for the Pokémon TCG booster opener web game."
+requires-python = ">=3.11"
+readme = "README.md"
+
+[tool.pytest.ini_options]
+testpaths = ["tests_python"]
+python_files = ["test_*.py"]
+addopts = "-v"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]

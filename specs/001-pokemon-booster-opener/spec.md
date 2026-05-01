@@ -5,6 +5,16 @@
 **Status**: Draft
 **Input**: User description: "Crie um jogo web de abrir boosters do Pokémon TCG. Antes de tudo, escreva um script Python (download_cards.py) que baixe todas as cartas do set 151 da API pokemontcg.io (filtro set.id:sv3pt5 no endpoint https://api.pokemontcg.io/v2/cards) e organize em ./assets/ nas 7 pastas a seguir mapeando as raridades da API: 01_comum (Common), 02_incomum (Uncommon), 03_raras (Rare, Rare Holo), 04_duplo_raras (Double Rare, Rare Ultra, Rare Holo EX/GX/V/VMAX), 05_arte_secreta (Illustration Rare), 06_duplo_arte_secreta (Special Illustration Rare, Rare Rainbow, Rare Secret), 07_legendaria (Hyper Rare); cada carta salva como .jpg dentro da pasta correspondente. Cada pacote tem 6 cartas únicas (nunca repete carta no mesmo pacote), exibidas em ordem da mais comum até a mais rara, com animação de revelação carta por carta. As 4 primeiras cartas são sempre comuns; a 5ª é incomum (90%) ou rara (10%); a 6ª segue a distribuição: comum 0%, incomum 0%, rara 60%, dupla rara 25%, arte secreta 10%, dupla arte secreta 4.5%, legendária 0.5%. Coleção persistente via LocalStorage com filtros por raridade e contagem de cópias. Front-end puro, responsivo, sem backend. Fora do escopo: trocas, batalhas, login, compra de boosters."
 
+## Clarifications
+
+### Session 2026-05-01
+
+- Q: Modo de revelação das cartas — manual, automático ou híbrido? → A: Manual por carta, simulando a abertura real de um booster: o jogador pressiona a barra de espaço ou clica no botão "Próxima" para virar cada carta, uma de cada vez.
+- Q: O que define "carta única" no booster e na coleção — o `id` da fonte (estampa específica) ou o `name` do Pokémon? → A: O `id` da fonte. Cada estampa/raridade é uma carta colecionável distinta (ex.: Pikachu Common e Pikachu Illustration Rare são duas cartas independentes), tanto para a regra de não-repetição no booster quanto para a contagem de cópias na coleção.
+- Q: Estrutura de navegação da UI — tela inicial dedicada, página única com seções alternáveis, split persistente ou coleção como overlay? → A: Página única com duas seções alternáveis ("Booster" e "Coleção") em tabs/toggle no topo, sem tela intermediária e sem recarga. "Booster" é o estado inicial ao abrir o jogo.
+- Q: Apresentação visual da coleção — galeria só de coletadas, modo álbum, lista textual ou galeria com contador por raridade? → A: Modo álbum (binder). Grid completo do set 151 ordenado pelo número de coleção, cartas não puxadas exibidas como silhueta/cinza, e contador global de progresso "X/Y" + contador por raridade visíveis no topo da seção.
+- Q: Estratégia de fallback quando o bucket sorteado para um slot está vazio (sem cartas disponíveis no acervo)? → A: Downgrade para o bucket inferior mais próximo, com piso. Se Legendária está vazio, tenta Dupla Arte Secreta; se também vazio, Arte Secreta; e assim por diante. O slot 6 tem piso em Rara (nunca degrada para Incomum/Comum); o slot 5 tem piso em Incomum (nunca degrada para Comum); slots 1–4 falham se Comum estiver vazio. Cada fallback é registrado em log para o operador.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Preparar acervo de cartas do set 151 (Priority: P1)
@@ -35,11 +45,11 @@ O jogador acessa o jogo no navegador, vê um booster fechado e clica para abri-l
 **Acceptance Scenarios**:
 
 1. **Given** o jogo carregado pela primeira vez, **When** o jogador toca em "abrir booster", **Then** uma animação de abertura é exibida e seis slots de carta surgem prontos para revelação.
-2. **Given** o booster aberto, **When** o jogador interage para revelar a próxima carta, **Then** a próxima carta da sequência é virada com animação e sua raridade fica visualmente destacada (borda, brilho ou efeito apropriado ao bucket).
+2. **Given** o booster aberto, **When** o jogador pressiona a barra de espaço, clica no botão "Próxima" ou toca na carta atual, **Then** a próxima carta da sequência é virada com animação e sua raridade fica visualmente destacada (borda, brilho ou efeito apropriado ao bucket).
 3. **Given** os 4 primeiros slots, **When** as cartas são reveladas, **Then** todas as 4 são da raridade Comum.
 4. **Given** o 5º slot, **When** a carta é revelada, **Then** ela é Incomum em aproximadamente 90% dos boosters e Rara nos demais 10%, dentro de tolerância estatística sobre uma amostra grande.
 5. **Given** o 6º slot, **When** a carta é revelada, **Then** ela respeita a distribuição declarada (rara 60%, dupla rara 25%, arte secreta 10%, dupla arte secreta 4,5%, legendária 0,5%) dentro de tolerância estatística, e nunca é Comum nem Incomum.
-6. **Given** um booster em curso, **When** o jogador opta por pular a animação, **Then** as cartas restantes são reveladas imediatamente, mantendo a ordem por raridade.
+6. **Given** um booster em curso, **When** o jogador aciona o botão "Pular tudo", **Then** as cartas restantes são reveladas imediatamente, mantendo a ordem por raridade.
 7. **Given** um booster totalmente revelado, **When** o jogador escolhe abrir outro, **Then** um novo booster é gerado de forma independente, seguindo as mesmas regras.
 
 ---
@@ -73,14 +83,14 @@ Na área de coleção, o jogador filtra a vista por uma das 7 raridades para foc
 **Acceptance Scenarios**:
 
 1. **Given** uma coleção com cartas de múltiplas raridades, **When** o jogador seleciona o filtro "Comum", **Then** apenas cartas Comuns são exibidas com suas respectivas contagens de cópias.
-2. **Given** o filtro "Legendária" selecionado, **When** o jogador ainda não puxou nenhuma Hyper Rare, **Then** a vista exibe um estado vazio claro indicando "nenhuma carta nesta raridade ainda".
+2. **Given** o filtro "Legendária" selecionado, **When** o jogador ainda não puxou nenhuma Hyper Rare, **Then** a vista exibe todos os slots de Legendárias como silhuetas (nenhuma revelada), com o contador da raridade exibindo `0/<total Legendárias>`.
 3. **Given** qualquer filtro ativo, **When** o jogador volta para o filtro "Todas", **Then** a coleção completa volta a ser exibida.
 
 ---
 
 ### Edge Cases
 
-- **Bucket de raridade vazio em tempo de sorteio**: se um bucket exigido pelas regras (por exemplo, "legendária" no slot 6) estiver sem cartas no acervo (set incompleto ou pendência de download), o jogo deve detectar e degradar de forma previsível — substituir pelo bucket mais próximo disponível e informar o ocorrido em log/mensagem para o operador, sem travar a sessão do jogador.
+- **Bucket de raridade vazio em tempo de sorteio**: se o bucket sorteado para um slot estiver sem cartas disponíveis no acervo (set incompleto, pendência de download ou já esgotado pela regra de unicidade do booster), o sistema MUST aplicar **downgrade para o bucket inferior mais próximo, com piso**: o slot 6 cai sucessivamente Legendária → Dupla Arte Secreta → Arte Secreta → Dupla Rara → Rara, mas **nunca** para Incomum ou Comum; o slot 5 cai Rara → Incomum, mas **nunca** para Comum; slots 1–4 não têm fallback (se Comum estiver vazio, o booster não pode ser gerado e o jogador recebe mensagem clara de "acervo insuficiente"). Cada fallback aplicado MUST ser registrado em log para o operador, sem travar a sessão do jogador.
 - **Imagem da carta falha ao carregar**: o slot exibe um placeholder com o nome da carta e mantém a contabilidade da raridade puxada para fins de coleção e estatística.
 - **LocalStorage cheio/indisponível**: o jogo continua funcional em modo "sessão volátil"; nada quebra, mas a coleção não é persistida e o usuário é avisado.
 - **Set ainda em download/parcial**: se `assets/` existir mas estiver incompleto, o jogo trabalha com o que tem, e o sorteio só usa as cartas presentes em cada bucket.
@@ -110,30 +120,44 @@ Na área de coleção, o jogador filtra a vista por uma das 7 raridades para foc
 - **FR-005**: O utilitário MUST ser idempotente: ao re-executar, ele NÃO rebaixa imagens já presentes localmente e produz o mesmo estado final.
 - **FR-006**: O utilitário MUST tratar falhas de rede com retentativas finitas por carta e MUST emitir um relatório final listando cartas baixadas, puladas, falhas e cartas com raridade não mapeada.
 - **FR-007**: O utilitário MUST recusar-se a sobrescrever pastas que não pertençam ao conjunto das 7 oficiais e MUST nunca tocar em arquivos fora de `assets/`.
+- **FR-007a**: O utilitário MUST produzir, ao final da execução, um manifesto consolidado do catálogo (artefato estático sob `assets/`) contendo, para cada carta baixada com sucesso, ao menos: `id` estável da fonte, `name`, raridade-fonte, bucket de raridade local, número de coleção (collection number) e caminho relativo da imagem. O manifesto MUST ser o suficiente para a aplicação web montar o álbum completo sem chamadas externas.
 
 #### Sorteio do booster
 
-- **FR-008**: O sistema MUST gerar um booster com exatamente 6 cartas; nenhuma carta MUST se repetir dentro do mesmo booster.
+- **FR-008**: O sistema MUST gerar um booster com exatamente 6 cartas; nenhuma carta MUST se repetir dentro do mesmo booster, onde "mesma carta" é definida pela igualdade do `id` estável da fonte (estampa específica). Variantes de raridade do mesmo Pokémon (ex.: Pikachu Common vs. Pikachu Illustration Rare) são cartas distintas e podem coexistir no mesmo booster.
 - **FR-009**: O sistema MUST sortear os slots 1, 2, 3 e 4 sempre do bucket `01_comum`.
 - **FR-010**: O sistema MUST sortear o slot 5 segundo a distribuição: 90% `02_incomum`, 10% `03_raras`.
 - **FR-011**: O sistema MUST sortear o slot 6 segundo a distribuição: 60% `03_raras`, 25% `04_duplo_raras`, 10% `05_arte_secreta`, 4,5% `06_duplo_arte_secreta`, 0,5% `07_legendaria`. As probabilidades MUST somar 100% e MUST ser parametrizadas em um único ponto da configuração.
 - **FR-012**: O sistema MUST usar uma fonte de aleatoriedade testável e capaz de receber uma seed determinística para reprodução em testes e bug reports.
 - **FR-013**: O sistema MUST validar a distribuição via testes automatizados que comparem frequências observadas em uma amostra grande de boosters contra as probabilidades esperadas, com tolerância estatística declarada.
 - **FR-014**: Dentro de um bucket sorteado, o sistema MUST escolher uma carta uniformemente entre as cartas presentes naquele bucket que ainda não foram usadas neste booster.
+- **FR-014a**: Quando o bucket sorteado para um slot estiver vazio (zero cartas disponíveis para escolha), o sistema MUST aplicar **downgrade determinístico** para o bucket imediatamente inferior na ordem `07_legendaria > 06_duplo_arte_secreta > 05_arte_secreta > 04_duplo_raras > 03_raras > 02_incomum > 01_comum`, repetindo até encontrar um bucket não vazio. O downgrade MUST respeitar pisos:
+    - **Slot 6**: piso em `03_raras` (nunca degrada para `02_incomum` ou `01_comum`).
+    - **Slot 5**: piso em `02_incomum` (nunca degrada para `01_comum`).
+    - **Slots 1–4**: sem fallback. Se `01_comum` estiver vazio, o booster falha e o jogador é informado de "acervo insuficiente".
+- **FR-014b**: Cada aplicação de downgrade MUST ser registrada em log estruturado (bucket sorteado original, bucket efetivo após downgrade, slot afetado), sem interromper a sessão do jogador.
 
 #### Apresentação e revelação
 
 - **FR-015**: O sistema MUST exibir as 6 cartas reveladas em ordem crescente de raridade (slots 1→6 do mais comum ao mais raro), respeitando a sequência fixa: 4 comuns, depois o slot incomum/raro, depois o slot raro+.
 - **FR-016**: O sistema MUST animar a revelação carta por carta, com efeito visual coerente com a raridade (por exemplo, brilho/holográfico para raridades superiores).
-- **FR-017**: O sistema MUST permitir ao jogador acelerar ou pular a animação restante e revelar todas as cartas ao mesmo tempo.
+- **FR-017**: O sistema MUST exigir uma ação explícita do jogador para revelar cada uma das 6 cartas — uma por vez, na ordem definida — aceitando como gatilho:
+    - tecla `Espaço` (barra de espaço) no teclado;
+    - clique/toque no botão dedicado "Próxima";
+    - clique/toque na carta atual ainda virada para baixo.
+- **FR-017a**: O sistema MUST oferecer um botão "Pular tudo" que revela imediatamente todas as cartas restantes do booster, mantendo a ordem por raridade.
+- **FR-017b**: O sistema MUST impedir que uma mesma ação (uma tecla/clique) avance mais de uma carta — cada gesto revela exatamente a próxima carta da sequência.
 - **FR-018**: O sistema MUST permitir abrir múltiplos boosters consecutivos sem recarregar a página.
+- **FR-018a**: A aplicação MUST apresentar uma única página com duas seções alternáveis em um controle persistente no topo (tabs/toggle): **"Booster"** (estado inicial ao abrir o jogo) e **"Coleção"**. Trocar entre seções MUST acontecer em uma interação (clique/toque) e sem recarga de página.
+- **FR-018b**: O controle de navegação entre seções MUST permanecer visível e acessível em todos os tamanhos de viewport suportados, incluindo durante a animação de revelação de cartas.
 
 #### Coleção e persistência
 
 - **FR-019**: O sistema MUST persistir a coleção do jogador no armazenamento local do navegador (LocalStorage), de forma a sobreviver a recargas de página e reaberturas do navegador no mesmo dispositivo.
-- **FR-020**: O sistema MUST registrar cada carta puxada na coleção, mantendo uma contagem de cópias por carta única.
-- **FR-021**: O sistema MUST oferecer uma área de "Minha Coleção" com todas as cartas obtidas e suas contagens.
-- **FR-022**: O sistema MUST oferecer filtros que permitam ao jogador visualizar a coleção restrita a uma das 7 raridades, ou ver "todas".
+- **FR-020**: O sistema MUST registrar cada carta puxada na coleção, mantendo uma contagem de cópias por carta única, sendo a unicidade definida pelo `id` estável da fonte. Variantes do mesmo Pokémon em raridades diferentes ocupam entradas independentes na coleção.
+- **FR-021**: O sistema MUST oferecer uma seção "Coleção" em **modo álbum (binder)**: um grid responsivo com **um slot para cada carta do set 151**, ordenado pelo número de coleção crescente. Cartas já puxadas pelo jogador MUST exibir a imagem real e um indicador de cópias possuídas (`×N`). Cartas ainda não puxadas MUST aparecer como **silhueta/placeholder** (sem revelar a arte) com o número de coleção visível, deixando claro que o slot existe e o que falta para preenchê-lo.
+- **FR-021a**: A seção "Coleção" MUST exibir, em local persistente no topo, um **contador global de progresso** no formato `X/Y` (cartas únicas possuídas / total do set) e um **detalhamento por raridade** (uma contagem por bucket: ex.: `Comum 18/41 · Incomum 9/22 · …`). Os totais por bucket MUST ser derivados do catálogo (FR-007a), não codificados manualmente.
+- **FR-022**: O sistema MUST oferecer filtros que permitam ao jogador visualizar a coleção restrita a uma das 7 raridades, ou ver "todas". Quando um filtro de raridade está ativo, o álbum exibe apenas os slots daquele bucket (coletados e não coletados), e o contador de progresso reflete somente o bucket filtrado.
 - **FR-023**: O sistema MUST oferecer uma ação explícita para limpar a coleção, com confirmação do jogador.
 - **FR-024**: O sistema MUST encapsular o acesso à persistência atrás de uma camada substituível, para permitir trocar o mecanismo de armazenamento sem reescrever a aplicação.
 - **FR-025**: O sistema MUST tratar com clareza o caso de armazenamento local indisponível ou cheio: a sessão continua jogável, mas o jogador é avisado de que o progresso não será salvo.
@@ -151,12 +175,13 @@ Na área de coleção, o jogador filtra a vista por uma das 7 raridades para foc
 
 ### Key Entities *(include if feature involves data)*
 
-- **Carta**: representa uma carta única do set 151. Atributos relevantes: identificador estável (vindo da fonte), nome, raridade-fonte, bucket de raridade local (1 a 7), caminho do arquivo de imagem em `assets/`. Não há estado mutável por carta — é referência fixa.
+- **Carta**: representa uma carta única do set 151. Atributos relevantes: identificador estável (vindo da fonte) — **chave de identidade**, nome do Pokémon, raridade-fonte, bucket de raridade local (1 a 7), caminho do arquivo de imagem em `assets/`. Não há estado mutável por carta — é referência fixa. Cartas com o mesmo `name` mas `id` diferentes (variantes de estampa/raridade) são entidades distintas em todos os contextos do sistema (sorteio, unicidade, coleção, filtros).
 - **Bucket de Raridade**: um dos 7 níveis (`01_comum` a `07_legendaria`). Agrupa cartas para fins de sorteio e filtragem; cada bucket conhece o conjunto de cartas que possui.
 - **Booster**: instância gerada no momento da abertura. Composto por 6 entradas ordenadas por raridade crescente; cada entrada referencia uma Carta única dentro do booster. Efêmero — não precisa ser persistido após a coleção registrar as cartas.
 - **Coleção do Jogador**: estado persistente local. Mapeia identificador da carta → contagem de cópias possuídas. Inclui também versão do schema para permitir migrações futuras.
 - **Distribuição de Slot**: configuração que mapeia o índice do slot (1 a 6) para uma distribuição de probabilidade sobre buckets. Definida em um único ponto de configuração e usada tanto pelo runtime quanto pelos testes estatísticos.
 - **Relatório de Download**: artefato gerado pelo utilitário de preparação. Lista cartas baixadas, puladas (já presentes), com falha, e cartas cuja raridade-fonte não foi mapeada nos 7 buckets.
+- **Catálogo (Manifesto)**: artefato estático persistido sob `assets/` pelo utilitário de preparação. Lista todas as cartas do set 151 baixadas com sucesso, com `id`, `name`, raridade-fonte, bucket local, número de coleção e caminho da imagem. Consumido pela aplicação web em runtime para montar o álbum completo (FR-021), os contadores de progresso (FR-021a) e validar o sorteio.
 
 ## Success Criteria *(mandatory)*
 
@@ -169,7 +194,7 @@ Na área de coleção, o jogador filtra a vista por uma das 7 raridades para foc
 - **SC-005**: A primeira tela útil do jogo (booster pronto para ser aberto) carrega em até 3 segundos em uma conexão de banda larga típica e em um dispositivo de gama média.
 - **SC-006**: O jogo é operável e legível em viewports de 320px a 1440px de largura, em pelo menos as duas últimas major versions de Chrome, Firefox, Safari e Edge.
 - **SC-007**: Em testes de usabilidade rápidos (5+ usuários), 100% completam a abertura de um booster e a visualização da coleção sem assistência, na primeira tentativa.
-- **SC-008**: O tempo de abertura completa de um booster (do clique até a 6ª carta revelada, sem pular animação) fica entre 5 e 12 segundos — suficiente para suspense, sem cansar.
+- **SC-008**: A animação de revelação de uma carta (do gatilho do jogador até a imagem totalmente visível e legível) leva entre 400 ms e 1.200 ms, com a próxima ação do jogador aceita imediatamente após esse intervalo — suficiente para criar suspense, sem travar o ritmo.
 - **SC-009**: A área de coleção, com qualquer filtro de raridade aplicado, atualiza visualmente em menos de 200 ms para coleções com até 1.000 entradas.
 
 ## Assumptions

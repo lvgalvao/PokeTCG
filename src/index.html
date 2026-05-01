@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0e1116" />
+    <title>Abridor de Boosters</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./ui/styles/base.css" />
+    <link rel="stylesheet" href="./ui/styles/booster.css" />
+    <link rel="stylesheet" href="./ui/styles/collection.css" />
+  </head>
+  <body>
+    <header>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+        <h1 style="margin: 0; font-size: 1.5rem;">Abridor de Boosters</h1>
+        <div class="set-selector">
+          <label for="active-set" style="margin-right: 0.5rem;">Coleção:</label>
+          <select id="active-set" style="padding: 0.25rem 0.5rem; font-size: 1rem;">
+            <option value="sv3pt5">151</option>
+            <option value="sv8pt5">Evoluções Prismáticas</option>
+          </select>
+        </div>
+      </div>
+      <nav role="tablist" aria-label="Seções do jogo">
+        <button
+          role="tab"
+          id="tab-booster"
+          aria-controls="panel-booster"
+          aria-selected="true"
+          data-section="booster"
+        >
+          Booster
+        </button>
+        <button
+          role="tab"
+          id="tab-collection"
+          aria-controls="panel-collection"
+          aria-selected="false"
+          data-section="collection"
+        >
+          Coleção
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <div id="banner-no-storage" class="banner banner--warning" hidden>
+        Armazenamento local indisponível: seu progresso não será salvo nesta sessão.
+      </div>
+
+      <section
+        id="panel-booster"
+        role="tabpanel"
+        aria-labelledby="tab-booster"
+        tabindex="0"
+      ></section>
+      <section
+        id="panel-collection"
+        role="tabpanel"
+        aria-labelledby="tab-collection"
+        tabindex="0"
+        hidden
+      ></section>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specify/pokemon-booster-opener/manifest.schema.json",
+  "title": "Pokémon TCG Booster Opener — Asset Manifest",
+  "description": "Manifesto consolidado produzido pelo utilitário tools/download_cards.py e consumido pelo client web em runtime. Single source of truth para o catálogo do set.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "setId",
+    "setName",
+    "generatedAt",
+    "downloaderVersion",
+    "totalSet",
+    "cards",
+    "totalsByBucket"
+  ],
+  "properties": {
+    "setId": {
+      "type": "string",
+      "description": "Identificador do set na fonte (ex.: \"sv3pt5\").",
+      "minLength": 1
+    },
+    "setName": {
+      "type": "string",
+      "description": "Nome humano do set (ex.: \"Scarlet & Violet—151\")."
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp ISO 8601 UTC de geração do manifest."
+    },
+    "downloaderVersion": {
+      "type": "string",
+      "description": "Versão semver do utilitário que produziu este manifest.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+([.-].+)?$"
+    },
+    "totalSet": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Quantidade de cartas únicas no set, conforme a fonte."
+    },
+    "cards": {
+      "type": "array",
+      "description": "Cartas baixadas com sucesso. Ordem livre; o client ordena por collectionNumber.",
+      "items": { "$ref": "#/$defs/Card" }
+    },
+    "totalsByBucket": {
+      "type": "object",
+      "description": "Total de cartas por bucket local, pré-computado para evitar varredura no client.",
+      "additionalProperties": false,
+      "required": [
+        "01_comum",
+        "02_incomum",
+        "03_raras",
+        "04_duplo_raras",
+        "05_arte_secreta",
+        "06_duplo_arte_secreta",
+        "07_legendaria"
+      ],
+      "properties": {
+        "01_comum":              { "type": "integer", "minimum": 0 },
+        "02_incomum":            { "type": "integer", "minimum": 0 },
+        "03_raras":              { "type": "integer", "minimum": 0 },
+        "04_duplo_raras":        { "type": "integer", "minimum": 0 },
+        "05_arte_secreta":       { "type": "integer", "minimum": 0 },
+        "06_duplo_arte_secreta": { "type": "integer", "minimum": 0 },
+        "07_legendaria":         { "type": "integer", "minimum": 0 }
+      }
+    },
+    "unmapped": {
+      "type": "array",
+      "description": "Cartas cuja raridade-fonte não bateu com o mapeamento. Não estão em assets/ nem em cards[].",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "rarityRaw"],
+        "properties": {
+          "id":        { "type": "string", "minLength": 1 },
+          "name":      { "type": "string" },
+          "rarityRaw": { "type": "string" }
+        }
+      },
+      "default": []
+    }
+  },
+  "$defs": {
+    "Bucket": {
+      "type": "string",
+      "enum": [
+        "01_comum",
+        "02_incomum",
+        "03_raras",
+        "04_duplo_raras",
+        "05_arte_secreta",
+        "06_duplo_arte_secreta",
+        "07_legendaria"
+      ]
+    },
+    "Card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "rarityRaw", "bucket", "collectionNumber", "imagePath"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Identificador estável da fonte (chave de identidade — Q2 da clarificação)."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rarityRaw": {
+          "type": "string",
+          "description": "Raridade conforme a fonte (\"Common\", \"Illustration Rare\", ...)."
+        },
+        "bucket": { "$ref": "#/$defs/Bucket" },
+        "collectionNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "imagePath": {
+          "type": "string",
+          "pattern": "^assets/(01_comum|02_incomum|03_raras|04_duplo_raras|05_arte_secreta|06_duplo_arte_secreta|07_legendaria)/.+\\.jpg$"
+        }
+      }
+    }
+  }
+}
