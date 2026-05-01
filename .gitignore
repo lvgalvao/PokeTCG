@@ -1,0 +1,33 @@
+# Node
+node_modules/
+dist/
+coverage/
+*.log
+npm-debug.log*
+.npm/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Build artifacts / temp
+.tmp/
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+
+# Explicitly NOT ignored — these are versioned by design (Princípio V)
+# assets/ é versionado: o repo é auto-contido com o catálogo completo.
+!assets/
+!assets/**

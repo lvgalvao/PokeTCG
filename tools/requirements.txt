@@ -1,0 +1,5 @@
+requests>=2.31,<3
+Pillow>=10.0,<12
+jsonschema>=4.20,<5
+pytest>=7.4,<9
+responses>=0.24,<1

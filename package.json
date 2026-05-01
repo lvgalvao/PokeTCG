@@ -1,0 +1,28 @@
+{
+  "name": "pokemon-booster-opener",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Front-end-only Pokémon TCG booster opener (set 151 / sv3pt5).",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:statistical": "vitest run tests/statistical",
+    "test:unit": "vitest run tests/unit",
+    "lint": "eslint src tests"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.0",
+    "happy-dom": "^13.0.0",
+    "prettier": "^3.2.0",
+    "typescript": "^5.3.0",
+    "vite": "^5.1.0",
+    "vitest": "^1.3.0"
+  }
+}
