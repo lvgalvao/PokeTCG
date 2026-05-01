@@ -1,12 +1,18 @@
-import type { Collection, CollectionStore } from '../domain/collection.js';
+import type { Collection, CollectionStore, SetStats } from '../domain/collection.js';
 import { EMPTY_COLLECTION } from '../domain/collection.js';
 
 const DEFAULT_KEY = 'pkmn-booster:collection:v1';
 const PROBE_KEY = 'pkmn-booster:probe';
 
-interface SerializedCollection {
-  schemaVersion: number;
+interface SerializedSetStats {
+  boostersOpened: number;
+  cardsOpened: number;
+}
+
+interface SerializedCollectionV2 {
+  schemaVersion: 2;
   entries: Record<string, number>;
+  bySet: Record<string, SerializedSetStats>;
 }
 
 function serialize(c: Collection): string {
@@ -16,20 +22,58 @@ function serialize(c: Collection): string {
       entries[id] = count;
     }
   }
-  return JSON.stringify({ schemaVersion: c.schemaVersion, entries });
+  const bySet: Record<string, SerializedSetStats> = {};
+  for (const [setId, stats] of c.bySet) {
+    if (
+      Number.isInteger(stats.boostersOpened) &&
+      Number.isInteger(stats.cardsOpened) &&
+      (stats.boostersOpened > 0 || stats.cardsOpened > 0)
+    ) {
+      bySet[setId] = {
+        boostersOpened: stats.boostersOpened,
+        cardsOpened: stats.cardsOpened,
+      };
+    }
+  }
+  const out: SerializedCollectionV2 = { schemaVersion: 2, entries, bySet };
+  return JSON.stringify(out);
 }
 
 function deserialize(raw: string): Collection {
-  const data = JSON.parse(raw) as SerializedCollection;
+  const data = JSON.parse(raw) as unknown;
   const entries = new Map<string, number>();
-  if (data && typeof data === 'object' && data.entries) {
-    for (const [id, count] of Object.entries(data.entries)) {
-      if (typeof count === 'number' && Number.isInteger(count) && count > 0) {
-        entries.set(id, count);
+  const bySet = new Map<string, SetStats>();
+  if (data && typeof data === 'object') {
+    const obj = data as { entries?: unknown; bySet?: unknown };
+    if (obj.entries && typeof obj.entries === 'object') {
+      for (const [id, count] of Object.entries(obj.entries as Record<string, unknown>)) {
+        if (typeof count === 'number' && Number.isInteger(count) && count > 0) {
+          entries.set(id, count);
+        }
+      }
+    }
+    if (obj.bySet && typeof obj.bySet === 'object') {
+      for (const [setId, stats] of Object.entries(obj.bySet as Record<string, unknown>)) {
+        if (stats && typeof stats === 'object') {
+          const s = stats as { boostersOpened?: unknown; cardsOpened?: unknown };
+          if (
+            typeof s.boostersOpened === 'number' &&
+            typeof s.cardsOpened === 'number' &&
+            Number.isInteger(s.boostersOpened) &&
+            Number.isInteger(s.cardsOpened) &&
+            s.boostersOpened >= 0 &&
+            s.cardsOpened >= 0
+          ) {
+            bySet.set(setId, {
+              boostersOpened: s.boostersOpened,
+              cardsOpened: s.cardsOpened,
+            });
+          }
+        }
       }
     }
   }
-  return { schemaVersion: 1, entries };
+  return { schemaVersion: 2, entries, bySet };
 }
 
 export function createLocalStorageCollectionStore(
@@ -87,13 +131,23 @@ export function createLocalStorageCollectionStore(
     }
   }
 
-  function addCards(cardIds: readonly string[]): Collection {
+  function addCards(cardIds: readonly string[], setId: string): Collection {
     const current = load();
-    const next = new Map(current.entries);
+    const nextEntries = new Map(current.entries);
     for (const id of cardIds) {
-      next.set(id, (next.get(id) ?? 0) + 1);
+      nextEntries.set(id, (nextEntries.get(id) ?? 0) + 1);
     }
-    const updated: Collection = { schemaVersion: 1, entries: next };
+    const nextBySet = new Map(current.bySet);
+    const prev = nextBySet.get(setId) ?? { boostersOpened: 0, cardsOpened: 0 };
+    nextBySet.set(setId, {
+      boostersOpened: prev.boostersOpened + 1,
+      cardsOpened: prev.cardsOpened + cardIds.length,
+    });
+    const updated: Collection = {
+      schemaVersion: 2,
+      entries: nextEntries,
+      bySet: nextBySet,
+    };
     save(updated);
     return updated;
   }

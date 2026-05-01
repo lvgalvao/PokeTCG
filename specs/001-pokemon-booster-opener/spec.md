@@ -125,21 +125,21 @@ Na área de coleção, o jogador filtra a vista por uma das 7 raridades para foc
 #### Sorteio do booster
 
 - **FR-008**: O sistema MUST gerar um booster com exatamente 6 cartas; nenhuma carta MUST se repetir dentro do mesmo booster, onde "mesma carta" é definida pela igualdade do `id` estável da fonte (estampa específica). Variantes de raridade do mesmo Pokémon (ex.: Pikachu Common vs. Pikachu Illustration Rare) são cartas distintas e podem coexistir no mesmo booster.
-- **FR-009**: O sistema MUST sortear os slots 1, 2, 3 e 4 sempre do bucket `01_comum`.
-- **FR-010**: O sistema MUST sortear o slot 5 segundo a distribuição: 90% `02_incomum`, 10% `03_raras`.
-- **FR-011**: O sistema MUST sortear o slot 6 segundo a distribuição: 60% `03_raras`, 25% `04_duplo_raras`, 10% `05_arte_secreta`, 4,5% `06_duplo_arte_secreta`, 0,5% `07_legendaria`. As probabilidades MUST somar 100% e MUST ser parametrizadas em um único ponto da configuração.
+- **FR-009**: O sistema MUST sortear os slots 1 e 2 sempre do bucket `01_comum`, e o slot 3 sempre do bucket `02_incomum`.
+- **FR-010**: O sistema MUST sortear o slot 4 segundo a distribuição: 70% `02_incomum`, 30% `03_raras`.
+- **FR-011**: O sistema MUST sortear os slots 5 e 6 segundo a distribuição: 60% `03_raras`, 25% `04_duplo_raras`, 10% `05_arte_secreta`, 4,5% `06_duplo_arte_secreta`, 0,5% `07_legendaria`. As probabilidades MUST somar 100% e MUST ser parametrizadas em um único ponto da configuração.
 - **FR-012**: O sistema MUST usar uma fonte de aleatoriedade testável e capaz de receber uma seed determinística para reprodução em testes e bug reports.
 - **FR-013**: O sistema MUST validar a distribuição via testes automatizados que comparem frequências observadas em uma amostra grande de boosters contra as probabilidades esperadas, com tolerância estatística declarada.
 - **FR-014**: Dentro de um bucket sorteado, o sistema MUST escolher uma carta uniformemente entre as cartas presentes naquele bucket que ainda não foram usadas neste booster.
 - **FR-014a**: Quando o bucket sorteado para um slot estiver vazio (zero cartas disponíveis para escolha), o sistema MUST aplicar **downgrade determinístico** para o bucket imediatamente inferior na ordem `07_legendaria > 06_duplo_arte_secreta > 05_arte_secreta > 04_duplo_raras > 03_raras > 02_incomum > 01_comum`, repetindo até encontrar um bucket não vazio. O downgrade MUST respeitar pisos:
-    - **Slot 6**: piso em `03_raras` (nunca degrada para `02_incomum` ou `01_comum`).
-    - **Slot 5**: piso em `02_incomum` (nunca degrada para `01_comum`).
-    - **Slots 1–4**: sem fallback. Se `01_comum` estiver vazio, o booster falha e o jogador é informado de "acervo insuficiente".
+    - **Slots 5 e 6**: piso em `03_raras` (nunca degrada para `02_incomum` ou `01_comum`).
+    - **Slot 4**: piso em `02_incomum` (nunca degrada para `01_comum`).
+    - **Slots 1, 2 e 3**: sem fallback. Se o bucket-alvo (`01_comum` para 1–2; `02_incomum` para 3) estiver vazio, o booster falha e o jogador é informado de "acervo insuficiente".
 - **FR-014b**: Cada aplicação de downgrade MUST ser registrada em log estruturado (bucket sorteado original, bucket efetivo após downgrade, slot afetado), sem interromper a sessão do jogador.
 
 #### Apresentação e revelação
 
-- **FR-015**: O sistema MUST exibir as 6 cartas reveladas em ordem crescente de raridade (slots 1→6 do mais comum ao mais raro), respeitando a sequência fixa: 4 comuns, depois o slot incomum/raro, depois o slot raro+.
+- **FR-015**: O sistema MUST exibir as 6 cartas reveladas em ordem crescente de raridade (slots 1→6 do mais comum ao mais raro), respeitando a sequência fixa: 2 comuns, depois 1 incomum garantido, depois 1 incomum-ou-raro, depois 2 slots de raridade alta.
 - **FR-016**: O sistema MUST animar a revelação carta por carta, com efeito visual coerente com a raridade (por exemplo, brilho/holográfico para raridades superiores).
 - **FR-017**: O sistema MUST exigir uma ação explícita do jogador para revelar cada uma das 6 cartas — uma por vez, na ordem definida — aceitando como gatilho:
     - tecla `Espaço` (barra de espaço) no teclado;

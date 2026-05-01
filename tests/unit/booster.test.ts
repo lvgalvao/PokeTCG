@@ -68,24 +68,24 @@ describe('generateBooster — invariants', () => {
     }
   });
 
-  it('I3: post-sort, the first 4 slots have drawnBucket 01_comum', () => {
+  it('I3: post-sort, the first 2 slots are 01_comum and slot 3 is 02_incomum', () => {
     for (let seed = 1; seed <= 100; seed++) {
       const b = generateBooster(mulberry32(seed), fullCatalog(), seed);
-      for (let i = 0; i < 4; i++) {
-        expect(b.slots[i]!.drawnBucket).toBe('01_comum');
-      }
+      expect(b.slots[0]!.drawnBucket).toBe('01_comum');
+      expect(b.slots[1]!.drawnBucket).toBe('01_comum');
+      expect(b.slots[2]!.effectiveBucket).toBe('02_incomum');
     }
   });
 
-  it('I4: slot 5 (drawIndex) only draws 02_incomum or 03_raras', () => {
+  it('I4: slot 4 (drawIndex) only draws 02_incomum or 03_raras', () => {
     for (let seed = 1; seed <= 200; seed++) {
       const b = generateBooster(mulberry32(seed), fullCatalog(), seed);
-      const slot5 = b.slots.find((s) => s.drawIndex === 5)!;
-      expect(['02_incomum', '03_raras']).toContain(slot5.drawnBucket);
+      const slot4 = b.slots.find((s) => s.drawIndex === 4)!;
+      expect(['02_incomum', '03_raras']).toContain(slot4.drawnBucket);
     }
   });
 
-  it('I5: slot 6 (drawIndex) only draws 03 through 07', () => {
+  it('I5: slots 5 and 6 (drawIndex) only draw 03 through 07', () => {
     const allowed: Bucket[] = [
       '03_raras',
       '04_duplo_raras',
@@ -95,7 +95,9 @@ describe('generateBooster — invariants', () => {
     ];
     for (let seed = 1; seed <= 500; seed++) {
       const b = generateBooster(mulberry32(seed), fullCatalog(), seed);
+      const slot5 = b.slots.find((s) => s.drawIndex === 5)!;
       const slot6 = b.slots.find((s) => s.drawIndex === 6)!;
+      expect(allowed).toContain(slot5.drawnBucket);
       expect(allowed).toContain(slot6.drawnBucket);
     }
   });
@@ -122,7 +124,7 @@ describe('generateBooster — invariants', () => {
     const small = buildCatalog(
       makeManifest({
         '01_comum': 10,
-        '02_incomum': 1, // force slot 5 frequently to fall through to rara via downgrade? No — slot 5 has floor incomum, can't downgrade above incomum.
+        '02_incomum': 3, // slot 3 always uses one; slot 4 may use another. Keep margin.
         '03_raras': 5,
         '04_duplo_raras': 3,
         '05_arte_secreta': 2,

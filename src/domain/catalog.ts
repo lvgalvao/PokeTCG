@@ -2,6 +2,8 @@ import { BUCKETS, isBucket, type Bucket } from '../core/buckets.js';
 import type { Card } from './card.js';
 
 export interface Catalog {
+  readonly setId: string;
+  readonly setName: string;
   readonly cards: readonly Card[];
   readonly byId: ReadonlyMap<string, Card>;
   readonly byBucket: Readonly<Record<Bucket, readonly Card[]>>;
@@ -97,6 +99,8 @@ export function buildCatalog(manifest: Manifest): Catalog {
   const totalSet = cards.length;
 
   return {
+    setId: manifest.setId,
+    setName: manifest.setName,
     cards,
     byId,
     byBucket,

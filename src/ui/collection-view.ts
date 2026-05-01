@@ -116,6 +116,26 @@ export class CollectionView {
       ],
     });
 
+    const collection = this.deps.getCollection();
+    const stats = collection.bySet.get(this.deps.catalog.setId) ?? {
+      boostersOpened: 0,
+      cardsOpened: 0,
+    };
+    const setStats = el('div', {
+      className: 'collection-header__set-stats',
+      attrs: { 'aria-label': 'Atividade neste set' },
+      children: [
+        el('span', {
+          className: 'collection-header__set-stat',
+          text: `Boosters abertos: ${stats.boostersOpened}`,
+        }),
+        el('span', {
+          className: 'collection-header__set-stat',
+          text: `Cartas abertas: ${stats.cardsOpened}`,
+        }),
+      ],
+    });
+
     const breakdown = el('div', { className: 'collection-header__breakdown' });
     for (const b of BUCKETS) {
       const p = view.progress.byBucket[b];
@@ -142,7 +162,7 @@ export class CollectionView {
     });
     actions.append(clearBtn);
 
-    wrap.append(total, breakdown, actions);
+    wrap.append(total, setStats, breakdown, actions);
     return wrap;
   }
 

@@ -33,13 +33,15 @@ Forma definida em `data-model.md §6`. Resumo:
 `new Set(booster.slots.map(s => s.card.id)).size === 6`. **Mesma carta nunca aparece duas vezes**, mesmo que slots diferentes apontem para o mesmo bucket.
 
 ### I3 — Slots fixos (FR-009)
-Para `i ∈ {1,2,3,4}`: `slots[i-1].drawnBucket === '01_comum'` e `effectiveBucket === '01_comum'` (sem downgrade — slots 1–4 não têm fallback).
+Por `drawIndex`:
+- `drawIndex ∈ {1,2}`: `drawnBucket === '01_comum'` e `effectiveBucket === '01_comum'` (sem downgrade — slots 1–2 não têm fallback).
+- `drawIndex === 3`: `drawnBucket === '02_incomum'` (sem fallback).
 
-### I4 — Distribuição do slot 5 (FR-010)
-`slots[4].drawnBucket ∈ {'02_incomum', '03_raras'}`. Sobre N boosters com seed variada, a frequência relativa converge para `{ '02_incomum': 0.90, '03_raras': 0.10 }` com tolerância ±1 p.p. para N=10.000 (SC-002).
+### I4 — Distribuição do slot 4 (FR-010)
+`slots(drawIndex=4).drawnBucket ∈ {'02_incomum', '03_raras'}`. Sobre N boosters com seed variada, a frequência relativa converge para `{ '02_incomum': 0.70, '03_raras': 0.30 }` com tolerância ±1 p.p. para N=10.000 (SC-002). Piso de downgrade: `02_incomum`.
 
-### I5 — Distribuição do slot 6 (FR-011)
-`slots[5].drawnBucket ∈ {'03_raras', '04_duplo_raras', '05_arte_secreta', '06_duplo_arte_secreta', '07_legendaria'}`. Frequência relativa converge para `{ rara: 0.60, dupla: 0.25, arte: 0.10, dupla_arte: 0.045, legendaria: 0.005 }` com tolerância ±1 p.p. para N=10.000 (SC-002) **e** chi-quadrado de aderência aceito a α=0,01.
+### I5 — Distribuição dos slots 5 e 6 (FR-011)
+Para `drawIndex ∈ {5, 6}`: `drawnBucket ∈ {'03_raras', '04_duplo_raras', '05_arte_secreta', '06_duplo_arte_secreta', '07_legendaria'}`. Frequência relativa converge para `{ rara: 0.60, dupla: 0.25, arte: 0.10, dupla_arte: 0.045, legendaria: 0.005 }` com tolerância ±1 p.p. para N=10.000 (SC-002) **e** chi-quadrado de aderência aceito a α=0,01. Piso de downgrade: `03_raras`.
 
 ### I6 — Ordem por raridade (FR-015)
 Para todo `i < j`: `bucketRank(slots[i].effectiveBucket) <= bucketRank(slots[j].effectiveBucket)`. Slots com mesmo bucket mantêm a ordem em que foram sorteados (estável).

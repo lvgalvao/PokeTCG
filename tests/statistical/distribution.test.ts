@@ -114,56 +114,65 @@ function runSimulation(): { perDrawSlot: Record<SlotIndex, SlotStats> } {
 describe('Statistical distribution — slot frequencies (NON-NEGOTIABLE)', () => {
   const { perDrawSlot } = runSimulation();
 
-  it.each([1, 2, 3, 4] as const)('slot %i is 100%% comum', (slot) => {
+  it.each([1, 2] as const)('slot %i is 100%% comum', (slot) => {
     const stats = perDrawSlot[slot];
     expect(stats.total).toBe(N);
     expect(stats.observedBuckets['01_comum']).toBe(N);
   });
 
-  it('slot 5: incomum 90% ± 1 p.p. and rara 10% ± 1 p.p.', () => {
-    const stats = perDrawSlot[5];
-    const incomumPct = (stats.observedBuckets['02_incomum'] ?? 0) / N;
-    const raraPct = (stats.observedBuckets['03_raras'] ?? 0) / N;
-    expect(incomumPct).toBeGreaterThanOrEqual(0.89);
-    expect(incomumPct).toBeLessThanOrEqual(0.91);
-    expect(raraPct).toBeGreaterThanOrEqual(0.09);
-    expect(raraPct).toBeLessThanOrEqual(0.11);
+  it('slot 3 is 100% incomum', () => {
+    const stats = perDrawSlot[3];
+    expect(stats.total).toBe(N);
+    expect(stats.observedBuckets['02_incomum']).toBe(N);
   });
 
-  it('slot 5: chi-squared aderência aceito a α = 0,01', () => {
-    const stats = perDrawSlot[5];
-    const expected = SLOT_DISTRIBUTIONS[5] as Record<string, number>;
+  it('slot 4: incomum 70% ± 1 p.p. and rara 30% ± 1 p.p.', () => {
+    const stats = perDrawSlot[4];
+    const incomumPct = (stats.observedBuckets['02_incomum'] ?? 0) / N;
+    const raraPct = (stats.observedBuckets['03_raras'] ?? 0) / N;
+    expect(incomumPct).toBeGreaterThanOrEqual(0.69);
+    expect(incomumPct).toBeLessThanOrEqual(0.71);
+    expect(raraPct).toBeGreaterThanOrEqual(0.29);
+    expect(raraPct).toBeLessThanOrEqual(0.31);
+  });
+
+  it('slot 4: chi-squared aderência aceito a α = 0,01', () => {
+    const stats = perDrawSlot[4];
+    const expected = SLOT_DISTRIBUTIONS[4] as Record<string, number>;
     const chi = chiSquare(stats.observedBuckets, expected, stats.total);
     const df = Object.keys(expected).length - 1;
     expect(chi).toBeLessThan(CHI2_CRIT_001[df]!);
   });
 
-  it('slot 6: bound observed within ±1 p.p. (legendaria gets a wider 0..1.5%)', () => {
-    const stats = perDrawSlot[6];
-    const prob = (key: string) => (stats.observedBuckets[key] ?? 0) / N;
+  it.each([5, 6] as const)(
+    'slot %i: bound observed within ±1 p.p. (legendaria gets a wider 0..1.5%%)',
+    (slot) => {
+      const stats = perDrawSlot[slot];
+      const prob = (key: string) => (stats.observedBuckets[key] ?? 0) / N;
 
-    expect(prob('03_raras')).toBeGreaterThanOrEqual(0.59);
-    expect(prob('03_raras')).toBeLessThanOrEqual(0.61);
+      expect(prob('03_raras')).toBeGreaterThanOrEqual(0.59);
+      expect(prob('03_raras')).toBeLessThanOrEqual(0.61);
 
-    expect(prob('04_duplo_raras')).toBeGreaterThanOrEqual(0.24);
-    expect(prob('04_duplo_raras')).toBeLessThanOrEqual(0.26);
+      expect(prob('04_duplo_raras')).toBeGreaterThanOrEqual(0.24);
+      expect(prob('04_duplo_raras')).toBeLessThanOrEqual(0.26);
 
-    expect(prob('05_arte_secreta')).toBeGreaterThanOrEqual(0.09);
-    expect(prob('05_arte_secreta')).toBeLessThanOrEqual(0.11);
+      expect(prob('05_arte_secreta')).toBeGreaterThanOrEqual(0.09);
+      expect(prob('05_arte_secreta')).toBeLessThanOrEqual(0.11);
 
-    expect(prob('06_duplo_arte_secreta')).toBeGreaterThanOrEqual(0.035);
-    expect(prob('06_duplo_arte_secreta')).toBeLessThanOrEqual(0.055);
+      expect(prob('06_duplo_arte_secreta')).toBeGreaterThanOrEqual(0.035);
+      expect(prob('06_duplo_arte_secreta')).toBeLessThanOrEqual(0.055);
 
-    expect(prob('07_legendaria')).toBeGreaterThanOrEqual(0);
-    expect(prob('07_legendaria')).toBeLessThanOrEqual(0.015);
+      expect(prob('07_legendaria')).toBeGreaterThanOrEqual(0);
+      expect(prob('07_legendaria')).toBeLessThanOrEqual(0.015);
 
-    expect(prob('01_comum')).toBe(0);
-    expect(prob('02_incomum')).toBe(0);
-  });
+      expect(prob('01_comum')).toBe(0);
+      expect(prob('02_incomum')).toBe(0);
+    },
+  );
 
-  it('slot 6: chi-squared aderência aceito a α = 0,01', () => {
-    const stats = perDrawSlot[6];
-    const expected = SLOT_DISTRIBUTIONS[6] as Record<string, number>;
+  it.each([5, 6] as const)('slot %i: chi-squared aderência aceito a α = 0,01', (slot) => {
+    const stats = perDrawSlot[slot];
+    const expected = SLOT_DISTRIBUTIONS[slot] as Record<string, number>;
     const chi = chiSquare(stats.observedBuckets, expected, stats.total);
     const df = Object.keys(expected).length - 1;
     expect(chi).toBeLessThan(CHI2_CRIT_001[df]!);

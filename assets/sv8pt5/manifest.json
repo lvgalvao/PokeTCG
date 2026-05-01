@@ -1,9 +1,9 @@
 {
   "setId": "sv8pt5",
   "setName": "Prismatic Evolutions",
-  "generatedAt": "2026-05-01T15:08:37Z",
+  "generatedAt": "2026-05-01T18:55:40Z",
   "downloaderVersion": "0.1.0",
-  "totalSet": 174,
+  "totalSet": 180,
   "cards": [
     {
       "id": "sv8pt5-1",
@@ -1358,6 +1358,54 @@
       "imagePath": "sv8pt5/06_duplo_arte_secreta/sv8pt5-175.jpg"
     },
     {
+      "id": "sv8pt5-116",
+      "name": "Max Rod",
+      "rarityRaw": "ACE SPEC Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 116,
+      "imagePath": "sv8pt5/07_legendaria/sv8pt5-116.jpg"
+    },
+    {
+      "id": "sv8pt5-117",
+      "name": "Maximum Belt",
+      "rarityRaw": "ACE SPEC Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 117,
+      "imagePath": "sv8pt5/07_legendaria/sv8pt5-117.jpg"
+    },
+    {
+      "id": "sv8pt5-119",
+      "name": "Prime Catcher",
+      "rarityRaw": "ACE SPEC Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 119,
+      "imagePath": "sv8pt5/07_legendaria/sv8pt5-119.jpg"
+    },
+    {
+      "id": "sv8pt5-128",
+      "name": "Scoop Up Cyclone",
+      "rarityRaw": "ACE SPEC Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 128,
+      "imagePath": "sv8pt5/07_legendaria/sv8pt5-128.jpg"
+    },
+    {
+      "id": "sv8pt5-129",
+      "name": "Sparkling Crystal",
+      "rarityRaw": "ACE SPEC Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 129,
+      "imagePath": "sv8pt5/07_legendaria/sv8pt5-129.jpg"
+    },
+    {
+      "id": "sv8pt5-131",
+      "name": "Treasure Tracker",
+      "rarityRaw": "ACE SPEC Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 131,
+      "imagePath": "sv8pt5/07_legendaria/sv8pt5-131.jpg"
+    },
+    {
       "id": "sv8pt5-176",
       "name": "Iron Leaves ex",
       "rarityRaw": "Hyper Rare",
@@ -1405,38 +1453,7 @@
     "04_duplo_raras": 37,
     "05_arte_secreta": 0,
     "06_duplo_arte_secreta": 32,
-    "07_legendaria": 5
+    "07_legendaria": 11
   },
-  "unmapped": [
-    {
-      "id": "sv8pt5-119",
-      "name": "Prime Catcher",
-      "rarityRaw": "ACE SPEC Rare"
-    },
-    {
-      "id": "sv8pt5-116",
-      "name": "Max Rod",
-      "rarityRaw": "ACE SPEC Rare"
-    },
-    {
-      "id": "sv8pt5-117",
-      "name": "Maximum Belt",
-      "rarityRaw": "ACE SPEC Rare"
-    },
-    {
-      "id": "sv8pt5-128",
-      "name": "Scoop Up Cyclone",
-      "rarityRaw": "ACE SPEC Rare"
-    },
-    {
-      "id": "sv8pt5-129",
-      "name": "Sparkling Crystal",
-      "rarityRaw": "ACE SPEC Rare"
-    },
-    {
-      "id": "sv8pt5-131",
-      "name": "Treasure Tracker",
-      "rarityRaw": "ACE SPEC Rare"
-    }
-  ]
+  "unmapped": []
 }

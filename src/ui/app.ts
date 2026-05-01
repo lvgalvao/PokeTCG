@@ -7,6 +7,7 @@ import { CollectionView } from './collection-view.js';
 
 export interface AppDeps {
   readonly catalogs: Record<string, Catalog>;
+  readonly defaultSetId: string;
   readonly masterRng: RNG;
   readonly store: CollectionStore;
 }
@@ -16,27 +17,42 @@ export class App {
   private boosterView!: BoosterView;
   private collectionView!: CollectionView;
 
-  private activeSetId: string = 'sv3pt5';
+  private activeSetId: string;
 
   constructor(private readonly deps: AppDeps) {
+    this.activeSetId = deps.defaultSetId;
     this.collection = deps.store.load();
     this.bindTabs();
     this.bindSetSelector();
     this.maybeShowNoStorageBanner();
+    this.syncSetSelector();
     this.mountViews();
+  }
+
+  private syncSetSelector(): void {
+    const select = $('#active-set') as HTMLSelectElement | null;
+    if (select && select.value !== this.activeSetId) {
+      select.value = this.activeSetId;
+    }
   }
 
   private bindSetSelector(): void {
     const select = $('#active-set') as HTMLSelectElement;
     if (select) {
-      on(select, 'change', () => {
-        this.activeSetId = select.value;
-        this.mountViews();
-        const activeTab = document.querySelector('[role="tab"][aria-selected="true"]') as HTMLElement;
-        if (activeTab && activeTab.dataset.section === 'collection') {
-          this.collectionView.refresh();
-        }
-      });
+      on(select, 'change', () => this.changeActiveSet(select.value));
+    }
+  }
+
+  private changeActiveSet(setId: string): void {
+    if (setId === this.activeSetId) return;
+    this.activeSetId = setId;
+    this.syncSetSelector();
+    this.mountViews();
+    const activeTab = document.querySelector(
+      '[role="tab"][aria-selected="true"]',
+    ) as HTMLElement | null;
+    if (activeTab && activeTab.dataset.section === 'collection') {
+      this.collectionView.refresh();
     }
   }
 
@@ -99,12 +115,19 @@ export class App {
     const activeCatalog = this.deps.catalogs[this.activeSetId];
     if (!activeCatalog) return;
 
+    const availableSets = Object.entries(this.deps.catalogs).map(([id, cat]) => ({
+      id,
+      name: cat.setName,
+    }));
     this.boosterView = new BoosterView({
       mountPoint: boosterPanel,
       catalog: activeCatalog,
       setId: this.activeSetId,
       masterRng: this.deps.masterRng,
+      availableSets,
+      getCollection: () => this.collection,
       onBoosterRevealed: (cardIds) => this.onBoosterRevealed(cardIds),
+      onSelectSet: (id) => this.changeActiveSet(id),
     });
 
     this.collectionView = new CollectionView({
@@ -117,7 +140,7 @@ export class App {
   }
 
   private onBoosterRevealed(cardIds: readonly string[]): void {
-    this.collection = this.deps.store.addCards(cardIds);
+    this.collection = this.deps.store.addCards(cardIds, this.activeSetId);
     if (!this.deps.store.isAvailable()) {
       this.maybeShowNoStorageBanner();
     }

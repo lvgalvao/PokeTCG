@@ -1,30 +1,44 @@
 import { generateBooster, type Booster, type BoosterSlot } from '../core/booster.js';
-import type { Bucket } from '../core/buckets.js';
 import { bucketRank, BUCKET_LABELS } from '../core/buckets.js';
 import type { RNG } from '../core/rng.js';
 import { mulberry32 } from '../core/rng.js';
 import type { Catalog } from '../domain/catalog.js';
+import type { Collection } from '../domain/collection.js';
 import { playCelebrationSound, playFlipSound } from '../utils/audio.js';
-import { $, clear, el, on, setText } from '../utils/dom.js';
+import { clear, el, on, setText } from '../utils/dom.js';
 
 const REVEAL_ANIMATION_MS = 600;
+
+export interface AvailableSet {
+  readonly id: string;
+  readonly name: string;
+}
 
 export interface BoosterViewDeps {
   readonly mountPoint: HTMLElement;
   readonly catalog: Catalog;
   readonly setId: string;
   readonly masterRng: RNG;
+  readonly availableSets: readonly AvailableSet[];
+  readonly getCollection: () => Collection;
   readonly onBoosterRevealed: (cardIds: readonly string[]) => void;
+  readonly onSelectSet: (setId: string) => void;
 }
 
 interface State {
   booster: Booster | null;
   revealedCount: number;
   animating: boolean;
+  ownedBefore: ReadonlySet<string>;
 }
 
 export class BoosterView {
-  private readonly state: State = { booster: null, revealedCount: 0, animating: false };
+  private readonly state: State = {
+    booster: null,
+    revealedCount: 0,
+    animating: false,
+    ownedBefore: new Set<string>(),
+  };
   private readonly disposers: Array<() => void> = [];
 
   constructor(private readonly deps: BoosterViewDeps) {
@@ -65,19 +79,95 @@ export class BoosterView {
   private renderClosed(): void {
     clear(this.deps.mountPoint);
     const wrap = el('div', { className: 'booster booster--closed' });
-    const pack = el('div', {
-      className: `booster-pack booster-pack--${this.deps.setId}`,
-      attrs: { 'aria-hidden': 'true' },
-    });
+    wrap.append(this.renderStatsPanel());
+    wrap.append(this.renderSetPicker('grid'));
     const openBtn = el('button', {
       className: 'btn btn--primary booster-open-btn',
-      text: 'Abrir Booster (Espaço)',
+      text: `Abrir ${this.deps.catalog.setName} (Espaço)`,
       attrs: { type: 'button' },
     });
     on(openBtn, 'click', () => this.openNewBooster());
-    wrap.append(pack, openBtn);
+    wrap.append(openBtn);
     this.deps.mountPoint.append(wrap);
     openBtn.focus();
+  }
+
+  private renderSetPicker(variant: 'grid' | 'strip'): HTMLElement {
+    const wrap = el('div', {
+      className: `set-picker set-picker--${variant}`,
+      attrs: { role: 'group', 'aria-label': 'Selecionar coleção' },
+    });
+    for (const s of this.deps.availableSets) {
+      const isActive = s.id === this.deps.setId;
+      const btn = el('button', {
+        className: `set-picker__item${isActive ? ' is-active' : ''}`,
+        attrs: {
+          type: 'button',
+          'aria-pressed': isActive ? 'true' : 'false',
+          'aria-label': `${s.name}${isActive ? ' (ativa)' : ''}`,
+          title: s.name,
+          'data-set-id': s.id,
+        },
+      });
+      btn.style.backgroundImage = `url('/${s.id}/capa.png')`;
+      const label = el('span', { className: 'set-picker__name', text: s.name });
+      btn.append(label);
+      on(btn, 'click', () => {
+        if (s.id !== this.deps.setId) this.deps.onSelectSet(s.id);
+      });
+      wrap.append(btn);
+    }
+    return wrap;
+  }
+
+  private renderStatsPanel(): HTMLElement {
+    const collection = this.deps.getCollection();
+    const stats = collection.bySet.get(this.deps.setId) ?? {
+      boostersOpened: 0,
+      cardsOpened: 0,
+    };
+    const total = this.deps.catalog.totalSet;
+    let owned = 0;
+    for (const card of this.deps.catalog.cards) {
+      if (collection.entries.has(card.id)) owned++;
+    }
+    const missing = total - owned;
+    return el('div', {
+      className: 'booster-stats',
+      attrs: { role: 'status', 'aria-live': 'polite' },
+      children: [
+        el('div', {
+          className: 'booster-stats__item',
+          children: [
+            el('span', { className: 'booster-stats__label', text: 'Boosters abertos' }),
+            el('strong', {
+              className: 'booster-stats__value',
+              text: String(stats.boostersOpened),
+            }),
+          ],
+        }),
+        el('div', {
+          className: 'booster-stats__item',
+          children: [
+            el('span', { className: 'booster-stats__label', text: 'Coleção do set' }),
+            el('strong', {
+              className: 'booster-stats__value',
+              text: `${owned}/${total}`,
+            }),
+          ],
+        }),
+        el('div', {
+          className: 'booster-stats__item booster-stats__item--missing',
+          children: [
+            el('span', { className: 'booster-stats__label', text: 'Faltam' }),
+            el('strong', {
+              className: 'booster-stats__value',
+              text: String(missing),
+            }),
+          ],
+        }),
+      ],
+    });
   }
 
   private openNewBooster(): void {
@@ -86,6 +176,7 @@ export class BoosterView {
     this.state.booster = booster;
     this.state.revealedCount = 0;
     this.state.animating = false;
+    this.state.ownedBefore = new Set(this.deps.getCollection().entries.keys());
     this.renderRevealing();
   }
 
@@ -96,6 +187,7 @@ export class BoosterView {
     clear(this.deps.mountPoint);
 
     const wrap = el('div', { className: 'booster booster--open' });
+    wrap.append(this.renderStatsPanel());
 
     const cards = el('div', { className: 'booster-cards' });
     booster.slots.forEach((slot, idx) => {
@@ -130,13 +222,14 @@ export class BoosterView {
 
   private renderCard(slot: BoosterSlot, idx: number): HTMLElement {
     const rank = bucketRank(slot.effectiveBucket);
+    const isNew = !this.state.ownedBefore.has(slot.card.id);
     const card = el('div', {
-      className: `card rarity-${String(rank).padStart(2, '0')}`,
+      className: `card rarity-${String(rank).padStart(2, '0')}${isNew ? ' is-new' : ''}`,
       dataset: { slotIndex: String(idx + 1), bucket: slot.effectiveBucket },
       attrs: {
         role: 'button',
         tabindex: '0',
-        'aria-label': `Slot ${idx + 1}: ${slot.card.name} — ${BUCKET_LABELS[slot.effectiveBucket]}`,
+        'aria-label': `Slot ${idx + 1}: ${slot.card.name} — ${BUCKET_LABELS[slot.effectiveBucket]}${isNew ? ' (nova!)' : ''}`,
       },
     });
     // Set z-index to ensure the first unrevealed card is on top
@@ -158,6 +251,14 @@ export class BoosterView {
       },
     });
     front.append(img);
+    if (isNew) {
+      const badge = el('span', {
+        className: 'card__new-badge',
+        text: 'NEW',
+        attrs: { 'aria-hidden': 'true' },
+      });
+      front.append(badge);
+    }
     inner.append(back, front);
     card.append(inner);
 
@@ -210,12 +311,14 @@ export class BoosterView {
     ) as HTMLElement | null;
     if (progressEl) setText(progressEl, this.progressText());
 
+    const isNew = !!slot && !this.state.ownedBefore.has(slot.card.id);
+    const delay = isNew ? REVEAL_ANIMATION_MS + 1000 : REVEAL_ANIMATION_MS;
     setTimeout(() => {
       this.state.animating = false;
       if (this.state.revealedCount === 6) {
         this.onAllRevealed();
       }
-    }, REVEAL_ANIMATION_MS);
+    }, delay);
   }
 
   private skipAll(): void {
@@ -249,6 +352,11 @@ export class BoosterView {
     if (!booster) return;
 
     this.deps.onBoosterRevealed(booster.slots.map((s) => s.card.id));
+
+    const oldStats = this.deps.mountPoint.querySelector('.booster-stats');
+    if (oldStats && oldStats.parentElement) {
+      oldStats.parentElement.replaceChild(this.renderStatsPanel(), oldStats);
+    }
 
     const controls = this.deps.mountPoint.querySelector('.booster-controls');
     if (!controls) return;

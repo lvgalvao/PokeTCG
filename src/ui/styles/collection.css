@@ -45,6 +45,23 @@
   gap: var(--sp-2);
 }
 
+.collection-header__set-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--color-bg-soft);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.collection-header__set-stat {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--pkmn-blue-dark);
+  letter-spacing: 0.02em;
+}
+
 .chip {
   display: inline-flex;
   align-items: center;

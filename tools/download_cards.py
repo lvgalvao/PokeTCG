@@ -55,6 +55,10 @@ RARITY_TO_BUCKET: dict[str, str] = {
     "rare rainbow": "06_duplo_arte_secreta",
     "rare secret": "06_duplo_arte_secreta",
     "hyper rare": "07_legendaria",
+    "ace spec rare": "07_legendaria",
+    "black white rare": "07_legendaria",
+    "mega_attack_rare": "07_legendaria",
+    "mega hyper rare": "07_legendaria",
 }
 
 # Allowed characters in a card id for path-safety (FR-007).
@@ -80,6 +84,17 @@ def ensure_buckets(assets_dir: Path) -> None:
     assets_dir.mkdir(parents=True, exist_ok=True)
     for b in BUCKETS:
         (assets_dir / b).mkdir(parents=True, exist_ok=True)
+
+
+def list_latest_sets(
+    count: int, api_key: str | None = None
+) -> list[dict[str, Any]]:
+    """Return the `count` most recently released sets (newest first)."""
+    headers = {"X-Api-Key": api_key} if api_key else {}
+    params = {"orderBy": "-releaseDate", "page": 1, "pageSize": count}
+    r = requests.get(f"{API_BASE}/sets", params=params, headers=headers, timeout=30)
+    r.raise_for_status()
+    return r.json().get("data", [])[:count]
 
 
 def list_set_cards(
@@ -274,6 +289,13 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
         description="Download all cards of a Pokémon TCG set and organize them under assets/.",
     )
     p.add_argument("--set-id", default="sv3pt5")
+    p.add_argument(
+        "--latest",
+        type=int,
+        default=None,
+        metavar="N",
+        help="Download the N most recent sets (overrides --set-id).",
+    )
     p.add_argument("--assets-dir", default="./assets", type=Path)
     p.add_argument("--api-key", default=os.environ.get("POKEMONTCG_API_KEY"))
     p.add_argument("--retries", type=int, default=3)
@@ -285,29 +307,25 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     return p.parse_args(list(argv) if argv is not None else None)
 
 
-def main(argv: Iterable[str] | None = None) -> int:
-    args = parse_args(argv)
-    logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.WARNING,
-        format="%(levelname)s %(name)s: %(message)s",
-    )
-
-    assets_dir: Path = args.assets_dir.resolve() / args.set_id
+def download_set(set_id: str, set_name_hint: str | None, args: argparse.Namespace) -> int:
+    """Download a single set. Returns an exit-style code (0 ok, 2 partial fail, 3 fatal)."""
+    assets_dir: Path = args.assets_dir.resolve() / set_id
     ensure_buckets(assets_dir)
 
     try:
-        cards = list_set_cards(args.set_id, args.api_key)
+        cards = list_set_cards(set_id, args.api_key)
     except Exception as exc:  # noqa: BLE001
-        log.error("Failed to list set %s: %s", args.set_id, exc)
+        log.error("Failed to list set %s: %s", set_id, exc)
         return 3
 
     if not cards:
-        log.error("Empty set %s", args.set_id)
+        log.error("Empty set %s", set_id)
         return 3
 
-    set_name = (cards[0].get("set") or {}).get("name") or args.set_id
+    set_name = (cards[0].get("set") or {}).get("name") or set_name_hint or set_id
     report = DownloadReport()
 
+    print(f"[pkmn-cards] === {set_id} \"{set_name}\" ({len(cards)} cards) ===")
     for card in cards:
         process_card(
             card,
@@ -320,12 +338,37 @@ def main(argv: Iterable[str] | None = None) -> int:
             report=report,
         )
 
-    manifest_path = write_manifest(report, set_id=args.set_id, set_name=set_name, assets_dir=assets_dir)
+    manifest_path = write_manifest(report, set_id=set_id, set_name=set_name, assets_dir=assets_dir)
     print_report(report, manifest_path)
 
-    if report.failed:
-        return 2
-    return 0
+    return 2 if report.failed else 0
+
+
+def main(argv: Iterable[str] | None = None) -> int:
+    args = parse_args(argv)
+    logging.basicConfig(
+        level=logging.DEBUG if args.verbose else logging.WARNING,
+        format="%(levelname)s %(name)s: %(message)s",
+    )
+
+    if args.latest is not None and args.latest > 0:
+        try:
+            sets = list_latest_sets(args.latest, args.api_key)
+        except Exception as exc:  # noqa: BLE001
+            log.error("Failed to list latest sets: %s", exc)
+            return 3
+        if not sets:
+            log.error("No sets returned by API")
+            return 3
+        targets = [(s.get("id", ""), s.get("name")) for s in sets if s.get("id")]
+    else:
+        targets = [(args.set_id, None)]
+
+    worst = 0
+    for set_id, name_hint in targets:
+        rc = download_set(set_id, name_hint, args)
+        worst = max(worst, rc)
+    return worst
 
 
 if __name__ == "__main__":
