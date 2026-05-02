@@ -4,6 +4,7 @@ import type { Collection, CollectionStore } from '../domain/collection.js';
 import { $, $$, on } from '../utils/dom.js';
 import { BoosterView } from './booster-view.js';
 import { CollectionView } from './collection-view.js';
+import { HomeView } from './home-view.js';
 
 export interface AppDeps {
   readonly catalogs: Record<string, Catalog>;
@@ -14,6 +15,7 @@ export interface AppDeps {
 
 export class App {
   private collection: Collection;
+  private homeView!: HomeView;
   private boosterView!: BoosterView;
   private collectionView!: CollectionView;
 
@@ -56,6 +58,16 @@ export class App {
     }
   }
 
+  private openFromHome(setId: string): void {
+    if (setId !== this.activeSetId) {
+      this.activeSetId = setId;
+      this.syncSetSelector();
+      this.mountViews();
+    }
+    this.activateTab('booster');
+    this.boosterView.openBooster();
+  }
+
   private bindTabs(): void {
     const tabs = $$('[role="tab"]');
     for (const tab of tabs) {
@@ -96,6 +108,8 @@ export class App {
     }
     if (section === 'collection') {
       this.collectionView.refresh();
+    } else if (section === 'home') {
+      this.homeView.refresh();
     }
   }
 
@@ -107,11 +121,12 @@ export class App {
   }
 
   private mountViews(): void {
+    const homePanel = $('#panel-home');
     const boosterPanel = $('#panel-booster');
     const collectionPanel = $('#panel-collection');
 
     if (this.boosterView) this.boosterView.destroy();
-    
+
     const activeCatalog = this.deps.catalogs[this.activeSetId];
     if (!activeCatalog) return;
 
@@ -119,15 +134,21 @@ export class App {
       id,
       name: cat.setName,
     }));
+
+    this.homeView = new HomeView({
+      mountPoint: homePanel,
+      availableSets,
+      getActiveSetId: () => this.activeSetId,
+      onSelectSet: (id) => this.openFromHome(id),
+    });
+
     this.boosterView = new BoosterView({
       mountPoint: boosterPanel,
       catalog: activeCatalog,
       setId: this.activeSetId,
       masterRng: this.deps.masterRng,
-      availableSets,
       getCollection: () => this.collection,
       onBoosterRevealed: (cardIds) => this.onBoosterRevealed(cardIds),
-      onSelectSet: (id) => this.changeActiveSet(id),
     });
 
     this.collectionView = new CollectionView({

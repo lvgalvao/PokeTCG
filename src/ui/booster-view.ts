@@ -19,10 +19,8 @@ export interface BoosterViewDeps {
   readonly catalog: Catalog;
   readonly setId: string;
   readonly masterRng: RNG;
-  readonly availableSets: readonly AvailableSet[];
   readonly getCollection: () => Collection;
   readonly onBoosterRevealed: (cardIds: readonly string[]) => void;
-  readonly onSelectSet: (setId: string) => void;
 }
 
 interface State {
@@ -80,44 +78,24 @@ export class BoosterView {
     clear(this.deps.mountPoint);
     const wrap = el('div', { className: 'booster booster--closed' });
     wrap.append(this.renderStatsPanel());
-    wrap.append(this.renderSetPicker('grid'));
+    const pack = el('div', {
+      className: 'booster-pack-big',
+      attrs: { 'aria-hidden': 'true' },
+    });
+    pack.style.backgroundImage = `url('/${this.deps.setId}/capa.png?v=2')`;
     const openBtn = el('button', {
       className: 'btn btn--primary booster-open-btn',
       text: `Abrir ${this.deps.catalog.setName} (Espaço)`,
       attrs: { type: 'button' },
     });
     on(openBtn, 'click', () => this.openNewBooster());
-    wrap.append(openBtn);
+    wrap.append(pack, openBtn);
     this.deps.mountPoint.append(wrap);
     openBtn.focus();
   }
 
-  private renderSetPicker(variant: 'grid' | 'strip'): HTMLElement {
-    const wrap = el('div', {
-      className: `set-picker set-picker--${variant}`,
-      attrs: { role: 'group', 'aria-label': 'Selecionar coleção' },
-    });
-    for (const s of this.deps.availableSets) {
-      const isActive = s.id === this.deps.setId;
-      const btn = el('button', {
-        className: `set-picker__item${isActive ? ' is-active' : ''}`,
-        attrs: {
-          type: 'button',
-          'aria-pressed': isActive ? 'true' : 'false',
-          'aria-label': `${s.name}${isActive ? ' (ativa)' : ''}`,
-          title: s.name,
-          'data-set-id': s.id,
-        },
-      });
-      btn.style.backgroundImage = `url('/${s.id}/capa.png')`;
-      const label = el('span', { className: 'set-picker__name', text: s.name });
-      btn.append(label);
-      on(btn, 'click', () => {
-        if (s.id !== this.deps.setId) this.deps.onSelectSet(s.id);
-      });
-      wrap.append(btn);
-    }
-    return wrap;
+  openBooster(): void {
+    this.openNewBooster();
   }
 
   private renderStatsPanel(): HTMLElement {
@@ -312,7 +290,7 @@ export class BoosterView {
     if (progressEl) setText(progressEl, this.progressText());
 
     const isNew = !!slot && !this.state.ownedBefore.has(slot.card.id);
-    const delay = isNew ? REVEAL_ANIMATION_MS + 1000 : REVEAL_ANIMATION_MS;
+    const delay = isNew ? 800 : REVEAL_ANIMATION_MS;
     setTimeout(() => {
       this.state.animating = false;
       if (this.state.revealedCount === 6) {
@@ -367,11 +345,7 @@ export class BoosterView {
       attrs: { type: 'button' },
     });
     on(newBoosterBtn, 'click', () => this.openNewBooster());
-    const seedNote = el('span', {
-      className: 'booster-controls__progress',
-      text: `Seed: ${booster.seed.toString(16).padStart(8, '0')}`,
-    });
-    (controls as HTMLElement).append(seedNote, newBoosterBtn);
+    (controls as HTMLElement).append(newBoosterBtn);
     newBoosterBtn.focus();
   }
 

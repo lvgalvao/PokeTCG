@@ -7,14 +7,21 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-3);
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   margin-bottom: var(--sp-4);
-  padding: var(--sp-4);
+  padding: var(--sp-3);
   background: var(--color-bg-elev);
   border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: 0 2px 0 0 var(--color-border);
+}
+
+@media (min-width: 768px) {
+  .collection-header {
+    align-items: center;
+    padding: var(--sp-4);
+  }
 }
 
 .collection-header__total {
@@ -32,11 +39,17 @@
 
 .collection-header__total-count {
   font-family: var(--font-display);
-  font-size: var(--fs-xl);
+  font-size: var(--fs-lg);
   font-weight: 900;
   color: var(--pkmn-red);
   letter-spacing: 0.02em;
   line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .collection-header__total-count {
+    font-size: var(--fs-xl);
+  }
 }
 
 .collection-header__breakdown {

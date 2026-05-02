@@ -12,19 +12,28 @@
   </head>
   <body>
     <header>
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-        <h1 style="margin: 0; font-size: 1.5rem;">Abridor de Boosters</h1>
+      <div class="app-header__top">
+        <h1 class="app-header__title">Abridor de Boosters</h1>
         <div class="set-selector">
-          <label for="active-set" style="margin-right: 0.5rem;">Coleção:</label>
-          <select id="active-set" style="padding: 0.25rem 0.5rem; font-size: 1rem;"></select>
+          <label class="set-selector__label" for="active-set">Coleção:</label>
+          <select class="set-selector__select" id="active-set"></select>
         </div>
       </div>
       <nav role="tablist" aria-label="Seções do jogo">
         <button
           role="tab"
+          id="tab-home"
+          aria-controls="panel-home"
+          aria-selected="true"
+          data-section="home"
+        >
+          Home
+        </button>
+        <button
+          role="tab"
           id="tab-booster"
           aria-controls="panel-booster"
-          aria-selected="true"
+          aria-selected="false"
           data-section="booster"
         >
           Booster
@@ -47,10 +56,17 @@
       </div>
 
       <section
+        id="panel-home"
+        role="tabpanel"
+        aria-labelledby="tab-home"
+        tabindex="0"
+      ></section>
+      <section
         id="panel-booster"
         role="tabpanel"
         aria-labelledby="tab-booster"
         tabindex="0"
+        hidden
       ></section>
       <section
         id="panel-collection"
