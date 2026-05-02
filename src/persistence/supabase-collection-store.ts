@@ -1,8 +1,9 @@
-import type { SupabaseClient } from '@supabase/supabase-js';
+import type { SupabaseClient, User } from '@supabase/supabase-js';
 import type { Collection, CollectionStore, SetStats } from '../domain/collection.js';
 import { EMPTY_COLLECTION } from '../domain/collection.js';
 
-const TABLE = 'collections';
+const COLLECTIONS_TABLE = 'collections';
+const PROFILES_TABLE = 'profiles';
 
 interface SerializedSetStats {
   boostersOpened: number;
@@ -72,32 +73,65 @@ function deserialize(data: unknown): Collection {
   return { schemaVersion: 2, entries, bySet };
 }
 
-async function ensureUser(client: SupabaseClient): Promise<string> {
+async function ensureUser(client: SupabaseClient): Promise<User> {
   const session = await client.auth.getSession();
   let user = session.data.session?.user ?? null;
-  if (!user) {
-    const { data, error } = await client.auth.signInAnonymously();
-    if (error || !data.user) {
-      throw new Error(`Supabase anonymous sign-in failed: ${error?.message ?? 'no user'}`);
-    }
-    user = data.user;
+  if (user) {
+    console.info('[supabase] reusing session for user', user.id);
+    return user;
   }
-  return user.id;
+  console.info('[supabase] no session — signing in anonymously');
+  const { data, error } = await client.auth.signInAnonymously();
+  if (error || !data.user) {
+    throw new Error(
+      `anonymous sign-in failed (is "Anonymous Sign-Ins" enabled?): ${error?.message ?? 'no user returned'}`,
+    );
+  }
+  user = data.user;
+  console.info('[supabase] anonymous user signed in:', user.id);
+  return user;
+}
+
+async function touchProfile(client: SupabaseClient, user: User): Promise<void> {
+  const { error } = await client
+    .from(PROFILES_TABLE)
+    .upsert(
+      {
+        user_id: user.id,
+        is_anonymous: !!user.is_anonymous,
+        last_active: new Date().toISOString(),
+      },
+      { onConflict: 'user_id' },
+    );
+  if (error) {
+    // Don't fail the whole bootstrap on a profile write — collection persistence
+    // is the critical path. Just surface the issue.
+    console.warn('[supabase] profile upsert failed:', error.message);
+  }
 }
 
 export async function createSupabaseCollectionStore(
   client: SupabaseClient,
 ): Promise<CollectionStore> {
-  const userId = await ensureUser(client);
+  const user = await ensureUser(client);
+  await touchProfile(client, user);
+
   const { data, error } = await client
-    .from(TABLE)
+    .from(COLLECTIONS_TABLE)
     .select('data')
-    .eq('user_id', userId)
+    .eq('user_id', user.id)
     .maybeSingle();
   if (error && error.code !== 'PGRST116') {
-    throw new Error(`Supabase load failed: ${error.message}`);
+    throw new Error(`collection load failed: ${error.message}`);
   }
   let state: Collection = data?.data ? deserialize(data.data) : EMPTY_COLLECTION;
+  console.info(
+    '[supabase] collection loaded:',
+    state.entries.size,
+    'unique cards,',
+    state.bySet.size,
+    'sets',
+  );
 
   let writeQueue: Promise<unknown> = Promise.resolve();
   function enqueueWrite(snapshot: Collection): void {
@@ -106,13 +140,13 @@ export async function createSupabaseCollectionStore(
       .catch(() => undefined)
       .then(async () => {
         const { error: writeError } = await client
-          .from(TABLE)
+          .from(COLLECTIONS_TABLE)
           .upsert(
-            { user_id: userId, data: payload, updated_at: new Date().toISOString() },
+            { user_id: user.id, data: payload, updated_at: new Date().toISOString() },
             { onConflict: 'user_id' },
           );
         if (writeError) {
-          console.error('[supabase] persist failed:', writeError.message);
+          console.error('[supabase] collection upsert failed:', writeError.message);
         }
       });
   }
@@ -147,6 +181,14 @@ export async function createSupabaseCollectionStore(
     state = EMPTY_COLLECTION;
     enqueueWrite(EMPTY_COLLECTION);
   }
+
+  // Expose for browser-console debugging.
+  (window as unknown as Record<string, unknown>).__pkmnSupabase = {
+    userId: user.id,
+    isAnonymous: user.is_anonymous,
+    snapshot: () => state,
+    flush: () => writeQueue,
+  };
 
   return {
     isAvailable: () => true,
