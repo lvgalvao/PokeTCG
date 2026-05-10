@@ -29,6 +29,10 @@ const SET_IDS = [
   'sv8pt5',
   'sv8',
   'sv3pt5',
+  'pgo',
+  'base3',
+  'base2',
+  'base1',
 ] as const;
 
 async function bootstrap(): Promise<void> {

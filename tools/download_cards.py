@@ -50,6 +50,8 @@ RARITY_TO_BUCKET: dict[str, str] = {
     "rare holo gx": "04_duplo_raras",
     "rare holo v": "04_duplo_raras",
     "rare holo vmax": "04_duplo_raras",
+    "rare holo vstar": "04_duplo_raras",
+    "radiant rare": "04_duplo_raras",
     "illustration rare": "05_arte_secreta",
     "special illustration rare": "06_duplo_arte_secreta",
     "rare rainbow": "06_duplo_arte_secreta",
@@ -187,9 +189,14 @@ def process_card(
 
     bucket = bucket_for(rarity_raw)
     if bucket is None:
-        report.unmapped.append({"id": card_id, "name": name, "rarityRaw": rarity_raw})
-        log.debug("Unmapped rarity for %s (%s): %r", card_id, name, rarity_raw)
-        return
+        supertype = (card.get("supertype") or "").lower()
+        subtypes = [s.lower() for s in (card.get("subtypes") or [])]
+        if not rarity_raw and supertype == "energy" and "basic" in subtypes:
+            bucket = "01_comum"
+        else:
+            report.unmapped.append({"id": card_id, "name": name, "rarityRaw": rarity_raw})
+            log.debug("Unmapped rarity for %s (%s): %r", card_id, name, rarity_raw)
+            return
 
     dest = assets_dir / bucket / f"{card_id}.jpg"
     rel_path = f"{assets_dir.name}/{bucket}/{card_id}.jpg"
