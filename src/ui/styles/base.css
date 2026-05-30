@@ -117,7 +117,7 @@ button {
 }
 
 button:hover:not(:disabled) {
-  background: var(--pkmn-cream);
+  background-color: var(--pkmn-cream);
   transform: translateY(-1px);
   box-shadow: 0 3px 0 0 var(--color-border-strong);
 }
@@ -229,7 +229,7 @@ body > header h1 {
 }
 
 [role='tab']:hover:not([aria-selected='true']) {
-  background: rgba(255, 255, 255, 0.28);
+  background-color: rgba(255, 255, 255, 0.28);
   transform: none;
   box-shadow: none;
 }

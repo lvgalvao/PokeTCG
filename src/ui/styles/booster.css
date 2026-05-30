@@ -236,7 +236,7 @@
 }
 
 .booster-open-btn:hover:not(:disabled) {
-  background: #ffd84d;
+  background-color: #ffd84d;
   border-color: var(--pkmn-yellow-dark);
   box-shadow: 0 5px 0 0 var(--pkmn-yellow-dark);
 }
@@ -447,7 +447,7 @@
 }
 
 .btn--primary:hover:not(:disabled) {
-  background: var(--pkmn-blue-dark);
+  background-color: var(--pkmn-blue-dark);
   border-color: var(--pkmn-blue-dark);
   box-shadow: 0 5px 0 0 var(--pkmn-blue-dark);
   color: #ffffff;

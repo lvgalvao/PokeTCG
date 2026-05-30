@@ -114,7 +114,7 @@
 }
 
 .chip--filter:hover:not(.is-active) {
-  background: var(--pkmn-cream);
+  background-color: var(--pkmn-cream);
   transform: translateY(-1px);
   box-shadow: 0 3px 0 0 var(--color-border);
 }
@@ -238,7 +238,7 @@
 }
 
 .collection-header__actions button:hover:not(:disabled) {
-  background: var(--color-accent-soft);
+  background-color: var(--color-accent-soft);
   color: var(--pkmn-red-dark);
 }
 
