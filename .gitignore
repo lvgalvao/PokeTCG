@@ -31,3 +31,5 @@ Thumbs.db
 # assets/ é versionado: o repo é auto-contido com o catálogo completo.
 !assets/
 !assets/**
+tools/prices_tcgplayer/.cache/
+__pycache__/

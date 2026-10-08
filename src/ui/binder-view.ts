@@ -3,7 +3,9 @@ import type { Card } from '../domain/card.js';
 import type { Catalog } from '../domain/catalog.js';
 import type { Collection } from '../domain/collection.js';
 import { el } from '../utils/dom.js';
-import { openCardViewer } from './card-viewer.js';
+import { formatBRL, type Cents } from '../game/money.js';
+import type { PriceBook } from '../game/prices.js';
+import { openCardViewer, type ViewerAction } from './card-viewer.js';
 import { project, rubberband, spring, VelocityTracker } from './motion.js';
 import { progressRing } from './store-view.js';
 import { coverUrl, eraYears, ownedCount, type SetInfo, type SetsIndex } from './sets-index.js';
@@ -15,7 +17,7 @@ export function renderBinderIndex(
   root: HTMLElement,
   index: SetsIndex,
   collection: Collection,
-  onClear: () => void,
+  onClear?: () => void,
 ): void {
   let totalOwned = 0;
   let started = 0;
@@ -86,7 +88,7 @@ export function renderBinderIndex(
     );
   }
 
-  if (totalOwned > 0) {
+  if (totalOwned > 0 && onClear) {
     const clear = el('button', {
       className: 'btn btn--link binder-index__clear',
       attrs: { type: 'button' },
@@ -101,6 +103,17 @@ export function renderBinderIndex(
 }
 
 type Filter = 'all' | Bucket;
+
+/** Ações do fichário que só existem no modo Carreira. */
+export interface BinderCareer {
+  readonly priceBook: PriceBook;
+  readonly sellRate: number;
+  /** Vende as cópias indicadas (ids podem repetir) e devolve quanto entrou. */
+  readonly sell: (ids: readonly string[]) => Cents;
+  readonly isExhibited: (id: string) => boolean;
+  readonly canExhibitMore: () => boolean;
+  readonly toggleExhibit: (id: string) => void;
+}
 
 /** Fichário de uma coleção: páginas de 9 bolsos, folheáveis por swipe, setas ou teclado. */
 export class SetBinderView {
@@ -117,6 +130,7 @@ export class SetBinderView {
     private readonly set: SetInfo,
     private readonly catalog: Catalog,
     private readonly getCollection: () => Collection,
+    private readonly career?: BinderCareer,
   ) {
     this.render();
     const onKey = (ev: KeyboardEvent) => {
@@ -214,10 +228,16 @@ export class SetBinderView {
                       `${owned} de ${this.catalog.totalSet} cartas`,
                     ],
                   }),
-                  el('a', {
-                    className: 'btn btn--primary binder__open',
-                    attrs: { href: `#/abrir/${this.set.id}` },
-                    text: 'Abrir pacote',
+                  el('div', {
+                    className: 'binder__actions',
+                    children: [
+                      el('a', {
+                        className: 'btn btn--primary binder__open',
+                        attrs: { href: `#/abrir/${this.set.id}` },
+                        text: 'Abrir pacote',
+                      }),
+                      ...this.careerHeader(collection),
+                    ],
                   }),
                 ],
               }),
@@ -234,6 +254,39 @@ export class SetBinderView {
       }),
     );
     this.renderPages();
+  }
+
+  private careerHeader(collection: Collection): HTMLElement[] {
+    const c = this.career;
+    if (!c) return [];
+    let value = 0;
+    const dups: string[] = [];
+    let dupValue = 0;
+    for (const card of this.catalog.cards) {
+      const n = collection.entries.get(card.id) ?? 0;
+      const v = c.priceBook.valueOf(card);
+      value += v * n;
+      for (let i = 1; i < n; i++) {
+        dups.push(card.id);
+        dupValue += Math.round(v * c.sellRate);
+      }
+    }
+    const out: HTMLElement[] = [
+      el('p', { className: 'binder__value', text: `Suas cartas desta coleção valem ${formatBRL(value)}.` }),
+    ];
+    if (dups.length) {
+      const sell = el('button', {
+        className: 'btn btn--quiet',
+        attrs: { type: 'button' },
+        text: `Vender ${dups.length} repetidas por ${formatBRL(dupValue)}`,
+      });
+      sell.addEventListener('click', () => {
+        c.sell(dups);
+        this.render();
+      });
+      out.push(sell);
+    }
+    return out;
   }
 
   private chip(label: string, value: Filter, have: number, total: number): HTMLElement {
@@ -297,8 +350,27 @@ export class SetBinderView {
         ...(count > 1 ? [el('span', { className: 'pocket__count', text: `×${count}` })] : []),
       ],
     });
-    btn.addEventListener('click', () => openCardViewer(card, count));
+    btn.addEventListener('click', () => this.openViewer(card, count));
     return el('li', { className: `pocket rarity-${rank}`, children: [btn] });
+  }
+
+  private openViewer(card: Card, count: number): void {
+    const c = this.career;
+    if (!c) return openCardViewer(card, count);
+    const value = c.priceBook.valueOf(card);
+    const actions: ViewerAction[] = [];
+    if (c.isExhibited(card.id)) {
+      actions.push({ label: 'Tirar da exposição', onClick: () => { c.toggleExhibit(card.id); this.render(); } });
+    } else if (c.canExhibitMore()) {
+      actions.push({ label: 'Expor', onClick: () => { c.toggleExhibit(card.id); this.render(); } });
+    }
+    actions.push({
+      label: `Vender ${count > 1 ? 'uma ' : ''}por ${formatBRL(Math.round(value * c.sellRate))}`,
+      primary: count > 1,
+      onClick: () => { c.sell([card.id]); this.render(); },
+    });
+    const estimated = c.priceBook.isEstimated(card) ? ' (estimado pela raridade)' : '';
+    openCardViewer(card, count, actions, `Vale ${formatBRL(value)} no mercado${estimated}.`);
   }
 
   private go(dir: number): void {

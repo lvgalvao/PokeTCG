@@ -1,4 +1,5 @@
 import type { Collection } from '../domain/collection.js';
+import { formatBRL, type Cents } from '../game/money.js';
 import { el } from '../utils/dom.js';
 import { attachFoil } from './motion.js';
 import {
@@ -51,16 +52,36 @@ function packImage(set: SetInfo, eager = false): HTMLImageElement {
   });
 }
 
+/** Na Carreira, cada pacote mostra o preço e se o saldo alcança. */
+export interface StorePricing {
+  readonly priceOf: (setId: string) => Cents | null;
+  readonly walletCents: Cents;
+}
+
+function priceTag(set: SetInfo, pricing: StorePricing | undefined): HTMLElement[] {
+  const price = pricing?.priceOf(set.id);
+  if (!pricing || price == null) return [];
+  const short = price > pricing.walletCents;
+  return [
+    el('span', {
+      className: `price-tag${short ? ' is-short' : ''}`,
+      text: formatBRL(price),
+      attrs: short ? { title: `Faltam ${formatBRL(price - pricing.walletCents)}` } : {},
+    }),
+  ];
+}
+
 export function renderStore(
   root: HTMLElement,
   index: SetsIndex,
   collection: Collection,
+  pricing?: StorePricing,
 ): () => void {
   const cleanups: Array<() => void> = [];
   const store = el('div', { className: 'store' });
 
   const hero = index.sets[0];
-  if (hero) store.append(renderHero(hero, collection, cleanups));
+  if (hero) store.append(renderHero(hero, collection, cleanups, pricing));
 
   for (const era of index.eras) {
     const sets = index.sets.filter((s) => s.era === era.id);
@@ -103,6 +124,7 @@ export function renderStore(
             className: 'shelf__progress',
             children: [progressRing(owned, set.albumSize, 16), `${owned}/${set.albumSize}`],
           }),
+          ...priceTag(set, pricing),
         ],
       });
       shelf.append(item);
@@ -115,7 +137,13 @@ export function renderStore(
   return () => cleanups.forEach((c) => c());
 }
 
-function renderHero(set: SetInfo, collection: Collection, cleanups: Array<() => void>): HTMLElement {
+function renderHero(
+  set: SetInfo,
+  collection: Collection,
+  cleanups: Array<() => void>,
+  pricing?: StorePricing,
+): HTMLElement {
+  const price = pricing?.priceOf(set.id);
   const owned = ownedCount(set, collection);
   const pack = el('a', {
     className: 'pack pack--hero',
@@ -136,7 +164,9 @@ function renderHero(set: SetInfo, collection: Collection, cleanups: Array<() => 
           el('h1', { className: 'hero__title', attrs: { id: 'hero-title' }, text: set.name }),
           el('p', {
             className: 'hero__meta',
-            text: `Lançada em ${formatReleaseDate(set.releaseDate)}. Cada pacote traz ${set.packSize} cartas.`,
+            text:
+              `Lançada em ${formatReleaseDate(set.releaseDate)}. Cada pacote traz ${set.packSize} cartas` +
+              (price != null ? ` e custa ${formatBRL(price)}.` : '.'),
           }),
           el('a', {
             className: 'btn btn--primary hero__cta',

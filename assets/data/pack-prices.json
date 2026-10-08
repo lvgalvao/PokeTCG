@@ -1,0 +1,293 @@
+{
+  "asOf": "2026-10-08",
+  "usdBrl": 5.0212,
+  "rateDate": "2026-10-08 05:46:42",
+  "source": "TCGplayer market price do pacote avulso (Unlimited nos vintage); estimate=true quando indireto ou com poucas vendas",
+  "packs": {
+    "me55": {
+      "usd": 12.99,
+      "estimate": false,
+      "source": "TCGplayer market price, '30th Celebration Booster Pack' (productId 696613)"
+    },
+    "me5": {
+      "usd": 5.79,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Pitch Black Booster Pack' (productId 692944)"
+    },
+    "me4": {
+      "usd": 5.95,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Chaos Rising Booster Pack' (productId 684446)"
+    },
+    "me3": {
+      "usd": 6.08,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Perfect Order Booster Pack' (productId 672398)"
+    },
+    "me2pt5": {
+      "usd": 12.15,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Ascended Heroes Booster Pack' (productId 672434)"
+    },
+    "me2": {
+      "usd": 12.12,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Phantasmal Flames Booster Pack' (productId 654144)"
+    },
+    "me1": {
+      "usd": 8.69,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Mega Evolution Booster Pack' (productId 644352)"
+    },
+    "zsv10pt5": {
+      "usd": 14.52,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Black Bolt Booster Pack' (productId 630434)"
+    },
+    "rsv10pt5": {
+      "usd": 14.74,
+      "estimate": false,
+      "source": "TCGplayer market price, 'White Flare Booster Pack' (productId 630699)"
+    },
+    "sv10": {
+      "usd": 8.52,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Destined Rivals Booster Pack' (productId 624683)"
+    },
+    "sv9": {
+      "usd": 6.42,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Journey Together Booster Pack' (productId 610935)"
+    },
+    "sv8pt5": {
+      "usd": 14.89,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Prismatic Evolutions Booster Pack' (productId 593294)"
+    },
+    "sv8": {
+      "usd": 8.93,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Surging Sparks Booster Pack' (productId 565604)"
+    },
+    "sv7": {
+      "usd": 10.77,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Stellar Crown Booster Pack' (productId 557331)"
+    },
+    "sv6pt5": {
+      "usd": 14.05,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Shrouded Fable Booster Pack' (productId 552997)"
+    },
+    "sv6": {
+      "usd": 9.2,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Twilight Masquerade Booster Pack' (productId 543843)"
+    },
+    "sv5": {
+      "usd": 9.51,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Temporal Forces Booster Pack' (productId 532841)"
+    },
+    "sv4pt5": {
+      "usd": 24.48,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Paldean Fates Booster Pack' (productId 528038)"
+    },
+    "sv4": {
+      "usd": 8.52,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Paradox Rift Booster Pack' (productId 512822)"
+    },
+    "sv3pt5": {
+      "usd": 29.07,
+      "estimate": false,
+      "source": "TCGplayer market price, '151 Booster Pack' (productId 504467)"
+    },
+    "sv3": {
+      "usd": 12.69,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Obsidian Flames Booster Pack' (productId 501256)"
+    },
+    "sv2": {
+      "usd": 15.92,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Paldea Evolved Booster Pack' (productId 493976)"
+    },
+    "sv1": {
+      "usd": 8.95,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Scarlet & Violet Booster Pack' (productId 476451)"
+    },
+    "swsh12pt5": {
+      "usd": 25.67,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Crown Zenith Booster Pack' (productId 453466)"
+    },
+    "swsh12": {
+      "usd": 15.03,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Silver Tempest Booster Pack' (productId 283388)"
+    },
+    "swsh11": {
+      "usd": 19.14,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Lost Origin Booster Pack' (productId 277325)"
+    },
+    "pgo": {
+      "usd": 15.03,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Pokemon GO Booster Pack' (productId 274421)"
+    },
+    "swsh10": {
+      "usd": 10.28,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Astral Radiance Booster Pack' (productId 265521)"
+    },
+    "swsh9": {
+      "usd": 16.59,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Brilliant Stars Booster Pack' (productId 256124)"
+    },
+    "swsh8": {
+      "usd": 18.56,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Fusion Strike Booster Pack' (productId 247646)"
+    },
+    "cel25": {
+      "usd": 33.63,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Celebrations Booster Pack' (productId 248577)"
+    },
+    "swsh7": {
+      "usd": 44.37,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Evolving Skies Booster Pack' (productId 244337)"
+    },
+    "swsh45": {
+      "usd": 17.27,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Shining Fates Booster Pack' (productId 232636)"
+    },
+    "swsh4": {
+      "usd": 10.97,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Vivid Voltage Booster Pack' (productId 221312)"
+    },
+    "swsh35": {
+      "usd": 19.43,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Champion's Path Booster Pack' (productId 218789)"
+    },
+    "sm12": {
+      "usd": 72.35,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Cosmic Eclipse Booster Pack' (productId 199263)"
+    },
+    "sm115": {
+      "usd": 48.14,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Hidden Fates Booster Pack' (productId 198634)"
+    },
+    "sm9": {
+      "usd": 308.49,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Team Up Booster Pack' (productId 181699)"
+    },
+    "xy12": {
+      "usd": 70.35,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Evolutions Booster Pack' (productId 129907)"
+    },
+    "ex7": {
+      "usd": 1900.0,
+      "estimate": true,
+      "source": "PriceCharting eBay sold log (via search): raw sealed packs $1,800-1,975 Jun-Jul 2026; cardshopfinder lists $3,000; TCGplayer productId 98578 no market"
+    },
+    "ex6": {
+      "usd": 1009.96,
+      "estimate": true,
+      "source": "TCGplayer market price, 'FireRed & LeafGreen Booster Pack' (productId 98946) - thin vintage market (1-3 listings), low confidence"
+    },
+    "ex1": {
+      "usd": 799.99,
+      "estimate": true,
+      "source": "TCGplayer market price, 'Ruby and Sapphire Booster Pack' (productId 98558) - thin vintage market (1-3 listings), low confidence"
+    },
+    "ecard3": {
+      "usd": 1799.99,
+      "estimate": true,
+      "source": "thecardshopfinder.com Skyridge Booster Pack market $1,799.99 (updated 2026-07-22); TCGplayer productId 138153 no listings"
+    },
+    "ecard2": {
+      "usd": 1999.99,
+      "estimate": true,
+      "source": "TCGplayer market price, 'Aquapolis Booster Pack' (productId 138152) - thin vintage market (1-3 listings), low confidence"
+    },
+    "ecard1": {
+      "usd": 1000.0,
+      "estimate": true,
+      "source": "No TCGplayer market price (productId 138151, sole listing $4,800); eBay sold ~$613 (Jun 2025), FINN NO listing 9,500 NOK (Feb 2026) -> estimate"
+    },
+    "base6": {
+      "usd": 2500.0,
+      "estimate": true,
+      "source": "thecardshopfinder.com Legendary Collection pack $2,499.98 (updated 2026-09-28); guide: raw packs $2,000-5,500 (Aug 2026). TCGplayer productId 138150 has no market price"
+    },
+    "neo4": {
+      "usd": 1200.0,
+      "estimate": true,
+      "source": "No TCGplayer market price (productId 138147); only listing $1,610, 1st Ed pack ~$2,095 (cardshopfinder); unlimited box comps ~$7.5-8.8k/36 imply ~$230 (older) -> estimate"
+    },
+    "neo3": {
+      "usd": 600.0,
+      "estimate": true,
+      "source": "No TCGplayer market price (productId 138146); lowest listing $889.99, eBay solds 2025 $380-800, CardCodex ~$450 -> midpoint estimate"
+    },
+    "neo2": {
+      "usd": 537.5,
+      "estimate": true,
+      "source": "TCGplayer market price, 'Neo Discovery Booster Pack [Unlimited Edition]' (productId 138143) - thin vintage market (1-3 listings), low confidence"
+    },
+    "neo1": {
+      "usd": 631.99,
+      "estimate": true,
+      "source": "TCGplayer last market price 'Neo Genesis Booster Pack [Unlimited Edition]' (productId 138142), no current listings; PokemonWizard $649 (May 2026); cardshopfinder Aug 2026 guide $250-500 raw"
+    },
+    "gym2": {
+      "usd": 419.99,
+      "estimate": true,
+      "source": "TCGplayer market price, 'Gym Challenge Booster Pack [Unlimited Edition]' (productId 138139) - thin vintage market (1-3 listings), low confidence"
+    },
+    "gym1": {
+      "usd": 269.72,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Gym Heroes Booster Pack [Unlimited Edition]' (productId 138138)"
+    },
+    "base5": {
+      "usd": 325.54,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Team Rocket Booster Pack [Unlimited Edition]' (productId 138135)"
+    },
+    "base4": {
+      "usd": 436.74,
+      "estimate": true,
+      "source": "TCGplayer market price, 'Base Set 2 Booster Pack' (productId 138149) - thin vintage market (1-3 listings), low confidence"
+    },
+    "base3": {
+      "usd": 339.51,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Fossil Booster Pack [Unlimited Edition]' (productId 138134)"
+    },
+    "base2": {
+      "usd": 330.45,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Jungle Booster Pack [Unlimited Edition]' (productId 138129)"
+    },
+    "base1": {
+      "usd": 929.53,
+      "estimate": false,
+      "source": "TCGplayer market price, 'Base Set Booster Pack [Revised Unlimited Edition]' (productId 138130)"
+    }
+  }
+}

@@ -1,0 +1,422 @@
+/* Carreira: seletor de modo, carteira, missões, conquistas, exposição e preços. */
+
+:root {
+  --up: #1f8a4c;
+  --down: #c5221f;
+}
+
+.topbar__start {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.mode-switch {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.mode-switch__btn {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.mode-switch__btn[aria-pressed='true'] {
+  background: var(--shop-paper);
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgb(29 29 31 / 0.14);
+}
+
+.topbar__wallet {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media (max-width: 560px) {
+  .topbar__brand {
+    display: none;
+  }
+  .topbar__link {
+    padding: 8px 10px;
+  }
+}
+
+.is-up {
+  color: var(--up);
+}
+
+.is-down {
+  color: var(--down);
+}
+
+.btn--small {
+  min-height: 34px;
+  padding: 0 14px;
+  font-size: 0.875rem;
+}
+
+/* Preço na prateleira e no destaque. */
+.price-tag {
+  margin-top: 2px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.price-tag.is-short {
+  color: var(--ink-faint);
+}
+
+/* ── Página da Carreira ─────────────────────────────────────────────────── */
+
+.career {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) 64px;
+}
+
+.career__level {
+  margin: 0;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.career__title {
+  margin: 2px 0 14px;
+  font: 700 clamp(2.25rem, 7vw, 3.5rem) / 1.04 var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.meter {
+  --pct: 0;
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, var(--pokeball) calc(var(--pct) * 100%), transparent 0) no-repeat,
+    color-mix(in srgb, var(--ink) 9%, transparent);
+}
+
+.meter--small {
+  height: 5px;
+  margin-top: 8px;
+  background:
+    linear-gradient(90deg, var(--ink) calc(var(--pct) * 100%), transparent 0) no-repeat,
+    color-mix(in srgb, var(--ink) 9%, transparent);
+}
+
+.career__fame {
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.stat {
+  padding: 16px 18px;
+  border-radius: var(--radius-m);
+  background: var(--shop-paper);
+}
+
+.stat__label,
+.stat__note {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+.stat__value {
+  display: block;
+  margin: 4px 0;
+  font: 700 1.75rem / 1.1 var(--font-display);
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.career__bonus {
+  margin-top: 16px;
+}
+
+.career__section {
+  margin-top: 40px;
+}
+
+.career__h2 {
+  margin: 0;
+  font: 700 1.375rem / 1.2 var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+.career__note {
+  margin: 4px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+}
+
+.missions,
+.history {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  border-radius: var(--radius-m);
+  background: var(--shop-paper);
+  overflow: hidden;
+}
+
+.missions__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+}
+
+.missions__item + .missions__item,
+.history__row + .history__row {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.missions__item.is-claimed {
+  color: var(--ink-faint);
+}
+
+.missions__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.missions__title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.missions__reward {
+  margin: 2px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+.missions__count,
+.missions__done {
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.exhibit {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 640px) {
+  .exhibit {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.exhibit__slot {
+  aspect-ratio: var(--card-ratio);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--shop-paper);
+  box-shadow: 0 8px 20px rgb(29 29 31 / 0.12);
+}
+
+.exhibit__slot.is-empty {
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.exhibit__slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.achievements {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.achievement {
+  position: relative;
+  padding: 14px 16px 14px 46px;
+  border-radius: var(--radius-m);
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
+  color: var(--ink-soft);
+}
+
+.achievement.is-unlocked {
+  background: var(--shop-paper);
+  color: var(--ink);
+  box-shadow: 0 6px 16px rgb(29 29 31 / 0.08);
+}
+
+.achievement__mark {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.8125rem;
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+}
+
+.achievement.is-unlocked .achievement__mark {
+  background: var(--r7);
+  color: var(--ink);
+}
+
+.achievement__title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.achievement__desc {
+  margin: 2px 0 0;
+  font-size: 0.875rem;
+}
+
+.history__row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 14px;
+  padding: 12px 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.history__cost {
+  color: var(--ink-soft);
+}
+
+.history__profit {
+  font-weight: 600;
+  min-width: 90px;
+  text-align: right;
+}
+
+.career__reset {
+  margin-top: 40px;
+}
+
+/* ── Palco: preço, saldo e resultado ────────────────────────────────────── */
+
+.stage__price {
+  margin: 0;
+  color: var(--stage-ink);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.stage__price.is-short {
+  color: #ff8a80;
+}
+
+.pnl {
+  display: inline-grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 4px 28px;
+  margin: 0 0 22px;
+  padding: 14px 22px;
+  border-radius: var(--radius-m);
+  background: color-mix(in srgb, var(--stage-ink) 8%, transparent);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.pnl__label {
+  color: var(--stage-ink-soft);
+  font-size: 0.8125rem;
+}
+
+.pnl__value {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.pnl .is-up {
+  color: #6fe3a0;
+}
+
+.pnl .is-down {
+  color: #ff8a80;
+}
+
+.summary__card .value-tag {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translateX(-50%);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgb(11 11 15 / 0.82);
+  color: var(--stage-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.toasts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.toast {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--r7) 22%, transparent);
+  color: var(--r7);
+  font-size: 0.875rem;
+  font-weight: 600;
+  animation: toast-in 420ms var(--spring-out) both;
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+}
+
+/* ── Visualizador: ações da carreira ────────────────────────────────────── */
+
+.viewer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
