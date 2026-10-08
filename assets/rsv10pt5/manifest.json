@@ -734,14 +734,6 @@
       "imagePath": "rsv10pt5/03_raras/rsv10pt5-78.jpg"
     },
     {
-      "id": "rsv10pt5-172",
-      "name": "Victini",
-      "rarityRaw": "Rare",
-      "bucket": "03_raras",
-      "collectionNumber": 172,
-      "imagePath": "rsv10pt5/03_raras/rsv10pt5-172.jpg"
-    },
-    {
       "id": "rsv10pt5-5",
       "name": "Whimsicott ex",
       "rarityRaw": "Double Rare",
@@ -1462,6 +1454,14 @@
       "imagePath": "rsv10pt5/06_duplo_arte_secreta/rsv10pt5-171.jpg"
     },
     {
+      "id": "rsv10pt5-172",
+      "name": "Victini",
+      "rarityRaw": "Black White Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 172,
+      "imagePath": "rsv10pt5/07_legendaria/rsv10pt5-172.jpg"
+    },
+    {
       "id": "rsv10pt5-173",
       "name": "Reshiram ex",
       "rarityRaw": "Black White Rare",
@@ -1473,11 +1473,11 @@
   "totalsByBucket": {
     "01_comum": 46,
     "02_incomum": 33,
-    "03_raras": 11,
+    "03_raras": 10,
     "04_duplo_raras": 14,
     "05_arte_secreta": 69,
     "06_duplo_arte_secreta": 7,
-    "07_legendaria": 1
+    "07_legendaria": 2
   },
   "unmapped": []
 }

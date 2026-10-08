@@ -1,4 +1,5 @@
 import type { Collection } from '../domain/collection.js';
+import { DAILY_BONUS } from '../game/career.js';
 import { formatBRL, type Cents } from '../game/money.js';
 import { el } from '../utils/dom.js';
 import { attachFoil } from './motion.js';
@@ -61,12 +62,19 @@ export interface StorePricing {
 function priceTag(set: SetInfo, pricing: StorePricing | undefined): HTMLElement[] {
   const price = pricing?.priceOf(set.id);
   if (!pricing || price == null) return [];
-  const short = price > pricing.walletCents;
+  const missing = price - pricing.walletCents;
+  if (missing <= 0) return [el('span', { className: 'price-tag', text: formatBRL(price) })];
+  // Fora do alcance: vira meta de economia, não um "não" vermelho.
+  const days = Math.ceil(missing / DAILY_BONUS);
+  const pct = Math.max(0.02, pricing.walletCents / price);
+  const meter = el('span', { className: 'goal-meter', attrs: { 'aria-hidden': 'true' } });
+  meter.style.setProperty('--pct', String(pct));
   return [
+    el('span', { className: 'price-tag is-short', text: formatBRL(price) }),
+    meter,
     el('span', {
-      className: `price-tag${short ? ' is-short' : ''}`,
-      text: formatBRL(price),
-      attrs: short ? { title: `Faltam ${formatBRL(price - pricing.walletCents)}` } : {},
+      className: 'price-goal',
+      text: days <= 1 ? 'amanhã dá' : `faltam ~${days} dias`,
     }),
   ];
 }

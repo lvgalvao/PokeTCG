@@ -581,16 +581,20 @@ export class StageView {
       el('span', { className: 'pnl__label', text: label }),
       el('span', { className: `pnl__value ${cls}`, text: value }),
     ];
-    const labels = [
-      ...cell('Pagou', formatBRL(r.costCents)),
-      ...cell('Cartas valem', formatBRL(r.valueCents)),
-      ...cell(r.profitCents >= 0 ? 'Lucro' : 'Prejuízo', formatSigned(r.profitCents), r.profitCents >= 0 ? 'is-up' : 'is-down'),
-    ];
-    // Grade 3×2: rótulos na primeira linha, valores na segunda.
+    // A melhor carta é a notícia; o lucro só aparece quando existe (prejuízo é a regra).
+    const best = [...(this.booster?.slots ?? [])]
+      .filter((s) => !this.isPackOnly(s))
+      .sort((a, b) => this.deps.career!.priceBook.valueOf(b.card) - this.deps.career!.priceBook.valueOf(a.card))[0];
+    const columns: HTMLElement[][] = [];
+    if (best) columns.push(cell('Melhor carta', `${best.card.name}, ${formatBRL(this.deps.career.priceBook.valueOf(best.card))}`));
+    columns.push(cell('Cartas valem', formatBRL(r.valueCents)));
+    if (r.profitCents > 0) columns.push(cell('Lucro', formatSigned(r.profitCents), 'is-up'));
+    // Grade: rótulos na primeira linha, valores na segunda.
     const pnl = el('div', {
       className: 'pnl',
-      children: [labels[0]!, labels[2]!, labels[4]!, labels[1]!, labels[3]!, labels[5]!],
+      children: [...columns.map((c) => c[0]!), ...columns.map((c) => c[1]!)],
     });
+    pnl.style.gridTemplateColumns = `repeat(${columns.length}, auto)`;
     const toasts = el('ul', { className: 'toasts' });
     toasts.append(el('li', { className: 'toast', text: `+${r.fameGained} de fama` }));
     r.unlocked.forEach((a, i) => {

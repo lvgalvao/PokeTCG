@@ -92,6 +92,9 @@ CARD_RARITY_OVERRIDES: dict[str, str] = {
     "me55-G": "RGB Rare",
     "me55-B": "RGB Rare",
     "cel25-25": "Rare Secret",  # gold Mew, listed as Rare Holo
+    # Victini is the Black White Rare secret of Black Bolt / White Flare, listed as Rare.
+    "zsv10pt5-171": "Black White Rare",
+    "rsv10pt5-172": "Black White Rare",
     # Cosmic Eclipse Character Rares (237–248) share "Rare Secret" with the golds.
     **{f"sm12-{n}": "Character Rare" for n in range(237, 249)},
 }

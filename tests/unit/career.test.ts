@@ -7,7 +7,9 @@ import {
   DAILY_BONUS,
   duplicatesOf,
   ensureMissions,
-  EXHIBITION_SLOTS,
+  effectiveRank,
+  exhibitionFame,
+  exhibitionSlots,
   fameLevel,
   InsufficientFundsError,
   MISSION_KINDS,
@@ -96,14 +98,24 @@ describe('venda', () => {
 });
 
 describe('exposição', () => {
-  it('aceita no máximo 6 cartas e só as que você tem', () => {
+  it('libera espaços pelo nível e só aceita cartas que você tem', () => {
     let s = newCareer();
     const ids = Array.from({ length: 8 }, (_, i) => `sv1-${i + 1}`);
     s = applyPack(s, ctx, 'sv1', 0, ids.map((id) => card(id, 1, 1)), now).state;
     expect(toggleExhibit(s, ctx, 'sv1-99', now).exhibition).toEqual([]);
+    const slots = exhibitionSlots(s.fame);
     for (const id of ids) s = toggleExhibit(s, ctx, id, now);
-    expect(s.exhibition).toHaveLength(EXHIBITION_SLOTS);
+    expect(s.exhibition).toHaveLength(slots);
     expect(s.achievements.curator).toBeDefined();
+    expect(exhibitionSlots(0)).toBe(3);
+    expect(exhibitionSlots(500)).toBe(6);
+    expect(exhibitionSlots(2_000)).toBe(9);
+  });
+
+  it('cartas expostas rendem fama junto com o bônus do dia', () => {
+    expect(exhibitionFame([1, 4, 7])).toBe(0 + 2 + 15);
+    const s = claimDailyBonus(newCareer(), DAY, 17);
+    expect(s.fame).toBe(17);
   });
 });
 
@@ -115,9 +127,17 @@ describe('bônus diário e patrimônio', () => {
     expect(claimDailyBonus(s1, '2026-10-09').walletCents).toBe(STARTING_WALLET + 2 * DAILY_BONUS);
   });
 
+  it('voltar o relógio não paga o bônus nem renova missões', () => {
+    const s = claimDailyBonus(newCareer(), '2026-10-09');
+    expect(claimDailyBonus(s, DAY)).toBe(s);
+    const m = ensureMissions(newCareer(), '2026-10-09', ctx.eras);
+    expect(ensureMissions(m, DAY, ctx.eras)).toBe(m);
+    expect(ensureMissions(m, '2026-10-10', ctx.eras).missions.day).toBe('2026-10-10');
+  });
+
   it('patrimônio soma carteira e cartas', () => {
     const s = applyPack(newCareer(), ctx, 'sv1', 0, [card('sv1-1', 1, 5_00)], now).state;
-    expect(netWorth(s, () => 5_00)).toBe(STARTING_WALLET + 5_00);
+    expect(netWorth(s, () => 5_00)).toBe(s.walletCents + 5_00);
   });
 
   it('estado salvo sobrevive ao JSON', () => {
@@ -128,10 +148,17 @@ describe('bônus diário e patrimônio', () => {
 });
 
 describe('fama', () => {
+  it('holo vintage conta como Dupla Rara; abrir pacote caro rende fama', () => {
+    expect(effectiveRank(3, 'Rare Holo', 'wotc')).toBe(4);
+    expect(effectiveRank(3, 'Rare Holo', 'sv')).toBe(3);
+    const { result } = applyPack(newCareer(), ctx, 'sv1', 100_00, [card('sv1-1', 1, 0)], now);
+    expect(result.fameGained).toBeGreaterThanOrEqual(5);
+  });
+
   it('sobe de nível nos limites', () => {
     expect(fameLevel(0).title).toBe('Novato');
-    expect(fameLevel(39).level).toBe(1);
-    expect(fameLevel(40).level).toBe(2);
+    expect(fameLevel(49).level).toBe(1);
+    expect(fameLevel(50).level).toBe(2);
     expect(fameLevel(1_000_000).next).toBeNull();
   });
 });

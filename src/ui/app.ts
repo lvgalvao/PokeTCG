@@ -6,14 +6,18 @@ import {
   applySale,
   claimDailyBonus,
   claimMission,
+  effectiveRank,
   ensureMissions,
+  exhibitionFame,
   EXHIBITION_SLOTS,
   netWorth,
   SELL_RATE,
   toggleExhibit,
   type CareerState,
   type GameContext,
+  type Mission,
 } from '../game/career.js';
+import { bucketRank } from '../core/buckets.js';
 import { formatBRL } from '../game/money.js';
 import {
   buildPriceBook,
@@ -302,9 +306,25 @@ export class App {
         if (!set) return null;
         return (await this.catalog(set.id)).byId.get(id)?.imageUrl ?? null;
       },
-      onClaimBonus: () => {
-        this.setCareer(claimDailyBonus(this.career, todayISO()));
+      exhibitionFame: () => this.exhibitionFame(),
+      duplicates: async () => {
+        await this.loadOwnedPrices();
+        const ids = this.allDuplicates();
+        const cents = ids.reduce((sum, id) => sum + Math.round((this.knownValue(id) ?? 0) * SELL_RATE), 0);
+        return { count: ids.length, cents };
+      },
+      onSellDuplicates: () => {
+        this.withMissions();
+        const r = applySale(this.career, this.ctx, this.allDuplicates(), (id) => this.knownValue(id) ?? 0, new Date());
+        this.setCareer(r.state);
         rerender();
+      },
+      missionLink: (m) => this.missionLink(m),
+      onClaimBonus: () => {
+        void this.exhibitionFame().then((fame) => {
+          this.setCareer(claimDailyBonus(this.career, todayISO(), fame));
+          rerender();
+        });
       },
       onClaimMission: (i) => {
         this.setCareer(claimMission(this.career, this.ctx, i, new Date()));
@@ -316,6 +336,39 @@ export class App {
         rerender();
       },
     });
+  }
+
+  /** Fama diária da exposição, pelo rank efetivo de cada carta exposta. */
+  private async exhibitionFame(): Promise<number> {
+    const ranks = await Promise.all(
+      this.career.exhibition.map(async (id) => {
+        const set = this.setForCard(id);
+        if (!set) return 0;
+        const card = (await this.catalog(set.id)).byId.get(id);
+        return card ? effectiveRank(bucketRank(card.bucket), card.rarityRaw, set.era) : 0;
+      }),
+    );
+    return exhibitionFame(ranks);
+  }
+
+  /** Cópias excedentes (fica 1 de cada) de todas as coleções. */
+  private allDuplicates(): string[] {
+    const out: string[] = [];
+    for (const [id, n] of Object.entries(this.career.collection)) for (let i = 1; i < n; i++) out.push(id);
+    return out;
+  }
+
+  /** O pacote mais barato que cumpre a missão — de preferência um que o saldo alcance. */
+  private missionLink(m: Mission): string | null {
+    if (m.kind === 'sell' || !this.packPrices) return null;
+    const modern = ['mega', 'sv', 'swsh'];
+    const candidates = this.deps.index.sets
+      .filter((s) => (m.kind === 'era-packs' ? s.era === m.era : modern.includes(s.era)))
+      .map((s) => ({ s, price: packPriceCents(this.packPrices!, s.id) }))
+      .filter((x): x is { s: SetInfo; price: number } => x.price !== null)
+      .sort((a, b) => a.price - b.price);
+    const pick = candidates.find((x) => x.price <= this.career.walletCents) ?? candidates[0];
+    return pick ? `#/abrir/${pick.s.id}` : null;
   }
 
   private async openStage(setId: string): Promise<void> {

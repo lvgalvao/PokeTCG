@@ -75,6 +75,23 @@
 }
 
 .price-tag.is-short {
+  color: var(--ink-soft);
+}
+
+.goal-meter {
+  --pct: 0;
+  width: 64px;
+  height: 4px;
+  margin-top: 4px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, var(--ink) calc(var(--pct) * 100%), transparent 0) no-repeat,
+    color-mix(in srgb, var(--ink) 10%, transparent);
+}
+
+.price-goal {
+  margin-top: 2px;
+  font-size: 0.75rem;
   color: var(--ink-faint);
 }
 
@@ -418,5 +435,50 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
+}
+
+.achievement__progress {
+  margin: 6px 0 0;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.career__daily {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-top: 20px;
+}
+
+.career__daily p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+}
+
+.exhibit__slot.is-locked {
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  background: none;
+  box-shadow: inset 0 0 0 1px dashed color-mix(in srgb, var(--ink) 8%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--ink) 15%, transparent);
+}
+
+@media (min-width: 641px) {
+  .exhibit {
+    grid-template-columns: repeat(9, 1fr);
+  }
+}
+
+.missions__go {
+  display: flex;
+  align-items: center;
   gap: 10px;
 }

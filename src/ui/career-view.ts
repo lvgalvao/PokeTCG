@@ -2,11 +2,13 @@ import {
   ACHIEVEMENTS,
   canClaimBonus,
   DAILY_BONUS,
+  exhibitionSlots,
   EXHIBITION_SLOTS,
   fameLevel,
   missionsForDay,
   type CareerState,
   type GameContext,
+  type Mission,
 } from '../game/career.js';
 import { formatBRL, formatSigned, type Cents } from '../game/money.js';
 import { el } from '../utils/dom.js';
@@ -20,6 +22,13 @@ export interface CareerViewDeps {
   readonly netWorth: () => Promise<Cents>;
   /** URL da imagem de uma carta pelo id (carrega o manifest do set). */
   readonly imageOf: (cardId: string) => Promise<string | null>;
+  /** Fama diária que as cartas expostas rendem (precisa das raridades). */
+  readonly exhibitionFame: () => Promise<number>;
+  /** Repetidas de todas as coleções e quanto rendem vendidas. */
+  readonly duplicates: () => Promise<{ readonly count: number; readonly cents: Cents }>;
+  readonly onSellDuplicates: () => void;
+  /** Para onde ir para cumprir a missão (pacote acessível), ou null. */
+  readonly missionLink: (m: Mission) => string | null;
   readonly onClaimBonus: () => void;
   readonly onClaimMission: (index: number) => void;
   readonly onReset: () => void;
@@ -33,8 +42,6 @@ export function renderCareer(root: HTMLElement, state: CareerState, deps: Career
 
   const worth = el('strong', { className: 'stat__value', text: '…' });
   void deps.netWorth().then((v) => (worth.textContent = formatBRL(v)));
-
-  const result = state.stats.pulledValueCents + state.stats.soldCents - state.stats.spentCents;
 
   const page = el('div', { className: 'career' });
   page.append(
@@ -53,6 +60,7 @@ export function renderCareer(root: HTMLElement, state: CareerState, deps: Career
         }),
       ],
     }),
+    dailyBlock(state, deps),
     el('section', {
       className: 'stats',
       attrs: { 'aria-label': 'Dinheiro' },
@@ -60,26 +68,13 @@ export function renderCareer(root: HTMLElement, state: CareerState, deps: Career
         stat('Saldo', el('strong', { className: 'stat__value', text: formatBRL(state.walletCents) })),
         stat('Patrimônio', worth, 'Saldo mais o valor de mercado das suas cartas.'),
         stat(
-          'Resultado das aberturas',
-          el('strong', {
-            className: `stat__value ${result >= 0 ? 'is-up' : 'is-down'}`,
-            text: formatSigned(result),
-          }),
-          `${state.stats.packsOpened} pacotes por ${formatBRL(state.stats.spentCents)}.`,
+          'Pacotes abertos',
+          el('strong', { className: 'stat__value', text: String(state.stats.packsOpened) }),
+          `Cartas puxadas valiam ${formatBRL(state.stats.pulledValueCents)}.`,
         ),
       ],
     }),
   );
-
-  if (canClaimBonus(state, deps.today)) {
-    const bonus = el('button', {
-      className: 'btn btn--primary career__bonus',
-      attrs: { type: 'button' },
-      text: `Pegar ${formatBRL(DAILY_BONUS)} de hoje`,
-    });
-    bonus.addEventListener('click', deps.onClaimBonus);
-    page.append(bonus);
-  }
 
   // Missões
   const missions = missionsForDay(state.missions.day || deps.today, deps.ctx.eras);
@@ -94,7 +89,7 @@ export function renderCareer(root: HTMLElement, state: CareerState, deps: Career
       ? el('span', { className: 'missions__done', text: 'Resgatada' })
       : done
         ? el('button', { className: 'btn btn--primary btn--small', attrs: { type: 'button' }, text: 'Resgatar' })
-        : el('span', { className: 'missions__count', text: `${progress}/${m.goal}` });
+        : goLink(m, progress, deps);
     if (action.tagName === 'BUTTON') action.addEventListener('click', () => deps.onClaimMission(i));
     list.append(
       el('li', {
@@ -120,8 +115,13 @@ export function renderCareer(root: HTMLElement, state: CareerState, deps: Career
 
   // Exposição
   const shelf = el('ul', { className: 'exhibit' });
+  const open = exhibitionSlots(state.fame);
   for (let i = 0; i < EXHIBITION_SLOTS; i++) {
     const id = state.exhibition[i];
+    if (i >= open) {
+      shelf.append(el('li', { className: 'exhibit__slot is-locked', text: i < 6 ? 'Nível 4' : 'Nível 7' }));
+      continue;
+    }
     const slot = el('li', { className: `exhibit__slot${id ? '' : ' is-empty'}` });
     if (id) {
       void deps.imageOf(id).then((src) => {
@@ -135,8 +135,8 @@ export function renderCareer(root: HTMLElement, state: CareerState, deps: Career
       'Sua exposição',
       shelf,
       state.exhibition.length
-        ? 'Para trocar uma carta, abra-a no fichário.'
-        : 'Escolha até 6 cartas no fichário para mostrar aqui.',
+        ? 'Cada carta exposta rende fama todo dia, junto com o bônus. Para trocar, abra a carta no fichário.'
+        : `Escolha até ${open} cartas no fichário. Cartas expostas rendem fama todo dia.`,
     ),
   );
 
@@ -153,6 +153,9 @@ export function renderCareer(root: HTMLElement, state: CareerState, deps: Career
           el('span', { className: 'achievement__mark', attrs: { 'aria-hidden': 'true' }, text: got ? '★' : '' }),
           el('p', { className: 'achievement__title', text: a.title }),
           el('p', { className: 'achievement__desc', text: a.description }),
+          ...(!got && a.progress
+            ? [el('p', { className: 'achievement__progress', text: `${a.progress(state)[0]} de ${a.progress(state)[1]}` })]
+            : []),
         ],
       }),
     );
@@ -193,6 +196,45 @@ export function renderCareer(root: HTMLElement, state: CareerState, deps: Career
   page.append(reset);
 
   root.replaceChildren(page);
+}
+
+function dailyBlock(state: CareerState, deps: CareerViewDeps): HTMLElement {
+  const wrap = el('div', { className: 'career__daily' });
+  if (canClaimBonus(state, deps.today)) {
+    const bonus = el('button', {
+      className: 'btn btn--primary',
+      attrs: { type: 'button' },
+      text: `Pegar ${formatBRL(DAILY_BONUS)} de hoje`,
+    });
+    bonus.addEventListener('click', deps.onClaimBonus);
+    const note = el('p', { text: '' });
+    void deps.exhibitionFame().then((f) => {
+      if (f > 0) note.textContent = `Sua exposição rende ${f} de fama junto.`;
+    });
+    wrap.append(bonus, note);
+  } else {
+    wrap.append(el('p', { text: 'Bônus de hoje já pego. Volte amanhã para mais.' }));
+  }
+  const sell = el('button', { className: 'btn btn--quiet', attrs: { type: 'button' } });
+  sell.hidden = true;
+  sell.addEventListener('click', deps.onSellDuplicates);
+  void deps.duplicates().then(({ count, cents }) => {
+    if (!count) return;
+    sell.textContent = `Vender ${count} repetidas por ${formatBRL(cents)}`;
+    sell.hidden = false;
+  });
+  wrap.append(sell);
+  return wrap;
+}
+
+function goLink(m: Mission, progress: number, deps: CareerViewDeps): HTMLElement {
+  const href = deps.missionLink(m);
+  const count = el('span', { className: 'missions__count', text: `${progress}/${m.goal}` });
+  if (!href) return count;
+  return el('span', {
+    className: 'missions__go',
+    children: [count, el('a', { className: 'btn btn--quiet btn--small', attrs: { href }, text: 'Ir' })],
+  });
 }
 
 function stat(label: string, value: HTMLElement, note?: string): HTMLElement {

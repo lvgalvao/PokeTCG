@@ -726,14 +726,6 @@
       "imagePath": "zsv10pt5/03_raras/zsv10pt5-70.jpg"
     },
     {
-      "id": "zsv10pt5-171",
-      "name": "Victini",
-      "rarityRaw": "Rare",
-      "bucket": "03_raras",
-      "collectionNumber": 171,
-      "imagePath": "zsv10pt5/03_raras/zsv10pt5-171.jpg"
-    },
-    {
       "id": "zsv10pt5-3",
       "name": "Serperior ex",
       "rarityRaw": "Double Rare",
@@ -1454,6 +1446,14 @@
       "imagePath": "zsv10pt5/06_duplo_arte_secreta/zsv10pt5-170.jpg"
     },
     {
+      "id": "zsv10pt5-171",
+      "name": "Victini",
+      "rarityRaw": "Black White Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 171,
+      "imagePath": "zsv10pt5/07_legendaria/zsv10pt5-171.jpg"
+    },
+    {
       "id": "zsv10pt5-172",
       "name": "Zekrom ex",
       "rarityRaw": "Black White Rare",
@@ -1465,11 +1465,11 @@
   "totalsByBucket": {
     "01_comum": 47,
     "02_incomum": 31,
-    "03_raras": 11,
+    "03_raras": 10,
     "04_duplo_raras": 14,
     "05_arte_secreta": 69,
     "06_duplo_arte_secreta": 7,
-    "07_legendaria": 1
+    "07_legendaria": 2
   },
   "unmapped": []
 }
