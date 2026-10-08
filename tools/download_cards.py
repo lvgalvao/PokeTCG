@@ -75,6 +75,11 @@ RARITY_TO_BUCKET: dict[str, str] = {
     "amazing rare": "04_duplo_raras",
     "legend": "07_legendaria",
     "rgb rare": "07_legendaria",
+    # Shiny Vault / Trainer Gallery / Classic Collection subsets (sma, swsh45sv, *tg, cel25c).
+    "rare shiny": "04_duplo_raras",
+    "rare shiny gx": "06_duplo_arte_secreta",
+    "trainer gallery rare holo": "05_arte_secreta",
+    "classic collection": "05_arte_secreta",
 }
 
 # Per-card rarity fixes for source data errors (the API lists me55's RGB Mews as Common).
@@ -82,6 +87,7 @@ CARD_RARITY_OVERRIDES: dict[str, str] = {
     "me55-R": "RGB Rare",
     "me55-G": "RGB Rare",
     "me55-B": "RGB Rare",
+    "cel25-25": "Rare Secret",  # gold Mew, listed as Rare Holo
 }
 
 # Per-set overrides, checked before RARITY_TO_BUCKET. me55 has no Uncommons, so its 30

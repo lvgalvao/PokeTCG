@@ -2105,5 +2105,1513 @@
       }
     },
     "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/7, UR 1/15, IR 1/13, SIR 1/32, HR 1/53."
+  },
+  "swsh12pt5": {
+    "structure": "10 cards: Commons, 3 Uncommons, 1 reverse holo slot that becomes a Galarian Gallery card about 1 in 3 packs, 1 rare-or-better slot; Radiant Rares replace a Common (about 1 in 22).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/crown-zenith/crown-zenith-booster-pack-swsh12pt5/",
+      "https://grand-screen.com/tcg/pokemon-tcg/pokemon-crown-zenith-collection-guide/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "rarities": [
+              "Common"
+            ],
+            "p": 0.954545
+          },
+          {
+            "p": 0.045455,
+            "rarities": [
+              "Radiant Rare"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ],
+            "p": 0.649839
+          },
+          {
+            "p": 0.222222,
+            "rarities": [
+              "Trainer Gallery Rare Holo"
+            ],
+            "subset": "swsh12pt5gg"
+          },
+          {
+            "p": 0.037453,
+            "rarities": [
+              "Rare Ultra"
+            ],
+            "subset": "swsh12pt5gg"
+          },
+          {
+            "p": 0.037453,
+            "rarities": [
+              "Rare Holo VSTAR"
+            ],
+            "subset": "swsh12pt5gg"
+          },
+          {
+            "p": 0.033784,
+            "rarities": [
+              "Rare Holo V"
+            ],
+            "subset": "swsh12pt5gg"
+          },
+          {
+            "p": 0.011249,
+            "rarities": [
+              "Rare Holo VMAX"
+            ],
+            "subset": "swsh12pt5gg"
+          },
+          {
+            "p": 0.008,
+            "rarities": [
+              "Rare Secret"
+            ],
+            "subset": "swsh12pt5gg"
+          }
+        ],
+        "6": [
+          {
+            "rarities": [
+              "Rare"
+            ],
+            "p": 0.60904
+          },
+          {
+            "p": 0.178571,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.123457,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.032573,
+            "rarities": [
+              "Rare Holo VSTAR"
+            ]
+          },
+          {
+            "p": 0.02849,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.020367,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.007502,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Real pack has 5C/3U; compressed to 2C/2U. Radiant Rares are placed in a Common slot (slot 2) as an independent hit, so a pack can have TG + Radiant + rare-slot hit (some sources say radiants take the reverse slot; we follow the common-replacement reading). Galarian Gallery total is about 34.9% per pack (1 in 2.9), consistent with the commonly cited 1 in 3 to 4. GG 'Rare Holo' cards use API rarity 'Trainer Gallery Rare Holo'. Main-set Rare Secret has 1 card (slot 6 only)."
+  },
+  "swsh12": {
+    "structure": "10 cards: 5 Commons (one may be replaced by a Radiant Rare in Astral Radiance onward), 3 Uncommons, 1 reverse holo slot, 1 rare-or-better slot (+ basic Energy and code card). Trainer Gallery (companion subset) replaces the reverse holo, about 1 in 8 packs in total.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/silver-tempest/silver-tempest-booster-pack-swsh12/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "rarities": [
+              "Common"
+            ],
+            "p": 0.94898
+          },
+          {
+            "p": 0.05102,
+            "rarities": [
+              "Radiant Rare"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ],
+            "p": 0.874722
+          },
+          {
+            "p": 0.083333,
+            "rarities": [
+              "Trainer Gallery Rare Holo"
+            ],
+            "subset": "swsh12tg"
+          },
+          {
+            "p": 0.013495,
+            "rarities": [
+              "Rare Holo V"
+            ],
+            "subset": "swsh12tg"
+          },
+          {
+            "p": 0.011574,
+            "rarities": [
+              "Rare Ultra"
+            ],
+            "subset": "swsh12tg"
+          },
+          {
+            "p": 0.009166,
+            "rarities": [
+              "Rare Secret"
+            ],
+            "subset": "swsh12tg"
+          },
+          {
+            "p": 0.00771,
+            "rarities": [
+              "Rare Holo VMAX"
+            ],
+            "subset": "swsh12tg"
+          }
+        ],
+        "6": [
+          {
+            "rarities": [
+              "Rare"
+            ],
+            "p": 0.610297
+          },
+          {
+            "p": 0.178571,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.114943,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.037037,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.031847,
+            "rarities": [
+              "Rare Holo VSTAR"
+            ]
+          },
+          {
+            "p": 0.012594,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.009398,
+            "rarities": [
+              "Rare Secret"
+            ]
+          },
+          {
+            "p": 0.005313,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Real pack has 5C/3U; compressed to 2C/2U. Radiant Rares are placed in a Common slot (slot 2) as an independent hit, so a pack can have TG + Radiant + rare-slot hit (some sources say radiants take the reverse slot; we follow the common-replacement reading). Main-set Rare Holo VMAX has only 1 card (used only in slot 6)."
+  },
+  "swsh11": {
+    "structure": "10 cards: 5 Commons (one may be replaced by a Radiant Rare in Astral Radiance onward), 3 Uncommons, 1 reverse holo slot, 1 rare-or-better slot (+ basic Energy and code card). Trainer Gallery (companion subset) replaces the reverse holo, about 1 in 8 packs in total.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/lost-origin/lost-origin-booster-pack-swsh11/",
+      "https://www.digitaltq.com/lost-origin-pull-rates-pokemon-tcg"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "rarities": [
+              "Common"
+            ],
+            "p": 0.95
+          },
+          {
+            "p": 0.05,
+            "rarities": [
+              "Radiant Rare"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ],
+            "p": 0.875918
+          },
+          {
+            "p": 0.08547,
+            "rarities": [
+              "Trainer Gallery Rare Holo"
+            ],
+            "subset": "swsh11tg"
+          },
+          {
+            "p": 0.012121,
+            "rarities": [
+              "Rare Holo V"
+            ],
+            "subset": "swsh11tg"
+          },
+          {
+            "p": 0.010395,
+            "rarities": [
+              "Rare Ultra"
+            ],
+            "subset": "swsh11tg"
+          },
+          {
+            "p": 0.009166,
+            "rarities": [
+              "Rare Secret"
+            ],
+            "subset": "swsh11tg"
+          },
+          {
+            "p": 0.00693,
+            "rarities": [
+              "Rare Holo VMAX"
+            ],
+            "subset": "swsh11tg"
+          }
+        ],
+        "6": [
+          {
+            "rarities": [
+              "Rare"
+            ],
+            "p": 0.601493
+          },
+          {
+            "p": 0.178571,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.116279,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.039062,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.037879,
+            "rarities": [
+              "Rare Holo VSTAR"
+            ]
+          },
+          {
+            "p": 0.012804,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.007599,
+            "rarities": [
+              "Rare Secret"
+            ]
+          },
+          {
+            "p": 0.006313,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Real pack has 5C/3U; compressed to 2C/2U. Radiant Rares are placed in a Common slot (slot 2) as an independent hit, so a pack can have TG + Radiant + rare-slot hit (some sources say radiants take the reverse slot; we follow the common-replacement reading). Main-set Rare Holo VMAX has only 1 card (used only in slot 6)."
+  },
+  "pgo": {
+    "structure": "Pokemon GO (SWSH): 10 cards = 5 commons, 3 uncommons, 1 reverse holo (or Radiant Rare), 1 rare-slot card (always at least Rare Holo), + basic energy.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/pokemon-go/pokemon-go-booster-pack-pgo/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.941176,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.058824,
+            "rarities": [
+              "Radiant Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.696206,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.166667,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.051546,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.02584,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.025,
+            "rarities": [
+              "Rare Holo VSTAR"
+            ]
+          },
+          {
+            "p": 0.018868,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.015873,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Card Codex: V 1/6, Radiant 1/17, Ultra 1/19.4, Rainbow 1/38.7, VSTAR 1/40, VMAX 1/53, Secret 1/63; Rare Holo takes the remainder (~69.5% vs quoted 71.4%, quoted figures sum >100%). Radiant placed in the reverse slot (does not displace the rare)."
+  },
+  "swsh9": {
+    "structure": "10 cards: 5 Commons (one may be replaced by a Radiant Rare in Astral Radiance onward), 3 Uncommons, 1 reverse holo slot, 1 rare-or-better slot (+ basic Energy and code card). Trainer Gallery (companion subset) replaces the reverse holo, about 1 in 8 packs in total.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/brilliant-stars/brilliant-stars-booster-pack-swsh9/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ],
+            "p": 0.870338
+          },
+          {
+            "p": 0.087719,
+            "rarities": [
+              "Trainer Gallery Rare Holo"
+            ],
+            "subset": "swsh9tg"
+          },
+          {
+            "p": 0.012285,
+            "rarities": [
+              "Rare Holo V"
+            ],
+            "subset": "swsh9tg"
+          },
+          {
+            "p": 0.010246,
+            "rarities": [
+              "Rare Holo VMAX"
+            ],
+            "subset": "swsh9tg"
+          },
+          {
+            "p": 0.010246,
+            "rarities": [
+              "Rare Ultra"
+            ],
+            "subset": "swsh9tg"
+          },
+          {
+            "p": 0.009166,
+            "rarities": [
+              "Rare Secret"
+            ],
+            "subset": "swsh9tg"
+          }
+        ],
+        "6": [
+          {
+            "rarities": [
+              "Rare"
+            ],
+            "p": 0.583626
+          },
+          {
+            "p": 0.175439,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.142857,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.041152,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.023256,
+            "rarities": [
+              "Rare Holo VSTAR"
+            ]
+          },
+          {
+            "p": 0.014706,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.010417,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.008547,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Real pack has 5C/3U; compressed to 2C/2U. TG total is about 12.9% per pack (1 in 7.8)."
+  },
+  "cel25": {
+    "structure": "Celebrations: 4 cards, all holo, no commons/uncommons: ~3 main-set non-V holos + 1 hit slot that is a Classic Collection reprint (~1/2.5), V (~1/2.8), VMAX (~1/13), full-art Professor's Research (~1/25), gold Mew (~1/150), else another main-set holo.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/?p=102138"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Rare"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Rare"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Rare"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Rare"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.91,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.09,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.4,
+            "rarities": [
+              "Classic Collection"
+            ],
+            "subset": "cel25c"
+          },
+          {
+            "p": 0.357143,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.119267,
+            "rarities": [
+              "Rare",
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.076923,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.04,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.006667,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "App needs 6 cards; the most faithful filler is extra main-set non-V holos (the real pack's only 'base' cards), so slots 1-5 are filler and slot 6 is the single hit slot with Card Codex rates (CC 40%, V 35.7%, VMAX 7.7%, Ultra 4%). The API labels main-set non-V cards as 'Rare' (12) or 'Rare Holo' (6, which includes the gold secret Mew cel25-25), so 'Rare Holo' is kept rare (9% in slot 5 + share of slot 6) to hold gold Mew near ~1/60 instead of the real ~1/150; tagging cel25-25 with its own rarity would allow an exact 1/150 rate. Slot 6 default (first) is Classic Collection since it is the most likely outcome. Gold Mew (cel25-25) re-tagged Rare Secret at ~1/150."
+  },
+  "swsh7": {
+    "structure": "10 cards: 5 Commons (one may be replaced by a Radiant Rare in Astral Radiance onward), 3 Uncommons, 1 reverse holo slot, 1 rare-or-better slot (+ basic Energy and code card). No Trainer Gallery; reverse slot is always a main-set reverse holo.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/evolving-skies/evolving-skies-booster-pack-swsh7/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ],
+            "p": 1
+          }
+        ],
+        "6": [
+          {
+            "rarities": [
+              "Rare"
+            ],
+            "p": 0.597791
+          },
+          {
+            "p": 0.181818,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.105263,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.055866,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.03876,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.011403,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.009099,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Real pack has 5C/3U; compressed to 2C/2U. Card Codex rare-slot tiers summed to 99%; normalised via the Rare default."
+  },
+  "swsh45": {
+    "structure": "Shining Fates: 10 cards = 5 commons, 3 uncommons, 1 reverse-holo slot replaced by a Shiny Vault card ~33% of packs, 1 rare slot, + energy.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/shining-fates/shining-fates-collection-pikachu-v-case-swsh45/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.673907,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.227273,
+            "rarities": [
+              "Rare Shiny"
+            ],
+            "subset": "swsh45sv"
+          },
+          {
+            "p": 0.050505,
+            "rarities": [
+              "Rare Holo V"
+            ],
+            "subset": "swsh45sv"
+          },
+          {
+            "p": 0.039216,
+            "rarities": [
+              "Rare Holo VMAX"
+            ],
+            "subset": "swsh45sv"
+          },
+          {
+            "p": 0.009099,
+            "rarities": [
+              "Rare Secret"
+            ],
+            "subset": "swsh45sv"
+          }
+        ],
+        "6": [
+          {
+            "p": 0.556541,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.178571,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.108696,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.057471,
+            "rarities": [
+              "Amazing Rare"
+            ]
+          },
+          {
+            "p": 0.054348,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.032468,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.011905,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Card Codex rates: Shiny Rare 1/4.4, Shiny V 1/19.8, Shiny VMAX 1/25.5, SV secret 1/109.9 (slot 5); Holo 1/5.6, V 1/9.2, Amazing 1/17.4, VMAX 1/18.4, Ultra 1/30.8, Rainbow 1/84 (slot 6). Plain Rare takes the remainder (55.7% vs quoted 62.5%; quoted rare-slot figures sum to >100%). Amazing Rares kept in the rare slot."
+  },
+  "sm115": {
+    "structure": "Hidden Fates: 10 cards = 5 commons, 3 uncommons, 1 reverse-holo slot that is replaced by a Shiny Vault card ~39% of packs, 1 rare slot (Rare / Holo / GX / full art / rainbow).",
+    "estimate": false,
+    "sources": [
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762/156"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.607646,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.25,
+            "rarities": [
+              "Rare Shiny"
+            ],
+            "subset": "sma"
+          },
+          {
+            "p": 0.111111,
+            "rarities": [
+              "Rare Shiny GX"
+            ],
+            "subset": "sma"
+          },
+          {
+            "p": 0.013699,
+            "rarities": [
+              "Rare Ultra"
+            ],
+            "subset": "sma"
+          },
+          {
+            "p": 0.017544,
+            "rarities": [
+              "Rare Secret"
+            ],
+            "subset": "sma"
+          }
+        ],
+        "6": [
+          {
+            "p": 0.43,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.28,
+            "rarities": [
+              "Rare Holo GX"
+            ]
+          },
+          {
+            "p": 0.18,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.08,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.03,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Shiny Vault rates from cardzard.com 2,350-pack sample (via Elite Fourum guide): baby shinies 1/4, Shiny GX 1/9, SV full-art trainers 1/73, gold 1/57, all in slot 5. Main-set rare slot is partly estimated: ~40% premium (forum model 14.4/36) split GX 28%, full art 8%, rainbow 3%; Rare Holo 18%, plain Rare remainder. Default first outcome of slot 5 is a main-set reverse; Shiny Rare is not the most likely outcome so it is not first."
+  },
+  "neo1": {
+    "structure": "Neo Genesis (unlimited): 11 cards = 6 commons, 1 basic energy, 3 uncommons, 1 rare (holo ~1 in 3).",
+    "estimate": false,
+    "sources": [
+      "https://bulbapedia.bulbagarden.net/wiki/Booster_pack_(TCG)",
+      "https://www.pokellector.com/sets"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 0.5,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.5,
+            "rarities": [
+              ""
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.5,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.5,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.6666666666666667,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Energy+commons (7) : uncommons (3) compressed like Base Set; energy (rarity '') 50% of slot 1 ~= the real 1 energy per 11 cards scaled to 6. Falls back to Common if energies are absent from the catalog."
+  },
+  "base5": {
+    "structure": "Team Rocket (unlimited): 11 cards = 7 commons, 3 uncommons, 1 rare; holo ~1 in 3; Dark Raichu (83/82 secret) replaces the holo very rarely.",
+    "estimate": true,
+    "sources": [
+      "https://bulbapedia.bulbagarden.net/wiki/Booster_pack_(TCG)",
+      "https://www.pokellector.com/sets",
+      "https://bulbapedia.bulbagarden.net/wiki/Dark_Raichu_(Team_Rocket_83)"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.5,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.5,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.6666666666666667,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3233333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.01,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Holo 1/3 is standard WOTC; Dark Raichu rate has no published figure - estimated 1 in 100 packs (taken out of the holo share). Team Rocket packs contained no basic energy in the inventory."
+  },
+  "base3": {
+    "structure": "Unlimited Fossil: 11 cards = 7 commons, 3 uncommons, 1 rare (holo ~1 in 3). No energy.",
+    "estimate": false,
+    "sources": [
+      "https://bulbapedia.bulbagarden.net/wiki/Booster_pack_(TCG)",
+      "https://www.pokellector.com/sets"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.5,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.5,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.6666666666666667,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Same compression as Base Set. 15 holos / 15 rares in inventory."
+  },
+  "base2": {
+    "structure": "Unlimited Jungle: 11 cards = 7 commons, 3 uncommons, 1 rare (holo ~1 in 3). No energy in Jungle packs.",
+    "estimate": false,
+    "sources": [
+      "https://bulbapedia.bulbagarden.net/wiki/Booster_pack_(TCG)",
+      "https://www.pokellector.com/sets"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.5,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.5,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.6666666666666667,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Same compression as Base Set, no energy."
+  },
+  "base1": {
+    "structure": "Unlimited Base Set: 11 cards = 7 commons (energy printed on the common sheet), 3 uncommons, 1 rare; the rare is holo ~1 in 3 packs, otherwise non-holo. Exactly one rare per pack.",
+    "estimate": false,
+    "sources": [
+      "https://bulbapedia.bulbagarden.net/wiki/Booster_pack_(TCG)",
+      "https://www.pokellector.com/sets"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 0.5,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.5,
+            "rarities": [
+              ""
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.5,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.5,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.6666666666666667,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "7C:3U compressed to 3.5C:1.5U (slots 1-3 Common, 4 Uncommon, 5 50/50). Basic energy (rarity '') is 50% of slot 1 (~0.5 energy/pack; real packs had ~1-2 energies among the 7 commons). If energies are not in the catalog the slot falls back to Common. Only slot 6 can give Rare/Rare Holo, so exactly 1 rare and never 2 holos."
   }
 }
