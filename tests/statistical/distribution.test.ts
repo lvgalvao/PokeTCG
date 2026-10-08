@@ -102,7 +102,7 @@ function runSimulation(): { perDrawSlot: Record<SlotIndex, SlotStats> } {
     const boosterSeed = Math.floor(masterRng.next() * 0x100000000);
     const booster = generateBooster(mulberry32(boosterSeed), catalog, boosterSeed);
     for (const slot of booster.slots) {
-      const stats = perDrawSlot[slot.drawIndex];
+      const stats = perDrawSlot[slot.drawIndex as SlotIndex];
       stats.observedBuckets[slot.drawnBucket] = (stats.observedBuckets[slot.drawnBucket] ?? 0) + 1;
       stats.total++;
     }

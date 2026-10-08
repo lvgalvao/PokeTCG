@@ -65,7 +65,7 @@ export class BoosterView {
       // Only handle when booster section is visible.
       if (this.deps.mountPoint.closest('[role="tabpanel"]')?.hasAttribute('hidden')) return;
       ev.preventDefault();
-      if (!this.state.booster || (this.state.revealedCount >= 6 && !this.state.animating)) {
+      if (!this.state.booster || (this.state.revealedCount >= this.packSize() && !this.state.animating)) {
         this.openNewBooster();
       } else {
         this.advance();
@@ -256,7 +256,7 @@ export class BoosterView {
     const booster = this.state.booster;
     if (!booster) return;
     if (this.state.animating) return;
-    if (this.state.revealedCount >= 6) return;
+    if (this.state.revealedCount >= booster.slots.length) return;
 
     const idx = this.state.revealedCount;
     const cardEl = this.deps.mountPoint.querySelector(
@@ -293,7 +293,7 @@ export class BoosterView {
     const delay = isNew ? 800 : REVEAL_ANIMATION_MS;
     setTimeout(() => {
       this.state.animating = false;
-      if (this.state.revealedCount === 6) {
+      if (this.state.revealedCount === this.packSize()) {
         this.onAllRevealed();
       }
     }, delay);
@@ -315,7 +315,7 @@ export class BoosterView {
         }
       }
     });
-    this.state.revealedCount = 6;
+    this.state.revealedCount = this.packSize();
     playFlipSound(); // Play a generic flip when skipping all
     this.state.animating = false;
     const progressEl = this.deps.mountPoint.querySelector(
@@ -349,7 +349,11 @@ export class BoosterView {
     newBoosterBtn.focus();
   }
 
+  private packSize(): number {
+    return this.state.booster?.slots.length ?? 0;
+  }
+
   private progressText(): string {
-    return `${this.state.revealedCount}/6 cartas reveladas`;
+    return `${this.state.revealedCount}/${this.packSize()} cartas reveladas`;
   }
 }

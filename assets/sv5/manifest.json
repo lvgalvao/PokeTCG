@@ -1,9 +1,9 @@
 {
   "setId": "sv5",
   "setName": "Temporal Forces",
-  "generatedAt": "2026-05-26T01:00:12Z",
+  "generatedAt": "2026-10-08T01:38:09Z",
   "downloaderVersion": "0.1.0",
-  "totalSet": 218,
+  "totalSet": 226,
   "cards": [
     {
       "id": "sv5-1",
@@ -14,12 +14,32 @@
       "imagePath": "sv5/01_comum/sv5-1.jpg"
     },
     {
+      "id": "sve-1",
+      "name": "Basic Grass Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 1,
+      "imagePath": "sv5/01_comum/sve-1.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv5-2",
       "name": "Pineco",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 2,
       "imagePath": "sv5/01_comum/sv5-2.jpg"
+    },
+    {
+      "id": "sve-2",
+      "name": "Basic Fire Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 2,
+      "imagePath": "sv5/01_comum/sve-2.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv5-3",
@@ -30,12 +50,42 @@
       "imagePath": "sv5/01_comum/sv5-3.jpg"
     },
     {
+      "id": "sve-3",
+      "name": "Basic Water Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 3,
+      "imagePath": "sv5/01_comum/sve-3.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv5-4",
       "name": "Nuzleaf",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 4,
       "imagePath": "sv5/01_comum/sv5-4.jpg"
+    },
+    {
+      "id": "sve-4",
+      "name": "Basic Lightning Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 4,
+      "imagePath": "sv5/01_comum/sve-4.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-5",
+      "name": "Basic Psychic Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 5,
+      "imagePath": "sv5/01_comum/sve-5.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv5-6",
@@ -46,6 +96,16 @@
       "imagePath": "sv5/01_comum/sv5-6.jpg"
     },
     {
+      "id": "sve-6",
+      "name": "Basic Fighting Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 6,
+      "imagePath": "sv5/01_comum/sve-6.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv5-7",
       "name": "Breloom",
       "rarityRaw": "Common",
@@ -54,12 +114,32 @@
       "imagePath": "sv5/01_comum/sv5-7.jpg"
     },
     {
+      "id": "sve-7",
+      "name": "Basic Darkness Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 7,
+      "imagePath": "sv5/01_comum/sve-7.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv5-8",
       "name": "Roselia",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 8,
       "imagePath": "sv5/01_comum/sv5-8.jpg"
+    },
+    {
+      "id": "sve-8",
+      "name": "Basic Metal Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 8,
+      "imagePath": "sv5/01_comum/sve-8.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv5-10",
@@ -1751,7 +1831,7 @@
     }
   ],
   "totalsByBucket": {
-    "01_comum": 71,
+    "01_comum": 79,
     "02_incomum": 55,
     "03_raras": 14,
     "04_duplo_raras": 33,

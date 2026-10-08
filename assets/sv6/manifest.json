@@ -1,9 +1,9 @@
 {
   "setId": "sv6",
   "setName": "Twilight Masquerade",
-  "generatedAt": "2026-05-26T01:02:51Z",
+  "generatedAt": "2026-10-08T01:38:09Z",
   "downloaderVersion": "0.1.0",
-  "totalSet": 226,
+  "totalSet": 234,
   "cards": [
     {
       "id": "sv6-1",
@@ -14,12 +14,32 @@
       "imagePath": "sv6/01_comum/sv6-1.jpg"
     },
     {
+      "id": "sve-1",
+      "name": "Basic Grass Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 1,
+      "imagePath": "sv6/01_comum/sve-1.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv6-2",
       "name": "Tangrowth",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 2,
       "imagePath": "sv6/01_comum/sv6-2.jpg"
+    },
+    {
+      "id": "sve-2",
+      "name": "Basic Fire Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 2,
+      "imagePath": "sv6/01_comum/sve-2.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv6-3",
@@ -30,6 +50,16 @@
       "imagePath": "sv6/01_comum/sv6-3.jpg"
     },
     {
+      "id": "sve-3",
+      "name": "Basic Water Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 3,
+      "imagePath": "sv6/01_comum/sve-3.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv6-4",
       "name": "Spinarak",
       "rarityRaw": "Common",
@@ -38,12 +68,62 @@
       "imagePath": "sv6/01_comum/sv6-4.jpg"
     },
     {
+      "id": "sve-4",
+      "name": "Basic Lightning Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 4,
+      "imagePath": "sv6/01_comum/sve-4.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-5",
+      "name": "Basic Psychic Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 5,
+      "imagePath": "sv6/01_comum/sve-5.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv6-6",
       "name": "Sunkern",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 6,
       "imagePath": "sv6/01_comum/sv6-6.jpg"
+    },
+    {
+      "id": "sve-6",
+      "name": "Basic Fighting Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 6,
+      "imagePath": "sv6/01_comum/sve-6.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-7",
+      "name": "Basic Darkness Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 7,
+      "imagePath": "sv6/01_comum/sve-7.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-8",
+      "name": "Basic Metal Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 8,
+      "imagePath": "sv6/01_comum/sve-8.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv6-9",
@@ -1815,7 +1895,7 @@
     }
   ],
   "totalsByBucket": {
-    "01_comum": 76,
+    "01_comum": 84,
     "02_incomum": 55,
     "03_raras": 16,
     "04_duplo_raras": 35,

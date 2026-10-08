@@ -1,10 +1,20 @@
 {
   "setId": "sv10",
   "setName": "Destined Rivals",
-  "generatedAt": "2026-05-01T18:55:30Z",
+  "generatedAt": "2026-10-08T01:38:09Z",
   "downloaderVersion": "0.1.0",
-  "totalSet": 244,
+  "totalSet": 252,
   "cards": [
+    {
+      "id": "sve-1",
+      "name": "Basic Grass Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 1,
+      "imagePath": "sv10/01_comum/sve-1.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
     {
       "id": "sv10-2",
       "name": "Yanma",
@@ -12,6 +22,26 @@
       "bucket": "01_comum",
       "collectionNumber": 2,
       "imagePath": "sv10/01_comum/sv10-2.jpg"
+    },
+    {
+      "id": "sve-2",
+      "name": "Basic Fire Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 2,
+      "imagePath": "sv10/01_comum/sve-2.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-3",
+      "name": "Basic Water Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 3,
+      "imagePath": "sv10/01_comum/sve-3.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv10-4",
@@ -22,12 +52,32 @@
       "imagePath": "sv10/01_comum/sv10-4.jpg"
     },
     {
+      "id": "sve-4",
+      "name": "Basic Lightning Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 4,
+      "imagePath": "sv10/01_comum/sve-4.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv10-5",
       "name": "Shroomish",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 5,
       "imagePath": "sv10/01_comum/sv10-5.jpg"
+    },
+    {
+      "id": "sve-5",
+      "name": "Basic Psychic Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 5,
+      "imagePath": "sv10/01_comum/sve-5.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv10-6",
@@ -38,12 +88,42 @@
       "imagePath": "sv10/01_comum/sv10-6.jpg"
     },
     {
+      "id": "sve-6",
+      "name": "Basic Fighting Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 6,
+      "imagePath": "sv10/01_comum/sve-6.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv10-7",
       "name": "Cynthia's Roselia",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 7,
       "imagePath": "sv10/01_comum/sv10-7.jpg"
+    },
+    {
+      "id": "sve-7",
+      "name": "Basic Darkness Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 7,
+      "imagePath": "sv10/01_comum/sve-7.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-8",
+      "name": "Basic Metal Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 8,
+      "imagePath": "sv10/01_comum/sve-8.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv10-9",
@@ -1959,7 +2039,7 @@
     }
   ],
   "totalsByBucket": {
-    "01_comum": 85,
+    "01_comum": 93,
     "02_incomum": 62,
     "03_raras": 18,
     "04_duplo_raras": 39,

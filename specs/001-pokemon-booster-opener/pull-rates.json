@@ -1,15 +1,109 @@
 {
+  "me55": {
+    "packSize": 6,
+    "structure": "Real English 30th Celebration pack = 5 game cards + 1 foil Basic Energy: Common, Common, Common-or-hit (Illustration Rare or a Classic Collection reprint), rare slot (Rare / Double Rare / Special Illustration Rare / Futuristic Rare / RGB Rare), Pikachu Rare, foil Basic Energy.",
+    "estimate": false,
+    "sources": [],
+    "profile": {
+      "keepOrder": true,
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.71,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.19,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.1,
+            "subset": "me55c"
+          }
+        ],
+        [
+          {
+            "p": 0.689,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.25,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.05,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.01,
+            "rarities": [
+              "Futuristic Rare"
+            ]
+          },
+          {
+            "p": 0.001,
+            "rarities": [
+              "RGB Rare"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Pikachu Rare"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
+        ]
+      ]
+    },
+    "notes": "Converted from the existing hand-written profile (rates supplied by the caller, no new research). Classic Collection (subset me55c) outcome has no rarity filter = any me55c card (31 cards). keepOrder true so the pack reveals in real order. Mew RGB Rare 1/1000 kept as given."
+  },
   "me5": {
-    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare).",
+    "packSize": 11,
+    "structure": "Real English ME pack = 10 game cards + 1 Basic Energy (+ TCG Live code card, not counted): 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball pattern, any C/U/R), 1 reverse holo that can be replaced by Illustration Rare / Special Illustration Rare / Mega Hyper Rare, 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy.",
     "estimate": false,
     "sources": [
       "https://samuraiswordtokyo.com/blogs/news/pitch-black-pull-rates-what-is-confirmed-vs-japanese-abyss-eye",
       "https://tcgtalk.com/guides/pitch-black-pull-rates",
-      "https://comicbook.com/gaming/feature/pokemon-tcg-pitch-black-pull-rates-predictions-ex-illustration-rares/"
+      "https://comicbook.com/gaming/feature/pokemon-tcg-pitch-black-pull-rates-predictions-ex-illustration-rares/",
+      "https://www.pokemon.com/us/pokemon-tcg/mega-evolution (pack = 10 cards + 1 Basic Energy + code card)"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -17,7 +111,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -25,7 +119,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -33,7 +143,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -41,7 +151,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.8765,
             "rarities": [
@@ -69,7 +197,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.7068,
             "rarities": [
@@ -88,22 +216,30 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "TCGplayer Authentication Center, 4,000+ English packs (reported 2026-07-21): DR 21.02%, UR 8.30%, IR 11.01%, SIR 1.25%, MHR 0.09% (~1/1081, +/-0.09%, least certain). Rates are community/retailer samples, not official (TPC publishes none)."
+    "notes": "TCGplayer Authentication Center, 4,000+ English packs (reported 2026-07-21): DR 21.02%, UR 8.30%, IR 11.01%, SIR 1.25%, MHR 0.09% (~1/1081, +/-0.09%, least certain). Rates are community/retailer samples, not official (TPC publishes none). v2: expanded to the real 11-slot English pack (10 game cards + Basic Energy as {p:1, subset:'sve'}); hit rates unchanged from v1. Reverse-holo foil pattern (Poke Ball / Master Ball) not modeled - reverse slots just draw main-set C/U/R."
   },
   "me4": {
-    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare).",
+    "packSize": 11,
+    "structure": "Real English ME pack = 10 game cards + 1 Basic Energy (+ TCG Live code card, not counted): 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball pattern, any C/U/R), 1 reverse holo that can be replaced by Illustration Rare / Special Illustration Rare / Mega Hyper Rare, 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy.",
     "estimate": false,
     "sources": [
       "https://pokezentrum.de/pokemon-karten-news/pokemon-wachsendes-chaos-erste-pull-rates-enthuellt/",
       "https://tcgtalk.com/guides/chaos-rising-pull-rates",
-      "https://samuraiswordtokyo.com/blogs/news/pitch-black-pull-rates-what-is-confirmed-vs-japanese-abyss-eye"
+      "https://samuraiswordtokyo.com/blogs/news/pitch-black-pull-rates-what-is-confirmed-vs-japanese-abyss-eye",
+      "https://www.pokemon.com/us/pokemon-tcg/mega-evolution (pack = 10 cards + 1 Basic Energy + code card)"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -111,7 +247,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -119,7 +255,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -127,7 +279,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -135,7 +287,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.875673,
             "rarities": [
@@ -163,7 +333,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.716667,
             "rarities": [
@@ -182,22 +352,30 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Pokezentrum (~4,000 packs, community averages): DR 1/5, IR 1/9, UR 1/12, SIR 1/81, MHR 1/1150 (gold Mega Greninja ex). TCGplayer says Chaos Rising rates match Pitch Black. Rates are community/retailer samples, not official (TPC publishes none)."
+    "notes": "Pokezentrum (~4,000 packs, community averages): DR 1/5, IR 1/9, UR 1/12, SIR 1/81, MHR 1/1150 (gold Mega Greninja ex). TCGplayer says Chaos Rising rates match Pitch Black. Rates are community/retailer samples, not official (TPC publishes none). v2: expanded to the real 11-slot English pack (10 game cards + Basic Energy as {p:1, subset:'sve'}); hit rates unchanged from v1. Reverse-holo foil pattern (Poke Ball / Master Ball) not modeled - reverse slots just draw main-set C/U/R."
   },
   "me3": {
-    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare).",
+    "packSize": 11,
+    "structure": "Real English ME pack = 10 game cards + 1 Basic Energy (+ TCG Live code card, not counted): 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball pattern, any C/U/R), 1 reverse holo that can be replaced by Illustration Rare / Special Illustration Rare / Mega Hyper Rare, 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy.",
     "estimate": false,
     "sources": [
       "https://cardcodex.com/blog/perfect-order-pull-rates/",
       "https://pokezentrum.de/pokemon-karten-news/pokemon-optimale-ordnung-pull-rates-enthuellt/",
-      "https://tcgtalk.com/guides/perfect-order-pull-rates-singapore"
+      "https://tcgtalk.com/guides/perfect-order-pull-rates-singapore",
+      "https://www.pokemon.com/us/pokemon-tcg/mega-evolution (pack = 10 cards + 1 Basic Energy + code card)"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -205,7 +383,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -213,7 +391,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -221,7 +415,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -229,7 +423,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.875983,
             "rarities": [
@@ -257,7 +469,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.716667,
             "rarities": [
@@ -276,22 +488,30 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "CardCodex: DR 1/5, UR 1/12, IR 1/9, SIR 1/81, MHR 1/1786. Pokezentrum (~4,000 packs) gives UR 1/11, SIR 1/75, MHR 1/1250 — similar; CardCodex values used. Rates are community/retailer samples, not official (TPC publishes none)."
+    "notes": "CardCodex: DR 1/5, UR 1/12, IR 1/9, SIR 1/81, MHR 1/1786. Pokezentrum (~4,000 packs) gives UR 1/11, SIR 1/75, MHR 1/1250 — similar; CardCodex values used. Rates are community/retailer samples, not official (TPC publishes none). v2: expanded to the real 11-slot English pack (10 game cards + Basic Energy as {p:1, subset:'sve'}); hit rates unchanged from v1. Reverse-holo foil pattern (Poke Ball / Master Ball) not modeled - reverse slots just draw main-set C/U/R."
   },
   "me2pt5": {
-    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare / Mega Attack Rare).",
+    "packSize": 11,
+    "structure": "Real English ME pack = 10 game cards + 1 Basic Energy (+ TCG Live code card, not counted): 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball pattern, any C/U/R), 1 reverse holo that can be replaced by Illustration Rare / Special Illustration Rare / Mega Hyper Rare, 1 rare slot (Rare, or Double Rare / Ultra Rare / Mega Attack Rare), then the Basic Energy. MAR replaces the Ultra Rare in the rare slot.",
     "estimate": false,
     "sources": [
       "https://cardcodex.com/blog/ascended-heroes-pull-rates-explained/",
       "https://pokezentrum.de/pokemon-karten-news/pokemon-erhabene-helden-erste-pull-rates-enthuellt/",
-      "https://cardcodex.com/blog/perfect-order-pull-rates/"
+      "https://cardcodex.com/blog/perfect-order-pull-rates/",
+      "https://www.pokemon.com/us/pokemon-tcg/mega-evolution (pack = 10 cards + 1 Basic Energy + code card)"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -299,7 +519,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -307,7 +527,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -315,7 +551,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -323,7 +559,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.872751,
             "rarities": [
@@ -351,7 +605,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.717898,
             "rarities": [
@@ -376,22 +630,30 @@
               "MEGA_ATTACK_RARE"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "CardCodex: DR 1/5, IR 1/9, UR 1/21, SIR ~1/70, MAR 1/29 (Pokezentrum: 1/31), MHR 1/540. CardCodex says MARs take the Ultra Rare's place in the pack, so MAR is placed in the rare slot (exclusive with DR/UR). God packs not modeled. Actual retail product is a special set (sold in ETBs/bundles), structure assumed same as main-series ME packs. Rates are community/retailer samples, not official (TPC publishes none)."
+    "notes": "CardCodex: DR 1/5, IR 1/9, UR 1/21, SIR ~1/70, MAR 1/29 (Pokezentrum: 1/31), MHR 1/540. CardCodex says MARs take the Ultra Rare's place in the pack, so MAR is placed in the rare slot (exclusive with DR/UR). God packs not modeled. Actual retail product is a special set (sold in ETBs/bundles), structure assumed same as main-series ME packs. Rates are community/retailer samples, not official (TPC publishes none). v2: expanded to the real 11-slot English pack (10 game cards + Basic Energy as {p:1, subset:'sve'}); hit rates unchanged from v1. Reverse-holo foil pattern (Poke Ball / Master Ball) not modeled - reverse slots just draw main-set C/U/R. Ascended Heroes is a special set sold in ETBs/bundles; English pack assumed identical in layout to main ME packs."
   },
   "me2": {
-    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare).",
+    "packSize": 11,
+    "structure": "Real English ME pack = 10 game cards + 1 Basic Energy (+ TCG Live code card, not counted): 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball pattern, any C/U/R), 1 reverse holo that can be replaced by Illustration Rare / Special Illustration Rare / Mega Hyper Rare, 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy.",
     "estimate": false,
     "sources": [
       "https://cardcodex.com/blog/perfect-order-pull-rates/",
       "https://cardcodex.com/blog/phantasmal-flames-pull-rates/",
-      "https://samuraiswordtokyo.com/blogs/news/pitch-black-pull-rates-what-is-confirmed-vs-japanese-abyss-eye"
+      "https://samuraiswordtokyo.com/blogs/news/pitch-black-pull-rates-what-is-confirmed-vs-japanese-abyss-eye",
+      "https://www.pokemon.com/us/pokemon-tcg/mega-evolution (pack = 10 cards + 1 Basic Energy + code card)"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -399,7 +661,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -407,7 +669,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -415,7 +693,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -423,7 +701,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.875595,
             "rarities": [
@@ -451,7 +747,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.716667,
             "rarities": [
@@ -470,23 +766,31 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "CardCodex comparison table (TCGplayer-sourced): DR 1/5, UR 1/12, IR 1/9, SIR 1/80, MHR 1/1260; TCGplayer states PFL rates match Pitch Black. Only 1 MHR card (gold Mega Charizard X ex). Rates are community/retailer samples, not official (TPC publishes none)."
+    "notes": "CardCodex comparison table (TCGplayer-sourced): DR 1/5, UR 1/12, IR 1/9, SIR 1/80, MHR 1/1260; TCGplayer states PFL rates match Pitch Black. Only 1 MHR card (gold Mega Charizard X ex). Rates are community/retailer samples, not official (TPC publishes none). v2: expanded to the real 11-slot English pack (10 game cards + Basic Energy as {p:1, subset:'sve'}); hit rates unchanged from v1. Reverse-holo foil pattern (Poke Ball / Master Ball) not modeled - reverse slots just draw main-set C/U/R."
   },
   "me1": {
-    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare).",
+    "packSize": 11,
+    "structure": "Real English ME pack = 10 game cards + 1 Basic Energy (+ TCG Live code card, not counted): 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball pattern, any C/U/R), 1 reverse holo that can be replaced by Illustration Rare / Special Illustration Rare / Mega Hyper Rare, 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy.",
     "estimate": false,
     "sources": [
       "https://deltiasgaming.com/?p=353157",
       "https://cardcodex.com/blog/mega-evolution-base-set-pull-rates/",
       "https://www.wargamer.com/pokemon-trading-card-game/mega-evolution-hyper-rare-gold-cards",
-      "https://cardcodex.com/blog/perfect-order-pull-rates/"
+      "https://cardcodex.com/blog/perfect-order-pull-rates/",
+      "https://www.pokemon.com/us/pokemon-tcg/mega-evolution (pack = 10 cards + 1 Basic Energy + code card)"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -494,7 +798,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -502,7 +806,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -510,7 +830,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -518,7 +838,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.878194,
             "rarities": [
@@ -546,7 +884,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.716667,
             "rarities": [
@@ -565,23 +903,31 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "TCGplayer Authentication Center sample (5,000+ packs) via CardCodex/Deltia's: DR 1/5, IR ~1/9 (10.89%), UR 1/12, SIR 1/101, MHR 1/1260. Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot, 6 = rare slot. Rates are community/retailer samples, not official (TPC publishes none)."
+    "notes": "TCGplayer Authentication Center sample (5,000+ packs) via CardCodex/Deltia's: DR 1/5, IR ~1/9 (10.89%), UR 1/12, SIR 1/101, MHR 1/1260. Rates are community/retailer samples, not official (TPC publishes none). v2: expanded to the real 11-slot English pack (10 game cards + Basic Energy as {p:1, subset:'sve'}); hit rates unchanged from v1. Reverse-holo foil pattern (Poke Ball / Master Ball) not modeled - reverse slots just draw main-set C/U/R."
   },
   "zsv10pt5": {
-    "structure": "Real pack: 10 cards + energy = 4 Common, 3 Uncommon, 2 reverse holos (Poké Ball pattern ~1/3, Master Ball pattern ~1/19; 2nd reverse may be replaced by IR/SIR/Black White Rare), 1 rare slot (Rare/Double Rare/Ultra Rare). Sold only in ETBs/collections.",
+    "structure": "Real English pack (Black Bolt, ETB/collection-only): 10 game cards + 1 Basic Energy (+code card) = 4 Common, 3 Uncommon, reverse #1 (reverse / Poké Ball-pattern ~1/3), reverse #2 (reverse / Master Ball-pattern ~1/19, or Illustration Rare / SIR / Black White Rare), 1 rare slot (Rare / Double Rare / Ultra Rare), Basic Energy.",
+    "packSize": 11,
     "estimate": false,
     "sources": [
       "https://cardcodex.com/blog/black-bolt-white-flare-pull-rates/",
       "https://deltiasgaming.com/?p=299238",
       "https://pokezentrum.de/pokemon-karten-news/pokemon-black-bolt-und-white-flare-pull-rates-enthuellt/",
-      "https://tcgtalk.com/guides/black-bolt-pack-opening-value-guide"
+      "https://tcgtalk.com/guides/black-bolt-pack-opening-value-guide",
+      "https://dotesports.com/pokemon/news/pokemon-scarlet-and-violet-tcg-is-ditching-rainbow-rares-swapping-booster-pack-contents"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -589,7 +935,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -597,7 +943,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -605,7 +967,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -613,7 +975,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.819833,
             "rarities": [
@@ -641,7 +1021,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.730206,
             "rarities": [
@@ -660,23 +1040,31 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Rates (TCGplayer ~750-pack data + Reddit 1,000-pack tracker, combined BB/WF): DR 21.1% (~1/4.74), UR 1/17, IR 1/6, SIR 1/77-1/80 (used 1/80). Black White Rare has no reliable rate (0 in 700+ packs; ~2 in 1,000; others estimate 1/1,789) - used 1/1000 (approximate). Poké Ball/Master Ball patterns ignored. Slot 4 is a plain Uncommon."
+    "notes": "Rates (TCGplayer ~750-pack data + Reddit 1,000-pack tracker, combined BB/WF): DR 21.1% (~1/4.74), UR 1/17, IR 1/6, SIR 1/77-1/80 (used 1/80). Black White Rare has no reliable rate (0 in 700+ packs; ~2 in 1,000; others estimate 1/1,789) - used 1/1000 (approximate). Poké Ball/Master Ball patterns ignored. Real-size mapping: slots 1-4 Common, 5-7 Uncommon, 8 = 1st reverse holo (default main-set Common/Uncommon/Rare), 9 = 2nd reverse holo / hit slot (default C/U/R; IR/SIR/HR-class hits mutually exclusive here), 10 = rare slot (Rare/DR/UR mutually exclusive), 11 = Basic Energy (subset sve). Reverse holos are drawn from the same card pool as non-reverse cards (no separate reverse cards in data). Pools are large enough (min Common pool 39, up to 6 Common draws per pack)."
   },
   "rsv10pt5": {
-    "structure": "Real pack: 10 cards + energy = 4 Common, 3 Uncommon, 2 reverse holos (Poké Ball pattern ~1/3, Master Ball pattern ~1/19; 2nd reverse may be replaced by IR/SIR/Black White Rare), 1 rare slot (Rare/Double Rare/Ultra Rare). Sold only in ETBs/collections.",
+    "structure": "Real English pack (White Flare, ETB/collection-only): 10 game cards + 1 Basic Energy (+code card) = 4 Common, 3 Uncommon, reverse #1 (reverse / Poké Ball-pattern ~1/3), reverse #2 (reverse / Master Ball-pattern ~1/19, or Illustration Rare / SIR / Black White Rare), 1 rare slot (Rare / Double Rare / Ultra Rare), Basic Energy.",
+    "packSize": 11,
     "estimate": false,
     "sources": [
       "https://cardcodex.com/blog/black-bolt-white-flare-pull-rates/",
       "https://deltiasgaming.com/?p=299238",
       "https://pokezentrum.de/pokemon-karten-news/pokemon-black-bolt-und-white-flare-pull-rates-enthuellt/",
-      "https://tcgtalk.com/guides/black-bolt-pack-opening-value-guide"
+      "https://tcgtalk.com/guides/black-bolt-pack-opening-value-guide",
+      "https://dotesports.com/pokemon/news/pokemon-scarlet-and-violet-tcg-is-ditching-rainbow-rares-swapping-booster-pack-contents"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -684,7 +1072,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -692,7 +1080,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -700,7 +1104,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -708,7 +1112,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.819833,
             "rarities": [
@@ -736,7 +1158,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.730206,
             "rarities": [
@@ -755,22 +1177,30 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Rates (TCGplayer ~750-pack data + Reddit 1,000-pack tracker, combined BB/WF): DR 21.1% (~1/4.74), UR 1/17, IR 1/6, SIR 1/77-1/80 (used 1/80). Black White Rare has no reliable rate (0 in 700+ packs; ~2 in 1,000; others estimate 1/1,789) - used 1/1000 (approximate). Poké Ball/Master Ball patterns ignored. Slot 4 is a plain Uncommon."
+    "notes": "Rates (TCGplayer ~750-pack data + Reddit 1,000-pack tracker, combined BB/WF): DR 21.1% (~1/4.74), UR 1/17, IR 1/6, SIR 1/77-1/80 (used 1/80). Black White Rare has no reliable rate (0 in 700+ packs; ~2 in 1,000; others estimate 1/1,789) - used 1/1000 (approximate). Poké Ball/Master Ball patterns ignored. Real-size mapping: slots 1-4 Common, 5-7 Uncommon, 8 = 1st reverse holo (default main-set Common/Uncommon/Rare), 9 = 2nd reverse holo / hit slot (default C/U/R; IR/SIR/HR-class hits mutually exclusive here), 10 = rare slot (Rare/DR/UR mutually exclusive), 11 = Basic Energy (subset sve). Reverse holos are drawn from the same card pool as non-reverse cards (no separate reverse cards in data). Pools are large enough (min Common pool 38, up to 6 Common draws per pack)."
   },
   "sv10": {
-    "structure": "Real pack: 10 cards + basic energy = 4 Common, 3 Uncommon, 2 reverse holo (1st reverse may be replaced by nothing special; 2nd by IR/SIR/HR), 1 rare slot (Rare/Double Rare/Ultra Rare). No ACE SPEC cards in this set.",
+    "structure": "Real English pack (Destined Rivals): 10 game cards + 1 Basic Energy (+code card) = 4 Common, 3 Uncommon, reverse #1 (no ACE SPEC in this set), reverse #2 (or Illustration Rare / SIR / Hyper Rare), 1 rare slot (Rare / Double Rare / Ultra Rare), Basic Energy.",
+    "packSize": 11,
     "estimate": false,
     "sources": [
       "https://deltiasgaming.com/?p=249103",
       "https://tcgtalk.com/guides/destined-rivals-pull-rates-case-opening",
-      "https://www.wargamer.com/pokemon-trading-card-game/mega-evolution-hyper-rare-gold-cards"
+      "https://www.wargamer.com/pokemon-trading-card-game/mega-evolution-hyper-rare-gold-cards",
+      "https://dotesports.com/pokemon/news/pokemon-scarlet-and-violet-tcg-is-ditching-rainbow-rares-swapping-booster-pack-contents"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -778,7 +1208,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -786,7 +1216,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -794,7 +1240,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -802,7 +1248,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.899318,
             "rarities": [
@@ -830,7 +1294,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.7375,
             "rarities": [
@@ -849,21 +1313,29 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Rates (TCGplayer ~8,000-pack data via Deltias/TCGTalk/Wargamer): DR 1/5, UR 1/16, IR 1/12, SIR 1/94, HR 1/149. Sources vary (UR 1/12-1/16, SIR 1/83-1/101). Slot 4 is a plain Uncommon."
+    "notes": "Rates (TCGplayer ~8,000-pack data via Deltias/TCGTalk/Wargamer): DR 1/5, UR 1/16, IR 1/12, SIR 1/94, HR 1/149. Sources vary (UR 1/12-1/16, SIR 1/83-1/101). Real-size mapping: slots 1-4 Common, 5-7 Uncommon, 8 = 1st reverse holo (default main-set Common/Uncommon/Rare), 9 = 2nd reverse holo / hit slot (default C/U/R; IR/SIR/HR-class hits mutually exclusive here), 10 = rare slot (Rare/DR/UR mutually exclusive), 11 = Basic Energy (subset sve). Reverse holos are drawn from the same card pool as non-reverse cards (no separate reverse cards in data). Pools are large enough (min Common pool 85, up to 6 Common draws per pack)."
   },
   "sv9": {
-    "structure": "Real pack: 10 cards + basic energy = 4 Common, 3 Uncommon, 2 reverse holo (1st reverse may be replaced by nothing special; 2nd by IR/SIR/HR), 1 rare slot (Rare/Double Rare/Ultra Rare). No ACE SPEC cards in this set.",
+    "structure": "Real English pack (Journey Together): 10 game cards + 1 Basic Energy (+code card) = 4 Common, 3 Uncommon, reverse #1 (no ACE SPEC in this set), reverse #2 (or Illustration Rare / SIR / Hyper Rare), 1 rare slot (Rare / Double Rare / Ultra Rare), Basic Energy.",
+    "packSize": 11,
     "estimate": false,
     "sources": [
       "https://cardcodex.com/pokemon/scarlet-violet/journey-together/journey-together-booster-pack-sv9/",
-      "https://tcgtalk.com/guides/journey-together-pack-opening-value-guide"
+      "https://tcgtalk.com/guides/journey-together-pack-opening-value-guide",
+      "https://dotesports.com/pokemon/news/pokemon-scarlet-and-violet-tcg-is-ditching-rainbow-rares-swapping-booster-pack-contents"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -871,7 +1343,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -879,7 +1351,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -887,7 +1375,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -895,7 +1383,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.896354,
             "rarities": [
@@ -923,7 +1429,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.765149,
             "rarities": [
@@ -942,22 +1448,30 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Rates (Card Codex / TCGTalk 8,000-pack data): IR 1/11.8, UR 1/15.3, SIR 1/86.2, HR 1/137. DR not found explicitly for this set; used era-typical 1/5.9. Slot 4 is a plain Uncommon (no ACE SPEC)."
+    "notes": "Rates (Card Codex / TCGTalk 8,000-pack data): IR 1/11.8, UR 1/15.3, SIR 1/86.2, HR 1/137. DR not found explicitly for this set; used era-typical 1/5.9. Real-size mapping: slots 1-4 Common, 5-7 Uncommon, 8 = 1st reverse holo (default main-set Common/Uncommon/Rare), 9 = 2nd reverse holo / hit slot (default C/U/R; IR/SIR/HR-class hits mutually exclusive here), 10 = rare slot (Rare/DR/UR mutually exclusive), 11 = Basic Energy (subset sve). Reverse holos are drawn from the same card pool as non-reverse cards (no separate reverse cards in data). Pools are large enough (min Common pool 85, up to 6 Common draws per pack)."
   },
   "sv8pt5": {
-    "structure": "Real pack: 10 cards + energy = 4 Common, 3 Uncommon, 1 Poké Ball-pattern reverse (or ACE SPEC), 1 reverse/Master Ball-pattern slot (or SIR/HR), 1 rare slot (Rare/Double Rare/Ultra Rare). No Illustration Rares in this set.",
+    "structure": "Real English pack (Prismatic Evolutions): 10 game cards + 1 Basic Energy (+code card) = 4 Common, 3 Uncommon, reverse #1 (Poké Ball-pattern reverse, or ACE SPEC Rare), reverse #2 (reverse / Master Ball-pattern reverse, or SIR/Hyper Rare; no Illustration Rares in this set), 1 rare slot (Rare / Double Rare / Ultra Rare), Basic Energy.",
+    "packSize": 11,
     "estimate": false,
     "sources": [
       "https://dotesports.com/pokemon/news/all-prismatic-evolutions-pull-rates",
       "https://snkrdunk.com/en/magazine/2025/01/25/the-top-10-best-pokemon-tcg-cards-from-prismatic-evolutions-pre-ranked-by-price",
-      "https://tcgtalk.com/guides/prismatic-evolutions-pack-opening-value-guide"
+      "https://tcgtalk.com/guides/prismatic-evolutions-pack-opening-value-guide",
+      "https://dotesports.com/pokemon/news/pokemon-scarlet-and-violet-tcg-is-ditching-rainbow-rares-swapping-booster-pack-contents"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -965,7 +1479,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -973,7 +1487,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -981,11 +1511,29 @@
             ]
           }
         ],
-        "4": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.952381,
             "rarities": [
-              "Uncommon"
+              "Common",
+              "Uncommon",
+              "Rare"
             ]
           },
           {
@@ -995,7 +1543,7 @@
             ]
           }
         ],
-        "5": [
+        [
           {
             "p": 0.972222,
             "rarities": [
@@ -1017,7 +1565,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.770833,
             "rarities": [
@@ -1036,21 +1584,29 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Rates: DR ~1/6, UR (full-art trainers) 1/16, SIR 1/45 (TCGplayer 1,200 packs; DotEsports ~2,700-pack data says 1/53), HR ~1/180 (DotEsports 1/152), ACE SPEC ~1/21 (DotEsports 1/29). Poké Ball / Master Ball pattern variants ignored (not separate cards in data). Mapped: slots 1-2 Common, 3 Uncommon, 4 Uncommon-or-ACE SPEC (ACE SPEC replaces a reverse in reality), 5 reverse/hit slot (IR/SIR/HR mutually exclusive), 6 rare slot (Rare/DR/UR)."
+    "notes": "Rates: DR ~1/6, UR (full-art trainers) 1/16, SIR 1/45 (TCGplayer 1,200 packs; DotEsports ~2,700-pack data says 1/53), HR ~1/180 (DotEsports 1/152), ACE SPEC ~1/21 (DotEsports 1/29). Poké Ball / Master Ball pattern variants ignored (not separate cards in data). Real-size mapping: slots 1-4 Common, 5-7 Uncommon, 8 = 1st reverse holo (default main-set Common/Uncommon/Rare, replaced by ACE SPEC Rare at its published rate), 9 = 2nd reverse holo / hit slot (default C/U/R; IR/SIR/HR-class hits mutually exclusive here), 10 = rare slot (Rare/DR/UR mutually exclusive), 11 = Basic Energy (subset sve). Reverse holos are drawn from the same card pool as non-reverse cards (no separate reverse cards in data). Pools are large enough (min Common pool 46, up to 6 Common draws per pack)."
   },
   "sv8": {
-    "structure": "Real pack: 10 cards + basic energy = 4 Common, 3 Uncommon, 2 reverse holo (1st reverse may be replaced by ACE SPEC; 2nd by IR/SIR/HR), 1 rare slot (Rare/Double Rare/Ultra Rare).",
+    "structure": "Real English pack (Surging Sparks): 10 game cards + 1 Basic Energy (+code card) = 4 Common, 3 Uncommon, reverse #1 (or ACE SPEC Rare), reverse #2 (or Illustration Rare / SIR / Hyper Rare), 1 rare slot (Rare / Double Rare / Ultra Rare), Basic Energy.",
+    "packSize": 11,
     "estimate": false,
     "sources": [
       "https://cardcodex.com/pokemon/scarlet-violet/surging-sparks/chase-cards/",
-      "https://tcgtalk.com/guides/surging-sparks-pull-rates-case-opening"
+      "https://tcgtalk.com/guides/surging-sparks-pull-rates-case-opening",
+      "https://dotesports.com/pokemon/news/pokemon-scarlet-and-violet-tcg-is-ditching-rainbow-rares-swapping-booster-pack-contents"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1058,7 +1614,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1066,7 +1622,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -1074,11 +1646,29 @@
             ]
           }
         ],
-        "4": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.949749,
             "rarities": [
-              "Uncommon"
+              "Common",
+              "Uncommon",
+              "Rare"
             ]
           },
           {
@@ -1088,7 +1678,7 @@
             ]
           }
         ],
-        "5": [
+        [
           {
             "p": 0.906284,
             "rarities": [
@@ -1116,7 +1706,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.76294,
             "rarities": [
@@ -1135,22 +1725,30 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Rates (Card Codex): DR 1/5.9, UR 1/14.8, IR 1/13, SIR 1/87, HR 1/188.7, ACE SPEC 1/19.9. TCGTalk 500-pack sample had SIR ~1/71. Mapped: slots 1-2 Common, 3 Uncommon, 4 Uncommon-or-ACE SPEC (ACE SPEC replaces a reverse in reality), 5 reverse/hit slot (IR/SIR/HR mutually exclusive), 6 rare slot (Rare/DR/UR)."
+    "notes": "Rates (Card Codex): DR 1/5.9, UR 1/14.8, IR 1/13, SIR 1/87, HR 1/188.7, ACE SPEC 1/19.9. TCGTalk 500-pack sample had SIR ~1/71. Real-size mapping: slots 1-4 Common, 5-7 Uncommon, 8 = 1st reverse holo (default main-set Common/Uncommon/Rare, replaced by ACE SPEC Rare at its published rate), 9 = 2nd reverse holo / hit slot (default C/U/R; IR/SIR/HR-class hits mutually exclusive here), 10 = rare slot (Rare/DR/UR mutually exclusive), 11 = Basic Energy (subset sve). Reverse holos are drawn from the same card pool as non-reverse cards (no separate reverse cards in data). Pools are large enough (min Common pool 88, up to 6 Common draws per pack)."
   },
   "sv7": {
-    "structure": "Real pack: 10 cards + basic energy = 4 Common, 3 Uncommon, 2 reverse holo (1st reverse may be replaced by ACE SPEC; 2nd by IR/SIR/HR), 1 rare slot (Rare/Double Rare/Ultra Rare).",
+    "structure": "Real English pack (Stellar Crown): 10 game cards + 1 Basic Energy (+code card) = 4 Common, 3 Uncommon, reverse #1 (or ACE SPEC Rare), reverse #2 (or Illustration Rare / SIR / Hyper Rare), 1 rare slot (Rare / Double Rare / Ultra Rare), Basic Energy.",
+    "packSize": 11,
     "estimate": false,
     "sources": [
       "https://cardcodex.com/pokemon/scarlet-violet/stellar-crown/chase-cards/",
       "https://tcgtalk.com/guides/stellar-crown-pull-rates-case-opening",
-      "https://tcgtalk.com/guides/stellar-crown-pack-opening-value-guide"
+      "https://tcgtalk.com/guides/stellar-crown-pack-opening-value-guide",
+      "https://dotesports.com/pokemon/news/pokemon-scarlet-and-violet-tcg-is-ditching-rainbow-rares-swapping-booster-pack-contents"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1158,7 +1756,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1166,7 +1764,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -1174,11 +1788,29 @@
             ]
           }
         ],
-        "4": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.950495,
             "rarities": [
-              "Uncommon"
+              "Common",
+              "Uncommon",
+              "Rare"
             ]
           },
           {
@@ -1188,7 +1820,7 @@
             ]
           }
         ],
-        "5": [
+        [
           {
             "p": 0.903465,
             "rarities": [
@@ -1216,7 +1848,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.76294,
             "rarities": [
@@ -1235,13 +1867,20 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Rates (Card Codex/TCGTalk community data): DR 1/5.9, UR 1/14.8, IR 1/12.8, SIR 1/90, HR 1/137, ACE SPEC 1/20.2. Mapped: slots 1-2 Common, 3 Uncommon, 4 Uncommon-or-ACE SPEC (ACE SPEC replaces a reverse in reality), 5 reverse/hit slot (IR/SIR/HR mutually exclusive), 6 rare slot (Rare/DR/UR)."
+    "notes": "Rates (Card Codex/TCGTalk community data): DR 1/5.9, UR 1/14.8, IR 1/12.8, SIR 1/90, HR 1/137, ACE SPEC 1/20.2. Real-size mapping: slots 1-4 Common, 5-7 Uncommon, 8 = 1st reverse holo (default main-set Common/Uncommon/Rare, replaced by ACE SPEC Rare at its published rate), 9 = 2nd reverse holo / hit slot (default C/U/R; IR/SIR/HR-class hits mutually exclusive here), 10 = rare slot (Rare/DR/UR mutually exclusive), 11 = Basic Energy (subset sve). Reverse holos are drawn from the same card pool as non-reverse cards (no separate reverse cards in data). Pools are large enough (min Common pool 71, up to 6 Common draws per pack)."
   },
   "sv6pt5": {
-    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy. An ACE SPEC Rare (~1/20) can replace the first reverse holo.",
+    "packSize": 11,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card, not counted): 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can become Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy. Reverse slot 1 can be replaced by an ACE SPEC Rare (~1/20).",
     "estimate": true,
     "sources": [
       "https://tcgtalk.com/guides/shrouded-fable-pack-opening-value-guide",
@@ -1249,8 +1888,8 @@
       "https://www.cardrake.com/cards/sv6pt5-96"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1258,7 +1897,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1266,7 +1905,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -1274,11 +1929,29 @@
             ]
           }
         ],
-        "4": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.95,
             "rarities": [
-              "Uncommon"
+              "Common",
+              "Uncommon",
+              "Rare"
             ]
           },
           {
@@ -1288,7 +1961,7 @@
             ]
           }
         ],
-        "5": [
+        [
           {
             "p": 0.894796849089,
             "rarities": [
@@ -1316,7 +1989,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.766666666666,
             "rarities": [
@@ -1335,21 +2008,28 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/12, SIR 1/67, HR 1/144. Community data only (no TCGplayer article found); SIR ~1/67, HR ~1/144 (slot-level), ACE SPEC ~5%/pack; DR/UR/IR use era-typical values (1/6, 1/15, 1/12). Sources disagree widely, treat as partial estimate."
+    "notes": "11 slots in pack order: 1-4 Common, 5-7 Uncommon, 8 reverse holo (default C/U/R, or ACE SPEC Rare), 9 reverse holo/hit slot (IR/SIR/HR), 10 rare slot (Rare/DR/UR), 11 Basic Energy (sve). Rates (from B.json): DR 1/6, UR 1/15, IR 1/12, SIR 1/67, HR 1/144. Community data only (no TCGplayer article found); SIR ~1/67, HR ~1/144 (slot-level), ACE SPEC ~5%/pack; DR/UR/IR use era-typical values (1/6, 1/15, 1/12). Sources disagree widely, treat as partial estimate. Reverse default draws uniformly from main-set Common/Uncommon/Rare pool (real reverse mix is ~C 55% / U 31% / R 11%, close to pool proportions). Rates are a partial community estimate (no TCGplayer article)."
   },
   "sv6": {
-    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy. An ACE SPEC Rare (~1/20) can replace the first reverse holo.",
+    "packSize": 11,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card, not counted): 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can become Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy. Reverse slot 1 can be replaced by an ACE SPEC Rare (~1/20).",
     "estimate": false,
     "sources": [
       "https://tcgtalk.com/guides/twilight-masquerade-pack-opening-value-guide",
       "https://cardcodex.com/pokemon/scarlet-violet/twilight-masquerade/twilight-masquerade-fun-pack-sv6/"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1357,7 +2037,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1365,7 +2045,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -1373,11 +2069,29 @@
             ]
           }
         ],
-        "4": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.95,
             "rarities": [
-              "Uncommon"
+              "Common",
+              "Uncommon",
+              "Rare"
             ]
           },
           {
@@ -1387,9 +2101,9 @@
             ]
           }
         ],
-        "5": [
+        [
           {
-            "p": 0.9045997010319999,
+            "p": 0.904599701032,
             "rarities": [
               "Common",
               "Uncommon",
@@ -1415,7 +2129,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.766666666666,
             "rarities": [
@@ -1434,21 +2148,28 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/13, SIR 1/86, HR 1/146. Slot 4 = ACE SPEC slot (default Uncommon, ACE SPEC 1/20). DR quoted 1/5-1/5.9; used 1/6."
+    "notes": "11 slots in pack order: 1-4 Common, 5-7 Uncommon, 8 reverse holo (default C/U/R, or ACE SPEC Rare), 9 reverse holo/hit slot (IR/SIR/HR), 10 rare slot (Rare/DR/UR), 11 Basic Energy (sve). Rates (from B.json): DR 1/6, UR 1/15, IR 1/13, SIR 1/86, HR 1/146. DR quoted 1/5-1/5.9; used 1/6. Reverse default draws uniformly from main-set Common/Uncommon/Rare pool (real reverse mix is ~C 55% / U 31% / R 11%, close to pool proportions)."
   },
   "sv5": {
-    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy. From TEF an ACE SPEC Rare (~1/20) can replace the first reverse holo.",
+    "packSize": 11,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card, not counted): 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can become Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy. Reverse slot 1 can be replaced by an ACE SPEC Rare (~1/20).",
     "estimate": false,
     "sources": [
       "https://www.tcgplayer.com/content/article/Temporal-Forces-Pull-Rates/",
       "https://www.josephwriteranderson.com/blog/temporal-forces-pull-rates"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1456,7 +2177,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1464,7 +2185,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -1472,11 +2209,29 @@
             ]
           }
         ],
-        "4": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.95,
             "rarities": [
-              "Uncommon"
+              "Common",
+              "Uncommon",
+              "Rare"
             ]
           },
           {
@@ -1486,7 +2241,7 @@
             ]
           }
         ],
-        "5": [
+        [
           {
             "p": 0.904254771496,
             "rarities": [
@@ -1514,7 +2269,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.766666666666,
             "rarities": [
@@ -1533,22 +2288,30 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/13, SIR 1/86, HR 1/139. Slot 4 = ACE SPEC slot (default Uncommon, ACE SPEC 1/20). HR quoted as 1/129-1/139 across sources; used 1/139."
+    "notes": "11 slots in pack order: 1-4 Common, 5-7 Uncommon, 8 reverse holo (default C/U/R, or ACE SPEC Rare), 9 reverse holo/hit slot (IR/SIR/HR), 10 rare slot (Rare/DR/UR), 11 Basic Energy (sve). Rates (from B.json): DR 1/6, UR 1/15, IR 1/13, SIR 1/86, HR 1/139. HR quoted as 1/129-1/139 across sources; used 1/139. Reverse default draws uniformly from main-set Common/Uncommon/Rare pool (real reverse mix is ~C 55% / U 31% / R 11%, close to pool proportions)."
   },
   "sv4pt5": {
-    "structure": "Booster of 10 cards: Commons/Uncommons, two reverse-holo slots where one can become a Shiny Rare (~1/4) or Shiny Ultra Rare (~1/13) and the other an IR/SIR/HR, plus the rare slot (Rare/DR/UR).",
+    "packSize": 11,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card, not counted): 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can become Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy. Reverse slot 1 can be replaced by Shiny Rare (1/4) or Shiny Ultra Rare (1/13) (confirmed by cardcodex reverse-holo totals: ~1.56 reverses/pack).",
     "estimate": false,
     "sources": [
       "https://www.pokebeach.com/?p=281473",
       "https://pokecottage.com/sets/paldean-fates-card-list",
-      "https://kotaku.com/paldean-fates-pokemon-tcg-pull-rates-1851196505"
+      "https://kotaku.com/paldean-fates-pokemon-tcg-pull-rates-1851196505",
+      "https://cardcodex.com/pokemon/scarlet-violet/paldean-fates/paldean-fates-booster-pack-sv4pt5/"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1556,7 +2319,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1564,7 +2327,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -1572,11 +2351,29 @@
             ]
           }
         ],
-        "4": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.673076923077,
             "rarities": [
-              "Uncommon"
+              "Common",
+              "Uncommon",
+              "Rare"
             ]
           },
           {
@@ -1592,7 +2389,7 @@
             ]
           }
         ],
-        "5": [
+        [
           {
             "p": 0.895201017003,
             "rarities": [
@@ -1620,7 +2417,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.766666666666,
             "rarities": [
@@ -1639,21 +2436,28 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/14, SIR 1/58, HR 1/62. Slot 4 = shiny-vault slot (default Uncommon, Shiny Rare 1/4, Shiny Ultra Rare 1/13). TCGplayer sample (1,500 packs) relayed by PokeBeach; only 3 IR cards exist so IR pool is small but used by one slot only."
+    "notes": "11 slots in pack order: 1-4 Common, 5-7 Uncommon, 8 reverse holo (default C/U/R, or Shiny Rare/Shiny Ultra Rare), 9 reverse holo/hit slot (IR/SIR/HR), 10 rare slot (Rare/DR/UR), 11 Basic Energy (sve). Rates (from B.json): DR 1/6, UR 1/15, IR 1/14, SIR 1/58, HR 1/62. TCGplayer sample (1,500 packs) relayed by PokeBeach; only 3 IR cards exist so IR pool is small but used by one slot only. Reverse default draws uniformly from main-set Common/Uncommon/Rare pool (real reverse mix is ~C 55% / U 31% / R 11%, close to pool proportions)."
   },
   "sv4": {
-    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy.",
+    "packSize": 11,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card, not counted): 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can become Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy.",
     "estimate": false,
     "sources": [
       "https://www.tcgplayer.com/content/article/Paradox-Rift-Pull-Rates/",
       "https://www.josephwriteranderson.com/blog/temporal-forces-pull-rates"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1661,7 +2465,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1669,7 +2473,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -1677,7 +2497,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1685,7 +2505,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.889605205381,
             "rarities": [
@@ -1713,7 +2551,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.766666666666,
             "rarities": [
@@ -1732,20 +2570,27 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/13, SIR 1/47, HR 1/82. SIR/HR odds reduced from PAR onwards."
+    "notes": "11 slots in pack order: 1-4 Common, 5-7 Uncommon, 8 reverse holo (default C/U/R), 9 reverse holo/hit slot (IR/SIR/HR), 10 rare slot (Rare/DR/UR), 11 Basic Energy (sve). Rates (from B.json): DR 1/6, UR 1/15, IR 1/13, SIR 1/47, HR 1/82. SIR/HR odds reduced from PAR onwards. Reverse default draws uniformly from main-set Common/Uncommon/Rare pool (real reverse mix is ~C 55% / U 31% / R 11%, close to pool proportions)."
   },
   "sv3pt5": {
-    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy.",
+    "packSize": 11,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card, not counted): 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can become Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy.",
     "estimate": false,
     "sources": [
       "https://www.tcgplayer.com/content/article/Pok%C3%A9mon-TCG-151-Pull-Rates/"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1753,7 +2598,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1761,7 +2606,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -1769,7 +2630,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1777,7 +2638,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.86580882353,
             "rarities": [
@@ -1805,7 +2684,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.8125,
             "rarities": [
@@ -1824,21 +2703,28 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/8, UR 1/16, IR 1/12, SIR 1/32, HR 1/51."
+    "notes": "11 slots in pack order: 1-4 Common, 5-7 Uncommon, 8 reverse holo (default C/U/R), 9 reverse holo/hit slot (IR/SIR/HR), 10 rare slot (Rare/DR/UR), 11 Basic Energy (sve). Rates (from B.json): DR 1/8, UR 1/16, IR 1/12, SIR 1/32, HR 1/51. Reverse default draws uniformly from main-set Common/Uncommon/Rare pool (real reverse mix is ~C 55% / U 31% / R 11%, close to pool proportions)."
   },
   "sv3": {
-    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy.",
+    "packSize": 11,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card, not counted): 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can become Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy.",
     "estimate": false,
     "sources": [
       "https://www.tcgplayer.com/content/article/Obsidian-Flames-Pull-Rates/",
       "https://www.josephwriteranderson.com/blog/temporal-forces-pull-rates"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1846,7 +2732,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1854,7 +2740,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -1862,7 +2764,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1870,7 +2772,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.873308404558,
             "rarities": [
@@ -1898,7 +2818,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.766666666666,
             "rarities": [
@@ -1917,20 +2837,27 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/13, SIR 1/32, HR 1/54. OBF any-SIR ~3.13%/pack (1/32)."
+    "notes": "11 slots in pack order: 1-4 Common, 5-7 Uncommon, 8 reverse holo (default C/U/R), 9 reverse holo/hit slot (IR/SIR/HR), 10 rare slot (Rare/DR/UR), 11 Basic Energy (sve). Rates (from B.json): DR 1/6, UR 1/15, IR 1/13, SIR 1/32, HR 1/54. OBF any-SIR ~3.13%/pack (1/32). Reverse default draws uniformly from main-set Common/Uncommon/Rare pool (real reverse mix is ~C 55% / U 31% / R 11%, close to pool proportions)."
   },
   "sv2": {
-    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy.",
+    "packSize": 11,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card, not counted): 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can become Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy.",
     "estimate": false,
     "sources": [
       "https://www.tcgplayer.com/content/article/Paldea-Evolved-Pull-Rates/"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1938,7 +2865,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1946,7 +2873,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -1954,7 +2897,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -1962,7 +2905,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.874283063428,
             "rarities": [
@@ -1990,7 +2951,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.790476190476,
             "rarities": [
@@ -2009,20 +2970,28 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/7, UR 1/15, IR 1/13, SIR 1/32, HR 1/57."
+    "notes": "11 slots in pack order: 1-4 Common, 5-7 Uncommon, 8 reverse holo (default C/U/R), 9 reverse holo/hit slot (IR/SIR/HR), 10 rare slot (Rare/DR/UR), 11 Basic Energy (sve). Rates (from B.json): DR 1/7, UR 1/15, IR 1/13, SIR 1/32, HR 1/57. Reverse default draws uniformly from main-set Common/Uncommon/Rare pool (real reverse mix is ~C 55% / U 31% / R 11%, close to pool proportions)."
   },
   "sv1": {
-    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy.",
+    "packSize": 11,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card, not counted): 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can become Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare), then the Basic Energy.",
     "estimate": false,
     "sources": [
-      "https://www.tcgplayer.com/content/article/Pok%C3%A9mon-TCG-Scarlet-Violet-Pull-Rates/"
+      "https://www.tcgplayer.com/content/article/Pok%C3%A9mon-TCG-Scarlet-Violet-Pull-Rates/",
+      "https://cardcodex.com/pokemon/scarlet-violet/scarlet-violet-booster-pack-sv1/"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2030,7 +2999,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2038,7 +3007,23 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -2046,7 +3031,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2054,7 +3039,25 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.872958998549,
             "rarities": [
@@ -2082,7 +3085,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.790476190476,
             "rarities": [
@@ -2101,21 +3104,30 @@
               "Ultra Rare"
             ]
           }
+        ],
+        [
+          {
+            "p": 1,
+            "subset": "sve"
+          }
         ]
-      }
+      ]
     },
-    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/7, UR 1/15, IR 1/13, SIR 1/32, HR 1/53."
+    "notes": "11 slots in pack order: 1-4 Common, 5-7 Uncommon, 8 reverse holo (default C/U/R), 9 reverse holo/hit slot (IR/SIR/HR), 10 rare slot (Rare/DR/UR), 11 Basic Energy (sve). Rates (from B.json): DR 1/7, UR 1/15, IR 1/13, SIR 1/32, HR 1/53. Reverse default draws uniformly from main-set Common/Uncommon/Rare pool (real reverse mix is ~C 55% / U 31% / R 11%, close to pool proportions)."
   },
   "swsh12pt5": {
-    "structure": "10 cards: Commons, 3 Uncommons, 1 reverse holo slot that becomes a Galarian Gallery card about 1 in 3 packs, 1 rare-or-better slot; Radiant Rares replace a Common (about 1 in 22).",
+    "packSize": 10,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card): 5 Commons, 3 Uncommons, 1 reverse holo, 1 rare-or-better. A Radiant Rare replaces one Common (modelled in the 5th Common slot). Galarian Gallery (swsh12pt5gg) cards replace the reverse holo. Energy omitted (no SWSH energy images in data).",
     "estimate": false,
     "sources": [
       "https://cardcodex.com/pokemon/sword-shield/crown-zenith/crown-zenith-booster-pack-swsh12pt5/",
-      "https://grand-screen.com/tcg/pokemon-tcg/pokemon-crown-zenith-collection-guide/"
+      "https://grand-screen.com/tcg/pokemon-tcg/pokemon-crown-zenith-collection-guide/",
+      "https://cardcodex.com/pokemon/sword-shield/sword-shield-booster-pack-swsh1/",
+      "https://pocketmonsters.net/tcg/viewset/187"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2123,7 +3135,31 @@
             ]
           }
         ],
-        "2": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "rarities": [
               "Common"
@@ -2137,7 +3173,7 @@
             ]
           }
         ],
-        "3": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2145,7 +3181,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2153,7 +3189,15 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "rarities": [
               "Common",
@@ -2206,7 +3250,7 @@
             "subset": "swsh12pt5gg"
           }
         ],
-        "6": [
+        [
           {
             "rarities": [
               "Rare"
@@ -2250,19 +3294,22 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Real pack has 5C/3U; compressed to 2C/2U. Radiant Rares are placed in a Common slot (slot 2) as an independent hit, so a pack can have TG + Radiant + rare-slot hit (some sources say radiants take the reverse slot; we follow the common-replacement reading). Galarian Gallery total is about 34.9% per pack (1 in 2.9), consistent with the commonly cited 1 in 3 to 4. GG 'Rare Holo' cards use API rarity 'Trainer Gallery Rare Holo'. Main-set Rare Secret has 1 card (slot 6 only)."
+    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Radiant Rares are placed in the 5th Common slot (slot index 4) as an independent hit, so a pack can have TG + Radiant + rare-slot hit (some sources say radiants take the reverse slot; we follow the common-replacement reading). Galarian Gallery total is about 34.9% per pack (1 in 2.9), consistent with the commonly cited 1 in 3 to 4. GG 'Rare Holo' cards use API rarity 'Trainer Gallery Rare Holo'. Main-set Rare Secret has 1 card (rare slot only). v2: rebuilt at real English size: 10 game cards (5C/3U/1 reverse/1 rare) + 1 Basic Energy (energy omitted). Same per-pack rates as the 6-slot version."
   },
   "swsh12": {
-    "structure": "10 cards: 5 Commons (one may be replaced by a Radiant Rare in Astral Radiance onward), 3 Uncommons, 1 reverse holo slot, 1 rare-or-better slot (+ basic Energy and code card). Trainer Gallery (companion subset) replaces the reverse holo, about 1 in 8 packs in total.",
+    "packSize": 10,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card): 5 Commons, 3 Uncommons, 1 reverse holo, 1 rare-or-better. A Radiant Rare replaces one Common (modelled in the 5th Common slot). Trainer Gallery (swsh12tg) cards replace the reverse holo. Energy omitted (no SWSH energy images in data).",
     "estimate": false,
     "sources": [
-      "https://cardcodex.com/pokemon/sword-shield/silver-tempest/silver-tempest-booster-pack-swsh12/"
+      "https://cardcodex.com/pokemon/sword-shield/silver-tempest/silver-tempest-booster-pack-swsh12/",
+      "https://cardcodex.com/pokemon/sword-shield/sword-shield-booster-pack-swsh1/",
+      "https://pocketmonsters.net/tcg/viewset/187"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2270,7 +3317,31 @@
             ]
           }
         ],
-        "2": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "rarities": [
               "Common"
@@ -2284,7 +3355,7 @@
             ]
           }
         ],
-        "3": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2292,7 +3363,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2300,7 +3371,15 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "rarities": [
               "Common",
@@ -2346,7 +3425,7 @@
             "subset": "swsh12tg"
           }
         ],
-        "6": [
+        [
           {
             "rarities": [
               "Rare"
@@ -2396,20 +3475,23 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Real pack has 5C/3U; compressed to 2C/2U. Radiant Rares are placed in a Common slot (slot 2) as an independent hit, so a pack can have TG + Radiant + rare-slot hit (some sources say radiants take the reverse slot; we follow the common-replacement reading). Main-set Rare Holo VMAX has only 1 card (used only in slot 6)."
+    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Radiant Rares are placed in the 5th Common slot (slot index 4) as an independent hit, so a pack can have TG + Radiant + rare-slot hit (some sources say radiants take the reverse slot; we follow the common-replacement reading). Main-set Rare Holo VMAX has only 1 card (used only in the rare slot). v2: rebuilt at real English size: 10 game cards (5C/3U/1 reverse/1 rare) + 1 Basic Energy (energy omitted). Same per-pack rates as the 6-slot version."
   },
   "swsh11": {
-    "structure": "10 cards: 5 Commons (one may be replaced by a Radiant Rare in Astral Radiance onward), 3 Uncommons, 1 reverse holo slot, 1 rare-or-better slot (+ basic Energy and code card). Trainer Gallery (companion subset) replaces the reverse holo, about 1 in 8 packs in total.",
+    "packSize": 10,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card): 5 Commons, 3 Uncommons, 1 reverse holo, 1 rare-or-better. A Radiant Rare replaces one Common (modelled in the 5th Common slot). Trainer Gallery (swsh11tg) cards replace the reverse holo. Energy omitted (no SWSH energy images in data).",
     "estimate": false,
     "sources": [
       "https://cardcodex.com/pokemon/sword-shield/lost-origin/lost-origin-booster-pack-swsh11/",
-      "https://www.digitaltq.com/lost-origin-pull-rates-pokemon-tcg"
+      "https://www.digitaltq.com/lost-origin-pull-rates-pokemon-tcg",
+      "https://cardcodex.com/pokemon/sword-shield/sword-shield-booster-pack-swsh1/",
+      "https://pocketmonsters.net/tcg/viewset/187"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2417,7 +3499,31 @@
             ]
           }
         ],
-        "2": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "rarities": [
               "Common"
@@ -2431,7 +3537,7 @@
             ]
           }
         ],
-        "3": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2439,7 +3545,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2447,7 +3553,15 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "rarities": [
               "Common",
@@ -2493,7 +3607,7 @@
             "subset": "swsh11tg"
           }
         ],
-        "6": [
+        [
           {
             "rarities": [
               "Rare"
@@ -2543,19 +3657,20 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Real pack has 5C/3U; compressed to 2C/2U. Radiant Rares are placed in a Common slot (slot 2) as an independent hit, so a pack can have TG + Radiant + rare-slot hit (some sources say radiants take the reverse slot; we follow the common-replacement reading). Main-set Rare Holo VMAX has only 1 card (used only in slot 6)."
+    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Radiant Rares are placed in the 5th Common slot (slot index 4) as an independent hit, so a pack can have TG + Radiant + rare-slot hit (some sources say radiants take the reverse slot; we follow the common-replacement reading). Main-set Rare Holo VMAX has only 1 card (used only in the rare slot). v2: rebuilt at real English size: 10 game cards (5C/3U/1 reverse/1 rare) + 1 Basic Energy (energy omitted). Same per-pack rates as the 6-slot version."
   },
   "pgo": {
-    "structure": "Pokemon GO (SWSH): 10 cards = 5 commons, 3 uncommons, 1 reverse holo (or Radiant Rare), 1 rare-slot card (always at least Rare Holo), + basic energy.",
+    "structure": "Pokemon GO (SWSH): 10 game cards = 5 commons, 3 uncommons, 1 reverse holo (replaced by a Radiant Rare ~1 in 17), 1 rare slot (always at least Rare Holo) + 1 Basic Energy (energy omitted).",
     "estimate": false,
     "sources": [
       "https://cardcodex.com/pokemon/sword-shield/pokemon-go/pokemon-go-booster-pack-pgo/"
     ],
+    "packSize": 10,
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2563,7 +3678,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2571,7 +3686,31 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -2579,7 +3718,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2587,7 +3726,15 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.941176,
             "rarities": [
@@ -2603,7 +3750,7 @@
             ]
           }
         ],
-        "6": [
+        [
           {
             "p": 0.696206,
             "rarities": [
@@ -2647,19 +3794,19 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Card Codex: V 1/6, Radiant 1/17, Ultra 1/19.4, Rainbow 1/38.7, VSTAR 1/40, VMAX 1/53, Secret 1/63; Rare Holo takes the remainder (~69.5% vs quoted 71.4%, quoted figures sum >100%). Radiant placed in the reverse slot (does not displace the rare)."
+    "notes": "Rates from Card Codex as in v1: Radiant 1/17 (reverse slot); V 1/6, Ultra 1/19.4, Rainbow 1/38.7, VSTAR 1/40, VMAX 1/53, Secret 1/63, Rare Holo remainder (rare slot). Basic Energy omitted (no energy images in data). 22 commons for 5 C slots + reverse."
   },
-  "swsh9": {
-    "structure": "10 cards: 5 Commons (one may be replaced by a Radiant Rare in Astral Radiance onward), 3 Uncommons, 1 reverse holo slot, 1 rare-or-better slot (+ basic Energy and code card). Trainer Gallery (companion subset) replaces the reverse holo, about 1 in 8 packs in total.",
+  "swsh10": {
+    "structure": "Astral Radiance: 10 cards = 5 commons, 3 uncommons, 1 reverse holo slot (replaced by a Trainer Gallery card ~1 in 8 or a Radiant Rare ~1 in 20), 1 rare slot (Rare / Holo / V / VSTAR / VMAX / full art & alt art / rainbow / gold). Plus 1 Basic Energy and a code card (not modelled).",
     "estimate": false,
     "sources": [
-      "https://cardcodex.com/pokemon/sword-shield/brilliant-stars/brilliant-stars-booster-pack-swsh9/"
+      "https://cardcodex.com/pokemon/sword-shield/astral-radiance/astral-radiance-booster-pack-swsh10/"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2667,7 +3814,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2675,7 +3822,31 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -2683,7 +3854,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2691,7 +3862,197 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.823349,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.087719,
+            "rarities": [
+              "Trainer Gallery Rare Holo"
+            ],
+            "subset": "swsh10tg"
+          },
+          {
+            "p": 0.049751,
+            "rarities": [
+              "Radiant Rare"
+            ]
+          },
+          {
+            "p": 0.017668,
+            "rarities": [
+              "Rare Holo V"
+            ],
+            "subset": "swsh10tg"
+          },
+          {
+            "p": 0.009814,
+            "rarities": [
+              "Rare Ultra"
+            ],
+            "subset": "swsh10tg"
+          },
+          {
+            "p": 0.007776,
+            "rarities": [
+              "Rare Secret"
+            ],
+            "subset": "swsh10tg"
+          },
+          {
+            "p": 0.003923,
+            "rarities": [
+              "Rare Holo VMAX"
+            ],
+            "subset": "swsh10tg"
+          }
+        ],
+        [
+          {
+            "p": 0.601763,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.175439,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.128205,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.039526,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.026954,
+            "rarities": [
+              "Rare Holo VSTAR"
+            ]
+          },
+          {
+            "p": 0.012804,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.00771,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.007599,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: reverse slot TG Holo 1/11.4, Radiant 1/20.1, TG V 1/56.6, TG Ultra 1/101.9, TG Secret 1/128.6, TG VMAX 1/254.9 (TG total ~1/7.9; one reviewer saw 4 specials per box, other sources quote TG ~1/3-1/4, so TG may be understated). Rare slot: Holo 1/5.7, V 1/7.8, Ultra (incl. alt arts) 1/25.3, VSTAR 1/37.1, Rainbow 1/78.1, VMAX 1/129.7, Secret 1/131.6; plain Rare remainder (60.2% vs quoted 58.8%). swsh10tg companion subset is fully covered by the reverse slot (slot 9). Real English pack = 10 game cards + 1 Basic Energy + code card; the Basic Energy is omitted (no energy images in the data).",
+    "packSize": 10
+  },
+  "swsh9": {
+    "packSize": 10,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card): 5 Commons, 3 Uncommons, 1 reverse holo, 1 rare-or-better. Trainer Gallery (swsh9tg) cards replace the reverse holo. Energy omitted (no SWSH energy images in data).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/brilliant-stars/brilliant-stars-booster-pack-swsh9/",
+      "https://cardcodex.com/pokemon/sword-shield/sword-shield-booster-pack-swsh1/",
+      "https://pocketmonsters.net/tcg/viewset/187"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "rarities": [
               "Common",
@@ -2737,7 +4098,7 @@
             "subset": "swsh9tg"
           }
         ],
-        "6": [
+        [
           {
             "rarities": [
               "Rare"
@@ -2787,65 +4148,179 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Real pack has 5C/3U; compressed to 2C/2U. TG total is about 12.9% per pack (1 in 7.8)."
+    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. TG total is about 12.9% per pack (1 in 7.8). v2: rebuilt at real English size: 10 game cards (5C/3U/1 reverse/1 rare) + 1 Basic Energy (energy omitted). Same per-pack rates as the 6-slot version."
   },
-  "cel25": {
-    "structure": "Celebrations: 4 cards, all holo, no commons/uncommons: ~3 main-set non-V holos + 1 hit slot that is a Classic Collection reprint (~1/2.5), V (~1/2.8), VMAX (~1/13), full-art Professor's Research (~1/25), gold Mew (~1/150), else another main-set holo.",
+  "swsh8": {
+    "structure": "Fusion Strike: 10 cards = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare / Holo / V / VMAX / full art & alt art / rainbow / gold). Plus 1 Basic Energy and a code card (not modelled).",
     "estimate": false,
     "sources": [
-      "https://cardcodex.com/?p=102138"
+      "https://cardcodex.com/pokemon/sword-shield/fusion-strike/fusion-strike-booster-pack-swsh8/"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
-              "Rare"
+              "Common"
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
-              "Rare"
+              "Common"
             ]
           }
         ],
-        "3": [
+        [
           {
             "p": 1,
             "rarities": [
-              "Rare"
+              "Common"
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
-              "Rare"
+              "Common"
             ]
           }
         ],
-        "5": [
+        [
           {
-            "p": 0.91,
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.635927,
             "rarities": [
               "Rare"
             ]
           },
           {
-            "p": 0.09,
+            "p": 0.178571,
             "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.09009,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.038462,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.037736,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.010881,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.008333,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: Holo 1/5.6, V 1/11.1, Ultra (incl. alt arts) 1/26.0, VMAX 1/26.5, Rainbow 1/91.9, Secret 1/120. Plain Rare remainder (63.5% vs quoted 62.5%). Real English pack = 10 game cards + 1 Basic Energy + code card; the Basic Energy is omitted (no energy images in the data).",
+    "packSize": 10
+  },
+  "cel25": {
+    "structure": "Celebrations: 4 game cards, all holo, no commons/uncommons: 3 main-set non-V holos + 1 hit slot that is a Classic Collection reprint (~1/2.5), a V (~1/2.8), VMAX (~1/13), full-art Professor's Research (1/25), gold Mew (~1/150), else another main-set holo.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/?p=102138"
+    ],
+    "packSize": 4,
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Rare",
               "Rare Holo"
             ]
           }
         ],
-        "6": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Rare",
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Rare",
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.4,
             "rarities": [
@@ -2854,20 +4329,20 @@
             "subset": "cel25c"
           },
           {
-            "p": 0.357143,
+            "p": 0.35714285714285715,
             "rarities": [
               "Rare Holo V"
             ]
           },
           {
-            "p": 0.119267,
+            "p": 0.11926739926739927,
             "rarities": [
               "Rare",
               "Rare Holo"
             ]
           },
           {
-            "p": 0.076923,
+            "p": 0.07692307692307693,
             "rarities": [
               "Rare Holo VMAX"
             ]
@@ -2879,25 +4354,28 @@
             ]
           },
           {
-            "p": 0.006667,
+            "p": 0.006666666666666667,
             "rarities": [
               "Rare Secret"
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "App needs 6 cards; the most faithful filler is extra main-set non-V holos (the real pack's only 'base' cards), so slots 1-5 are filler and slot 6 is the single hit slot with Card Codex rates (CC 40%, V 35.7%, VMAX 7.7%, Ultra 4%). The API labels main-set non-V cards as 'Rare' (12) or 'Rare Holo' (6, which includes the gold secret Mew cel25-25), so 'Rare Holo' is kept rare (9% in slot 5 + share of slot 6) to hold gold Mew near ~1/60 instead of the real ~1/150; tagging cel25-25 with its own rarity would allow an exact 1/150 rate. Slot 6 default (first) is Classic Collection since it is the most likely outcome. Gold Mew (cel25-25) re-tagged Rare Secret at ~1/150."
+    "notes": "Exact 4-card pack now. Filler slots draw the 17 main-set non-V holos (rarity 'Rare' 12 + 'Rare Holo' 5). Gold Mew cel25-25 is now 'Rare Secret' at 1/150 in the hit slot only. Hit slot default (first, most likely) is Classic Collection; main-set holo takes the remainder (11.9%)."
   },
   "swsh7": {
-    "structure": "10 cards: 5 Commons (one may be replaced by a Radiant Rare in Astral Radiance onward), 3 Uncommons, 1 reverse holo slot, 1 rare-or-better slot (+ basic Energy and code card). No Trainer Gallery; reverse slot is always a main-set reverse holo.",
+    "packSize": 10,
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (+ code card): 5 Commons, 3 Uncommons, 1 reverse holo, 1 rare-or-better. No Trainer Gallery; the reverse slot is always a main-set reverse holo. Energy omitted (no SWSH energy images in data).",
     "estimate": false,
     "sources": [
-      "https://cardcodex.com/pokemon/sword-shield/evolving-skies/evolving-skies-booster-pack-swsh7/"
+      "https://cardcodex.com/pokemon/sword-shield/evolving-skies/evolving-skies-booster-pack-swsh7/",
+      "https://cardcodex.com/pokemon/sword-shield/sword-shield-booster-pack-swsh1/",
+      "https://pocketmonsters.net/tcg/viewset/187"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2905,7 +4383,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2913,7 +4391,31 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -2921,7 +4423,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -2929,7 +4431,15 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "rarities": [
               "Common",
@@ -2940,7 +4450,7 @@
             "p": 1
           }
         ],
-        "6": [
+        [
           {
             "rarities": [
               "Rare"
@@ -2984,19 +4494,20 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Real pack has 5C/3U; compressed to 2C/2U. Card Codex rare-slot tiers summed to 99%; normalised via the Rare default."
+    "notes": "Rates from Card Codex per-pack table (community-compiled; method not published), p=1/N. Rare-slot default 'Rare' absorbs the remainder. Reverse-slot default draws uniformly from main-set C/U/R/Rare Holo, which matches Card Codex's reverse C/U/R/RH split (card-count proportional). API rarity 'Rare Ultra' lumps full-art V/VMAX, alt arts and full-art trainers together, so alt arts are not separated. Basic Energy is not in the inventory and is omitted. Card Codex rare-slot tiers summed to 99%; normalised via the Rare default. v2: rebuilt at real English size: 10 game cards (5C/3U/1 reverse/1 rare) + 1 Basic Energy (energy omitted). Same per-pack rates as the 6-slot version."
   },
   "swsh45": {
-    "structure": "Shining Fates: 10 cards = 5 commons, 3 uncommons, 1 reverse-holo slot replaced by a Shiny Vault card ~33% of packs, 1 rare slot, + energy.",
+    "structure": "Shining Fates: 10 game cards = 5 commons, 3 uncommons, 1 reverse-holo slot (replaced by a Shiny Vault card ~33% of packs), 1 rare slot (Rare/Holo/V/VMAX/Amazing/full art/rainbow) + 1 Basic Energy (energy omitted).",
     "estimate": false,
     "sources": [
       "https://cardcodex.com/pokemon/sword-shield/shining-fates/shining-fates-collection-pikachu-v-case-swsh45/"
     ],
+    "packSize": 10,
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3004,7 +4515,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3012,7 +4523,31 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -3020,7 +4555,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3028,7 +4563,15 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.673907,
             "rarities": [
@@ -3067,7 +4610,7 @@
             "subset": "swsh45sv"
           }
         ],
-        "6": [
+        [
           {
             "p": 0.556541,
             "rarities": [
@@ -3111,19 +4654,416 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Card Codex rates: Shiny Rare 1/4.4, Shiny V 1/19.8, Shiny VMAX 1/25.5, SV secret 1/109.9 (slot 5); Holo 1/5.6, V 1/9.2, Amazing 1/17.4, VMAX 1/18.4, Ultra 1/30.8, Rainbow 1/84 (slot 6). Plain Rare takes the remainder (55.7% vs quoted 62.5%; quoted rare-slot figures sum to >100%). Amazing Rares kept in the rare slot."
+    "notes": "Card Codex rates as in v1: Shiny Rare 1/4.4, Shiny V 1/19.8, Shiny VMAX 1/25.5, SV gold 1/109.9 (reverse slot); Holo 1/5.6, V 1/9.2, Amazing 1/17.4, VMAX 1/18.4, Ultra 1/30.8, Rainbow 1/84, plain Rare remainder (rare slot). Basic Energy omitted. 18 commons for 5 C slots + reverse."
+  },
+  "swsh4": {
+    "structure": "Vivid Voltage: 10 cards = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare / Holo / V / Amazing Rare / VMAX / full art / rainbow / gold). Plus 1 Basic Energy and a code card (not modelled).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/vivid-voltage/vivid-voltage-booster-pack-swsh4/"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.492478,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.217391,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.126582,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.057143,
+            "rarities": [
+              "Amazing Rare"
+            ]
+          },
+          {
+            "p": 0.042918,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.039683,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.012706,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.011099,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: Holo 1/4.6, V 1/7.9, Amazing Rare 1/17.5, VMAX 1/23.3, Ultra 1/25.2, Rainbow 1/78.7, Secret 1/90.1; Amazing Rares kept in the rare slot. Plain Rare remainder (49.2% vs quoted 55.6%; quoted figures sum >100%). Real English pack = 10 game cards + 1 Basic Energy + code card; the Basic Energy is omitted (no energy images in the data).",
+    "packSize": 10
+  },
+  "swsh35": {
+    "structure": "Champion's Path (special set): 10 cards = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot that is ALWAYS at least Rare Holo (no plain Rares); hits V / VMAX / full art / rainbow / gold replace the holo. Plus 1 Basic Energy and a code card (not modelled).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/champions-path/champions-path-booster-pack-swsh35/"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.725634,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.15625,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.053763,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.035461,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.015699,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.013193,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: V 1/6.4, Ultra 1/18.6, VMAX 1/28.2, Rainbow 1/63.7 (incl. Charizard VMAX rainbow), Secret 1/75.8 (2 cards: Charizard V gold-ish secret + Suspicious Food Tin). Rare Holo is the remainder (72.6% vs quoted 71.4%). Reverse energy not modelled (no energy cards in inventory). Real English pack = 10 game cards + 1 Basic Energy + code card; the Basic Energy is omitted (no energy images in the data).",
+    "packSize": 10
+  },
+  "sm12": {
+    "structure": "Cosmic Eclipse: 10 cards = 5 commons, 3 uncommons, 1 reverse holo slot (replaced by a Character Rare ~1 in 10 packs), 1 rare slot (Rare / Holo / GX & Tag Team GX / full art / rainbow / gold). Plus 1 Basic Energy and a code card (not modelled).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sun-moon/cosmic-eclipse/cosmic-eclipse-booster-pack-sm12/",
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762/157"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.9,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.1,
+            "rarities": [
+              "Character Rare"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.665692,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.144928,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.128205,
+            "rarities": [
+              "Rare Holo GX"
+            ]
+          },
+          {
+            "p": 0.038168,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.014006,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.009001,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: Character Rare 1/10 (reverse slot), Holo 1/6.9, GX incl. Tag Team 1/7.8, Ultra 1/26.2, Rainbow 1/71.4, Secret (gold) 1/111.1; plain Rare remainder (66.6%, matches quoted 66.7%). CAVEAT: the data source labels both the 12 Character Rares (sm12 #237-248) and the 9 gold secrets (#263-271) as 'Rare Secret', so with rarity-string pools the reverse-slot (slot 9) 10% outcome draws a gold ~9/21 of the time (effective gold ~1/20 instead of 1/111). To be exact, relabel #237-248 (e.g. rarityRaw 'Character Rare' or a subset) in the manifest and point the slot-9 outcome at it. Also note '143a' (Togepi & Cleffa & Igglybuff-GX alt, a promo variant) is labelled 'Rare Ultra' and joins that pool. Real English pack = 10 game cards + 1 Basic Energy + code card; the Basic Energy is omitted (no energy images in the data). Character Rares (237–248) re-tagged 'Character Rare' by the downloader.",
+    "packSize": 10
   },
   "sm115": {
-    "structure": "Hidden Fates: 10 cards = 5 commons, 3 uncommons, 1 reverse-holo slot that is replaced by a Shiny Vault card ~39% of packs, 1 rare slot (Rare / Holo / GX / full art / rainbow).",
+    "structure": "Hidden Fates: 10 game cards = 5 commons, 3 uncommons, 1 reverse-holo slot (replaced by a Shiny Vault card ~39% of packs), 1 rare slot (Rare / Holo / GX / full art / rainbow) + 1 Basic Energy (energy omitted).",
     "estimate": false,
     "sources": [
       "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762/156"
     ],
+    "packSize": 10,
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3131,7 +5071,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3139,7 +5079,31 @@
             ]
           }
         ],
-        "3": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -3147,7 +5111,7 @@
             ]
           }
         ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3155,7 +5119,15 @@
             ]
           }
         ],
-        "5": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.607646,
             "rarities": [
@@ -3194,7 +5166,7 @@
             "subset": "sma"
           }
         ],
-        "6": [
+        [
           {
             "p": 0.43,
             "rarities": [
@@ -3226,20 +5198,669 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Shiny Vault rates from cardzard.com 2,350-pack sample (via Elite Fourum guide): baby shinies 1/4, Shiny GX 1/9, SV full-art trainers 1/73, gold 1/57, all in slot 5. Main-set rare slot is partly estimated: ~40% premium (forum model 14.4/36) split GX 28%, full art 8%, rainbow 3%; Rare Holo 18%, plain Rare remainder. Default first outcome of slot 5 is a main-set reverse; Shiny Rare is not the most likely outcome so it is not first."
+    "notes": "Shiny Vault rates (cardzard 2,350-pack sample): baby shiny 1/4, Shiny GX 1/9, SV full-art trainer 1/73, gold 1/57 in the reverse slot. Main rare slot partly estimated: GX 28%, full art 8%, rainbow 3%, Holo 18%, Rare remainder. Basic Energy omitted. 18 commons for 5 C slots + reverse."
+  },
+  "sm9": {
+    "structure": "Team Up: 10 cards = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare / Holo / GX / Prism Star / full art / rainbow / gold). Plus 1 Basic Energy and a code card (not modelled).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sun-moon/team-up/team-up-sleeved-booster-pack-sm9/",
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762/156"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.61111,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.166667,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.1,
+            "rarities": [
+              "Rare Holo GX"
+            ]
+          },
+          {
+            "p": 0.055556,
+            "rarities": [
+              "Rare Prism Star"
+            ]
+          },
+          {
+            "p": 0.041667,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.016667,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.008333,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex rates: Holo 1/6, GX 1/10, Prism Star 1/18, Ultra (full art GX + full art trainers) 1/24, Rainbow 1/60, Secret (gold items) 1/120. Plain Rare is the remainder (61% vs quoted 66.7%; quoted figures sum >100%). Prism Stars kept in the rare slot; reverse slot draws any main-set C/U/R/Holo. Real English pack = 10 game cards + 1 Basic Energy + code card; the Basic Energy is omitted (no energy images in the data).",
+    "packSize": 10
+  },
+  "xy12": {
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (energy omitted: no energy images in the data) = 5 commons, 3 uncommons (secret rares 109-113 are on the uncommon sheet), 1 reverse holo (BREAK ~1 in 18), 1 rare slot (Rare, Rare Holo, Pokémon-EX ~1 in 8.2, full art ~1 in 15).",
+    "estimate": true,
+    "sources": [
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762?page=7",
+      "https://cardcodex.com/pokemon/xy/evolutions/evolutions-charizard-ex-box-xy12/"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.8765432098765432,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.1234567901234568,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.55,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.25,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.08,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.0644444444444444,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.05555555555555555,
+            "rarities": [
+              "Rare BREAK"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6113821138211383,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.2,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.12195121951219513,
+            "rarities": [
+              "Rare Holo EX"
+            ]
+          },
+          {
+            "p": 0.06666666666666667,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Rates: EX 1/8.2, full art 1/15, BREAK 1/18 (reverse slot), secret rare 1/8.1 in the 3rd uncommon slot. Secrets were printed on the uncommon sheet, so a pack can have a secret plus an EX. The plain Rare Holo rate of 0.2 is an era-typical estimate. Mega EX cards are labeled 'Rare Holo EX' in the data. The Basic Energy is omitted.",
+    "packSize": 10
+  },
+  "ecard3": {
+    "structure": "Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse-holo slot (any main-set card), 1 rare slot (non-holo rare, H-numbered holo rare ~1 in 3.4 packs, or Crystal Pokémon secret rare 145-150 ~1 in 18). No basic energy in the set.",
+    "estimate": true,
+    "sources": [
+      "https://cardcodex.com/pokemon/e-card/skyridge/skyridge-booster-box-ecard3/",
+      "https://www.elitefourum.com/t/psa-10-skyridge-charizard-depletion-8-sales-in-2-weeks/22577?page=2",
+      "https://billsarchive.com/skyridge.html",
+      "https://www.cardrake.com/cards/ecard3-149"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.3,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.1,
+            "rarities": [
+              "Rare"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6503267973856208,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.29411764705882354,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.05555555555555555,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "There are no official odds; the H-holo (~1/3.4) and Crystal (~1/18) rates are community estimates. The data labels Crystals 145-150 'Rare Secret' and H1-H32 'Rare Holo', which is correct. Reverse-holo Crystals are not modeled, to keep exactly one hit per pack. The reverse slot's 60/30/10 Common/Uncommon/Rare split is an estimate.",
+    "packSize": 9
+  },
+  "neo4": {
+    "structure": "Real English pack: 11 cards = 7 commons, 3 uncommons, 1 rare slot (non-holo rare, holo rare ~9 per 36-pack box, or Shining Pokémon ~3 per box). No reverse holos; Neo Destiny has no basic energy cards in the set.",
+    "estimate": false,
+    "sources": [
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762/25",
+      "https://www.elitefourum.com/t/shinings-in-neo-rev-neo-destiny-booster-box-pull-rate/26810"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.25,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.08333333333333333,
+            "rarities": [
+              "Rare Shining"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Rates come from community box openings: 9 holos and 3 Shinings per 36-pack box. The Shining is in the rare slot, so a pack never has both a holo and a Shining. Some unlimited 'error' boxes put an extra Shining in a common slot (~1 in 24 packs); that is deliberately not modeled.",
+    "packSize": 11
   },
   "neo1": {
-    "structure": "Neo Genesis (unlimited): 11 cards = 6 commons, 1 basic energy, 3 uncommons, 1 rare (holo ~1 in 3).",
+    "structure": "Neo Genesis (unlimited): 11 game cards = 6 commons, 1 basic energy (printed in the set), 3 uncommons, 1 rare slot (Rare Holo ~1 in 3, else Rare).",
     "estimate": false,
     "sources": [
       "https://bulbapedia.bulbagarden.net/wiki/Booster_pack_(TCG)",
-      "https://www.pokellector.com/sets"
+      "https://www.pokellector.com/sets",
+      "https://cardcodex.com/pokemon/neo/neo-genesis/neo-genesis-booster-box-neo1/"
+    ],
+    "packSize": 11,
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              ""
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Structure kept 1:1 (Card Codex: 6 C, 3 U, 1 Energy, Rare 66.7% / Holo 33.3%)."
+  },
+  "gym1": {
+    "structure": "Real English unlimited pack: 11 cards = 7 common-sheet cards (commons plus the set's basic energy cards), 3 uncommons, 1 rare (holo ~1 in 3 packs, otherwise non-holo).",
+    "estimate": false,
+    "sources": [
+      "https://bulbapedia.bulbagarden.net/wiki/Gym_Heroes_(TCG)"
     ],
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 0.5,
             "rarities": [
@@ -3253,31 +5874,7 @@
             ]
           }
         ],
-        "2": [
-          {
-            "p": 1,
-            "rarities": [
-              "Common"
-            ]
-          }
-        ],
-        "3": [
-          {
-            "p": 1,
-            "rarities": [
-              "Common"
-            ]
-          }
-        ],
-        "4": [
-          {
-            "p": 1,
-            "rarities": [
-              "Uncommon"
-            ]
-          }
-        ],
-        "5": [
+        [
           {
             "p": 0.5,
             "rarities": [
@@ -3287,13 +5884,37 @@
           {
             "p": 0.5,
             "rarities": [
+              ""
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
               "Uncommon"
             ]
           }
         ],
-        "6": [
+        [
           {
-            "p": 0.6666666666666667,
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
             "rarities": [
               "Rare"
             ]
@@ -3305,21 +5926,23 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Energy+commons (7) : uncommons (3) compressed like Base Set; energy (rarity '') 50% of slot 1 ~= the real 1 energy per 11 cards scaled to 6. Falls back to Common if energies are absent from the catalog."
+    "notes": "Uses the standard vintage 1-in-3 holo rate. The set's 6 basic energies have no rarity in the data (rarity \"\") and share 2 common-sheet slots at 50% each, about 1 energy per pack. That energy split is an estimate.",
+    "packSize": 11
   },
   "base5": {
-    "structure": "Team Rocket (unlimited): 11 cards = 7 commons, 3 uncommons, 1 rare; holo ~1 in 3; Dark Raichu (83/82 secret) replaces the holo very rarely.",
+    "structure": "Team Rocket (unlimited): 11 game cards = 7 commons, 3 uncommons, 1 rare slot (Rare Holo ~1 in 3, else Rare); the secret Dark Raichu (83/82) very rarely takes the holo's place. No basic energy.",
     "estimate": true,
     "sources": [
       "https://bulbapedia.bulbagarden.net/wiki/Booster_pack_(TCG)",
       "https://www.pokellector.com/sets",
       "https://bulbapedia.bulbagarden.net/wiki/Dark_Raichu_(Team_Rocket_83)"
     ],
+    "packSize": 11,
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3327,7 +5950,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3335,7 +5958,7 @@
             ]
           }
         ],
-        "3": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3343,7 +5966,39 @@
             ]
           }
         ],
-        "4": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -3351,23 +6006,25 @@
             ]
           }
         ],
-        "5": [
+        [
           {
-            "p": 0.5,
-            "rarities": [
-              "Common"
-            ]
-          },
-          {
-            "p": 0.5,
+            "p": 1,
             "rarities": [
               "Uncommon"
             ]
           }
         ],
-        "6": [
+        [
           {
-            "p": 0.6666666666666667,
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
             "rarities": [
               "Rare"
             ]
@@ -3385,20 +6042,21 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Holo 1/3 is standard WOTC; Dark Raichu rate has no published figure - estimated 1 in 100 packs (taken out of the holo share). Team Rocket packs contained no basic energy in the inventory."
+    "notes": "Structure kept 1:1. Dark Raichu has no published rate: estimated 1 in 100 packs, taken out of the holo share (holo 32.3%). Commons include the set's special energies/trainers as tagged in the data (24 commons for 7 slots)."
   },
   "base3": {
-    "structure": "Unlimited Fossil: 11 cards = 7 commons, 3 uncommons, 1 rare (holo ~1 in 3). No energy.",
+    "structure": "Unlimited Fossil: 11 game cards = 7 commons, 3 uncommons, 1 rare slot (Rare Holo ~1 in 3, else Rare). No energy.",
     "estimate": false,
     "sources": [
       "https://bulbapedia.bulbagarden.net/wiki/Booster_pack_(TCG)",
       "https://www.pokellector.com/sets"
     ],
+    "packSize": 11,
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3406,7 +6064,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3414,7 +6072,7 @@
             ]
           }
         ],
-        "3": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3422,7 +6080,39 @@
             ]
           }
         ],
-        "4": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -3430,23 +6120,25 @@
             ]
           }
         ],
-        "5": [
+        [
           {
-            "p": 0.5,
-            "rarities": [
-              "Common"
-            ]
-          },
-          {
-            "p": 0.5,
+            "p": 1,
             "rarities": [
               "Uncommon"
             ]
           }
         ],
-        "6": [
+        [
           {
-            "p": 0.6666666666666667,
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
             "rarities": [
               "Rare"
             ]
@@ -3458,20 +6150,21 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Same compression as Base Set. 15 holos / 15 rares in inventory."
+    "notes": "Real structure kept 1:1 (16 commons in pool for 7 slots)."
   },
   "base2": {
-    "structure": "Unlimited Jungle: 11 cards = 7 commons, 3 uncommons, 1 rare (holo ~1 in 3). No energy in Jungle packs.",
+    "structure": "Unlimited Jungle: 11 game cards = 7 commons, 3 uncommons, 1 rare slot (Rare Holo ~1 in 3, else Rare). No energy in Jungle packs.",
     "estimate": false,
     "sources": [
       "https://bulbapedia.bulbagarden.net/wiki/Booster_pack_(TCG)",
       "https://www.pokellector.com/sets"
     ],
+    "packSize": 11,
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3479,7 +6172,7 @@
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3487,7 +6180,7 @@
             ]
           }
         ],
-        "3": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3495,7 +6188,39 @@
             ]
           }
         ],
-        "4": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
           {
             "p": 1,
             "rarities": [
@@ -3503,23 +6228,25 @@
             ]
           }
         ],
-        "5": [
+        [
           {
-            "p": 0.5,
-            "rarities": [
-              "Common"
-            ]
-          },
-          {
-            "p": 0.5,
+            "p": 1,
             "rarities": [
               "Uncommon"
             ]
           }
         ],
-        "6": [
+        [
           {
-            "p": 0.6666666666666667,
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
             "rarities": [
               "Rare"
             ]
@@ -3531,50 +6258,78 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "Same compression as Base Set, no energy."
+    "notes": "Real structure kept 1:1 (16 commons in pool for 7 slots)."
   },
   "base1": {
-    "structure": "Unlimited Base Set: 11 cards = 7 commons (energy printed on the common sheet), 3 uncommons, 1 rare; the rare is holo ~1 in 3 packs, otherwise non-holo. Exactly one rare per pack.",
+    "structure": "Unlimited Base Set: 11 game cards = 5 commons, 2 basic energies (printed in the set), 3 uncommons, 1 rare slot (Rare Holo ~1 in 3, else non-holo Rare). Exactly one rare per pack.",
     "estimate": false,
     "sources": [
       "https://bulbapedia.bulbagarden.net/wiki/Booster_pack_(TCG)",
-      "https://www.pokellector.com/sets"
+      "https://www.pokellector.com/sets",
+      "https://innernerd.tcgsync.com/products/base-set-booster-pack-unlimited"
     ],
+    "packSize": 11,
     "profile": {
-      "slots": {
-        "1": [
+      "slots": [
+        [
           {
-            "p": 0.5,
+            "p": 1,
             "rarities": [
               "Common"
             ]
-          },
+          }
+        ],
+        [
           {
-            "p": 0.5,
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
             "rarities": [
               ""
             ]
           }
         ],
-        "2": [
+        [
           {
             "p": 1,
             "rarities": [
-              "Common"
+              ""
             ]
           }
         ],
-        "3": [
-          {
-            "p": 1,
-            "rarities": [
-              "Common"
-            ]
-          }
-        ],
-        "4": [
+        [
           {
             "p": 1,
             "rarities": [
@@ -3582,23 +6337,25 @@
             ]
           }
         ],
-        "5": [
+        [
           {
-            "p": 0.5,
-            "rarities": [
-              "Common"
-            ]
-          },
-          {
-            "p": 0.5,
+            "p": 1,
             "rarities": [
               "Uncommon"
             ]
           }
         ],
-        "6": [
+        [
           {
-            "p": 0.6666666666666667,
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
             "rarities": [
               "Rare"
             ]
@@ -3610,8 +6367,8 @@
             ]
           }
         ]
-      }
+      ]
     },
-    "notes": "7C:3U compressed to 3.5C:1.5U (slots 1-3 Common, 4 Uncommon, 5 50/50). Basic energy (rarity '') is 50% of slot 1 (~0.5 energy/pack; real packs had ~1-2 energies among the 7 commons). If energies are not in the catalog the slot falls back to Common. Only slot 6 can give Rare/Rare Holo, so exactly 1 rare and never 2 holos."
+    "notes": "Real structure kept 1:1. Real packs could contain two identical energies; the app forbids repeats, so the 2 energy slots draw 2 different energies from the 6 basic energies (rarity '')."
   }
 }

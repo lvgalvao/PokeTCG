@@ -14,28 +14,24 @@ import {
 import type { RNG } from './rng.js';
 
 export interface BoosterSlot {
-  readonly slotIndex: SlotIndex;
-  readonly drawIndex: SlotIndex;
+  /** Posição de exibição (1-based). */
+  readonly slotIndex: number;
+  /** Slot sorteado (1-based) no perfil/distribuição. */
+  readonly drawIndex: number;
   readonly drawnBucket: Bucket;
   readonly effectiveBucket: Bucket;
   readonly card: Card;
 }
 
 export interface DowngradeRecord {
-  readonly slot: SlotIndex;
+  readonly slot: number;
   readonly from: Bucket;
   readonly to: Bucket;
 }
 
 export interface Booster {
-  readonly slots: readonly [
-    BoosterSlot,
-    BoosterSlot,
-    BoosterSlot,
-    BoosterSlot,
-    BoosterSlot,
-    BoosterSlot,
-  ];
+  /** Tamanho real do pacote do set (6 na distribuição genérica). */
+  readonly slots: readonly BoosterSlot[];
   readonly seed: number;
   readonly generatedAt: number;
   readonly downgrades: readonly DowngradeRecord[];
@@ -49,14 +45,14 @@ export class EmptyBaseBucketError extends Error {
 }
 
 export class EmptyMandatorySlotError extends Error {
-  constructor(public readonly slot: SlotIndex, public readonly drawnBucket: Bucket) {
+  constructor(public readonly slot: number, public readonly drawnBucket: Bucket) {
     super(`Slot ${slot} could not be filled (drawn ${drawnBucket}, no fallback in floor)`);
     this.name = 'EmptyMandatorySlotError';
   }
 }
 
 export class InsufficientCardsError extends Error {
-  constructor(public readonly slot: SlotIndex, public readonly bucket: Bucket) {
+  constructor(public readonly slot: number, public readonly bucket: Bucket) {
     super(`Slot ${slot}: not enough unique cards available in ${bucket}`);
     this.name = 'InsufficientCardsError';
   }
@@ -115,8 +111,8 @@ function drawProfileSlots(
   drawn: BoosterSlot[],
   downgrades: DowngradeRecord[],
 ): void {
-  for (const drawIdx of SLOT_INDICES) {
-    const outcomes = profile.slots[drawIdx];
+  for (const [i, outcomes] of profile.slots.entries()) {
+    const drawIdx = i + 1;
     const picked = sampleOutcome(rng, outcomes);
     let pool = outcomePool(catalog, picked, used);
     let fellBack = false;
@@ -213,8 +209,8 @@ export function generateBooster(rng: RNG, catalog: Catalog, seed: number): Boost
 
   const slots = drawn.map((s, i) => ({
     ...s,
-    slotIndex: (i + 1) as SlotIndex,
-  })) as unknown as Booster['slots'];
+    slotIndex: i + 1,
+  }));
 
   return {
     slots,

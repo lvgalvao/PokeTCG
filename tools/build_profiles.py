@@ -17,14 +17,24 @@ OUT = REPO / "src/core/set-profiles.ts"
 ASSETS = REPO / "assets"
 
 
+def slot_list(entry: dict) -> list[list[dict]]:
+    """Slots in pack order; accepts the legacy {"1": [...], ...} form."""
+    slots = entry["profile"]["slots"]
+    return slots if isinstance(slots, list) else [slots[k] for k in sorted(slots, key=int)]
+
+
 def validate(set_id: str, entry: dict) -> list[str]:
     errors: list[str] = []
-    slots = entry["profile"]["slots"]
-    if sorted(slots) != [str(i) for i in range(1, 7)]:
-        errors.append(f"{set_id}: slots must be 1..6")
+    slots = slot_list(entry)
+    if not slots:
+        errors.append(f"{set_id}: no slots")
+    if "packSize" in entry and entry["packSize"] != len(slots):
+        errors.append(f"{set_id}: packSize {entry['packSize']} != {len(slots)} slots")
     manifest_path = ASSETS / set_id / "manifest.json"
-    cards = json.loads(manifest_path.read_text())["cards"] if manifest_path.exists() else None
-    for key, outcomes in slots.items():
+    all_cards = json.loads(manifest_path.read_text())["cards"] if manifest_path.exists() else None
+    cards = [c for c in all_cards if not c.get("packOnly")] if all_cards else None
+    pack_only = [c for c in all_cards if c.get("packOnly")] if all_cards else []
+    for key, outcomes in enumerate(slots, start=1):
         total = sum(o["p"] for o in outcomes)
         if abs(total - 1) > 1e-9:
             errors.append(f"{set_id} slot {key}: p sums to {total}")
@@ -34,7 +44,7 @@ def validate(set_id: str, entry: dict) -> list[str]:
             rarities = {r.lower() for r in o.get("rarities", [])}
             pool = [
                 c
-                for c in cards
+                for c in cards + pack_only
                 if c.get("subset") == o.get("subset")
                 and (not rarities or c["rarityRaw"].lower() in rarities)
                 and ("bucket" not in o or rarities or c["bucket"] == o["bucket"])
@@ -75,13 +85,12 @@ def main() -> int:
         lines.append(f"  {json.dumps(set_id)}: {{")
         if entry["profile"].get("keepOrder"):
             lines.append("    keepOrder: true,")
-        lines.append("    slots: {")
-        for key in sorted(entry["profile"]["slots"], key=int):
-            outcomes = entry["profile"]["slots"][key]
-            lines.append(f"      {key}: [")
+        lines.append("    slots: [")
+        for outcomes in slot_list(entry):
+            lines.append("      [")
             lines.extend(f"        {ts_outcome(o)}," for o in outcomes)
             lines.append("      ],")
-        lines.append("    },")
+        lines.append("    ],")
         lines.append("  },")
     lines.append("};")
     OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")

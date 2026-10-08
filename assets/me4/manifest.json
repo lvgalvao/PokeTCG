@@ -1,9 +1,9 @@
 {
   "setId": "me4",
   "setName": "Chaos Rising",
-  "generatedAt": "2026-05-26T00:23:10Z",
+  "generatedAt": "2026-10-08T01:38:16Z",
   "downloaderVersion": "0.1.0",
-  "totalSet": 122,
+  "totalSet": 130,
   "cards": [
     {
       "id": "me4-1",
@@ -14,12 +14,42 @@
       "imagePath": "me4/01_comum/me4-1.jpg"
     },
     {
+      "id": "sve-1",
+      "name": "Basic Grass Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 1,
+      "imagePath": "me4/01_comum/sve-1.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "me4-2",
       "name": "Kakuna",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 2,
       "imagePath": "me4/01_comum/me4-2.jpg"
+    },
+    {
+      "id": "sve-2",
+      "name": "Basic Fire Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 2,
+      "imagePath": "me4/01_comum/sve-2.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-3",
+      "name": "Basic Water Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 3,
+      "imagePath": "me4/01_comum/sve-3.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "me4-4",
@@ -30,12 +60,32 @@
       "imagePath": "me4/01_comum/me4-4.jpg"
     },
     {
+      "id": "sve-4",
+      "name": "Basic Lightning Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 4,
+      "imagePath": "me4/01_comum/sve-4.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "me4-5",
       "name": "Chespin",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 5,
       "imagePath": "me4/01_comum/me4-5.jpg"
+    },
+    {
+      "id": "sve-5",
+      "name": "Basic Psychic Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 5,
+      "imagePath": "me4/01_comum/sve-5.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "me4-6",
@@ -46,12 +96,42 @@
       "imagePath": "me4/01_comum/me4-6.jpg"
     },
     {
+      "id": "sve-6",
+      "name": "Basic Fighting Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 6,
+      "imagePath": "me4/01_comum/sve-6.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-7",
+      "name": "Basic Darkness Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 7,
+      "imagePath": "me4/01_comum/sve-7.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "me4-8",
       "name": "Vulpix",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 8,
       "imagePath": "me4/01_comum/me4-8.jpg"
+    },
+    {
+      "id": "sve-8",
+      "name": "Basic Metal Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 8,
+      "imagePath": "me4/01_comum/sve-8.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "me4-11",
@@ -983,7 +1063,7 @@
     }
   ],
   "totalsByBucket": {
-    "01_comum": 38,
+    "01_comum": 46,
     "02_incomum": 26,
     "03_raras": 12,
     "04_duplo_raras": 28,

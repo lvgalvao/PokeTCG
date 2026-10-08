@@ -1,10 +1,20 @@
 {
   "setId": "sv7",
   "setName": "Stellar Crown",
-  "generatedAt": "2026-05-26T01:02:12Z",
+  "generatedAt": "2026-10-08T01:38:05Z",
   "downloaderVersion": "0.1.0",
-  "totalSet": 175,
+  "totalSet": 183,
   "cards": [
+    {
+      "id": "sve-1",
+      "name": "Basic Grass Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 1,
+      "imagePath": "sv7/01_comum/sve-1.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
     {
       "id": "sv7-2",
       "name": "Ledyba",
@@ -12,6 +22,36 @@
       "bucket": "01_comum",
       "collectionNumber": 2,
       "imagePath": "sv7/01_comum/sv7-2.jpg"
+    },
+    {
+      "id": "sve-2",
+      "name": "Basic Fire Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 2,
+      "imagePath": "sv7/01_comum/sve-2.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-3",
+      "name": "Basic Water Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 3,
+      "imagePath": "sv7/01_comum/sve-3.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-4",
+      "name": "Basic Lightning Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 4,
+      "imagePath": "sv7/01_comum/sve-4.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv7-5",
@@ -22,6 +62,26 @@
       "imagePath": "sv7/01_comum/sv7-5.jpg"
     },
     {
+      "id": "sve-5",
+      "name": "Basic Psychic Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 5,
+      "imagePath": "sv7/01_comum/sve-5.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-6",
+      "name": "Basic Fighting Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 6,
+      "imagePath": "sv7/01_comum/sve-6.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv7-7",
       "name": "Carnivine",
       "rarityRaw": "Common",
@@ -30,12 +90,32 @@
       "imagePath": "sv7/01_comum/sv7-7.jpg"
     },
     {
+      "id": "sve-7",
+      "name": "Basic Darkness Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 7,
+      "imagePath": "sv7/01_comum/sve-7.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv7-8",
       "name": "Mow Rotom",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 8,
       "imagePath": "sv7/01_comum/sv7-8.jpg"
+    },
+    {
+      "id": "sve-8",
+      "name": "Basic Metal Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 8,
+      "imagePath": "sv7/01_comum/sve-8.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv7-9",
@@ -1407,7 +1487,7 @@
     }
   ],
   "totalsByBucket": {
-    "01_comum": 71,
+    "01_comum": 79,
     "02_incomum": 39,
     "03_raras": 15,
     "04_duplo_raras": 25,

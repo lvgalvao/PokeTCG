@@ -1,9 +1,9 @@
 {
   "setId": "sv4pt5",
   "setName": "Paldean Fates",
-  "generatedAt": "2026-05-26T00:59:42Z",
+  "generatedAt": "2026-10-08T01:38:03Z",
   "downloaderVersion": "0.1.0",
-  "totalSet": 245,
+  "totalSet": 253,
   "cards": [
     {
       "id": "sv4pt5-1",
@@ -14,12 +14,42 @@
       "imagePath": "sv4pt5/01_comum/sv4pt5-1.jpg"
     },
     {
+      "id": "sve-1",
+      "name": "Basic Grass Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 1,
+      "imagePath": "sv4pt5/01_comum/sve-1.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-2",
+      "name": "Basic Fire Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 2,
+      "imagePath": "sv4pt5/01_comum/sve-2.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv4pt5-3",
       "name": "Maractus",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 3,
       "imagePath": "sv4pt5/01_comum/sv4pt5-3.jpg"
+    },
+    {
+      "id": "sve-3",
+      "name": "Basic Water Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 3,
+      "imagePath": "sv4pt5/01_comum/sve-3.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv4pt5-4",
@@ -30,12 +60,62 @@
       "imagePath": "sv4pt5/01_comum/sv4pt5-4.jpg"
     },
     {
+      "id": "sve-4",
+      "name": "Basic Lightning Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 4,
+      "imagePath": "sv4pt5/01_comum/sve-4.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-5",
+      "name": "Basic Psychic Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 5,
+      "imagePath": "sv4pt5/01_comum/sve-5.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-6",
+      "name": "Basic Fighting Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 6,
+      "imagePath": "sv4pt5/01_comum/sve-6.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
       "id": "sv4pt5-7",
       "name": "Charmander",
       "rarityRaw": "Common",
       "bucket": "01_comum",
       "collectionNumber": 7,
       "imagePath": "sv4pt5/01_comum/sv4pt5-7.jpg"
+    },
+    {
+      "id": "sve-7",
+      "name": "Basic Darkness Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 7,
+      "imagePath": "sv4pt5/01_comum/sve-7.jpg",
+      "subset": "sve",
+      "packOnly": true
+    },
+    {
+      "id": "sve-8",
+      "name": "Basic Metal Energy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 8,
+      "imagePath": "sv4pt5/01_comum/sve-8.jpg",
+      "subset": "sve",
+      "packOnly": true
     },
     {
       "id": "sv4pt5-9",
@@ -1967,7 +2047,7 @@
     }
   ],
   "totalsByBucket": {
-    "01_comum": 40,
+    "01_comum": 48,
     "02_incomum": 25,
     "03_raras": 16,
     "04_duplo_raras": 135,

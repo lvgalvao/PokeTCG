@@ -80,6 +80,9 @@ RARITY_TO_BUCKET: dict[str, str] = {
     "rare shiny gx": "06_duplo_arte_secreta",
     "trainer gallery rare holo": "05_arte_secreta",
     "classic collection": "05_arte_secreta",
+    "character rare": "05_arte_secreta",
+    "rare prism star": "04_duplo_raras",
+    "rare shining": "06_duplo_arte_secreta",
 }
 
 # Per-card rarity fixes for source data errors (the API lists me55's RGB Mews as Common).
@@ -88,6 +91,8 @@ CARD_RARITY_OVERRIDES: dict[str, str] = {
     "me55-G": "RGB Rare",
     "me55-B": "RGB Rare",
     "cel25-25": "Rare Secret",  # gold Mew, listed as Rare Holo
+    # Cosmic Eclipse Character Rares (237–248) share "Rare Secret" with the golds.
+    **{f"sm12-{n}": "Character Rare" for n in range(237, 249)},
 }
 
 # Per-set overrides, checked before RARITY_TO_BUCKET. me55 has no Uncommons, so its 30
@@ -110,14 +115,21 @@ SET_COMPANIONS: dict[str, tuple[str, ...]] = {
     "swsh10": ("swsh10tg",),
 }
 
-# Sets whose cards ride along in the parent's packs but stay out of the album
-# (e.g. the foil Basic Energy at the back of every 30th Celebration pack).
-PACK_ONLY_COMPANIONS: dict[str, tuple[str, ...]] = {
-    "me55": ("sve",),
+# Sets whose cards ride along in the parent's packs but stay out of the album, with the
+# collection-number range to keep: the Basic Energy of SV/ME packs (sve 1–8) and the foil
+# Basic Energy at the back of every 30th Celebration pack (sve 9–16).
+_SV_ENERGY = (("sve", 1, 8),)
+PACK_ONLY_COMPANIONS: dict[str, tuple[tuple[str, int, int], ...]] = {
+    "me55": (("sve", 9, 16),),
+    **{
+        s: _SV_ENERGY
+        for s in (
+            "sv1", "sv2", "sv3", "sv3pt5", "sv4", "sv4pt5", "sv5", "sv6", "sv6pt5", "sv7",
+            "sv8", "sv8pt5", "sv9", "sv10", "zsv10pt5", "rsv10pt5",
+            "me1", "me2", "me2pt5", "me3", "me4", "me5",
+        )
+    },
 }
-
-# Optional minimum collection number per companion (sve 9–16 are the foil Basic Energies).
-COMPANION_MIN_NUMBER: dict[str, int] = {"sve": 9}
 
 # Allowed characters in a card id for path-safety (FR-007).
 CARD_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_\-]*$")
@@ -295,7 +307,7 @@ def process_card(
     card_set_id = (card.get("set") or {}).get("id")
     if card_set_id and card_set_id != assets_dir.name:
         manifest_entry["subset"] = card_set_id
-        if card_set_id in PACK_ONLY_COMPANIONS.get(assets_dir.name, ()):
+        if card_set_id in {c for c, _, _ in PACK_ONLY_COMPANIONS.get(assets_dir.name, ())}:
             manifest_entry["packOnly"] = True
 
     if dest.exists() and not force:
@@ -404,12 +416,12 @@ def download_set(set_id: str, set_name_hint: str | None, args: argparse.Namespac
 
     try:
         cards = list_set_cards(set_id, args.api_key)
-        for companion_id in SET_COMPANIONS.get(set_id, ()) + PACK_ONLY_COMPANIONS.get(set_id, ()):
-            min_number = COMPANION_MIN_NUMBER.get(companion_id, 0)
+        companions = [(c, 0, 10**9) for c in SET_COMPANIONS.get(set_id, ())]
+        for companion_id, lo, hi in companions + list(PACK_ONLY_COMPANIONS.get(set_id, ())):
             cards += [
                 c
                 for c in list_set_cards(companion_id, args.api_key)
-                if int(re.sub(r"[^0-9]", "", c.get("number", "0")) or "0") >= min_number
+                if lo <= int(re.sub(r"[^0-9]", "", c.get("number", "0")) or "0") <= hi
             ]
     except Exception as exc:  # noqa: BLE001
         log.error("Failed to list set %s: %s", set_id, exc)
@@ -458,7 +470,8 @@ def main(argv: Iterable[str] | None = None) -> int:
             log.error("No sets returned by API")
             return 3
         companions = {
-            c for cs in (*SET_COMPANIONS.values(), *PACK_ONLY_COMPANIONS.values()) for c in cs
+            *(c for cs in SET_COMPANIONS.values() for c in cs),
+            *(c for cs in PACK_ONLY_COMPANIONS.values() for c, _, _ in cs),
         }
         targets = [
             (s.get("id", ""), s.get("name"))
