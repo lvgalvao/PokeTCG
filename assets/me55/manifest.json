@@ -6,30 +6,6 @@
   "totalSet": 199,
   "cards": [
     {
-      "id": "me55-B",
-      "name": "Mew",
-      "rarityRaw": "Common",
-      "bucket": "01_comum",
-      "collectionNumber": 0,
-      "imagePath": "me55/01_comum/me55-B.jpg"
-    },
-    {
-      "id": "me55-G",
-      "name": "Mew",
-      "rarityRaw": "Common",
-      "bucket": "01_comum",
-      "collectionNumber": 0,
-      "imagePath": "me55/01_comum/me55-G.jpg"
-    },
-    {
-      "id": "me55-R",
-      "name": "Mew",
-      "rarityRaw": "Common",
-      "bucket": "01_comum",
-      "collectionNumber": 0,
-      "imagePath": "me55/01_comum/me55-R.jpg"
-    },
-    {
       "id": "me55-1",
       "name": "Exeggcute",
       "rarityRaw": "Common",
@@ -1610,6 +1586,30 @@
       "imagePath": "me55/06_duplo_arte_secreta/me55-156.jpg"
     },
     {
+      "id": "me55-B",
+      "name": "Mew",
+      "rarityRaw": "RGB Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 0,
+      "imagePath": "me55/07_legendaria/me55-B.jpg"
+    },
+    {
+      "id": "me55-G",
+      "name": "Mew",
+      "rarityRaw": "RGB Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 0,
+      "imagePath": "me55/07_legendaria/me55-G.jpg"
+    },
+    {
+      "id": "me55-R",
+      "name": "Mew",
+      "rarityRaw": "RGB Rare",
+      "bucket": "07_legendaria",
+      "collectionNumber": 0,
+      "imagePath": "me55/07_legendaria/me55-R.jpg"
+    },
+    {
       "id": "me55c-99",
       "name": "Darkrai & Cresselia LEGEND",
       "rarityRaw": "LEGEND",
@@ -1645,13 +1645,13 @@
     }
   ],
   "totalsByBucket": {
-    "01_comum": 81,
+    "01_comum": 78,
     "02_incomum": 31,
     "03_raras": 25,
     "04_duplo_raras": 27,
     "05_arte_secreta": 19,
     "06_duplo_arte_secreta": 12,
-    "07_legendaria": 4
+    "07_legendaria": 7
   },
   "unmapped": []
 }

@@ -74,6 +74,14 @@ RARITY_TO_BUCKET: dict[str, str] = {
     "rare break": "04_duplo_raras",
     "amazing rare": "04_duplo_raras",
     "legend": "07_legendaria",
+    "rgb rare": "07_legendaria",
+}
+
+# Per-card rarity fixes for source data errors (the API lists me55's RGB Mews as Common).
+CARD_RARITY_OVERRIDES: dict[str, str] = {
+    "me55-R": "RGB Rare",
+    "me55-G": "RGB Rare",
+    "me55-B": "RGB Rare",
 }
 
 # Per-set overrides, checked before RARITY_TO_BUCKET. me55 has no Uncommons, so its 30
@@ -86,6 +94,13 @@ SET_RARITY_OVERRIDES: dict[str, dict[str, str]] = {
 # set's folder/manifest instead of becoming a standalone (unplayable) catalog.
 SET_COMPANIONS: dict[str, tuple[str, ...]] = {
     "me55": ("me55c",),
+    "cel25": ("cel25c",),
+    "sm115": ("sma",),
+    "swsh45": ("swsh45sv",),
+    "swsh9": ("swsh9tg",),
+    "swsh11": ("swsh11tg",),
+    "swsh12": ("swsh12tg",),
+    "swsh12pt5": ("swsh12pt5gg",),
 }
 
 # Sets whose cards ride along in the parent's packs but stay out of the album
@@ -135,7 +150,27 @@ def list_latest_sets(
     return r.json().get("data", [])[:count]
 
 
+GITHUB_DATA = "https://raw.githubusercontent.com/PokemonTCG/pokemon-tcg-data/master"
+
+
 def list_set_cards(
+    set_id: str, api_key: str | None = None, page_size: int = 250
+) -> list[dict[str, Any]]:
+    """List a set's cards from the API, falling back to the API's GitHub data dump when the
+    API is down (same card schema, minus the embedded `set` object, which is re-added)."""
+    try:
+        return list_set_cards_api(set_id, api_key, page_size)
+    except requests.RequestException as exc:
+        log.warning("API failed for %s (%s); falling back to GitHub data", set_id, exc)
+    sets = requests.get(f"{GITHUB_DATA}/sets/en.json", timeout=30)
+    sets.raise_for_status()
+    set_obj = next((x for x in sets.json() if x.get("id") == set_id), {"id": set_id})
+    r = requests.get(f"{GITHUB_DATA}/cards/en/{set_id}.json", timeout=60)
+    r.raise_for_status()
+    return [{**card, "set": set_obj} for card in r.json()]
+
+
+def list_set_cards_api(
     set_id: str, api_key: str | None = None, page_size: int = 250
 ) -> list[dict[str, Any]]:
     """Iterate paginated /v2/cards filtered by set.id. Returns the raw card dicts."""
@@ -217,7 +252,7 @@ def process_card(
 ) -> None:
     card_id = card.get("id", "")
     name = card.get("name", "")
-    rarity_raw = card.get("rarity", "")
+    rarity_raw = CARD_RARITY_OVERRIDES.get(card.get("id", ""), card.get("rarity", ""))
 
     if not is_safe_card_id(card_id):
         report.failed.append((card_id, "unsafe card id"))

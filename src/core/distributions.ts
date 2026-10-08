@@ -1,3 +1,4 @@
+import { RESEARCHED_PROFILES } from './set-profiles.js';
 import type { Bucket } from './buckets.js';
 
 export type BucketDistribution = Partial<Record<Bucket, number>>;
@@ -59,8 +60,9 @@ export interface BoosterProfile {
 }
 
 export const SET_BOOSTER_PROFILES: Readonly<Record<string, BoosterProfile>> = {
+  ...RESEARCHED_PROFILES,
   // 30th Celebration, na ordem real do envelope: 3 comuns (a 3ª pode ser hit: IR 1/5,2 ou
-  // Classic Collection 1/9,8), slot de rara (DR 1/4, SIR 1/18, Futuristic 1/99),
+  // Classic Collection 1/9,8), slot de rara (DR 1/4, SIR 1/18, Futuristic 1/99, RGB ~1/1.000),
   // 1 Pikachu e 1 Energia básica foil no final. Amostra: 4.063 pacotes.
   me55: {
     keepOrder: true,
@@ -73,10 +75,12 @@ export const SET_BOOSTER_PROFILES: Readonly<Record<string, BoosterProfile>> = {
         { p: 0.1, subset: 'me55c' },
       ],
       4: [
-        { p: 0.69, rarities: ['Rare'] },
+        { p: 0.689, rarities: ['Rare'] },
         { p: 0.25, rarities: ['Double Rare'] },
         { p: 0.05, rarities: ['Special Illustration Rare'] },
         { p: 0.01, rarities: ['Futuristic Rare'] },
+        // Os 3 Mew RGB (me55-R/G/B): ~1 em 1.000 pacotes.
+        { p: 0.001, rarities: ['RGB Rare'] },
       ],
       5: [{ p: 1, rarities: ['Pikachu Rare'] }],
       6: [{ p: 1, subset: 'sve' }],

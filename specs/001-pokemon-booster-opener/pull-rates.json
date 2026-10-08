@@ -1,0 +1,2109 @@
+{
+  "me5": {
+    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare).",
+    "estimate": false,
+    "sources": [
+      "https://samuraiswordtokyo.com/blogs/news/pitch-black-pull-rates-what-is-confirmed-vs-japanese-abyss-eye",
+      "https://tcgtalk.com/guides/pitch-black-pull-rates",
+      "https://comicbook.com/gaming/feature/pokemon-tcg-pitch-black-pull-rates-predictions-ex-illustration-rares/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.8765,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.1101,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.0125,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.0009,
+            "rarities": [
+              "Mega Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.7068,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.2102,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.083,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "TCGplayer Authentication Center, 4,000+ English packs (reported 2026-07-21): DR 21.02%, UR 8.30%, IR 11.01%, SIR 1.25%, MHR 0.09% (~1/1081, +/-0.09%, least certain). Rates are community/retailer samples, not official (TPC publishes none)."
+  },
+  "me4": {
+    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare).",
+    "estimate": false,
+    "sources": [
+      "https://pokezentrum.de/pokemon-karten-news/pokemon-wachsendes-chaos-erste-pull-rates-enthuellt/",
+      "https://tcgtalk.com/guides/chaos-rising-pull-rates",
+      "https://samuraiswordtokyo.com/blogs/news/pitch-black-pull-rates-what-is-confirmed-vs-japanese-abyss-eye"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.875673,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.111111,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.012346,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.00087,
+            "rarities": [
+              "Mega Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.716667,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.2,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.083333,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Pokezentrum (~4,000 packs, community averages): DR 1/5, IR 1/9, UR 1/12, SIR 1/81, MHR 1/1150 (gold Mega Greninja ex). TCGplayer says Chaos Rising rates match Pitch Black. Rates are community/retailer samples, not official (TPC publishes none)."
+  },
+  "me3": {
+    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/blog/perfect-order-pull-rates/",
+      "https://pokezentrum.de/pokemon-karten-news/pokemon-optimale-ordnung-pull-rates-enthuellt/",
+      "https://tcgtalk.com/guides/perfect-order-pull-rates-singapore"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.875983,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.111111,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.012346,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.00056,
+            "rarities": [
+              "Mega Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.716667,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.2,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.083333,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "CardCodex: DR 1/5, UR 1/12, IR 1/9, SIR 1/81, MHR 1/1786. Pokezentrum (~4,000 packs) gives UR 1/11, SIR 1/75, MHR 1/1250 — similar; CardCodex values used. Rates are community/retailer samples, not official (TPC publishes none)."
+  },
+  "me2pt5": {
+    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare / Mega Attack Rare).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/blog/ascended-heroes-pull-rates-explained/",
+      "https://pokezentrum.de/pokemon-karten-news/pokemon-erhabene-helden-erste-pull-rates-enthuellt/",
+      "https://cardcodex.com/blog/perfect-order-pull-rates/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.872751,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.111111,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.014286,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.001852,
+            "rarities": [
+              "Mega Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.717898,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.2,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.047619,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          },
+          {
+            "p": 0.034483,
+            "rarities": [
+              "MEGA_ATTACK_RARE"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "CardCodex: DR 1/5, IR 1/9, UR 1/21, SIR ~1/70, MAR 1/29 (Pokezentrum: 1/31), MHR 1/540. CardCodex says MARs take the Ultra Rare's place in the pack, so MAR is placed in the rare slot (exclusive with DR/UR). God packs not modeled. Actual retail product is a special set (sold in ETBs/bundles), structure assumed same as main-series ME packs. Rates are community/retailer samples, not official (TPC publishes none)."
+  },
+  "me2": {
+    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/blog/perfect-order-pull-rates/",
+      "https://cardcodex.com/blog/phantasmal-flames-pull-rates/",
+      "https://samuraiswordtokyo.com/blogs/news/pitch-black-pull-rates-what-is-confirmed-vs-japanese-abyss-eye"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.875595,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.111111,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.0125,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.000794,
+            "rarities": [
+              "Mega Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.716667,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.2,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.083333,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "CardCodex comparison table (TCGplayer-sourced): DR 1/5, UR 1/12, IR 1/9, SIR 1/80, MHR 1/1260; TCGplayer states PFL rates match Pitch Black. Only 1 MHR card (gold Mega Charizard X ex). Rates are community/retailer samples, not official (TPC publishes none)."
+  },
+  "me1": {
+    "structure": "English ME-era pack: 10 cards + basic energy/code card = 4 Common, 3 Uncommon, 1 reverse holo (Poke Ball/Master Ball patterns), 1 reverse/hit slot that can be upgraded to Illustration Rare / Special Illustration Rare / Mega Hyper Rare, and 1 rare slot (Rare, or upgraded to Double Rare / Ultra Rare).",
+    "estimate": false,
+    "sources": [
+      "https://deltiasgaming.com/?p=353157",
+      "https://cardcodex.com/blog/mega-evolution-base-set-pull-rates/",
+      "https://www.wargamer.com/pokemon-trading-card-game/mega-evolution-hyper-rare-gold-cards",
+      "https://cardcodex.com/blog/perfect-order-pull-rates/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.878194,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.111111,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.009901,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.000794,
+            "rarities": [
+              "Mega Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.716667,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.2,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.083333,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "TCGplayer Authentication Center sample (5,000+ packs) via CardCodex/Deltia's: DR 1/5, IR ~1/9 (10.89%), UR 1/12, SIR 1/101, MHR 1/1260. Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot, 6 = rare slot. Rates are community/retailer samples, not official (TPC publishes none)."
+  },
+  "zsv10pt5": {
+    "structure": "Real pack: 10 cards + energy = 4 Common, 3 Uncommon, 2 reverse holos (Poké Ball pattern ~1/3, Master Ball pattern ~1/19; 2nd reverse may be replaced by IR/SIR/Black White Rare), 1 rare slot (Rare/Double Rare/Ultra Rare). Sold only in ETBs/collections.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/blog/black-bolt-white-flare-pull-rates/",
+      "https://deltiasgaming.com/?p=299238",
+      "https://pokezentrum.de/pokemon-karten-news/pokemon-black-bolt-und-white-flare-pull-rates-enthuellt/",
+      "https://tcgtalk.com/guides/black-bolt-pack-opening-value-guide"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.819833,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.166667,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.0125,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.001,
+            "rarities": [
+              "Black White Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.730206,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.21097,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.058824,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates (TCGplayer ~750-pack data + Reddit 1,000-pack tracker, combined BB/WF): DR 21.1% (~1/4.74), UR 1/17, IR 1/6, SIR 1/77-1/80 (used 1/80). Black White Rare has no reliable rate (0 in 700+ packs; ~2 in 1,000; others estimate 1/1,789) - used 1/1000 (approximate). Poké Ball/Master Ball patterns ignored. Slot 4 is a plain Uncommon."
+  },
+  "rsv10pt5": {
+    "structure": "Real pack: 10 cards + energy = 4 Common, 3 Uncommon, 2 reverse holos (Poké Ball pattern ~1/3, Master Ball pattern ~1/19; 2nd reverse may be replaced by IR/SIR/Black White Rare), 1 rare slot (Rare/Double Rare/Ultra Rare). Sold only in ETBs/collections.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/blog/black-bolt-white-flare-pull-rates/",
+      "https://deltiasgaming.com/?p=299238",
+      "https://pokezentrum.de/pokemon-karten-news/pokemon-black-bolt-und-white-flare-pull-rates-enthuellt/",
+      "https://tcgtalk.com/guides/black-bolt-pack-opening-value-guide"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.819833,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.166667,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.0125,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.001,
+            "rarities": [
+              "Black White Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.730206,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.21097,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.058824,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates (TCGplayer ~750-pack data + Reddit 1,000-pack tracker, combined BB/WF): DR 21.1% (~1/4.74), UR 1/17, IR 1/6, SIR 1/77-1/80 (used 1/80). Black White Rare has no reliable rate (0 in 700+ packs; ~2 in 1,000; others estimate 1/1,789) - used 1/1000 (approximate). Poké Ball/Master Ball patterns ignored. Slot 4 is a plain Uncommon."
+  },
+  "sv10": {
+    "structure": "Real pack: 10 cards + basic energy = 4 Common, 3 Uncommon, 2 reverse holo (1st reverse may be replaced by nothing special; 2nd by IR/SIR/HR), 1 rare slot (Rare/Double Rare/Ultra Rare). No ACE SPEC cards in this set.",
+    "estimate": false,
+    "sources": [
+      "https://deltiasgaming.com/?p=249103",
+      "https://tcgtalk.com/guides/destined-rivals-pull-rates-case-opening",
+      "https://www.wargamer.com/pokemon-trading-card-game/mega-evolution-hyper-rare-gold-cards"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.899318,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.083333,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.010638,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.006711,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.7375,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.2,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.0625,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates (TCGplayer ~8,000-pack data via Deltias/TCGTalk/Wargamer): DR 1/5, UR 1/16, IR 1/12, SIR 1/94, HR 1/149. Sources vary (UR 1/12-1/16, SIR 1/83-1/101). Slot 4 is a plain Uncommon."
+  },
+  "sv9": {
+    "structure": "Real pack: 10 cards + basic energy = 4 Common, 3 Uncommon, 2 reverse holo (1st reverse may be replaced by nothing special; 2nd by IR/SIR/HR), 1 rare slot (Rare/Double Rare/Ultra Rare). No ACE SPEC cards in this set.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/scarlet-violet/journey-together/journey-together-booster-pack-sv9/",
+      "https://tcgtalk.com/guides/journey-together-pack-opening-value-guide"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.896354,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.084746,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.011601,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.007299,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.765149,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.169492,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.065359,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates (Card Codex / TCGTalk 8,000-pack data): IR 1/11.8, UR 1/15.3, SIR 1/86.2, HR 1/137. DR not found explicitly for this set; used era-typical 1/5.9. Slot 4 is a plain Uncommon (no ACE SPEC)."
+  },
+  "sv8pt5": {
+    "structure": "Real pack: 10 cards + energy = 4 Common, 3 Uncommon, 1 Poké Ball-pattern reverse (or ACE SPEC), 1 reverse/Master Ball-pattern slot (or SIR/HR), 1 rare slot (Rare/Double Rare/Ultra Rare). No Illustration Rares in this set.",
+    "estimate": false,
+    "sources": [
+      "https://dotesports.com/pokemon/news/all-prismatic-evolutions-pull-rates",
+      "https://snkrdunk.com/en/magazine/2025/01/25/the-top-10-best-pokemon-tcg-cards-from-prismatic-evolutions-pre-ranked-by-price",
+      "https://tcgtalk.com/guides/prismatic-evolutions-pack-opening-value-guide"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 0.952381,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.047619,
+            "rarities": [
+              "ACE SPEC Rare"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.972222,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.022222,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.005556,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.770833,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.166667,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.0625,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates: DR ~1/6, UR (full-art trainers) 1/16, SIR 1/45 (TCGplayer 1,200 packs; DotEsports ~2,700-pack data says 1/53), HR ~1/180 (DotEsports 1/152), ACE SPEC ~1/21 (DotEsports 1/29). Poké Ball / Master Ball pattern variants ignored (not separate cards in data). Mapped: slots 1-2 Common, 3 Uncommon, 4 Uncommon-or-ACE SPEC (ACE SPEC replaces a reverse in reality), 5 reverse/hit slot (IR/SIR/HR mutually exclusive), 6 rare slot (Rare/DR/UR)."
+  },
+  "sv8": {
+    "structure": "Real pack: 10 cards + basic energy = 4 Common, 3 Uncommon, 2 reverse holo (1st reverse may be replaced by ACE SPEC; 2nd by IR/SIR/HR), 1 rare slot (Rare/Double Rare/Ultra Rare).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/scarlet-violet/surging-sparks/chase-cards/",
+      "https://tcgtalk.com/guides/surging-sparks-pull-rates-case-opening"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 0.949749,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.050251,
+            "rarities": [
+              "ACE SPEC Rare"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.906284,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.076923,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.011494,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.005299,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.76294,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.169492,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.067568,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates (Card Codex): DR 1/5.9, UR 1/14.8, IR 1/13, SIR 1/87, HR 1/188.7, ACE SPEC 1/19.9. TCGTalk 500-pack sample had SIR ~1/71. Mapped: slots 1-2 Common, 3 Uncommon, 4 Uncommon-or-ACE SPEC (ACE SPEC replaces a reverse in reality), 5 reverse/hit slot (IR/SIR/HR mutually exclusive), 6 rare slot (Rare/DR/UR)."
+  },
+  "sv7": {
+    "structure": "Real pack: 10 cards + basic energy = 4 Common, 3 Uncommon, 2 reverse holo (1st reverse may be replaced by ACE SPEC; 2nd by IR/SIR/HR), 1 rare slot (Rare/Double Rare/Ultra Rare).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/scarlet-violet/stellar-crown/chase-cards/",
+      "https://tcgtalk.com/guides/stellar-crown-pull-rates-case-opening",
+      "https://tcgtalk.com/guides/stellar-crown-pack-opening-value-guide"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 0.950495,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.049505,
+            "rarities": [
+              "ACE SPEC Rare"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.903465,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.078125,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.011111,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.007299,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.76294,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.169492,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.067568,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Rates (Card Codex/TCGTalk community data): DR 1/5.9, UR 1/14.8, IR 1/12.8, SIR 1/90, HR 1/137, ACE SPEC 1/20.2. Mapped: slots 1-2 Common, 3 Uncommon, 4 Uncommon-or-ACE SPEC (ACE SPEC replaces a reverse in reality), 5 reverse/hit slot (IR/SIR/HR mutually exclusive), 6 rare slot (Rare/DR/UR)."
+  },
+  "sv6pt5": {
+    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy. An ACE SPEC Rare (~1/20) can replace the first reverse holo.",
+    "estimate": true,
+    "sources": [
+      "https://tcgtalk.com/guides/shrouded-fable-pack-opening-value-guide",
+      "https://cardcodex.com/pokemon/scarlet-violet/shrouded-fable/chase-cards/",
+      "https://www.cardrake.com/cards/sv6pt5-96"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 0.95,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.05,
+            "rarities": [
+              "ACE SPEC Rare"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.894796849089,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.083333333333,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.014925373134,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.006944444444,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.766666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.166666666667,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.066666666667,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/12, SIR 1/67, HR 1/144. Community data only (no TCGplayer article found); SIR ~1/67, HR ~1/144 (slot-level), ACE SPEC ~5%/pack; DR/UR/IR use era-typical values (1/6, 1/15, 1/12). Sources disagree widely, treat as partial estimate."
+  },
+  "sv6": {
+    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy. An ACE SPEC Rare (~1/20) can replace the first reverse holo.",
+    "estimate": false,
+    "sources": [
+      "https://tcgtalk.com/guides/twilight-masquerade-pack-opening-value-guide",
+      "https://cardcodex.com/pokemon/scarlet-violet/twilight-masquerade/twilight-masquerade-fun-pack-sv6/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 0.95,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.05,
+            "rarities": [
+              "ACE SPEC Rare"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.9045997010319999,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.076923076923,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.011627906977,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.006849315068,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.766666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.166666666667,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.066666666667,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/13, SIR 1/86, HR 1/146. Slot 4 = ACE SPEC slot (default Uncommon, ACE SPEC 1/20). DR quoted 1/5-1/5.9; used 1/6."
+  },
+  "sv5": {
+    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy. From TEF an ACE SPEC Rare (~1/20) can replace the first reverse holo.",
+    "estimate": false,
+    "sources": [
+      "https://www.tcgplayer.com/content/article/Temporal-Forces-Pull-Rates/",
+      "https://www.josephwriteranderson.com/blog/temporal-forces-pull-rates"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 0.95,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.05,
+            "rarities": [
+              "ACE SPEC Rare"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.904254771496,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.076923076923,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.011627906977,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.007194244604,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.766666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.166666666667,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.066666666667,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/13, SIR 1/86, HR 1/139. Slot 4 = ACE SPEC slot (default Uncommon, ACE SPEC 1/20). HR quoted as 1/129-1/139 across sources; used 1/139."
+  },
+  "sv4pt5": {
+    "structure": "Booster of 10 cards: Commons/Uncommons, two reverse-holo slots where one can become a Shiny Rare (~1/4) or Shiny Ultra Rare (~1/13) and the other an IR/SIR/HR, plus the rare slot (Rare/DR/UR).",
+    "estimate": false,
+    "sources": [
+      "https://www.pokebeach.com/?p=281473",
+      "https://pokecottage.com/sets/paldean-fates-card-list",
+      "https://kotaku.com/paldean-fates-pokemon-tcg-pull-rates-1851196505"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 0.673076923077,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.25,
+            "rarities": [
+              "Shiny Rare"
+            ]
+          },
+          {
+            "p": 0.076923076923,
+            "rarities": [
+              "Shiny Ultra Rare"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.895201017003,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.071428571429,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.01724137931,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.016129032258,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.766666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.166666666667,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.066666666667,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/14, SIR 1/58, HR 1/62. Slot 4 = shiny-vault slot (default Uncommon, Shiny Rare 1/4, Shiny Ultra Rare 1/13). TCGplayer sample (1,500 packs) relayed by PokeBeach; only 3 IR cards exist so IR pool is small but used by one slot only."
+  },
+  "sv4": {
+    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy.",
+    "estimate": false,
+    "sources": [
+      "https://www.tcgplayer.com/content/article/Paradox-Rift-Pull-Rates/",
+      "https://www.josephwriteranderson.com/blog/temporal-forces-pull-rates"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.889605205381,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.076923076923,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.021276595745,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.012195121951,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.766666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.166666666667,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.066666666667,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/13, SIR 1/47, HR 1/82. SIR/HR odds reduced from PAR onwards."
+  },
+  "sv3pt5": {
+    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy.",
+    "estimate": false,
+    "sources": [
+      "https://www.tcgplayer.com/content/article/Pok%C3%A9mon-TCG-151-Pull-Rates/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.86580882353,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.083333333333,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.03125,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.019607843137,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.8125,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.125,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.0625,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/8, UR 1/16, IR 1/12, SIR 1/32, HR 1/51."
+  },
+  "sv3": {
+    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy.",
+    "estimate": false,
+    "sources": [
+      "https://www.tcgplayer.com/content/article/Obsidian-Flames-Pull-Rates/",
+      "https://www.josephwriteranderson.com/blog/temporal-forces-pull-rates"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.873308404558,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.076923076923,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.03125,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.018518518519,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.766666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.166666666667,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.066666666667,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/6, UR 1/15, IR 1/13, SIR 1/32, HR 1/54. OBF any-SIR ~3.13%/pack (1/32)."
+  },
+  "sv2": {
+    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy.",
+    "estimate": false,
+    "sources": [
+      "https://www.tcgplayer.com/content/article/Paldea-Evolved-Pull-Rates/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.874283063428,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.076923076923,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.03125,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.017543859649,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.790476190476,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.142857142857,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.066666666667,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/7, UR 1/15, IR 1/13, SIR 1/32, HR 1/57."
+  },
+  "sv1": {
+    "structure": "Booster of 10 cards: 4 Commons, 3 Uncommons, 2 reverse-holo slots (2nd can be upgraded to Illustration Rare / Special Illustration Rare / Hyper Rare), 1 rare slot (Rare, or Double Rare / Ultra Rare) + basic energy.",
+    "estimate": false,
+    "sources": [
+      "https://www.tcgplayer.com/content/article/Pok%C3%A9mon-TCG-Scarlet-Violet-Pull-Rates/"
+    ],
+    "profile": {
+      "slots": {
+        "1": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "4": [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "p": 0.872958998549,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.076923076923,
+            "rarities": [
+              "Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.03125,
+            "rarities": [
+              "Special Illustration Rare"
+            ]
+          },
+          {
+            "p": 0.018867924528,
+            "rarities": [
+              "Hyper Rare"
+            ]
+          }
+        ],
+        "6": [
+          {
+            "p": 0.790476190476,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.142857142857,
+            "rarities": [
+              "Double Rare"
+            ]
+          },
+          {
+            "p": 0.066666666667,
+            "rarities": [
+              "Ultra Rare"
+            ]
+          }
+        ]
+      }
+    },
+    "notes": "Compressed: slots 1-2 Common, 3-4 Uncommon, 5 = reverse/hit slot (IR/SIR/HR), 6 = rare slot (Rare/DR/UR). Rates: DR 1/7, UR 1/15, IR 1/13, SIR 1/32, HR 1/53."
+  }
+}

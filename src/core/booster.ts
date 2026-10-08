@@ -144,7 +144,8 @@ function drawProfileSlots(
 }
 
 export function generateBooster(rng: RNG, catalog: Catalog, seed: number): Booster {
-  if (catalog.byBucket['01_comum'].length === 0) {
+  const profile = SET_BOOSTER_PROFILES[catalog.setId];
+  if (!profile && catalog.byBucket['01_comum'].length === 0) {
     throw new EmptyBaseBucketError();
   }
 
@@ -152,7 +153,6 @@ export function generateBooster(rng: RNG, catalog: Catalog, seed: number): Boost
   const drawn: BoosterSlot[] = [];
   const downgrades: DowngradeRecord[] = [];
 
-  const profile = SET_BOOSTER_PROFILES[catalog.setId];
   if (profile) drawProfileSlots(rng, catalog, profile, used, drawn, downgrades);
 
   for (const drawIdx of profile ? [] : SLOT_INDICES) {
