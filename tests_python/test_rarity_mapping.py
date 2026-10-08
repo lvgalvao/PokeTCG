@@ -49,3 +49,22 @@ def test_all_seven_buckets_have_at_least_one_source_rarity() -> None:
     covered = set(RARITY_TO_BUCKET.values())
     for b in BUCKETS:
         assert b in covered, f"bucket {b} has no source rarity in the mapping"
+
+
+@pytest.mark.parametrize(
+    "rarity_raw, bucket",
+    [
+        ("Futuristic Rare", "07_legendaria"),
+        ("Pikachu Rare", "03_raras"),
+        ("LEGEND", "07_legendaria"),
+        ("Holo Rare VSTAR", "04_duplo_raras"),
+        ("Amazing Rare", "04_duplo_raras"),
+    ],
+)
+def test_30th_celebration_rarities(rarity_raw: str, bucket: str) -> None:
+    assert bucket_for(rarity_raw) == bucket
+
+
+def test_set_override_takes_precedence() -> None:
+    assert bucket_for("Pikachu Rare", "me55") == "02_incomum"
+    assert bucket_for("Common", "me55") == "01_comum"

@@ -63,6 +63,29 @@ RARITY_TO_BUCKET: dict[str, str] = {
     "black white rare": "07_legendaria",
     "mega_attack_rare": "07_legendaria",
     "mega hyper rare": "07_legendaria",
+    "futuristic rare": "07_legendaria",
+    "pikachu rare": "03_raras",
+    # Classic reprint rarities (e.g. me55c "30th Celebration: Classic Collection").
+    "holo rare v": "04_duplo_raras",
+    "holo rare vmax": "04_duplo_raras",
+    "holo rare vstar": "04_duplo_raras",
+    "rare holo lv.x": "04_duplo_raras",
+    "rare prime": "04_duplo_raras",
+    "rare break": "04_duplo_raras",
+    "amazing rare": "04_duplo_raras",
+    "legend": "07_legendaria",
+}
+
+# Per-set overrides, checked before RARITY_TO_BUCKET. me55 has no Uncommons, so its 30
+# commemorative Pikachus fill the uncommon slot (slot 3 has no downgrade fallback).
+SET_RARITY_OVERRIDES: dict[str, dict[str, str]] = {
+    "me55": {"pikachu rare": "02_incomum"},
+}
+
+# Subsets pulled from the same physical packs: their cards are merged into the parent
+# set's folder/manifest instead of becoming a standalone (unplayable) catalog.
+SET_COMPANIONS: dict[str, tuple[str, ...]] = {
+    "me55": ("me55c",),
 }
 
 # Allowed characters in a card id for path-safety (FR-007).
@@ -71,11 +94,13 @@ CARD_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_\-]*$")
 log = logging.getLogger("pkmn-cards")
 
 
-def bucket_for(rarity_raw: str | None) -> str | None:
+def bucket_for(rarity_raw: str | None, set_id: str | None = None) -> str | None:
     """Map a source rarity string to a local bucket. Case-insensitive. None if unmapped."""
     if not rarity_raw:
         return None
-    return RARITY_TO_BUCKET.get(rarity_raw.strip().lower())
+    key = rarity_raw.strip().lower()
+    override = SET_RARITY_OVERRIDES.get(set_id or "", {}).get(key)
+    return override or RARITY_TO_BUCKET.get(key)
 
 
 def is_safe_card_id(card_id: str) -> bool:
@@ -189,7 +214,7 @@ def process_card(
         report.failed.append((card_id, "unsafe card id"))
         return
 
-    bucket = bucket_for(rarity_raw)
+    bucket = bucket_for(rarity_raw, assets_dir.name)
     if bucket is None:
         supertype = (card.get("supertype") or "").lower()
         subtypes = [s.lower() for s in (card.get("subtypes") or [])]
@@ -323,6 +348,8 @@ def download_set(set_id: str, set_name_hint: str | None, args: argparse.Namespac
 
     try:
         cards = list_set_cards(set_id, args.api_key)
+        for companion_id in SET_COMPANIONS.get(set_id, ()):
+            cards += list_set_cards(companion_id, args.api_key)
     except Exception as exc:  # noqa: BLE001
         log.error("Failed to list set %s: %s", set_id, exc)
         return 3
@@ -369,7 +396,12 @@ def main(argv: Iterable[str] | None = None) -> int:
         if not sets:
             log.error("No sets returned by API")
             return 3
-        targets = [(s.get("id", ""), s.get("name")) for s in sets if s.get("id")]
+        companions = {c for cs in SET_COMPANIONS.values() for c in cs}
+        targets = [
+            (s.get("id", ""), s.get("name"))
+            for s in sets
+            if s.get("id") and s.get("id") not in companions
+        ]
     else:
         targets = [(args.set_id, None)]
 
