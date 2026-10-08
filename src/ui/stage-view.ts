@@ -5,7 +5,6 @@ import type { Catalog } from '../domain/catalog.js';
 import type { Collection } from '../domain/collection.js';
 import { playCelebrationSound, playFlipSound, playTearSound } from '../utils/audio.js';
 import { el } from '../utils/dom.js';
-import { openCardViewer } from './card-viewer.js';
 import { attachFoil, prefersReducedMotion, project, spring, VelocityTracker } from './motion.js';
 import { coverUrl, ownedCount, type SetInfo } from './sets-index.js';
 
@@ -88,6 +87,12 @@ export class StageView {
       ],
     });
     this.body = el('div', { className: 'stage__body' });
+    // Toque em qualquer lugar (fora de botões e links): passa a carta ou abre outro pacote.
+    this.body.addEventListener('click', (ev) => {
+      if (ev.target instanceof Element && ev.target.closest('button, a, .tear')) return;
+      if (this.phase === 'reveal') this.flingTop(-1, 0);
+      else if (this.phase === 'summary' && performance.now() - this.summaryAt > 600) this.restart();
+    });
     this.deps.root.replaceChildren(bar, this.body);
   }
 
@@ -124,20 +129,12 @@ export class StageView {
     this.cleanups.push(attachFoil(this.pack, 6));
     this.bindTear();
 
-    const openBtn = el('button', {
-      className: 'btn btn--on-stage',
-      attrs: { type: 'button' },
-      text: 'Rasgar para mim',
-    });
-    openBtn.addEventListener('click', () => this.autoTear());
-
     this.body.replaceChildren(
       el('div', { className: 'stage__pack', children: [this.pack] }),
       el('p', {
         className: 'stage__hint',
-        text: 'Arraste para abrir',
+        text: 'Toque para abrir',
       }),
-      openBtn,
     );
     this.pack.focus({ preventScroll: true });
     // Affordance: o lacre se ergue um pouco sozinho, mostrando o gesto.
@@ -190,7 +187,7 @@ export class StageView {
       if (!dragging) return;
       dragging = false;
       if (!moved) {
-        this.nudgeHint();
+        this.autoTear();
         return;
       }
       const { vx } = tracker.velocity();
@@ -212,23 +209,6 @@ export class StageView {
     };
     this.pack.addEventListener('pointerup', end);
     this.pack.addEventListener('pointercancel', end);
-  }
-
-  private nudgeHint(): void {
-    const hint = this.body.querySelector('.stage__hint');
-    hint?.classList.remove('is-nudged');
-    void (hint as HTMLElement | null)?.offsetWidth;
-    hint?.classList.add('is-nudged');
-    this.cancelTearSpring?.();
-    this.cancelTearSpring = spring(
-      0.18,
-      0,
-      (v) => {
-        this.tearProgress = v;
-        this.renderTear();
-      },
-      { damping: 0.5, response: 0.35 },
-    );
   }
 
   /** Rasgo pelo botão/teclado: o estado avança na hora; a animação só acompanha. */
@@ -391,16 +371,15 @@ export class StageView {
     const end = () => {
       if (!dragging) return;
       dragging = false;
-      if (!moved) {
-        this.flingTop(-1, 0);
-        return;
-      }
+      if (!moved) return; // o clique no palco avança
       const { vx, vy } = tracker.velocity();
       const w = card.clientWidth;
       const projected = offset.x + project(vx);
       if (Math.abs(projected) > w * FLING_DISTANCE || Math.abs(vx) > FLING_VELOCITY) {
+        this.suppressClick();
         this.flingTop(Math.sign(projected) || 1, vy, vx, offset);
       } else {
+        this.suppressClick();
         const from = { ...offset };
         spring(1, 0, (t) => {
           offset = { x: from.x * t, y: from.y * t };
@@ -410,6 +389,13 @@ export class StageView {
     };
     card.addEventListener('pointerup', end);
     card.addEventListener('pointercancel', end);
+  }
+
+  /** Engole o próximo clique (o que o navegador dispara ao soltar um arrasto). */
+  private suppressClick(): void {
+    const stop = (ev: Event) => ev.stopPropagation();
+    this.body.addEventListener('click', stop, { capture: true, once: true });
+    window.setTimeout(() => this.body.removeEventListener('click', stop, { capture: true }), 0);
   }
 
   /** Joga a carta do topo para o lado (herdando a velocidade) e mostra a próxima. */
@@ -457,10 +443,14 @@ export class StageView {
 
   // ── 3. Resumo ───────────────────────────────────────────────────────────────────
 
+  /** Momento em que o resumo apareceu: um toque a mais logo depois não o pula. */
+  private summaryAt = 0;
+
   private renderSummary(): void {
     const booster = this.booster;
     if (!booster || this.phase === 'summary') return;
     this.phase = 'summary';
+    this.summaryAt = performance.now();
     this.body.classList.remove('is-revealing');
     const fresh = booster.slots.filter((s) => this.isNew(s)).length;
     const owned = ownedCount(this.deps.set, this.deps.getCollection());
@@ -470,18 +460,17 @@ export class StageView {
     for (const slot of booster.slots) {
       const rank = bucketRank(slot.effectiveBucket);
       const isNew = this.isNew(slot);
-      const btn = el('button', {
+      const btn = el('div', {
         className: `summary__card rarity-${rank}${rank >= 4 ? ' is-hit' : ''}`,
         attrs: {
-          type: 'button',
-          'aria-label': `${slot.card.name}, ${BUCKET_LABELS[slot.effectiveBucket]}${isNew ? ', nova' : ''}. Ampliar.`,
+          role: 'img',
+          'aria-label': `${slot.card.name}, ${BUCKET_LABELS[slot.effectiveBucket]}${isNew ? ', nova' : ''}`,
         },
         children: [
           el('img', { attrs: { src: slot.card.imageUrl, alt: '', loading: 'lazy' } }),
           ...(isNew ? [el('span', { className: 'deck__new', text: 'Nova' })] : []),
         ],
       });
-      btn.addEventListener('click', () => openCardViewer(slot.card));
       grid.append(el('li', { children: [btn] }));
     }
 
@@ -516,6 +505,7 @@ export class StageView {
           }),
           grid,
           el('div', { className: 'summary__actions', children: [again, binder] }),
+          el('p', { className: 'stage__hint', text: 'Toque em qualquer lugar para abrir outro' }),
         ],
       }),
     );
