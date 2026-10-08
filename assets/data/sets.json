@@ -1,0 +1,622 @@
+{
+  "eras": [
+    {
+      "id": "mega",
+      "name": "Mega Evolution"
+    },
+    {
+      "id": "sv",
+      "name": "Scarlet & Violet"
+    },
+    {
+      "id": "swsh",
+      "name": "Sword & Shield"
+    },
+    {
+      "id": "sm",
+      "name": "Sun & Moon"
+    },
+    {
+      "id": "xy",
+      "name": "XY"
+    },
+    {
+      "id": "ex",
+      "name": "e-Card & EX"
+    },
+    {
+      "id": "wotc",
+      "name": "Wizards of the Coast"
+    }
+  ],
+  "sets": [
+    {
+      "id": "me55",
+      "name": "30th Celebration",
+      "series": "Mega Evolution",
+      "era": "mega",
+      "releaseDate": "2026-09-16",
+      "packSize": 6,
+      "albumSize": 191,
+      "subsets": [
+        "me55c"
+      ]
+    },
+    {
+      "id": "me5",
+      "name": "Pitch Black",
+      "series": "Mega Evolution",
+      "era": "mega",
+      "releaseDate": "2026-07-17",
+      "packSize": 11,
+      "albumSize": 120,
+      "subsets": []
+    },
+    {
+      "id": "me4",
+      "name": "Chaos Rising",
+      "series": "Mega Evolution",
+      "era": "mega",
+      "releaseDate": "2026-05-22",
+      "packSize": 11,
+      "albumSize": 122,
+      "subsets": []
+    },
+    {
+      "id": "me3",
+      "name": "Perfect Order",
+      "series": "Mega Evolution",
+      "era": "mega",
+      "releaseDate": "2026-03-27",
+      "packSize": 11,
+      "albumSize": 124,
+      "subsets": []
+    },
+    {
+      "id": "me2pt5",
+      "name": "Ascended Heroes",
+      "series": "Mega Evolution",
+      "era": "mega",
+      "releaseDate": "2026-01-30",
+      "packSize": 11,
+      "albumSize": 295,
+      "subsets": []
+    },
+    {
+      "id": "me2",
+      "name": "Phantasmal Flames",
+      "series": "Mega Evolution",
+      "era": "mega",
+      "releaseDate": "2025-11-14",
+      "packSize": 11,
+      "albumSize": 130,
+      "subsets": []
+    },
+    {
+      "id": "me1",
+      "name": "Mega Evolution",
+      "series": "Mega Evolution",
+      "era": "mega",
+      "releaseDate": "2025-09-26",
+      "packSize": 11,
+      "albumSize": 188,
+      "subsets": []
+    },
+    {
+      "id": "zsv10pt5",
+      "name": "Black Bolt",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2025-07-18",
+      "packSize": 11,
+      "albumSize": 172,
+      "subsets": []
+    },
+    {
+      "id": "rsv10pt5",
+      "name": "White Flare",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2025-07-18",
+      "packSize": 11,
+      "albumSize": 173,
+      "subsets": []
+    },
+    {
+      "id": "sv10",
+      "name": "Destined Rivals",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2025-05-30",
+      "packSize": 11,
+      "albumSize": 244,
+      "subsets": []
+    },
+    {
+      "id": "sv9",
+      "name": "Journey Together",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2025-03-28",
+      "packSize": 11,
+      "albumSize": 190,
+      "subsets": []
+    },
+    {
+      "id": "sv8pt5",
+      "name": "Prismatic Evolutions",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2025-01-17",
+      "packSize": 11,
+      "albumSize": 180,
+      "subsets": []
+    },
+    {
+      "id": "sv8",
+      "name": "Surging Sparks",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2024-11-08",
+      "packSize": 11,
+      "albumSize": 252,
+      "subsets": []
+    },
+    {
+      "id": "sv7",
+      "name": "Stellar Crown",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2024-09-13",
+      "packSize": 11,
+      "albumSize": 175,
+      "subsets": []
+    },
+    {
+      "id": "sv6pt5",
+      "name": "Shrouded Fable",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2024-08-02",
+      "packSize": 11,
+      "albumSize": 99,
+      "subsets": []
+    },
+    {
+      "id": "sv6",
+      "name": "Twilight Masquerade",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2024-05-24",
+      "packSize": 11,
+      "albumSize": 226,
+      "subsets": []
+    },
+    {
+      "id": "sv5",
+      "name": "Temporal Forces",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2024-03-22",
+      "packSize": 11,
+      "albumSize": 218,
+      "subsets": []
+    },
+    {
+      "id": "sv4pt5",
+      "name": "Paldean Fates",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2024-01-26",
+      "packSize": 11,
+      "albumSize": 245,
+      "subsets": []
+    },
+    {
+      "id": "sv4",
+      "name": "Paradox Rift",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2023-11-03",
+      "packSize": 11,
+      "albumSize": 266,
+      "subsets": []
+    },
+    {
+      "id": "sv3pt5",
+      "name": "151",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2023-09-22",
+      "packSize": 11,
+      "albumSize": 207,
+      "subsets": []
+    },
+    {
+      "id": "sv3",
+      "name": "Obsidian Flames",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2023-08-11",
+      "packSize": 11,
+      "albumSize": 230,
+      "subsets": []
+    },
+    {
+      "id": "sv2",
+      "name": "Paldea Evolved",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2023-06-09",
+      "packSize": 11,
+      "albumSize": 279,
+      "subsets": []
+    },
+    {
+      "id": "sv1",
+      "name": "Scarlet & Violet",
+      "series": "Scarlet & Violet",
+      "era": "sv",
+      "releaseDate": "2023-03-31",
+      "packSize": 11,
+      "albumSize": 258,
+      "subsets": []
+    },
+    {
+      "id": "swsh12pt5",
+      "name": "Crown Zenith",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2023-01-20",
+      "packSize": 10,
+      "albumSize": 230,
+      "subsets": [
+        "swsh12pt5gg"
+      ]
+    },
+    {
+      "id": "swsh12",
+      "name": "Silver Tempest",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2022-11-11",
+      "packSize": 10,
+      "albumSize": 245,
+      "subsets": [
+        "swsh12tg"
+      ]
+    },
+    {
+      "id": "swsh11",
+      "name": "Lost Origin",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2022-09-09",
+      "packSize": 10,
+      "albumSize": 247,
+      "subsets": [
+        "swsh11tg"
+      ]
+    },
+    {
+      "id": "pgo",
+      "name": "Pokémon GO",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2022-07-01",
+      "packSize": 10,
+      "albumSize": 88,
+      "subsets": []
+    },
+    {
+      "id": "swsh10",
+      "name": "Astral Radiance",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2022-05-27",
+      "packSize": 10,
+      "albumSize": 246,
+      "subsets": [
+        "swsh10tg"
+      ]
+    },
+    {
+      "id": "swsh9",
+      "name": "Brilliant Stars",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2022-02-25",
+      "packSize": 10,
+      "albumSize": 216,
+      "subsets": [
+        "swsh9tg"
+      ]
+    },
+    {
+      "id": "swsh8",
+      "name": "Fusion Strike",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2021-11-12",
+      "packSize": 10,
+      "albumSize": 284,
+      "subsets": []
+    },
+    {
+      "id": "cel25",
+      "name": "Celebrations",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2021-10-08",
+      "packSize": 4,
+      "albumSize": 50,
+      "subsets": [
+        "cel25c"
+      ]
+    },
+    {
+      "id": "swsh7",
+      "name": "Evolving Skies",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2021-08-27",
+      "packSize": 10,
+      "albumSize": 237,
+      "subsets": []
+    },
+    {
+      "id": "swsh45",
+      "name": "Shining Fates",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2021-02-19",
+      "packSize": 10,
+      "albumSize": 195,
+      "subsets": [
+        "swsh45sv"
+      ]
+    },
+    {
+      "id": "swsh4",
+      "name": "Vivid Voltage",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2020-11-13",
+      "packSize": 10,
+      "albumSize": 203,
+      "subsets": []
+    },
+    {
+      "id": "swsh35",
+      "name": "Champion's Path",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2020-09-25",
+      "packSize": 10,
+      "albumSize": 80,
+      "subsets": []
+    },
+    {
+      "id": "sm12",
+      "name": "Cosmic Eclipse",
+      "series": "Sun & Moon",
+      "era": "sm",
+      "releaseDate": "2019-11-01",
+      "packSize": 10,
+      "albumSize": 272,
+      "subsets": []
+    },
+    {
+      "id": "sm115",
+      "name": "Hidden Fates",
+      "series": "Sun & Moon",
+      "era": "sm",
+      "releaseDate": "2019-08-23",
+      "packSize": 10,
+      "albumSize": 163,
+      "subsets": [
+        "sma"
+      ]
+    },
+    {
+      "id": "sm9",
+      "name": "Team Up",
+      "series": "Sun & Moon",
+      "era": "sm",
+      "releaseDate": "2019-02-01",
+      "packSize": 10,
+      "albumSize": 198,
+      "subsets": []
+    },
+    {
+      "id": "xy12",
+      "name": "Evolutions",
+      "series": "XY",
+      "era": "xy",
+      "releaseDate": "2016-11-02",
+      "packSize": 10,
+      "albumSize": 113,
+      "subsets": []
+    },
+    {
+      "id": "ex7",
+      "name": "Team Rocket Returns",
+      "series": "EX",
+      "era": "ex",
+      "releaseDate": "2004-11-01",
+      "packSize": 9,
+      "albumSize": 111,
+      "subsets": []
+    },
+    {
+      "id": "ex6",
+      "name": "FireRed & LeafGreen",
+      "series": "EX",
+      "era": "ex",
+      "releaseDate": "2004-09-01",
+      "packSize": 9,
+      "albumSize": 116,
+      "subsets": []
+    },
+    {
+      "id": "ex1",
+      "name": "Ruby & Sapphire",
+      "series": "EX",
+      "era": "ex",
+      "releaseDate": "2003-07-01",
+      "packSize": 9,
+      "albumSize": 109,
+      "subsets": []
+    },
+    {
+      "id": "ecard3",
+      "name": "Skyridge",
+      "series": "E-Card",
+      "era": "ex",
+      "releaseDate": "2003-05-12",
+      "packSize": 9,
+      "albumSize": 182,
+      "subsets": []
+    },
+    {
+      "id": "ecard2",
+      "name": "Aquapolis",
+      "series": "E-Card",
+      "era": "ex",
+      "releaseDate": "2003-01-15",
+      "packSize": 9,
+      "albumSize": 182,
+      "subsets": []
+    },
+    {
+      "id": "ecard1",
+      "name": "Expedition Base Set",
+      "series": "E-Card",
+      "era": "ex",
+      "releaseDate": "2002-09-15",
+      "packSize": 9,
+      "albumSize": 165,
+      "subsets": []
+    },
+    {
+      "id": "base6",
+      "name": "Legendary Collection",
+      "series": "Other",
+      "era": "wotc",
+      "releaseDate": "2002-05-24",
+      "packSize": 11,
+      "albumSize": 110,
+      "subsets": []
+    },
+    {
+      "id": "neo4",
+      "name": "Neo Destiny",
+      "series": "Neo",
+      "era": "wotc",
+      "releaseDate": "2002-02-28",
+      "packSize": 11,
+      "albumSize": 113,
+      "subsets": []
+    },
+    {
+      "id": "neo3",
+      "name": "Neo Revelation",
+      "series": "Neo",
+      "era": "wotc",
+      "releaseDate": "2001-09-21",
+      "packSize": 11,
+      "albumSize": 66,
+      "subsets": []
+    },
+    {
+      "id": "neo2",
+      "name": "Neo Discovery",
+      "series": "Neo",
+      "era": "wotc",
+      "releaseDate": "2001-06-01",
+      "packSize": 11,
+      "albumSize": 75,
+      "subsets": []
+    },
+    {
+      "id": "neo1",
+      "name": "Neo Genesis",
+      "series": "Neo",
+      "era": "wotc",
+      "releaseDate": "2000-12-16",
+      "packSize": 11,
+      "albumSize": 111,
+      "subsets": []
+    },
+    {
+      "id": "gym2",
+      "name": "Gym Challenge",
+      "series": "Gym",
+      "era": "wotc",
+      "releaseDate": "2000-10-16",
+      "packSize": 11,
+      "albumSize": 132,
+      "subsets": []
+    },
+    {
+      "id": "gym1",
+      "name": "Gym Heroes",
+      "series": "Gym",
+      "era": "wotc",
+      "releaseDate": "2000-08-14",
+      "packSize": 11,
+      "albumSize": 132,
+      "subsets": []
+    },
+    {
+      "id": "base5",
+      "name": "Team Rocket",
+      "series": "Base",
+      "era": "wotc",
+      "releaseDate": "2000-04-24",
+      "packSize": 11,
+      "albumSize": 83,
+      "subsets": []
+    },
+    {
+      "id": "base4",
+      "name": "Base Set 2",
+      "series": "Base",
+      "era": "wotc",
+      "releaseDate": "2000-02-24",
+      "packSize": 11,
+      "albumSize": 130,
+      "subsets": []
+    },
+    {
+      "id": "base3",
+      "name": "Fossil",
+      "series": "Base",
+      "era": "wotc",
+      "releaseDate": "1999-10-10",
+      "packSize": 11,
+      "albumSize": 62,
+      "subsets": []
+    },
+    {
+      "id": "base2",
+      "name": "Jungle",
+      "series": "Base",
+      "era": "wotc",
+      "releaseDate": "1999-06-16",
+      "packSize": 11,
+      "albumSize": 64,
+      "subsets": []
+    },
+    {
+      "id": "base1",
+      "name": "Base",
+      "series": "Base",
+      "era": "wotc",
+      "releaseDate": "1999-01-09",
+      "packSize": 11,
+      "albumSize": 102,
+      "subsets": []
+    }
+  ]
+}

@@ -1,0 +1,336 @@
+/* Fichário: índice por era e páginas de 9 bolsos, como um fichário de verdade. */
+
+.binder-index,
+.binder {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) 64px;
+}
+
+.binder-index__title,
+.binder__title {
+  margin: 0;
+  font: 700 clamp(2rem, 6vw, 3.25rem) / 1.05 var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.binder-index__meta {
+  margin: 8px 0 8px;
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+}
+
+.binder-era {
+  margin-top: 36px;
+}
+
+.binder-era__title {
+  margin: 0 0 8px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.binder-era__years {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.binder-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-radius: var(--radius-m);
+  background: var(--shop-paper);
+  overflow: hidden;
+}
+
+.binder-list li + li .binder-list__row {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.binder-list__row {
+  display: grid;
+  grid-template-columns: 30px 1fr minmax(60px, 180px) 64px;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: background-color 140ms ease;
+}
+
+.binder-list__row:hover {
+  background: color-mix(in srgb, var(--ink) 3%, transparent);
+}
+
+.binder-list__row.is-empty {
+  color: var(--ink-soft);
+}
+
+.binder-list__cover {
+  width: 30px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.binder-list__name {
+  font-weight: 500;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.binder-list__bar {
+  --pct: 0;
+  height: 6px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, var(--ink) calc(var(--pct) * 100%), transparent 0) no-repeat,
+    color-mix(in srgb, var(--ink) 9%, transparent);
+}
+
+.binder-list__count {
+  text-align: right;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 520px) {
+  .binder-list__row {
+    grid-template-columns: 30px 1fr 56px;
+  }
+  .binder-list__bar {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    margin-top: -4px;
+  }
+}
+
+.binder-index__clear {
+  margin-top: 40px;
+}
+
+/* ── Uma coleção ──────────────────────────────────────────────────────────── */
+
+.binder__back {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.binder__back::before {
+  content: '‹ ';
+}
+
+.binder__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.binder__cover {
+  width: clamp(64px, 16vw, 104px);
+  filter: drop-shadow(0 12px 14px rgb(29 29 31 / 0.2));
+}
+
+.binder__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 14px;
+  color: var(--ink-soft);
+}
+
+.rarity-bar {
+  display: flex;
+  gap: 3px;
+  height: 10px;
+  margin: 28px 0 14px;
+}
+
+.rarity-bar__seg {
+  --pct: 0;
+  flex: 1 1 0;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, var(--glow) calc(var(--pct) * 100%), transparent 0) no-repeat,
+    color-mix(in srgb, var(--ink) 10%, transparent);
+}
+
+.binder__filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--shop-white);
+}
+
+.chip__count {
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+}
+
+.binder__book {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.binder__arrow {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.binder__arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (min-width: 900px) {
+  .binder__spread {
+    max-width: calc((100dvh - 150px) * 1.46);
+  }
+}
+
+@media (max-width: 640px) {
+  .binder__book {
+    grid-template-columns: 1fr;
+  }
+  .binder__arrow {
+    display: none;
+  }
+}
+
+/* Cabe na altura da tela: uma folha 3×3 tem proporção ≈ 0,72 (largura/altura). */
+.binder__spread {
+  justify-self: center;
+  width: 100%;
+  max-width: calc((100dvh - 150px) * 0.72);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 18px;
+  touch-action: pan-y;
+  will-change: transform;
+}
+
+/* A folha do fichário: bolsos plásticos sobre papel. */
+.binder__page {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(6px, 1.6vw, 12px);
+  margin: 0;
+  padding: clamp(10px, 2.4vw, 18px);
+  list-style: none;
+  border-radius: var(--radius-m);
+  background: var(--shop-paper);
+  box-shadow: 0 1px 2px rgb(29 29 31 / 0.06), 0 12px 32px rgb(29 29 31 / 0.08);
+}
+
+.pocket {
+  position: relative;
+  aspect-ratio: var(--card-ratio);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.pocket.is-missing {
+  display: grid;
+  place-items: center;
+}
+
+.pocket__num {
+  color: var(--ink-faint);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pocket.is-blank {
+  background: none;
+  box-shadow: none;
+}
+
+.pocket__card {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: none;
+  cursor: zoom-in;
+  transition: transform 140ms var(--spring-out);
+}
+
+.pocket__card:active {
+  transform: scale(0.97);
+}
+
+.pocket__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Brilho discreto só nas raridades altas. */
+.pocket.rarity-4 .pocket__card,
+.pocket.rarity-5 .pocket__card,
+.pocket.rarity-6 .pocket__card,
+.pocket.rarity-7 .pocket__card {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--glow) 70%, white);
+}
+
+.pocket__count {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgb(29 29 31 / 0.82);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.binder__pages {
+  margin: 14px 0 0;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}

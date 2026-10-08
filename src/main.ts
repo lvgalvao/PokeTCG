@@ -1,10 +1,10 @@
 import { autoSeed, mulberry32 } from './core/rng.js';
-import { loadCatalog } from './domain/catalog.js';
 import { createLocalStorageCollectionStore } from './persistence/collection-store.js';
 import { getSupabaseClient } from './persistence/supabase-client.js';
 import { createSupabaseCollectionStore } from './persistence/supabase-collection-store.js';
 import type { CollectionStore } from './domain/collection.js';
 import { App } from './ui/app.js';
+import { loadSetsIndex } from './ui/sets-index.js';
 
 function parseSeedFromUrl(): number | null {
   const params = new URLSearchParams(window.location.search);
@@ -16,93 +16,15 @@ function parseSeedFromUrl(): number | null {
   return n >>> 0;
 }
 
-// Newest first. Order is reflected in the <select> dropdown.
-const SET_IDS = [
-  'me55',
-  'me5',
-  'me4',
-  'me3',
-  'me2pt5',
-  'me2',
-  'me1',
-  'zsv10pt5',
-  'rsv10pt5',
-  'sv10',
-  'sv9',
-  'sv8pt5',
-  'sv8',
-  'sv7',
-  'sv6pt5',
-  'sv6',
-  'sv5',
-  'sv4pt5',
-  'sv4',
-  'sv3pt5',
-  'sv3',
-  'sv2',
-  'sv1',
-  'swsh12pt5',
-  'swsh12',
-  'swsh11',
-  'pgo',
-  'swsh10',
-  'swsh9',
-  'swsh8',
-  'cel25',
-  'swsh7',
-  'swsh45',
-  'swsh4',
-  'swsh35',
-  'sm12',
-  'sm115',
-  'sm9',
-  'xy12',
-  'ex7',
-  'ex6',
-  'ex1',
-  'ecard3',
-  'ecard2',
-  'ecard1',
-  'base6',
-  'neo4',
-  'neo3',
-  'neo2',
-  'neo1',
-  'gym2',
-  'gym1',
-  'base5',
-  'base4',
-  'base3',
-  'base2',
-  'base1',
-] as const;
-
 async function bootstrap(): Promise<void> {
-  const loaded = await Promise.all(
-    SET_IDS.map(async (id) => [id, await loadCatalog(`./${id}/manifest.json`)] as const),
-  );
-  const catalogs: Record<string, Awaited<ReturnType<typeof loadCatalog>>> = {};
-  for (const [id, cat] of loaded) catalogs[id] = cat;
-
-  const select = document.getElementById('active-set') as HTMLSelectElement | null;
-  if (select) {
-    select.innerHTML = '';
-    for (const [id, cat] of loaded) {
-      const opt = document.createElement('option');
-      opt.value = id;
-      opt.textContent = cat.setName;
-      select.append(opt);
-    }
-  }
-
+  const [index, store] = await Promise.all([loadSetsIndex(), initStore()]);
   const seed = parseSeedFromUrl() ?? autoSeed();
   const masterRng = mulberry32(seed);
-  const store = await initStore();
 
   // Expose seed in dev for bug reports (FR-012)
   (window as unknown as Record<string, unknown>).__pkmnSeed = seed;
 
-  new App({ catalogs, defaultSetId: SET_IDS[0], masterRng, store });
+  new App({ index, masterRng, store });
 }
 
 async function initStore(): Promise<CollectionStore> {
@@ -123,13 +45,13 @@ async function initStore(): Promise<CollectionStore> {
 
 bootstrap().catch((err) => {
   console.error('Failed to bootstrap app:', err);
-  const main = document.querySelector('main');
+  const main = document.querySelector('#view');
   if (main) {
     main.innerHTML = `
       <div class="banner banner--warning">
         <strong>Erro ao iniciar o jogo.</strong>
-        Verifique se você rodou <code>python tools/download_cards.py --latest 10</code>
-        e se <code>assets/&lt;setId&gt;/manifest.json</code> existe para cada coleção.
+        Rode <code>python tools/build_sets_index.py</code> para gerar
+        <code>assets/data/sets.json</code> e recarregue a página.
       </div>
     `;
   }

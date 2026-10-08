@@ -84,3 +84,31 @@ export function playCelebrationSound() {
 
   noiseSource.start(startTime);
 }
+
+/** Rasgo do lacre: ruído com filtro em varredura, curto e seco. */
+export function playTearSound() {
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  const t = audioCtx.currentTime;
+  const length = Math.floor(audioCtx.sampleRate * 0.28);
+  const buffer = audioCtx.createBuffer(1, length, audioCtx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < length; i++) {
+    // Fibras rasgando: ruído com estalos irregulares.
+    data[i] = (Math.random() * 2 - 1) * (Math.random() > 0.97 ? 1 : 0.35);
+  }
+  const source = audioCtx.createBufferSource();
+  source.buffer = buffer;
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.Q.value = 0.9;
+  filter.frequency.setValueAtTime(900, t);
+  filter.frequency.exponentialRampToValueAtTime(4200, t + 0.22);
+  const gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0.0001, t);
+  gain.gain.exponentialRampToValueAtTime(0.5, t + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.01, t + 0.28);
+  source.connect(filter);
+  filter.connect(gain);
+  gain.connect(audioCtx.destination);
+  source.start(t);
+}

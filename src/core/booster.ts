@@ -8,7 +8,6 @@ import {
   SLOT_INDICES,
   type BoosterProfile,
   type BucketDistribution,
-  type SlotIndex,
   type SlotOutcome,
 } from './distributions.js';
 import type { RNG } from './rng.js';

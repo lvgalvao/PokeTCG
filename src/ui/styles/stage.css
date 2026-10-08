@@ -1,0 +1,431 @@
+/* Palco escuro da abertura: a loja recua, o pacote e o foil viram o centro. */
+
+.stage {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(120% 80% at 50% 38%, #1b1b24 0%, var(--stage) 62%);
+  color: var(--stage-ink);
+  overflow: hidden;
+  animation: stage-in 260ms var(--spring-out);
+}
+
+@keyframes stage-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.stage__bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: max(12px, env(safe-area-inset-top)) var(--gutter) 12px;
+}
+
+.stage__close {
+  justify-self: start;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--stage-ink) 12%, transparent);
+  color: var(--stage-ink);
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+.stage__title {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.016em;
+  text-align: center;
+}
+
+.stage__counter {
+  justify-self: end;
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--stage-ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.stage__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 8px var(--gutter) max(20px, env(safe-area-inset-bottom));
+  min-height: 0;
+}
+
+.stage__hint {
+  margin: 0;
+  color: var(--stage-ink-soft);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+.stage__hint.is-nudged {
+  animation: hint-nudge 420ms var(--spring-out);
+  color: var(--stage-ink);
+}
+
+@keyframes hint-nudge {
+  30% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ── O pacote e seu lacre ─────────────────────────────────────────────────── */
+
+.stage__pack {
+  display: grid;
+  place-items: center;
+}
+
+.tear {
+  --rx: 0deg;
+  --ry: 0deg;
+  --tear: 0;
+  position: relative;
+  width: min(62vw, 42dvh, 300px);
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  border-radius: 6px;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 300ms var(--spring-out);
+  filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.55));
+}
+
+.tear:active {
+  cursor: grabbing;
+}
+
+.tear__body,
+.tear__strip {
+  width: 100%;
+  height: auto;
+}
+
+/* Mesmo arte nas duas camadas; o recorte separa lacre (topo) e corpo. */
+.tear__body {
+  clip-path: inset(13% 0 0 0);
+}
+
+.tear__strip {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 87% 0);
+  will-change: transform;
+}
+
+/* Picote: aparece mais forte à medida que o rasgo avança. */
+.tear__line {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 13%;
+  height: 0;
+  border-top: 2px dashed rgb(255 255 255 / calc(0.7 + var(--tear) * 0.3));
+  filter: drop-shadow(0 0 3px rgb(0 0 0 / 0.8));
+  pointer-events: none;
+}
+
+.tear.is-torn .tear__line {
+  opacity: 0;
+}
+
+.tear.is-torn .tear__body {
+  animation: body-sink 420ms var(--spring-out) forwards;
+}
+
+@keyframes body-sink {
+  to {
+    transform: translateY(30%);
+    opacity: 0;
+  }
+}
+
+/* ── Pilha de cartas ──────────────────────────────────────────────────────── */
+
+.stage__deck {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 0;
+}
+
+.deck {
+  position: relative;
+  width: min(72vw, 46dvh, 360px);
+  aspect-ratio: var(--card-ratio);
+  animation: deck-rise 420ms var(--spring-out);
+}
+
+@keyframes deck-rise {
+  from {
+    transform: translateY(18%) scale(0.92);
+    opacity: 0;
+  }
+}
+
+.deck__card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --depth: 0;
+  --glow: transparent;
+  position: absolute;
+  inset: 0;
+  border-radius: 4.5% / 3.2%;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  transform: translateY(calc(var(--depth) * 3px));
+  box-shadow: 0 24px 50px rgb(0 0 0 / 0.5);
+  outline: none;
+}
+
+.deck__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 300ms var(--spring-out);
+}
+
+.deck__card:focus-visible {
+  box-shadow: 0 0 0 3px var(--stage-ink), 0 24px 50px rgb(0 0 0 / 0.5);
+}
+
+.deck__card.is-gone {
+  pointer-events: none;
+}
+
+.rarity-1 { --glow: var(--r1); }
+.rarity-2 { --glow: var(--r2); }
+.rarity-3 { --glow: var(--r3); }
+.rarity-4 { --glow: var(--r4); }
+.rarity-5 { --glow: var(--r5); }
+.rarity-6 { --glow: var(--r6); }
+.rarity-7 { --glow: var(--r7); }
+
+/* Hit: halo na cor da raridade + foil sempre ligado. */
+.deck__card.is-celebrating {
+  --foil-strength: 0.75;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--glow) 80%, white),
+    0 0 60px 6px color-mix(in srgb, var(--glow) 55%, transparent),
+    0 24px 50px rgb(0 0 0 / 0.5);
+  animation: hit-pop 520ms var(--spring-out);
+}
+
+@keyframes hit-pop {
+  from {
+    transform: scale(0.94);
+  }
+  45% {
+    transform: scale(1.03);
+  }
+}
+
+.deck__new {
+  position: absolute;
+  top: 3%;
+  right: 4%;
+  z-index: 2;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--pokeball);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.35);
+}
+
+.stage__actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Bandeja: as cartas já vistas, em miniatura, na ordem em que saíram. */
+.tray {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 46px;
+  max-width: 100%;
+}
+
+.tray__card {
+  width: 32px;
+  aspect-ratio: var(--card-ratio);
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12);
+  animation: tray-in 300ms var(--spring-out);
+}
+
+.tray__card.rarity-4,
+.tray__card.rarity-5,
+.tray__card.rarity-6,
+.tray__card.rarity-7 {
+  box-shadow: 0 0 0 2px var(--glow), 0 0 12px var(--glow);
+}
+
+@keyframes tray-in {
+  from {
+    transform: translateY(-16px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* ── Resumo ───────────────────────────────────────────────────────────────── */
+
+.summary {
+  width: 100%;
+  max-width: 920px;
+  max-height: 100%;
+  overflow-y: auto;
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+.summary__title {
+  margin: 0;
+  font: 700 clamp(1.75rem, 6vw, 2.75rem) / 1.08 var(--font-display);
+  letter-spacing: -0.032em;
+}
+
+.summary__meta {
+  margin: 8px 0 24px;
+  color: var(--stage-ink-soft);
+}
+
+.summary__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(28vw, 128px), 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.summary__card {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 4.5% / 3.2%;
+  overflow: hidden;
+  background: none;
+  cursor: zoom-in;
+  aspect-ratio: var(--card-ratio);
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.45);
+  transition: transform 160ms var(--spring-out);
+}
+
+.summary__card:active {
+  transform: scale(0.97);
+}
+
+.summary__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.summary__card.is-hit {
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--glow) 80%, white),
+    0 0 28px 2px color-mix(in srgb, var(--glow) 50%, transparent);
+}
+
+.summary__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+/* ── Carta ampliada ───────────────────────────────────────────────────────── */
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: var(--gutter);
+  background: rgb(11 11 15 / 0.86);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--stage-ink);
+  animation: viewer-in 220ms var(--spring-out);
+}
+
+.viewer.is-leaving {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+@keyframes viewer-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.viewer__card {
+  --rx: 0deg;
+  --ry: 0deg;
+  width: min(82vw, 62dvh, 420px);
+  aspect-ratio: var(--card-ratio);
+  border-radius: 4.5% / 3.2%;
+  overflow: hidden;
+  transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 300ms var(--spring-out);
+  box-shadow: 0 30px 70px rgb(0 0 0 / 0.6);
+  animation: viewer-card-in 320ms var(--spring-out);
+}
+
+@keyframes viewer-card-in {
+  from {
+    transform: scale(0.9);
+  }
+}
+
+.viewer__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.viewer__caption {
+  max-width: 40ch;
+  margin: 0;
+  color: var(--stage-ink-soft);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tear,
+  .deck__card img,
+  .viewer__card {
+    transform: none !important;
+  }
+}

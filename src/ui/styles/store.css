@@ -1,0 +1,210 @@
+/* Vitrine: destaque do lançamento + corredores por era com prateleiras de madeira clara. */
+
+.store {
+  padding-bottom: 64px;
+}
+
+/* Pacote como objeto físico: inclina com o ponteiro, sombra de contato no chão. */
+.pack {
+  --rx: 0deg;
+  --ry: 0deg;
+  display: block;
+  position: relative;
+  aspect-ratio: 5 / 9;
+  border-radius: 6px;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 300ms var(--spring-out);
+  filter: drop-shadow(0 18px 18px rgb(29 29 31 / 0.18)) drop-shadow(0 2px 3px rgb(29 29 31 / 0.2));
+}
+
+.pack__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  user-select: none;
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 8px 48px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) 40px;
+}
+
+.hero__stage {
+  display: grid;
+  place-items: center;
+  padding: 12px 0 8px;
+}
+
+.pack--hero {
+  width: min(52vw, 260px);
+}
+
+.hero__copy {
+  text-align: center;
+}
+
+.hero__new {
+  margin: 0 0 6px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--pokeball);
+}
+
+.hero__title {
+  margin: 0;
+  font: 700 clamp(2.25rem, 7vw, 4rem) / 1.04 var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.hero__meta {
+  max-width: 34ch;
+  margin: 12px auto 24px;
+  font-size: 1.0625rem;
+  color: var(--ink-soft);
+}
+
+.hero__cta {
+  min-width: 200px;
+}
+
+.hero__progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.hero__progress:hover {
+  color: var(--ink);
+}
+
+@media (min-width: 760px) {
+  .hero {
+    grid-template-columns: minmax(240px, 1fr) 1.15fr;
+    padding-top: 56px;
+    padding-bottom: 72px;
+  }
+  .pack--hero {
+    width: min(30vw, 320px);
+  }
+  .hero__copy {
+    text-align: left;
+  }
+  .hero__meta {
+    margin-left: 0;
+  }
+  .hero__progress {
+    justify-content: flex-start;
+  }
+}
+
+/* Corredores: o ano é o título — a loja conta os 30 anos do TCG. */
+.aisle {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.aisle__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  padding: 0 var(--gutter);
+}
+
+.aisle__years {
+  margin: 0;
+  font: 700 clamp(1.75rem, 5vw, 2.75rem) / 1 var(--font-display);
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.aisle__name {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+/* Todas as coleções à vista: a prateleira quebra em linhas, cada uma com sua beirada. */
+.shelf {
+  --pack-w: clamp(96px, 24vw, 150px);
+  --col-gap: clamp(12px, 3vw, 28px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--pack-w), 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 36px;
+  padding: 28px var(--gutter) 0;
+}
+
+.shelf__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Beirada de madeira: cada item cobre sua coluna e metade do vão, então a linha fica contínua. */
+.shelf__item::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: calc(var(--pack-w) * 1.8 - 6px);
+  left: calc(var(--col-gap) / -2);
+  right: calc(var(--col-gap) / -2);
+  height: 12px;
+  background: linear-gradient(180deg, var(--birch) 0%, var(--birch) 62%, var(--birch-edge) 100%);
+  box-shadow: 0 10px 16px -8px rgb(120 90 50 / 0.45);
+}
+
+.shelf__item .pack {
+  width: var(--pack-w);
+}
+
+.shelf__item:active .pack {
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) scale(0.96);
+  transition-duration: 100ms;
+}
+
+.shelf__item:focus-visible {
+  outline: none;
+}
+
+.shelf__item:focus-visible .pack {
+  outline: 3px solid var(--pokeball);
+  outline-offset: 6px;
+}
+
+.shelf__name {
+  margin-top: 18px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.shelf__progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
