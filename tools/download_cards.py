@@ -107,6 +107,7 @@ SET_COMPANIONS: dict[str, tuple[str, ...]] = {
     "swsh11": ("swsh11tg",),
     "swsh12": ("swsh12tg",),
     "swsh12pt5": ("swsh12pt5gg",),
+    "swsh10": ("swsh10tg",),
 }
 
 # Sets whose cards ride along in the parent's packs but stay out of the album
