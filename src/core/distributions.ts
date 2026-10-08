@@ -35,3 +35,51 @@ export const SLOT_DOWNGRADE_FLOOR: Readonly<Record<SlotIndex, Bucket | null>> = 
   5: '03_raras',
   6: '03_raras',
 };
+
+/**
+ * Resultado possível de um slot num perfil por set: cartas do `subset` (set principal, se
+ * omitido) filtradas por `rarities` (rarityRaw da fonte, sem diferenciar maiúsculas) ou,
+ * na ausência delas, por `bucket`. Sem nenhum dos dois, vale qualquer carta do subset.
+ */
+export interface SlotOutcome {
+  readonly p: number;
+  readonly bucket?: Bucket;
+  readonly rarities?: readonly string[];
+  readonly subset?: string;
+}
+
+/**
+ * Estrutura de pacote própria de um set, substituindo SLOT_DISTRIBUTIONS. O primeiro
+ * resultado de cada slot é o fallback quando o resultado sorteado está esgotado.
+ */
+export interface BoosterProfile {
+  readonly slots: Readonly<Record<SlotIndex, readonly SlotOutcome[]>>;
+  /** Exibe as cartas na ordem dos slots (ordem real do envelope) em vez de por raridade. */
+  readonly keepOrder?: boolean;
+}
+
+export const SET_BOOSTER_PROFILES: Readonly<Record<string, BoosterProfile>> = {
+  // 30th Celebration, na ordem real do envelope: 3 comuns (a 3ª pode ser hit: IR 1/5,2 ou
+  // Classic Collection 1/9,8), slot de rara (DR 1/4, SIR 1/18, Futuristic 1/99),
+  // 1 Pikachu e 1 Energia básica foil no final. Amostra: 4.063 pacotes.
+  me55: {
+    keepOrder: true,
+    slots: {
+      1: [{ p: 1, rarities: ['Common'] }],
+      2: [{ p: 1, rarities: ['Common'] }],
+      3: [
+        { p: 0.71, rarities: ['Common'] },
+        { p: 0.19, rarities: ['Illustration Rare'] },
+        { p: 0.1, subset: 'me55c' },
+      ],
+      4: [
+        { p: 0.69, rarities: ['Rare'] },
+        { p: 0.25, rarities: ['Double Rare'] },
+        { p: 0.05, rarities: ['Special Illustration Rare'] },
+        { p: 0.01, rarities: ['Futuristic Rare'] },
+      ],
+      5: [{ p: 1, rarities: ['Pikachu Rare'] }],
+      6: [{ p: 1, subset: 'sve' }],
+    },
+  },
+};

@@ -122,6 +122,15 @@
         "imagePath": {
           "type": "string",
           "pattern": "^assets/(01_comum|02_incomum|03_raras|04_duplo_raras|05_arte_secreta|06_duplo_arte_secreta|07_legendaria)/.+\\.jpg$"
+        },
+        "subset": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Set de origem quando a carta vem de um subset incorporado (ex.: \"me55c\" no me55). Ausente para cartas do set principal."
+        },
+        "packOnly": {
+          "type": "boolean",
+          "description": "Carta que sai no pacote mas não faz parte do álbum (ex.: Energia básica foil do me55)."
         }
       }
     }

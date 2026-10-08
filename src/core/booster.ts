@@ -2,11 +2,14 @@ import type { Card } from '../domain/card.js';
 import type { Catalog } from '../domain/catalog.js';
 import { BUCKETS, bucketRank, type Bucket } from './buckets.js';
 import {
+  SET_BOOSTER_PROFILES,
   SLOT_DISTRIBUTIONS,
   SLOT_DOWNGRADE_FLOOR,
   SLOT_INDICES,
+  type BoosterProfile,
   type BucketDistribution,
   type SlotIndex,
+  type SlotOutcome,
 } from './distributions.js';
 import type { RNG } from './rng.js';
 
@@ -79,6 +82,67 @@ function pickIndex(rng: RNG, length: number): number {
   return Math.floor(rng.next() * length);
 }
 
+export function sampleOutcome(rng: RNG, outcomes: readonly SlotOutcome[]): SlotOutcome {
+  const r = rng.next();
+  let cum = 0;
+  for (const o of outcomes) {
+    cum += o.p;
+    if (r < cum) return o;
+  }
+  return outcomes[outcomes.length - 1]!;
+}
+
+function outcomePool(catalog: Catalog, o: SlotOutcome, used: Set<string>): Card[] {
+  const rarities = o.rarities?.map((r) => r.toLowerCase());
+  const source = o.subset
+    ? [...catalog.cards, ...catalog.packOnly]
+    : o.bucket && !rarities
+      ? catalog.byBucket[o.bucket]
+      : catalog.cards;
+  return source.filter(
+    (c) =>
+      c.subset === o.subset &&
+      !used.has(c.id) &&
+      (!rarities || rarities.includes(c.rarityRaw.toLowerCase())),
+  );
+}
+
+function drawProfileSlots(
+  rng: RNG,
+  catalog: Catalog,
+  profile: BoosterProfile,
+  used: Set<string>,
+  drawn: BoosterSlot[],
+  downgrades: DowngradeRecord[],
+): void {
+  for (const drawIdx of SLOT_INDICES) {
+    const outcomes = profile.slots[drawIdx];
+    const picked = sampleOutcome(rng, outcomes);
+    let pool = outcomePool(catalog, picked, used);
+    let fellBack = false;
+    if (pool.length === 0) {
+      pool = outcomePool(catalog, outcomes[0]!, used);
+      fellBack = true;
+    }
+    if (pool.length === 0) {
+      throw new InsufficientCardsError(drawIdx, outcomes[0]!.bucket ?? '01_comum');
+    }
+    const card = pool[pickIndex(rng, pool.length)]!;
+    used.add(card.id);
+    const drawnBucket = picked.bucket ?? card.bucket;
+    if (fellBack) {
+      downgrades.push({ slot: drawIdx, from: drawnBucket, to: card.bucket });
+    }
+    drawn.push({
+      slotIndex: drawIdx,
+      drawIndex: drawIdx,
+      drawnBucket: fellBack ? drawnBucket : card.bucket,
+      effectiveBucket: card.bucket,
+      card,
+    });
+  }
+}
+
 export function generateBooster(rng: RNG, catalog: Catalog, seed: number): Booster {
   if (catalog.byBucket['01_comum'].length === 0) {
     throw new EmptyBaseBucketError();
@@ -88,7 +152,10 @@ export function generateBooster(rng: RNG, catalog: Catalog, seed: number): Boost
   const drawn: BoosterSlot[] = [];
   const downgrades: DowngradeRecord[] = [];
 
-  for (const drawIdx of SLOT_INDICES) {
+  const profile = SET_BOOSTER_PROFILES[catalog.setId];
+  if (profile) drawProfileSlots(rng, catalog, profile, used, drawn, downgrades);
+
+  for (const drawIdx of profile ? [] : SLOT_INDICES) {
     const drawnBucket = sampleBucket(rng, SLOT_DISTRIBUTIONS[drawIdx]);
     const floor = SLOT_DOWNGRADE_FLOOR[drawIdx];
 
@@ -134,7 +201,7 @@ export function generateBooster(rng: RNG, catalog: Catalog, seed: number): Boost
     });
   }
 
-  drawn.sort((a, b) => {
+  if (!profile?.keepOrder) drawn.sort((a, b) => {
     const rankA = bucketRank(a.effectiveBucket);
     const rankB = bucketRank(b.effectiveBucket);
     if (rankA !== rankB) {

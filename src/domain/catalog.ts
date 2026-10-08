@@ -4,7 +4,10 @@ import type { Card } from './card.js';
 export interface Catalog {
   readonly setId: string;
   readonly setName: string;
+  /** Cartas do álbum (exclui as `packOnly`). */
   readonly cards: readonly Card[];
+  /** Cartas que só saem no pacote (ex.: Energia básica foil do me55). */
+  readonly packOnly: readonly Card[];
   readonly byId: ReadonlyMap<string, Card>;
   readonly byBucket: Readonly<Record<Bucket, readonly Card[]>>;
   readonly totalSet: number;
@@ -18,6 +21,8 @@ export interface ManifestCard {
   bucket: string;
   collectionNumber: number;
   imagePath: string;
+  subset?: string;
+  packOnly?: boolean;
 }
 
 export interface Manifest {
@@ -51,6 +56,7 @@ export async function loadCatalog(manifestUrl: string): Promise<Catalog> {
 
 export function buildCatalog(manifest: Manifest): Catalog {
   const cards: Card[] = [];
+  const packOnly: Card[] = [];
   for (const raw of manifest.cards) {
     if (!raw.id) throw new CatalogValidationError(`Card missing id: ${JSON.stringify(raw)}`);
     if (!isBucket(raw.bucket)) {
@@ -64,7 +70,7 @@ export function buildCatalog(manifest: Manifest): Catalog {
         `Card ${raw.id}: imagePath ${raw.imagePath} does not match its bucket`,
       );
     }
-    cards.push({
+    (raw.packOnly ? packOnly : cards).push({
       id: raw.id,
       name: raw.name,
       rarityRaw: raw.rarityRaw,
@@ -72,12 +78,20 @@ export function buildCatalog(manifest: Manifest): Catalog {
       collectionNumber: raw.collectionNumber,
       imagePath: raw.imagePath,
       imageUrl: raw.imagePath,
+      ...(raw.subset ? { subset: raw.subset } : {}),
     });
   }
-  cards.sort((a, b) => a.collectionNumber - b.collectionNumber);
+  // Set principal primeiro; subsets incorporados (ex.: me55c) depois, cada um em ordem própria.
+  cards.sort(
+    (a, b) =>
+      Number(!!a.subset) - Number(!!b.subset) ||
+      (a.subset ?? '').localeCompare(b.subset ?? '') ||
+      // Cartas sem número (ex.: me55-B/G/R) vão para o fim do grupo.
+      (a.collectionNumber || Infinity) - (b.collectionNumber || Infinity),
+  );
 
   const byId = new Map<string, Card>();
-  for (const c of cards) {
+  for (const c of [...cards, ...packOnly]) {
     if (byId.has(c.id)) {
       throw new CatalogValidationError(`Duplicate card id ${c.id}`);
     }
@@ -102,6 +116,7 @@ export function buildCatalog(manifest: Manifest): Catalog {
     setId: manifest.setId,
     setName: manifest.setName,
     cards,
+    packOnly,
     byId,
     byBucket,
     totalSet,

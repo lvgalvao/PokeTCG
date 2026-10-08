@@ -88,6 +88,15 @@ SET_COMPANIONS: dict[str, tuple[str, ...]] = {
     "me55": ("me55c",),
 }
 
+# Sets whose cards ride along in the parent's packs but stay out of the album
+# (e.g. the foil Basic Energy at the back of every 30th Celebration pack).
+PACK_ONLY_COMPANIONS: dict[str, tuple[str, ...]] = {
+    "me55": ("sve",),
+}
+
+# Optional minimum collection number per companion (sve 9–16 are the foil Basic Energies).
+COMPANION_MIN_NUMBER: dict[str, int] = {"sve": 9}
+
 # Allowed characters in a card id for path-safety (FR-007).
 CARD_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_\-]*$")
 
@@ -241,6 +250,11 @@ def process_card(
         "collectionNumber": collection_number,
         "imagePath": rel_path,
     }
+    card_set_id = (card.get("set") or {}).get("id")
+    if card_set_id and card_set_id != assets_dir.name:
+        manifest_entry["subset"] = card_set_id
+        if card_set_id in PACK_ONLY_COMPANIONS.get(assets_dir.name, ()):
+            manifest_entry["packOnly"] = True
 
     if dest.exists() and not force:
         report.skipped.append(card_id)
@@ -348,8 +362,13 @@ def download_set(set_id: str, set_name_hint: str | None, args: argparse.Namespac
 
     try:
         cards = list_set_cards(set_id, args.api_key)
-        for companion_id in SET_COMPANIONS.get(set_id, ()):
-            cards += list_set_cards(companion_id, args.api_key)
+        for companion_id in SET_COMPANIONS.get(set_id, ()) + PACK_ONLY_COMPANIONS.get(set_id, ()):
+            min_number = COMPANION_MIN_NUMBER.get(companion_id, 0)
+            cards += [
+                c
+                for c in list_set_cards(companion_id, args.api_key)
+                if int(re.sub(r"[^0-9]", "", c.get("number", "0")) or "0") >= min_number
+            ]
     except Exception as exc:  # noqa: BLE001
         log.error("Failed to list set %s: %s", set_id, exc)
         return 3
@@ -396,7 +415,9 @@ def main(argv: Iterable[str] | None = None) -> int:
         if not sets:
             log.error("No sets returned by API")
             return 3
-        companions = {c for cs in SET_COMPANIONS.values() for c in cs}
+        companions = {
+            c for cs in (*SET_COMPANIONS.values(), *PACK_ONLY_COMPANIONS.values()) for c in cs
+        }
         targets = [
             (s.get("id", ""), s.get("name"))
             for s in sets

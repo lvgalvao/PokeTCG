@@ -13,4 +13,6 @@ export interface Card {
    * `imagePath` sem o prefixo `assets/`. Usar em `<img src=...>`.
    */
   readonly imageUrl: string;
+  /** Set de origem quando a carta vem de um subset incorporado (ex.: `me55c`). */
+  readonly subset?: string;
 }
