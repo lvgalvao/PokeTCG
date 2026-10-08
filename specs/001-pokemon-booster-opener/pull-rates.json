@@ -5477,6 +5477,373 @@
     "notes": "Rates: EX 1/8.2, full art 1/15, BREAK 1/18 (reverse slot), secret rare 1/8.1 in the 3rd uncommon slot. Secrets were printed on the uncommon sheet, so a pack can have a secret plus an EX. The plain Rare Holo rate of 0.2 is an era-typical estimate. Mega EX cards are labeled 'Rare Holo EX' in the data. The Basic Energy is omitted.",
     "packSize": 10
   },
+  "ex7": {
+    "structure": "Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse holo, 1 rare slot (non-holo rare, holo, ex ~1 in 12, Gold Star ~1 in 72, secret rare ~1 in 108). No basic energy in the set.",
+    "estimate": false,
+    "sources": [
+      "https://github-wiki-see.page/m/Pepper0ni/TTS-PTCG-Pack-Simulator/wiki/Pull-rate-and-card-order-Information",
+      "https://www.elitefourum.com/t/guide-to-early-ex-series-pull-rates/30710"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.3368421052631579,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.3684210526315789,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.14736842105263157,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.14736842105263157,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.22685185185185186,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.08333333333333333,
+            "rarities": [
+              "Rare Holo EX"
+            ]
+          },
+          {
+            "p": 0.013888888888888888,
+            "rarities": [
+              "Rare Holo Star"
+            ]
+          },
+          {
+            "p": 0.009259259259259259,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Gold Stars Mudkip/Torchic/Treecko (107-109) are correctly 'Rare Holo Star'; secrets Charmeleon (110) and Here Comes Team Rocket! (111) are correctly 'Rare Secret'. Holo = 1/3 - 1/12 - 1/72 - 1/108 (~0.2269). Reverse slot weighted by card count over C/U/R/RH. Special energies (94-95) are Uncommon.",
+    "packSize": 9
+  },
+  "ex6": {
+    "structure": "Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse holo, 1 rare slot (non-holo rare, holo ~2 in 9, ex ~1 in 12, secret rare ~1 in 36). No basic energy in the set.",
+    "estimate": false,
+    "sources": [
+      "https://github-wiki-see.page/m/Pepper0ni/TTS-PTCG-Pack-Simulator/wiki/Pull-rate-and-card-order-Information",
+      "https://www.elitefourum.com/t/guide-to-early-ex-series-pull-rates/30710"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.34951456310679613,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.34951456310679613,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.13592233009708737,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.1650485436893204,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.2222222222222222,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.08333333333333333,
+            "rarities": [
+              "Rare Holo EX"
+            ]
+          },
+          {
+            "p": 0.027777777777777776,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Secret rares 113-116 (Charmander, Articuno/Moltres/Zapdos ex) are correctly 'Rare Secret'. Holo = 1/3 - 1/12 - 1/36 = 2/9. Reverse slot weighted by card count over C/U/R/RH (no reverse ex/secrets). Data lists two 'Mr. Mime ex' entries (ex6-110 and ex6-111), both 'Rare Holo EX' - likely a naming error in the source data, harmless for rarity.",
+    "packSize": 9
+  },
+  "ex1": {
+    "structure": "Real English pack: 9 cards = 4 commons, 2 uncommons, 1 rare (always), 1 reverse holo (any card, basic energy included), 1 premium slot (ex ~1 in 6, holo rare ~1 in 6, basic energy ~1 in 3, otherwise a common).",
+    "estimate": false,
+    "sources": [
+      "https://github-wiki-see.page/m/Pepper0ni/TTS-PTCG-Pack-Simulator/wiki/Pull-rate-and-card-order-Information",
+      "https://www.elitefourum.com/t/guide-to-early-ex-series-pull-rates/30710",
+      "https://cardcodex.com/pokemon/ex/ruby-sapphire/ruby-and-sapphire-booster-box-ex1/"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Rare"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.39603960396039606,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.33663366336633666,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.12871287128712872,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.13861386138613863,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.16666666666666666,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.16666666666666666,
+            "rarities": [
+              "Rare Holo EX"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "The 6 basic energies (104-109) are tagged 'Common' in the data, so the premium slot's 1/3 energy + 1/3 common are merged into one 2/3 Common outcome (energy can't be targeted separately by rarity); energies still show up through the Common pools. ex 1/6 per Zorloth/Card Codex; holo 1/6 (same as ex). Holo+ex share the premium slot; the rare slot is always a non-holo Rare. Some early print runs reportedly had fewer holos (2-3/box) - not modeled.",
+    "packSize": 9
+  },
   "ecard3": {
     "structure": "Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse-holo slot (any main-set card), 1 rare slot (non-holo rare, H-numbered holo rare ~1 in 3.4 packs, or Crystal Pokémon secret rare 145-150 ~1 in 18). No basic energy in the set.",
     "estimate": true,
@@ -5588,6 +5955,351 @@
     },
     "notes": "There are no official odds; the H-holo (~1/3.4) and Crystal (~1/18) rates are community estimates. The data labels Crystals 145-150 'Rare Secret' and H1-H32 'Rare Holo', which is correct. Reverse-holo Crystals are not modeled, to keep exactly one hit per pack. The reverse slot's 60/30/10 Common/Uncommon/Rare split is an estimate.",
     "packSize": 9
+  },
+  "ecard2": {
+    "structure": "Real English pack: 9 cards = 4 commons, 2 uncommons, 1 rare (always), 1 reverse holo, 1 premium slot (H-numbered holo ~11 in 36, Crystal Pokémon secret rare ~1 in 36, otherwise a common). No basic energy in the set.",
+    "estimate": true,
+    "sources": [
+      "https://github-wiki-see.page/m/Pepper0ni/TTS-PTCG-Pack-Simulator/wiki/Pull-rate-and-card-order-Information"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Rare"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.3469387755102041,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.32653061224489793,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.32653061224489793,
+            "rarities": [
+              "Rare"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.3055555555555556,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.027777777777777776,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Crystals Kingdra/Lugia/Nidoking (148-150) are correctly 'Rare Secret'; H1-H32 holos are correctly 'Rare Holo'. Crystal 1/36 (~1 per box) + holo 11/36 = 1/3 premium. Reverse slot weighted by card count over main-set C/U/R (H-holos have no reverse versions in the data; reverse Crystals not modeled).",
+    "packSize": 9
+  },
+  "ecard1": {
+    "structure": "Real English pack: 9 cards = 4 commons, 2 uncommons, 1 rare (always), 1 reverse holo (any non-basic-energy card, equal odds per card), 1 premium slot (holo rare ~1 in 3, otherwise a common). A pack can hold holo + rare + reverse rare.",
+    "estimate": true,
+    "sources": [
+      "https://github-wiki-see.page/m/Pepper0ni/TTS-PTCG-Pack-Simulator/wiki/Pull-rate-and-card-order-Information",
+      "https://www.elitefourum.com/t/how-were-expedition-base-set-reverse-rares-distributed/30980"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Rare"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.3081761006289308,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.2389937106918239,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.25157232704402516,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.20125786163522014,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Holo rare does not replace the rare (it replaces a common). Reverse slot weighted by card count (C 49, U 38, R 40, RH 32 of 159; community says rarity has no effect on reverse odds). Basic energies 160-165 (rarity \"\") are NOT modeled: no pack-structure source lists them in Expedition boosters (they appear to come from theme decks) and they had no reverse versions - so rarity \"\" is not obtainable for ecard1.",
+    "packSize": 9
+  },
+  "base6": {
+    "structure": "Real English pack: 11 cards = 6 commons, 3 uncommons, 1 reverse holo (any of the 110 cards, fireworks pattern), 1 rare (holo ~1 in 3, otherwise non-holo rare). No basic energy in the set.",
+    "estimate": false,
+    "sources": [
+      "https://github-wiki-see.page/m/Pepper0ni/TTS-PTCG-Pack-Simulator/wiki/Pull-rate-and-card-order-Information",
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762/26"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.32727272727272727,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.32727272727272727,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.17272727272727273,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.17272727272727273,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "All 110 reverse holos were printed on one sheet at equal rates, so the reverse slot is weighted by card count (C 36, U 36, R 19, RH 19 of 110). Commons/uncommons really came as 9 consecutive cards from a shared C/U sheet (avg ~3 uncommons); modeled as a fixed 6C+3U. No basic energies (100/101 are special Potion/Full Heal Energy, Uncommon).",
+    "packSize": 11
   },
   "neo4": {
     "structure": "Real English pack: 11 cards = 7 commons, 3 uncommons, 1 rare slot (non-holo rare, holo rare ~9 per 36-pack box, or Shining Pokémon ~3 per box). No reverse holos; Neo Destiny has no basic energy cards in the set.",
@@ -5703,6 +6415,227 @@
     "notes": "Rates come from community box openings: 9 holos and 3 Shinings per 36-pack box. The Shining is in the rare slot, so a pack never has both a holo and a Shining. Some unlimited 'error' boxes put an extra Shining in a common slot (~1 in 24 packs); that is deliberately not modeled.",
     "packSize": 11
   },
+  "neo3": {
+    "structure": "Real English pack: 11 cards = 7 commons, 3 uncommons, 1 rare slot (non-holo rare, holo ~1 in 4, or Shining Pokémon ~1 in 12). No basic energy in the set.",
+    "estimate": false,
+    "sources": [
+      "https://github-wiki-see.page/m/Pepper0ni/TTS-PTCG-Pack-Simulator/wiki/Pull-rate-and-card-order-Information",
+      "https://www.elitefourum.com/t/shinings-in-neo-rev-neo-destiny-booster-box-pull-rate/26810"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.25,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.08333333333333333,
+            "rarities": [
+              "Rare Shining"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Shining Gyarados/Magikarp (65-66, correctly 'Rare Shining' in the data) at 1/12 (~3 per 36-pack box) share the rare slot with holos; holo = 1/3 - 1/12 = 1/4 so total premium stays 1/3.",
+    "packSize": 11
+  },
+  "neo2": {
+    "structure": "Real English pack: 11 cards = 7 commons, 3 uncommons, 1 rare (holo ~1 in 3, otherwise non-holo rare). No basic energy in the set.",
+    "estimate": false,
+    "sources": [
+      "https://github-wiki-see.page/m/Pepper0ni/TTS-PTCG-Pack-Simulator/wiki/Pull-rate-and-card-order-Information"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Standard WOTC 1/3 holo rate. Neo Discovery has no basic energy cards.",
+    "packSize": 11
+  },
   "neo1": {
     "structure": "Neo Genesis (unlimited): 11 game cards = 6 commons, 1 basic energy (printed in the set), 3 uncommons, 1 rare slot (Rare Holo ~1 in 3, else Rare).",
     "estimate": false,
@@ -5811,6 +6744,113 @@
       ]
     },
     "notes": "Structure kept 1:1 (Card Codex: 6 C, 3 U, 1 Energy, Rare 66.7% / Holo 33.3%)."
+  },
+  "gym2": {
+    "structure": "Real English unlimited pack: 11 cards = 1 basic energy, 6 commons, 3 uncommons, 1 rare (holo ~1 in 3, otherwise non-holo rare).",
+    "estimate": false,
+    "sources": [
+      "https://github-wiki-see.page/m/Pepper0ni/TTS-PTCG-Pack-Simulator/wiki/Pull-rate-and-card-order-Information"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              ""
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Basic energies 127-132 have rarity \"\" in the data; 1 energy slot. 1st Edition odds are the same structure.",
+    "packSize": 11
   },
   "gym1": {
     "structure": "Real English unlimited pack: 11 cards = 7 common-sheet cards (commons plus the set's basic energy cards), 3 uncommons, 1 rare (holo ~1 in 3 packs, otherwise non-holo).",
@@ -6045,6 +7085,114 @@
       ]
     },
     "notes": "Structure kept 1:1. Dark Raichu has no published rate: estimated 1 in 100 packs, taken out of the holo share (holo 32.3%). Commons include the set's special energies/trainers as tagged in the data (24 commons for 7 slots)."
+  },
+  "base4": {
+    "structure": "Real English pack: 11 cards = 2 basic energies, 5 commons, 3 uncommons, 1 rare (holo ~1 in 3 packs, otherwise non-holo rare). No reverse holos.",
+    "estimate": false,
+    "sources": [
+      "https://github-wiki-see.page/m/Pepper0ni/TTS-PTCG-Pack-Simulator/wiki/Pull-rate-and-card-order-Information",
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              ""
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              ""
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1.0,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666666,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Base Set 2's 6 basic energies (125-130) have no rarity in the data (rarity \"\"); 2 energy slots draw from them. Holo rate 1/3 is the WOTC back-of-pack 'premium' rate.",
+    "packSize": 11
   },
   "base3": {
     "structure": "Unlimited Fossil: 11 game cards = 7 commons, 3 uncommons, 1 rare slot (Rare Holo ~1 in 3, else Rare). No energy.",

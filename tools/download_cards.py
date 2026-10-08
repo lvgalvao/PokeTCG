@@ -83,6 +83,7 @@ RARITY_TO_BUCKET: dict[str, str] = {
     "character rare": "05_arte_secreta",
     "rare prism star": "04_duplo_raras",
     "rare shining": "06_duplo_arte_secreta",
+    "rare holo star": "07_legendaria",
 }
 
 # Per-card rarity fixes for source data errors (the API lists me55's RGB Mews as Common).

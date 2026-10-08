@@ -1667,6 +1667,120 @@ export const RESEARCHED_PROFILES: Readonly<Record<string, BoosterProfile>> = {
       ],
     ],
   },
+  // Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse holo, 1 rare slot (non-holo rare, holo, ex ~1 in 12, Gold Star ~1 in 72, secret rare ~1 in 108). No basic energy in the set.
+  "ex7": {
+    slots: [
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.3368421052631579, rarities: ["Common"] },
+        { p: 0.3684210526315789, rarities: ["Uncommon"] },
+        { p: 0.14736842105263157, rarities: ["Rare"] },
+        { p: 0.14736842105263157, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Rare"] },
+        { p: 0.22685185185185186, rarities: ["Rare Holo"] },
+        { p: 0.08333333333333333, rarities: ["Rare Holo EX"] },
+        { p: 0.013888888888888888, rarities: ["Rare Holo Star"] },
+        { p: 0.009259259259259259, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse holo, 1 rare slot (non-holo rare, holo ~2 in 9, ex ~1 in 12, secret rare ~1 in 36). No basic energy in the set.
+  "ex6": {
+    slots: [
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.34951456310679613, rarities: ["Common"] },
+        { p: 0.34951456310679613, rarities: ["Uncommon"] },
+        { p: 0.13592233009708737, rarities: ["Rare"] },
+        { p: 0.1650485436893204, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Rare"] },
+        { p: 0.2222222222222222, rarities: ["Rare Holo"] },
+        { p: 0.08333333333333333, rarities: ["Rare Holo EX"] },
+        { p: 0.027777777777777776, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 9 cards = 4 commons, 2 uncommons, 1 rare (always), 1 reverse holo (any card, basic energy included), 1 premium slot (ex ~1 in 6, holo rare ~1 in 6, basic energy ~1 in 3, otherwise a common).
+  "ex1": {
+    slots: [
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Rare"] },
+      ],
+      [
+        { p: 0.39603960396039606, rarities: ["Common"] },
+        { p: 0.33663366336633666, rarities: ["Uncommon"] },
+        { p: 0.12871287128712872, rarities: ["Rare"] },
+        { p: 0.13861386138613863, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Common"] },
+        { p: 0.16666666666666666, rarities: ["Rare Holo"] },
+        { p: 0.16666666666666666, rarities: ["Rare Holo EX"] },
+      ],
+    ],
+  },
   // Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse-holo slot (any main-set card), 1 rare slot (non-holo rare, H-numbered holo rare ~1 in 3.4 packs, or Crystal Pokémon secret rare 145-150 ~1 in 18). No basic energy in the set. (estimativa)
   "ecard3": {
     slots: [
@@ -1700,6 +1814,120 @@ export const RESEARCHED_PROFILES: Readonly<Record<string, BoosterProfile>> = {
         { p: 0.6503267973856208, rarities: ["Rare"] },
         { p: 0.29411764705882354, rarities: ["Rare Holo"] },
         { p: 0.05555555555555555, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 9 cards = 4 commons, 2 uncommons, 1 rare (always), 1 reverse holo, 1 premium slot (H-numbered holo ~11 in 36, Crystal Pokémon secret rare ~1 in 36, otherwise a common). No basic energy in the set. (estimativa)
+  "ecard2": {
+    slots: [
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Rare"] },
+      ],
+      [
+        { p: 0.3469387755102041, rarities: ["Common"] },
+        { p: 0.32653061224489793, rarities: ["Uncommon"] },
+        { p: 0.32653061224489793, rarities: ["Rare"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Common"] },
+        { p: 0.3055555555555556, rarities: ["Rare Holo"] },
+        { p: 0.027777777777777776, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 9 cards = 4 commons, 2 uncommons, 1 rare (always), 1 reverse holo (any non-basic-energy card, equal odds per card), 1 premium slot (holo rare ~1 in 3, otherwise a common). A pack can hold holo + rare + reverse rare. (estimativa)
+  "ecard1": {
+    slots: [
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Rare"] },
+      ],
+      [
+        { p: 0.3081761006289308, rarities: ["Common"] },
+        { p: 0.2389937106918239, rarities: ["Uncommon"] },
+        { p: 0.25157232704402516, rarities: ["Rare"] },
+        { p: 0.20125786163522014, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Common"] },
+        { p: 0.3333333333333333, rarities: ["Rare Holo"] },
+      ],
+    ],
+  },
+  // Real English pack: 11 cards = 6 commons, 3 uncommons, 1 reverse holo (any of the 110 cards, fireworks pattern), 1 rare (holo ~1 in 3, otherwise non-holo rare). No basic energy in the set.
+  "base6": {
+    slots: [
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.32727272727272727, rarities: ["Common"] },
+        { p: 0.32727272727272727, rarities: ["Uncommon"] },
+        { p: 0.17272727272727273, rarities: ["Rare"] },
+        { p: 0.17272727272727273, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Rare"] },
+        { p: 0.3333333333333333, rarities: ["Rare Holo"] },
       ],
     ],
   },
@@ -1743,6 +1971,85 @@ export const RESEARCHED_PROFILES: Readonly<Record<string, BoosterProfile>> = {
       ],
     ],
   },
+  // Real English pack: 11 cards = 7 commons, 3 uncommons, 1 rare slot (non-holo rare, holo ~1 in 4, or Shining Pokémon ~1 in 12). No basic energy in the set.
+  "neo3": {
+    slots: [
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Rare"] },
+        { p: 0.25, rarities: ["Rare Holo"] },
+        { p: 0.08333333333333333, rarities: ["Rare Shining"] },
+      ],
+    ],
+  },
+  // Real English pack: 11 cards = 7 commons, 3 uncommons, 1 rare (holo ~1 in 3, otherwise non-holo rare). No basic energy in the set.
+  "neo2": {
+    slots: [
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Rare"] },
+        { p: 0.3333333333333333, rarities: ["Rare Holo"] },
+      ],
+    ],
+  },
   // Neo Genesis (unlimited): 11 game cards = 6 commons, 1 basic energy (printed in the set), 3 uncommons, 1 rare slot (Rare Holo ~1 in 3, else Rare).
   "neo1": {
     slots: [
@@ -1775,6 +2082,45 @@ export const RESEARCHED_PROFILES: Readonly<Record<string, BoosterProfile>> = {
       ],
       [
         { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Rare"] },
+        { p: 0.3333333333333333, rarities: ["Rare Holo"] },
+      ],
+    ],
+  },
+  // Real English unlimited pack: 11 cards = 1 basic energy, 6 commons, 3 uncommons, 1 rare (holo ~1 in 3, otherwise non-holo rare).
+  "gym2": {
+    slots: [
+      [
+        { p: 1.0, rarities: [""] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
       ],
       [
         { p: 0.6666666666666666, rarities: ["Rare"] },
@@ -1860,6 +2206,45 @@ export const RESEARCHED_PROFILES: Readonly<Record<string, BoosterProfile>> = {
         { p: 0.6666666666666666, rarities: ["Rare"] },
         { p: 0.3233333333333333, rarities: ["Rare Holo"] },
         { p: 0.01, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 11 cards = 2 basic energies, 5 commons, 3 uncommons, 1 rare (holo ~1 in 3 packs, otherwise non-holo rare). No reverse holos.
+  "base4": {
+    slots: [
+      [
+        { p: 1.0, rarities: [""] },
+      ],
+      [
+        { p: 1.0, rarities: [""] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Common"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1.0, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Rare"] },
+        { p: 0.3333333333333333, rarities: ["Rare Holo"] },
       ],
     ],
   },
