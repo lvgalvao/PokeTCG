@@ -1,6 +1,4 @@
 import type { Collection } from '../domain/collection.js';
-import { DAILY_BONUS } from '../game/career.js';
-import { formatBRL, type Cents } from '../game/money.js';
 import { el } from '../utils/dom.js';
 import { attachFoil } from './motion.js';
 import {
@@ -53,43 +51,16 @@ function packImage(set: SetInfo, eager = false): HTMLImageElement {
   });
 }
 
-/** Na Carreira, cada pacote mostra o preço e se o saldo alcança. */
-export interface StorePricing {
-  readonly priceOf: (setId: string) => Cents | null;
-  readonly walletCents: Cents;
-}
-
-function priceTag(set: SetInfo, pricing: StorePricing | undefined): HTMLElement[] {
-  const price = pricing?.priceOf(set.id);
-  if (!pricing || price == null) return [];
-  const missing = price - pricing.walletCents;
-  if (missing <= 0) return [el('span', { className: 'price-tag', text: formatBRL(price) })];
-  // Fora do alcance: vira meta de economia, não um "não" vermelho.
-  const days = Math.ceil(missing / DAILY_BONUS);
-  const pct = Math.max(0.02, pricing.walletCents / price);
-  const meter = el('span', { className: 'goal-meter', attrs: { 'aria-hidden': 'true' } });
-  meter.style.setProperty('--pct', String(pct));
-  return [
-    el('span', { className: 'price-tag is-short', text: formatBRL(price) }),
-    meter,
-    el('span', {
-      className: 'price-goal',
-      text: days <= 1 ? 'amanhã dá' : `faltam ~${days} dias`,
-    }),
-  ];
-}
-
 export function renderStore(
   root: HTMLElement,
   index: SetsIndex,
   collection: Collection,
-  pricing?: StorePricing,
 ): () => void {
   const cleanups: Array<() => void> = [];
   const store = el('div', { className: 'store' });
 
   const hero = index.sets[0];
-  if (hero) store.append(renderHero(hero, collection, cleanups, pricing));
+  if (hero) store.append(renderHero(hero, collection, cleanups));
 
   for (const era of index.eras) {
     const sets = index.sets.filter((s) => s.era === era.id);
@@ -132,7 +103,6 @@ export function renderStore(
             className: 'shelf__progress',
             children: [progressRing(owned, set.albumSize, 16), `${owned}/${set.albumSize}`],
           }),
-          ...priceTag(set, pricing),
         ],
       });
       shelf.append(item);
@@ -149,9 +119,7 @@ function renderHero(
   set: SetInfo,
   collection: Collection,
   cleanups: Array<() => void>,
-  pricing?: StorePricing,
 ): HTMLElement {
-  const price = pricing?.priceOf(set.id);
   const owned = ownedCount(set, collection);
   const pack = el('a', {
     className: 'pack pack--hero',
@@ -173,8 +141,7 @@ function renderHero(
           el('p', {
             className: 'hero__meta',
             text:
-              `Lançada em ${formatReleaseDate(set.releaseDate)}. Cada pacote traz ${set.packSize} cartas` +
-              (price != null ? ` e custa ${formatBRL(price)}.` : '.'),
+              `Lançada em ${formatReleaseDate(set.releaseDate)}. Cada pacote traz ${set.packSize} cartas.`,
           }),
           el('a', {
             className: 'btn btn--primary hero__cta',

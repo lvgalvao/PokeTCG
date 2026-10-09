@@ -4,9 +4,6 @@ import { HIT_BOOST } from '../core/distributions.js';
 import { mulberry32, type RNG } from '../core/rng.js';
 import type { Catalog } from '../domain/catalog.js';
 import type { Collection } from '../domain/collection.js';
-import type { PackResult, PulledCard } from '../game/career.js';
-import { formatBRL, formatSigned, type Cents } from '../game/money.js';
-import type { PriceBook } from '../game/prices.js';
 import { playCelebrationSound, playFlipSound, playTearSound } from '../utils/audio.js';
 import { el } from '../utils/dom.js';
 import { SetBinderView } from './binder-view.js';
@@ -22,17 +19,6 @@ export interface StageDeps {
   /** Chamado assim que o pacote é rasgado: as cartas já são do jogador. */
   readonly onCardsOpened: (cardIds: readonly string[]) => void;
   readonly onClose: () => void;
-  /** Presente só no modo Carreira. */
-  readonly career?: StageCareer;
-}
-
-export interface StageCareer {
-  /** Preço do pacote; null quando não há preço conhecido (não dá para comprar). */
-  readonly priceCents: Cents | null;
-  readonly priceBook: PriceBook;
-  readonly walletCents: () => Cents;
-  /** Paga o pacote e guarda as cartas na Carreira; devolve lucro, fama e conquistas. */
-  readonly onPack: (cards: readonly PulledCard[]) => PackResult;
 }
 
 type Phase = 'sealed' | 'reveal' | 'summary';
@@ -160,7 +146,7 @@ export class StageView {
 
     this.body.replaceChildren(
       el('div', { className: 'stage__pack', children: [this.pack] }),
-      ...this.priceLine(),
+      el('p', { className: 'stage__hint', text: 'Toque para abrir' }),
     );
     this.pack.focus({ preventScroll: true });
     // Affordance: o lacre se ergue um pouco sozinho, mostrando o gesto.
@@ -171,32 +157,6 @@ export class StageView {
         this.renderTear();
       }, { damping: 0.45, response: 0.5 });
     }, 650);
-  }
-
-  private priceLine(): HTMLElement[] {
-    const c = this.deps.career;
-    if (!c) return [el('p', { className: 'stage__hint', text: 'Toque para abrir' })];
-    if (c.priceCents === null) {
-      return [el('p', { className: 'stage__price is-short', text: 'Esta coleção ainda não tem preço de pacote.' })];
-    }
-    const wallet = c.walletCents();
-    if (wallet < c.priceCents) {
-      this.pack.setAttribute('aria-disabled', 'true');
-      return [
-        el('p', {
-          className: 'stage__price is-short',
-          text: `Custa ${formatBRL(c.priceCents)} e você tem ${formatBRL(wallet)}. Venda repetidas ou complete missões.`,
-        }),
-        el('a', { className: 'btn btn--on-stage', attrs: { href: '#/carreira' }, text: 'Ver missões' }),
-      ];
-    }
-    return [
-      el('p', {
-        className: 'stage__price',
-        text: `Custa ${formatBRL(c.priceCents)}. Seu saldo: ${formatBRL(wallet)}.`,
-      }),
-      el('p', { className: 'stage__hint', text: 'Toque para abrir' }),
-    ];
   }
 
   private renderTear(): void {
@@ -216,7 +176,7 @@ export class StageView {
     let moved = false;
 
     this.pack.addEventListener('pointerdown', (ev) => {
-      if (this.phase !== 'sealed' || !this.canOpen()) return;
+      if (this.phase !== 'sealed') return;
       this.cancelTearSpring?.();
       this.pack.setPointerCapture(ev.pointerId);
       dragging = true;
@@ -263,22 +223,16 @@ export class StageView {
     this.pack.addEventListener('pointercancel', end);
   }
 
-  /** No modo Carreira, só abre com saldo para pagar o pacote. */
-  private canOpen(): boolean {
-    const c = this.deps.career;
-    return !c || (c.priceCents !== null && c.walletCents() >= c.priceCents);
-  }
-
   /** Rasgo pelo botão/teclado: o estado avança na hora; a animação só acompanha. */
   private autoTear(): void {
-    if (this.phase !== 'sealed' || !this.canOpen()) return;
+    if (this.phase !== 'sealed') return;
     this.tearDir = 1;
     this.completeTear(2);
   }
 
   /** O lacre sai voando com a velocidade do dedo e as cartas sobem do pacote. */
   private completeTear(velocity: number): void {
-    if (this.phase !== 'sealed' || !this.canOpen()) return;
+    if (this.phase !== 'sealed') return;
     this.phase = 'reveal';
     playTearSound();
     navigator.vibrate?.(12);
@@ -303,23 +257,8 @@ export class StageView {
     this.ownedBefore = new Set(this.deps.getCollection().entries.keys());
     this.booster = generateBooster(mulberry32(seed), this.deps.catalog, seed, HIT_BOOST);
     this.revealed = 0;
-    const career = this.deps.career;
-    if (career) {
-      this.packResult = career.onPack(
-        this.booster.slots.map((s) => ({
-          id: s.card.id,
-          rank: bucketRank(s.effectiveBucket),
-          rarityRaw: s.card.rarityRaw,
-          valueCents: career.priceBook.valueOf(s.card),
-          packOnly: this.isPackOnly(s),
-        })),
-      );
-    } else {
-      this.deps.onCardsOpened(this.booster.slots.map((s) => s.card.id));
-    }
+    this.deps.onCardsOpened(this.booster.slots.map((s) => s.card.id));
   }
-
-  private packResult: PackResult | null = null;
 
   // ── 2. Cartas, uma a uma ────────────────────────────────────────────────────────
 
@@ -551,9 +490,6 @@ export class StageView {
           el('img', { attrs: { src: slot.card.imageUrl, alt: '', loading: 'lazy' } }),
           ...(isNew ? [el('span', { className: 'deck__new', text: 'Nova' })] : []),
           ...this.subsetTag(slot),
-          ...(this.deps.career && !this.isPackOnly(slot)
-            ? [el('span', { className: 'value-tag', text: formatBRL(this.deps.career.priceBook.valueOf(slot.card)) })]
-            : []),
         ],
       });
       grid.append(el('li', { children: [btn] }));
@@ -589,7 +525,6 @@ export class StageView {
             className: 'summary__meta',
             text: `Agora você tem ${owned} de ${this.deps.set.albumSize} cartas de ${this.deps.set.name}.`,
           }),
-          ...this.careerSummary(),
           grid,
           el('div', { className: 'summary__actions', children: [again, binder] }),
           el('p', { className: 'stage__hint', text: 'Toque em qualquer lugar para abrir outro' }),
@@ -597,37 +532,6 @@ export class StageView {
       }),
     );
     again.focus({ preventScroll: true });
-  }
-
-  private careerSummary(): HTMLElement[] {
-    const r = this.packResult;
-    if (!this.deps.career || !r) return [];
-    const cell = (label: string, value: string, cls = '') => [
-      el('span', { className: 'pnl__label', text: label }),
-      el('span', { className: `pnl__value ${cls}`, text: value }),
-    ];
-    // A melhor carta é a notícia; o lucro só aparece quando existe (prejuízo é a regra).
-    const best = [...(this.booster?.slots ?? [])]
-      .filter((s) => !this.isPackOnly(s))
-      .sort((a, b) => this.deps.career!.priceBook.valueOf(b.card) - this.deps.career!.priceBook.valueOf(a.card))[0];
-    const columns: HTMLElement[][] = [];
-    if (best) columns.push(cell('Melhor carta', `${best.card.name}, ${formatBRL(this.deps.career.priceBook.valueOf(best.card))}`));
-    columns.push(cell('Cartas valem', formatBRL(r.valueCents)));
-    if (r.profitCents > 0) columns.push(cell('Lucro', formatSigned(r.profitCents), 'is-up'));
-    // Grade: rótulos na primeira linha, valores na segunda.
-    const pnl = el('div', {
-      className: 'pnl',
-      children: [...columns.map((c) => c[0]!), ...columns.map((c) => c[1]!)],
-    });
-    pnl.style.gridTemplateColumns = `repeat(${columns.length}, auto)`;
-    const toasts = el('ul', { className: 'toasts' });
-    toasts.append(el('li', { className: 'toast', text: `+${r.fameGained} de fama` }));
-    r.unlocked.forEach((a, i) => {
-      const t = el('li', { className: 'toast', text: `Conquista: ${a.title}` });
-      t.style.animationDelay = `${(i + 1) * 120}ms`;
-      toasts.append(t);
-    });
-    return [pnl, toasts];
   }
 
   // ── Fichário desta coleção, por cima do palco ─────────────────────────────────
@@ -668,7 +572,6 @@ export class StageView {
   private restart(): void {
     this.cleanups.splice(1).forEach((c) => c());
     this.booster = null;
-    this.packResult = null;
     this.tearProgress = 0;
     this.renderSealed();
   }

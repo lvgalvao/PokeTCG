@@ -1,53 +1,29 @@
 import type { RNG } from '../core/rng.js';
 import type { Catalog } from '../domain/catalog.js';
 import type { Collection, CollectionStore } from '../domain/collection.js';
-import {
-  applyPack,
-  applySale,
-  claimDailyBonus,
-  claimMission,
-  effectiveRank,
-  ensureMissions,
-  exhibitionFame,
-  EXHIBITION_SLOTS,
-  netWorth,
-  SELL_RATE,
-  toggleExhibit,
-  type CareerState,
-  type GameContext,
-  type Mission,
-} from '../game/career.js';
-import { bucketRank } from '../core/buckets.js';
-import { formatBRL } from '../game/money.js';
-import {
-  buildPriceBook,
-  loadPackPrices,
-  loadPriceSnapshot,
-  packPriceCents,
-  type PackPrices,
-  type PriceBook,
-} from '../game/prices.js';
-import {
-  careerCollection,
-  loadCareer,
-  loadMode,
-  resetCareer,
-  saveCareer,
-  saveMode,
-  todayISO,
-  type GameMode,
-} from '../persistence/career-store.js';
+import type { FamilyApi, Player } from '../persistence/family-api.js';
+import { clearSession, type FamilyCollectionStore, type PlayerSession } from '../persistence/family-store.js';
 import { $, $$ } from '../utils/dom.js';
-import { renderBinderIndex, SetBinderView, type BinderCareer } from './binder-view.js';
-import { renderCareer } from './career-view.js';
+import { renderBinderIndex, SetBinderView } from './binder-view.js';
 import { catalogFor, type SetInfo, type SetsIndex } from './sets-index.js';
-import { StageView, type StageCareer } from './stage-view.js';
+import { StageView } from './stage-view.js';
 import { renderStore } from './store-view.js';
+import { TradeView } from './trade-view.js';
+
+/** Jogo em família: dois jogadores no Supabase, com trocas entre eles. */
+export interface FamilyContext {
+  readonly api: FamilyApi;
+  readonly session: PlayerSession;
+  readonly players: readonly Player[];
+  readonly store: FamilyCollectionStore;
+}
 
 export interface AppDeps {
   readonly index: SetsIndex;
   readonly masterRng: RNG;
   readonly store: CollectionStore;
+  /** Ausente sem Supabase configurado: aí o fichário fica só neste navegador e não há trocas. */
+  readonly family?: FamilyContext;
 }
 
 type Route =
@@ -55,153 +31,121 @@ type Route =
   | { readonly name: 'open'; readonly setId: string }
   | { readonly name: 'binder' }
   | { readonly name: 'binder-set'; readonly setId: string }
-  | { readonly name: 'career' };
+  | { readonly name: 'trades' };
 
 function parseRoute(hash: string): Route {
   const [, a, b] = hash.replace(/^#\/?/, '#/').split('/');
   if (a === 'abrir' && b) return { name: 'open', setId: decodeURIComponent(b) };
   if (a === 'fichario' && b) return { name: 'binder-set', setId: decodeURIComponent(b) };
   if (a === 'fichario') return { name: 'binder' };
-  if (a === 'carreira') return { name: 'career' };
+  if (a === 'trocas') return { name: 'trades' };
   return { name: 'store' };
 }
 
+/** Intervalo da consulta de trocas (ms). */
+const TRADE_POLL_MS = 12_000;
+
 /**
  * Loja (#/), palco de abertura (#/abrir/<set>) por cima da página de onde veio, fichário
- * (#/fichario[/<set>]) e Carreira (#/carreira). Dois modos: Livre (abrir à vontade) e
- * Carreira (carteira, preços reais, missões, fama), cada um com seu próprio fichário.
+ * (#/fichario[/<set>]) e trocas (#/trocas).
  */
 export class App {
-  private freeCollection: Collection;
-  private career: CareerState;
-  private mode: GameMode;
-  private packPrices: PackPrices | null = null;
-  private readonly priceBooks = new Map<string, PriceBook>();
+  private collection: Collection;
   private readonly view = $('#view');
   private readonly stageRoot = $('#stage');
   private stage: StageView | null = null;
   private baseCleanup: (() => void) | null = null;
+  private trades: TradeView | null = null;
   /** Página por baixo do palco; é para onde fechar o palco volta. */
   private baseHash = '#/';
   private renderedBase: string | null = null;
+  /** Assinatura das trocas vistas na última consulta, para saber quando algo mudou. */
+  private tradeSignature: string | null = null;
 
   constructor(private readonly deps: AppDeps) {
-    this.freeCollection = deps.store.load();
-    this.career = loadCareer();
-    this.mode = loadMode();
+    this.collection = deps.store.load();
     if (!deps.store.isAvailable()) $('#banner-no-storage').hidden = false;
-    this.bindModeSwitch();
-    this.updateChrome();
+    this.renderChrome();
     window.addEventListener('hashchange', () => void this.route());
-    void loadPackPrices().then((p) => {
-      this.packPrices = p;
-      if (this.mode === 'career' && this.renderedBase !== null) this.renderBase(this.baseHash);
-    });
     void this.route();
+    if (deps.family) this.startTradePolling();
   }
 
-  // ── Modo e Carreira ─────────────────────────────────────────────────────────────
+  // ── Topo e jogadores ────────────────────────────────────────────────────────────
 
-  private get ctx(): GameContext {
-    return {
-      sets: this.deps.index.sets,
-      eras: this.deps.index.eras.map((e) => e.id),
-      cardValue: (id) => this.knownValue(id),
+  private renderChrome(): void {
+    const family = this.deps.family;
+    const tradesLink = $('[data-nav="trades"]');
+    const who = $('.topbar__player');
+    tradesLink.hidden = !family;
+    who.hidden = !family;
+    if (!family) return;
+    const me = family.players.find((p) => p.id === family.session.player);
+    who.textContent = me?.name ?? '';
+    who.setAttribute('aria-label', `Jogando como ${me?.name ?? ''}. Trocar de jogador.`);
+    who.addEventListener('click', () => {
+      if (!confirm('Trocar de jogador neste aparelho?')) return;
+      clearSession();
+      location.hash = '#/';
+      location.reload();
+    });
+  }
+
+  private startTradePolling(): void {
+    // Com a tela apagada não consulta (bateria); ao voltar, recarrega tudo de uma vez.
+    const poll = () => {
+      if (document.visibilityState === 'visible') void this.pollTrades();
     };
-  }
-
-  private collection(): Collection {
-    return this.mode === 'career' ? careerCollection(this.career) : this.freeCollection;
-  }
-
-  private bindModeSwitch(): void {
-    for (const btn of $$('[data-mode]')) {
-      btn.addEventListener('click', () => {
-        const mode = btn.dataset.mode === 'career' ? 'career' : 'free';
-        if (mode === this.mode) return;
-        this.mode = mode;
-        saveMode(mode);
-        this.updateChrome();
-        if (mode === 'free' && parseRoute(location.hash).name === 'career') location.hash = '#/';
-        else this.renderBase(this.baseHash);
+    void this.pollTrades();
+    const timer = window.setInterval(poll, TRADE_POLL_MS);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState !== 'visible') return;
+      void this.pollTrades().then(async (synced) => {
+        if (!synced) await this.syncCollection();
       });
+    });
+    window.addEventListener('pagehide', () => window.clearInterval(timer));
+  }
+
+  /** Atualiza o aviso de trocas e, se alguma troca mudou, recarrega o fichário (devolve se recarregou). */
+  private async pollTrades(): Promise<boolean> {
+    const family = this.deps.family!;
+    try {
+      const list = await family.api.trades(family.session.pin);
+      const incoming = list.filter((t) => t.status === 'pending' && t.to_player === family.session.player).length;
+      const badge = $('.topbar__badge');
+      badge.hidden = incoming === 0;
+      badge.textContent = String(incoming);
+      const signature = list.map((t) => `${t.id}:${t.status}`).join(',');
+      const changed = this.tradeSignature !== null && signature !== this.tradeSignature;
+      this.tradeSignature = signature;
+      if (changed) await this.syncCollection();
+      return changed;
+    } catch (err) {
+      console.warn('[trocas] consulta falhou:', err);
+      return false;
     }
   }
 
-  private updateChrome(): void {
-    for (const btn of $$('[data-mode]')) {
-      btn.setAttribute('aria-pressed', String(btn.dataset.mode === this.mode));
-    }
-    const wallet = $('.topbar__wallet');
-    wallet.hidden = this.mode !== 'career';
-    wallet.textContent = formatBRL(this.career.walletCents);
-    wallet.setAttribute('aria-label', `Carreira, saldo ${formatBRL(this.career.walletCents)}`);
-  }
-
-  private setCareer(next: CareerState): void {
-    this.career = next;
-    saveCareer(next);
-    this.updateChrome();
-  }
-
-  private withMissions(): void {
-    const next = ensureMissions(this.career, todayISO(), this.ctx.eras);
-    if (next !== this.career) this.setCareer(next);
-  }
-
-  private async priceBookFor(setId: string, catalog?: Catalog): Promise<PriceBook> {
-    const cached = this.priceBooks.get(setId);
-    if (cached) return cached;
-    const [cat, snapshot] = await Promise.all([catalog ?? catalogFor(setId), loadPriceSnapshot(setId)]);
-    const book = buildPriceBook(cat, snapshot);
-    this.priceBooks.set(setId, book);
-    return book;
-  }
-
-  private setForCard(id: string): SetInfo | undefined {
-    return this.deps.index.sets.find((s) => [s.id, ...s.subsets].some((p) => id.startsWith(`${p}-`)));
-  }
-
-  /** Valor de uma carta se o preço do set dela já foi carregado. */
-  private knownValue(id: string): number | undefined {
-    const set = this.setForCard(id);
-    const book = set && this.priceBooks.get(set.id);
-    if (!book || !set) return undefined;
-    const card = this.catalogs.get(set.id)?.byId.get(id);
-    return card ? book.valueOf(card) : undefined;
-  }
-
-  private readonly catalogs = new Map<string, Catalog>();
-
-  private async catalog(setId: string): Promise<Catalog> {
-    const c = await catalogFor(setId);
-    this.catalogs.set(setId, c);
-    return c;
-  }
-
-  /** Carrega catálogos e preços de todos os sets em que a Carreira tem cartas. */
-  private async loadOwnedPrices(): Promise<void> {
-    const ids = new Set<string>();
-    for (const id of Object.keys(this.career.collection)) {
-      const set = this.setForCard(id);
-      if (set) ids.add(set.id);
-    }
-    await Promise.all(
-      [...ids].map(async (id) => this.priceBookFor(id, await this.catalog(id))),
-    );
+  /** Recarrega o fichário do servidor e redesenha a página de baixo (fora do palco). */
+  private async syncCollection(): Promise<void> {
+    const family = this.deps.family;
+    if (!family) return;
+    this.collection = await family.store.refresh();
+    if (this.trades) this.trades.refresh();
+    else if (!this.stage) this.renderBase(this.baseHash, false);
   }
 
   // ── Rotas ───────────────────────────────────────────────────────────────────────
 
-  private setFor(id: string) {
+  private setFor(id: string): SetInfo | undefined {
     return this.deps.index.sets.find((s) => s.id === id);
   }
 
   private async route(): Promise<void> {
     const route = parseRoute(location.hash);
     if (route.name === 'open') {
-      const set = this.setFor(route.setId);
-      if (!set) return void (location.hash = '#/');
+      if (!this.setFor(route.setId)) return void (location.hash = '#/');
       if (this.renderedBase === null) this.renderBase('#/');
       await this.openStage(route.setId);
       return;
@@ -211,186 +155,65 @@ export class App {
     this.renderBase(this.baseHash);
   }
 
-  private renderBase(hash: string): void {
+  private renderBase(hash: string, scrollTop = true): void {
     const route = parseRoute(hash);
     this.baseCleanup?.();
     this.baseCleanup = null;
+    this.trades = null;
     this.renderedBase = hash;
-    const section = route.name.startsWith('binder') ? 'binder' : route.name === 'career' ? 'career' : 'store';
+    const section = route.name.startsWith('binder') ? 'binder' : route.name === 'trades' ? 'trades' : 'store';
     for (const link of $$('[data-nav]')) {
       if (link.dataset.nav === section) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     }
-    if (route.name === 'career') {
-      if (this.mode !== 'career') {
-        this.mode = 'career';
-        saveMode('career');
-        this.updateChrome();
-      }
-      this.renderCareerPage();
-    } else if (route.name === 'binder') {
-      renderBinderIndex(
-        this.view,
-        this.deps.index,
-        this.collection(),
-        this.mode === 'free' ? () => this.clearFreeCollection() : undefined,
-      );
+    if (route.name === 'binder') {
+      renderBinderIndex(this.view, this.deps.index, this.collection, () => this.clearCollection());
       document.title = 'Fichário · Loja de Boosters';
     } else if (route.name === 'binder-set') {
       const set = this.setFor(route.setId);
       if (!set) return void (location.hash = '#/fichario');
       document.title = `${set.name} · Fichário`;
-      this.view.replaceChildren();
+      if (scrollTop) this.view.replaceChildren();
       void this.mountSetBinder(set, hash);
+    } else if (route.name === 'trades' && this.deps.family) {
+      const family = this.deps.family;
+      document.title = 'Trocas · Loja de Boosters';
+      const view = new TradeView(this.view, {
+        api: family.api,
+        session: family.session,
+        players: family.players,
+        index: this.deps.index,
+        myCollection: () => this.collection,
+        onChanged: async () => {
+          this.collection = await family.store.refresh();
+          await this.pollTrades();
+        },
+      });
+      this.trades = view;
+      this.baseCleanup = () => view.destroy();
     } else {
-      const pricing =
-        this.mode === 'career' && this.packPrices
-          ? {
-              priceOf: (id: string) => packPriceCents(this.packPrices!, id),
-              walletCents: this.career.walletCents,
-            }
-          : undefined;
-      this.baseCleanup = renderStore(this.view, this.deps.index, this.collection(), pricing);
+      this.baseCleanup = renderStore(this.view, this.deps.index, this.collection);
       document.title = 'Loja de Boosters';
     }
-    window.scrollTo({ top: 0 });
+    if (scrollTop) window.scrollTo({ top: 0 });
   }
 
   private async mountSetBinder(set: SetInfo, hash: string): Promise<void> {
     try {
-      const catalog = await this.catalog(set.id);
-      const career = this.mode === 'career' ? await this.binderCareer(set.id, catalog) : undefined;
+      const catalog = await catalogFor(set.id);
       if (this.renderedBase !== hash) return;
-      const binder = new SetBinderView(this.view, set, catalog, () => this.collection(), { career });
+      const binder = new SetBinderView(this.view, set, catalog, () => this.collection);
       this.baseCleanup = () => binder.destroy();
     } catch (err) {
       this.showError(err);
     }
   }
 
-  private async binderCareer(setId: string, catalog: Catalog): Promise<BinderCareer> {
-    const priceBook = await this.priceBookFor(setId, catalog);
-    const valueOfId = (id: string) => {
-      const card = catalog.byId.get(id);
-      return card ? priceBook.valueOf(card) : 0;
-    };
-    return {
-      priceBook,
-      sellRate: SELL_RATE,
-      sell: (ids) => {
-        this.withMissions();
-        const r = applySale(this.career, this.ctx, ids, valueOfId, new Date());
-        this.setCareer(r.state);
-        return r.earnedCents;
-      },
-      isExhibited: (id) => this.career.exhibition.includes(id),
-      canExhibitMore: () => this.career.exhibition.length < EXHIBITION_SLOTS,
-      toggleExhibit: (id) => this.setCareer(toggleExhibit(this.career, this.ctx, id, new Date())),
-    };
-  }
-
-  private renderCareerPage(): void {
-    this.withMissions();
-    document.title = 'Carreira · Loja de Boosters';
-    const rerender = () => this.renderBase(this.baseHash);
-    renderCareer(this.view, this.career, {
-      index: this.deps.index,
-      ctx: this.ctx,
-      today: todayISO(),
-      netWorth: async () => {
-        await this.loadOwnedPrices();
-        return netWorth(this.career, (id) => this.knownValue(id));
-      },
-      imageOf: async (id) => {
-        const set = this.setForCard(id);
-        if (!set) return null;
-        return (await this.catalog(set.id)).byId.get(id)?.imageUrl ?? null;
-      },
-      exhibitionFame: () => this.exhibitionFame(),
-      duplicates: async () => {
-        await this.loadOwnedPrices();
-        const ids = this.allDuplicates();
-        const cents = ids.reduce((sum, id) => sum + Math.round((this.knownValue(id) ?? 0) * SELL_RATE), 0);
-        return { count: ids.length, cents };
-      },
-      onSellDuplicates: () => {
-        this.withMissions();
-        const r = applySale(this.career, this.ctx, this.allDuplicates(), (id) => this.knownValue(id) ?? 0, new Date());
-        this.setCareer(r.state);
-        rerender();
-      },
-      missionLink: (m) => this.missionLink(m),
-      onClaimBonus: () => {
-        void this.exhibitionFame().then((fame) => {
-          this.setCareer(claimDailyBonus(this.career, todayISO(), fame));
-          rerender();
-        });
-      },
-      onClaimMission: (i) => {
-        this.setCareer(claimMission(this.career, this.ctx, i, new Date()));
-        rerender();
-      },
-      onReset: () => {
-        this.career = resetCareer();
-        this.updateChrome();
-        rerender();
-      },
-    });
-  }
-
-  /** Fama diária da exposição, pelo rank efetivo de cada carta exposta. */
-  private async exhibitionFame(): Promise<number> {
-    const ranks = await Promise.all(
-      this.career.exhibition.map(async (id) => {
-        const set = this.setForCard(id);
-        if (!set) return 0;
-        const card = (await this.catalog(set.id)).byId.get(id);
-        return card ? effectiveRank(bucketRank(card.bucket), card.rarityRaw, set.era) : 0;
-      }),
-    );
-    return exhibitionFame(ranks);
-  }
-
-  /** Cópias excedentes (fica 1 de cada) de todas as coleções. */
-  private allDuplicates(): string[] {
-    const out: string[] = [];
-    for (const [id, n] of Object.entries(this.career.collection)) for (let i = 1; i < n; i++) out.push(id);
-    return out;
-  }
-
-  /** O pacote mais barato que cumpre a missão — de preferência um que o saldo alcance. */
-  private missionLink(m: Mission): string | null {
-    if (m.kind === 'sell' || !this.packPrices) return null;
-    const modern = ['mega', 'sv', 'swsh'];
-    const candidates = this.deps.index.sets
-      .filter((s) => (m.kind === 'era-packs' ? s.era === m.era : modern.includes(s.era)))
-      .map((s) => ({ s, price: packPriceCents(this.packPrices!, s.id) }))
-      .filter((x): x is { s: SetInfo; price: number } => x.price !== null)
-      .sort((a, b) => a.price - b.price);
-    const pick = candidates.find((x) => x.price <= this.career.walletCents) ?? candidates[0];
-    return pick ? `#/abrir/${pick.s.id}` : null;
-  }
-
   private async openStage(setId: string): Promise<void> {
     const set = this.setFor(setId)!;
     let catalog: Catalog;
-    let career: StageCareer | undefined;
     try {
-      catalog = await this.catalog(setId);
-      if (this.mode === 'career') {
-        const prices = this.packPrices ?? (this.packPrices = await loadPackPrices());
-        career = {
-          priceCents: prices ? packPriceCents(prices, setId) : null,
-          priceBook: await this.priceBookFor(setId, catalog),
-          walletCents: () => this.career.walletCents,
-          onPack: (cards) => {
-            this.withMissions();
-            const r = applyPack(this.career, this.ctx, setId, career!.priceCents ?? 0, cards, new Date());
-            this.setCareer(r.state);
-            return r.result;
-          },
-        };
-      }
+      catalog = await catalogFor(setId);
     } catch (err) {
       this.showError(err);
       return;
@@ -404,13 +227,12 @@ export class App {
       set,
       catalog,
       masterRng: this.deps.masterRng,
-      getCollection: () => this.collection(),
+      getCollection: () => this.collection,
       onCardsOpened: (ids) => {
-        this.freeCollection = this.deps.store.addCards(ids, setId);
+        this.collection = this.deps.store.addCards(ids, setId);
         if (!this.deps.store.isAvailable()) $('#banner-no-storage').hidden = false;
       },
       onClose: () => (location.hash = this.baseHash),
-      career,
     });
   }
 
@@ -425,9 +247,9 @@ export class App {
     this.renderedBase = null;
   }
 
-  private clearFreeCollection(): void {
+  private clearCollection(): void {
     this.deps.store.clear();
-    this.freeCollection = this.deps.store.load();
+    this.collection = this.deps.store.load();
     this.renderBase(this.baseHash);
   }
 

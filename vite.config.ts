@@ -2,6 +2,8 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   root: 'src',
+  // .env.local fica na raiz do repositório, não em src/.
+  envDir: __dirname,
   publicDir: '../assets',
   base: './',
   build: {
