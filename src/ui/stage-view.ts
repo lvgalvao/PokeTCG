@@ -1,5 +1,6 @@
 import { generateBooster, type Booster, type BoosterSlot } from '../core/booster.js';
 import { bucketRank, BUCKET_LABELS } from '../core/buckets.js';
+import { HIT_BOOST } from '../core/distributions.js';
 import { mulberry32, type RNG } from '../core/rng.js';
 import type { Catalog } from '../domain/catalog.js';
 import type { Collection } from '../domain/collection.js';
@@ -300,7 +301,7 @@ export class StageView {
     const seed = Math.floor(this.deps.masterRng.next() * 0x100000000);
     (window as unknown as Record<string, unknown>).__pkmnLastBoosterSeed = seed;
     this.ownedBefore = new Set(this.deps.getCollection().entries.keys());
-    this.booster = generateBooster(mulberry32(seed), this.deps.catalog, seed);
+    this.booster = generateBooster(mulberry32(seed), this.deps.catalog, seed, HIT_BOOST);
     this.revealed = 0;
     const career = this.deps.career;
     if (career) {

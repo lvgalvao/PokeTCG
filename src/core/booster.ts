@@ -2,6 +2,7 @@ import type { Card } from '../domain/card.js';
 import type { Catalog } from '../domain/catalog.js';
 import { BUCKETS, bucketRank, type Bucket } from './buckets.js';
 import {
+  boostHits,
   SET_BOOSTER_PROFILES,
   SLOT_DISTRIBUTIONS,
   SLOT_DOWNGRADE_FLOOR,
@@ -102,6 +103,28 @@ function outcomePool(catalog: Catalog, o: SlotOutcome, used: Set<string>): Card[
   );
 }
 
+/**
+ * Rank de um resultado: o da melhor carta que ele pode dar (0 se não tem cartas). Assim a
+ * Coleção Clássica do 30 Anos, que tem de Comum a LEGEND, conta como hit.
+ */
+function outcomeRank(catalog: Catalog, o: SlotOutcome): number {
+  const pool = outcomePool(catalog, o, new Set());
+  return pool.length ? Math.max(...pool.map((c) => bucketRank(c.bucket))) : 0;
+}
+
+function luckyOutcomes(catalog: Catalog, outcomes: readonly SlotOutcome[], luck: number): readonly SlotOutcome[] {
+  if (luck === 1 || outcomes.length < 2) return outcomes;
+  const ps = boostHits(outcomes.map((o) => o.p), outcomes.map((o) => outcomeRank(catalog, o)), luck);
+  return outcomes.map((o, i) => ({ ...o, p: ps[i]! }));
+}
+
+function luckyDistribution(dist: BucketDistribution, luck: number): BucketDistribution {
+  if (luck === 1) return dist;
+  const buckets = BUCKETS.filter((b) => (dist[b] ?? 0) > 0);
+  const ps = boostHits(buckets.map((b) => dist[b]!), buckets.map(bucketRank), luck);
+  return Object.fromEntries(buckets.map((b, i) => [b, ps[i]!]));
+}
+
 function drawProfileSlots(
   rng: RNG,
   catalog: Catalog,
@@ -109,10 +132,11 @@ function drawProfileSlots(
   used: Set<string>,
   drawn: BoosterSlot[],
   downgrades: DowngradeRecord[],
+  luck: number,
 ): void {
   for (const [i, outcomes] of profile.slots.entries()) {
     const drawIdx = i + 1;
-    const picked = sampleOutcome(rng, outcomes);
+    const picked = sampleOutcome(rng, luckyOutcomes(catalog, outcomes, luck));
     let pool = outcomePool(catalog, picked, used);
     let fellBack = false;
     if (pool.length === 0) {
@@ -138,7 +162,11 @@ function drawProfileSlots(
   }
 }
 
-export function generateBooster(rng: RNG, catalog: Catalog, seed: number): Booster {
+/**
+ * `luck` multiplica a chance das cartas raras em cada slot (ver boostHits); 1 = pull rates
+ * reais.
+ */
+export function generateBooster(rng: RNG, catalog: Catalog, seed: number, luck = 1): Booster {
   const profile = SET_BOOSTER_PROFILES[catalog.setId];
   if (!profile && catalog.byBucket['01_comum'].length === 0) {
     throw new EmptyBaseBucketError();
@@ -148,10 +176,10 @@ export function generateBooster(rng: RNG, catalog: Catalog, seed: number): Boost
   const drawn: BoosterSlot[] = [];
   const downgrades: DowngradeRecord[] = [];
 
-  if (profile) drawProfileSlots(rng, catalog, profile, used, drawn, downgrades);
+  if (profile) drawProfileSlots(rng, catalog, profile, used, drawn, downgrades, luck);
 
   for (const drawIdx of profile ? [] : SLOT_INDICES) {
-    const drawnBucket = sampleBucket(rng, SLOT_DISTRIBUTIONS[drawIdx]);
+    const drawnBucket = sampleBucket(rng, luckyDistribution(SLOT_DISTRIBUTIONS[drawIdx], luck));
     const floor = SLOT_DOWNGRADE_FLOOR[drawIdx];
 
     let effectiveBucket: Bucket;

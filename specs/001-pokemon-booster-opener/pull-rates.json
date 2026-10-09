@@ -3,7 +3,11 @@
     "packSize": 6,
     "structure": "Real English 30th Celebration pack = 5 game cards + 1 foil Basic Energy: Common, Common, Common-or-hit (Illustration Rare or a Classic Collection reprint), rare slot (Rare / Double Rare / Special Illustration Rare / Futuristic Rare / RGB Rare), Pikachu Rare, foil Basic Energy.",
     "estimate": false,
-    "sources": [],
+    "sources": [
+      "https://www.tcgplayer.com/content/article/Pok%C3%A9mon-TCG-30th-Celebration-Pull-Rates/587b3657-481a-4ab8-827c-68cd3ab585b0/",
+      "https://www.wargamer.com/pokemon-trading-card-game/30th-celebration-pull-rates",
+      "https://pullrates.com/set/30th-anniversary"
+    ],
     "profile": {
       "keepOrder": true,
       "slots": [
@@ -89,7 +93,7 @@
         ]
       ]
     },
-    "notes": "Converted from the existing hand-written profile (rates supplied by the caller, no new research). Classic Collection (subset me55c) outcome has no rarity filter = any me55c card (31 cards). keepOrder true so the pack reveals in real order. Mew RGB Rare 1/1000 kept as given."
+    "notes": "Checked 2026-10-08 against measured openings: TCGplayer (3,000+ packs) Classic Collection 10.15% (1 in 10), SIR 1 in 21; Wargamer (4,063 packs) Classic 1 in 9.8, SIR 1 in 18; PullRates.com (~800 packs) Classic 1 in 10.5, SIR 1 in 19.8. Profile rates (Classic 10%, SIR 5%) are within that range, so they were kept. Classic Collection (subset me55c) outcome has no rarity filter = any me55c card (31 cards). keepOrder true so the pack reveals in real order. Mew RGB Rare 1/1000 kept as given. The app multiplies hits by HIT_BOOST (src/core/distributions.ts) at opening time; these are the real rates."
   },
   "me5": {
     "packSize": 11,

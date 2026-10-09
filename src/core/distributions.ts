@@ -63,3 +63,25 @@ export interface BoosterProfile {
 export const SET_BOOSTER_PROFILES: Readonly<Record<string, BoosterProfile>> = {
   ...RESEARCHED_PROFILES,
 };
+
+/** Quantas vezes mais as cartas raras saem do que nos pull rates reais (pedido do jogador). */
+export const HIT_BOOST = 3;
+
+/**
+ * Multiplica por `luck` a chance dos "hits" de um slot: os resultados de raridade Rara ou
+ * maior que não são o primeiro do slot (o primeiro é a carta normal daquela posição — num
+ * slot de Rara, a Rara comum; os hits são Holo, V, Secreta…). Os demais encolhem na mesma
+ * proporção. Se os hits não cabem (luck × soma > 1), o slot vira só hits, mantendo a
+ * proporção entre eles. `ranks[i]` é o rank (1–7) do resultado i; 0 = sem cartas.
+ */
+export function boostHits(ps: readonly number[], ranks: readonly number[], luck: number): number[] {
+  if (luck === 1) return [...ps];
+  const isHit = ranks.map((r, i) => i > 0 && r >= 3);
+  const total = ps.reduce((a, p) => a + p, 0);
+  const hits = ps.reduce((a, p, i) => a + (isHit[i] ? p : 0), 0);
+  if (hits === 0 || hits === total) return [...ps];
+  const boosted = Math.min(total, hits * luck);
+  const hitScale = boosted / hits;
+  const restScale = (total - boosted) / (total - hits);
+  return ps.map((p, i) => p * (isHit[i] ? hitScale : restScale));
+}
