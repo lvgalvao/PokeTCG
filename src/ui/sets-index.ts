@@ -1,3 +1,5 @@
+import { BUCKET_LABELS, type Bucket } from '../core/buckets.js';
+import type { Card } from '../domain/card.js';
 import { loadCatalog, type Catalog } from '../domain/catalog.js';
 import type { Collection } from '../domain/collection.js';
 
@@ -73,4 +75,26 @@ export function eraYears(sets: readonly SetInfo[]): string {
   const lo = Math.min(...years);
   const hi = Math.max(...years);
   return lo === hi ? String(lo) : `${lo}–${hi}`;
+}
+
+/** Nome das subcoleções incorporadas ao álbum de um set; elas têm categoria própria. */
+const SUBSET_LABELS: Readonly<Record<string, string>> = {
+  me55c: 'Clássica',
+  cel25c: 'Clássica',
+  swsh12pt5gg: 'Galarian Gallery',
+  swsh12tg: 'Trainer Gallery',
+  swsh11tg: 'Trainer Gallery',
+  swsh10tg: 'Trainer Gallery',
+  swsh9tg: 'Trainer Gallery',
+  swsh45sv: 'Shiny Vault',
+  sma: 'Shiny Vault',
+};
+
+export function subsetLabel(subset: string): string {
+  return SUBSET_LABELS[subset] ?? subset;
+}
+
+/** Categoria da carta para mostrar: a subcoleção (ex.: Clássica) ou a raridade. */
+export function categoryLabel(card: Card, bucket: Bucket = card.bucket): string {
+  return card.subset ? subsetLabel(card.subset) : BUCKET_LABELS[bucket];
 }

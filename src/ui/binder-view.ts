@@ -7,7 +7,15 @@ import { formatBRL, type Cents } from '../game/money.js';
 import type { PriceBook } from '../game/prices.js';
 import { openCardViewer, type ViewerAction } from './card-viewer.js';
 import { progressRing } from './store-view.js';
-import { coverUrl, eraYears, ownedCount, type SetInfo, type SetsIndex } from './sets-index.js';
+import {
+  categoryLabel,
+  coverUrl,
+  eraYears,
+  ownedCount,
+  subsetLabel,
+  type SetInfo,
+  type SetsIndex,
+} from './sets-index.js';
 
 /** Lista de coleções com o progresso de cada uma. */
 export function renderBinderIndex(
@@ -99,7 +107,8 @@ export function renderBinderIndex(
   root.replaceChildren(page);
 }
 
-type Filter = 'all' | Bucket;
+/** Todas, uma raridade do set principal ou uma subcoleção (ex.: `sub:me55c`, Clássicas). */
+type Filter = 'all' | Bucket | `sub:${string}`;
 
 /** Ações do fichário que só existem no modo Carreira. */
 export interface BinderCareer {
@@ -139,9 +148,10 @@ export class SetBinderView {
   destroy(): void {}
 
   private cards(): Card[] {
-    return this.filter === 'all'
-      ? [...this.catalog.cards]
-      : this.catalog.cards.filter((c) => c.bucket === this.filter);
+    const f = this.filter;
+    if (f === 'all') return [...this.catalog.cards];
+    if (f.startsWith('sub:')) return this.catalog.cards.filter((c) => c.subset === f.slice(4));
+    return this.catalog.cards.filter((c) => !c.subset && c.bucket === f);
   }
 
   private render(): void {
@@ -157,15 +167,23 @@ export class SetBinderView {
       attrs: { role: 'group', 'aria-label': 'Mostrar raridade' },
     });
     chips.append(this.chip('Todas', 'all', owned, this.catalog.totalSet));
-    for (const b of BUCKETS) {
-      const all = this.catalog.byBucket[b];
-      if (!all.length) continue;
-      const have = all.filter((c) => (collection.entries.get(c.id) ?? 0) > 0).length;
-      const seg = el('span', { className: `rarity-bar__seg rarity-${bucketRank(b)}` });
+    const has = (c: Card) => (collection.entries.get(c.id) ?? 0) > 0;
+    const addGroup = (label: string, value: Filter, all: readonly Card[], rank: number) => {
+      if (!all.length) return;
+      const have = all.filter(has).length;
+      const seg = el('span', { className: `rarity-bar__seg rarity-${rank}` });
       seg.style.flexGrow = String(all.length);
       seg.style.setProperty('--pct', String(have / all.length));
       segments.append(seg);
-      chips.append(this.chip(BUCKET_LABELS[b], b, have, all.length));
+      chips.append(this.chip(label, value, have, all.length));
+    };
+    for (const b of BUCKETS) {
+      addGroup(BUCKET_LABELS[b], b, this.catalog.byBucket[b].filter((c) => !c.subset), bucketRank(b));
+    }
+    // Subcoleções (Clássicas, Trainer Gallery…) têm grupo próprio, fora das raridades.
+    for (const sub of new Set(this.catalog.cards.flatMap((c) => (c.subset ? [c.subset] : [])))) {
+      const label = subsetLabel(sub);
+      addGroup(label.endsWith('a') ? `${label}s` : label, `sub:${sub}`, this.catalog.cards.filter((c) => c.subset === sub), 7);
     }
 
     const grid = el('ol', { className: 'binder__grid' });
@@ -273,7 +291,7 @@ export class SetBinderView {
     if (count === 0) {
       return el('li', {
         className: `pocket is-missing rarity-${rank}`,
-        attrs: { 'aria-label': `Nº ${card.collectionNumber}, ${BUCKET_LABELS[card.bucket]}, ainda não tem` },
+        attrs: { 'aria-label': `Nº ${card.collectionNumber}, ${categoryLabel(card)}, ainda não tem` },
         children: [el('span', { className: 'pocket__num', text: String(card.collectionNumber || '★') })],
       });
     }

@@ -1,5 +1,5 @@
 import { generateBooster, type Booster, type BoosterSlot } from '../core/booster.js';
-import { bucketRank, BUCKET_LABELS } from '../core/buckets.js';
+import { bucketRank } from '../core/buckets.js';
 import { HIT_BOOST } from '../core/distributions.js';
 import { mulberry32, type RNG } from '../core/rng.js';
 import type { Catalog } from '../domain/catalog.js';
@@ -11,7 +11,7 @@ import { playCelebrationSound, playFlipSound, playTearSound } from '../utils/aud
 import { el } from '../utils/dom.js';
 import { SetBinderView } from './binder-view.js';
 import { attachFoil, prefersReducedMotion, project, spring, VelocityTracker } from './motion.js';
-import { coverUrl, ownedCount, type SetInfo } from './sets-index.js';
+import { categoryLabel, coverUrl, ownedCount, type SetInfo } from './sets-index.js';
 
 export interface StageDeps {
   readonly root: HTMLElement;
@@ -353,7 +353,7 @@ export class StageView {
         attrs: {
           role: 'button',
           tabindex: '-1',
-          'aria-label': `${slot.card.name}, ${BUCKET_LABELS[slot.effectiveBucket]}${this.isNew(slot) ? ', nova' : ''}. Toque para a próxima.`,
+          'aria-label': `${slot.card.name}, ${categoryLabel(slot.card, slot.effectiveBucket)}${this.isNew(slot) ? ', nova' : ''}. Toque para a próxima.`,
         },
         children: [
           el('img', {
@@ -362,6 +362,7 @@ export class StageView {
           ...(this.isNew(slot)
             ? [el('span', { className: 'deck__new', text: 'Nova' })]
             : []),
+          ...this.subsetTag(slot),
         ],
       });
       card.style.zIndex = String(booster.slots.length - i);
@@ -504,6 +505,13 @@ export class StageView {
     }
   }
 
+  /** Selo da subcoleção (ex.: Clássica), para não confundir com a raridade da carta. */
+  private subsetTag(slot: BoosterSlot): HTMLElement[] {
+    return slot.card.subset && !this.isPackOnly(slot)
+      ? [el('span', { className: 'deck__subset', text: categoryLabel(slot.card) })]
+      : [];
+  }
+
   private addToTray(slot: BoosterSlot): void {
     const rank = bucketRank(slot.effectiveBucket);
     this.tray.append(
@@ -537,11 +545,12 @@ export class StageView {
         className: `summary__card rarity-${rank}${rank >= 4 ? ' is-hit' : ''}`,
         attrs: {
           role: 'img',
-          'aria-label': `${slot.card.name}, ${BUCKET_LABELS[slot.effectiveBucket]}${isNew ? ', nova' : ''}`,
+          'aria-label': `${slot.card.name}, ${categoryLabel(slot.card, slot.effectiveBucket)}${isNew ? ', nova' : ''}`,
         },
         children: [
           el('img', { attrs: { src: slot.card.imageUrl, alt: '', loading: 'lazy' } }),
           ...(isNew ? [el('span', { className: 'deck__new', text: 'Nova' })] : []),
+          ...this.subsetTag(slot),
           ...(this.deps.career && !this.isPackOnly(slot)
             ? [el('span', { className: 'value-tag', text: formatBRL(this.deps.career.priceBook.valueOf(slot.card)) })]
             : []),

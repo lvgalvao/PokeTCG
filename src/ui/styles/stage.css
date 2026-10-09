@@ -495,3 +495,19 @@
 .binder.is-embedded {
   padding-bottom: max(40px, env(safe-area-inset-bottom));
 }
+
+/* Selo de subcoleção (Clássica, Trainer Gallery…): dourado, no canto oposto ao "Nova". */
+.deck__subset {
+  position: absolute;
+  top: 3%;
+  left: 4%;
+  z-index: 2;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--r7);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.35);
+}

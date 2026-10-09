@@ -1,7 +1,8 @@
-import { bucketRank, BUCKET_LABELS } from '../core/buckets.js';
+import { bucketRank } from '../core/buckets.js';
 import type { Card } from '../domain/card.js';
 import { el } from '../utils/dom.js';
 import { attachFoil } from './motion.js';
+import { categoryLabel } from './sets-index.js';
 
 export interface ViewerAction {
   readonly label: string;
@@ -35,7 +36,7 @@ export function openCardViewer(
   });
   const caption = el('p', {
     className: 'viewer__caption',
-    text: `${card.name}, nº ${card.collectionNumber}. ${BUCKET_LABELS[card.bucket]}${
+    text: `${card.name}, nº ${card.collectionNumber}. ${categoryLabel(card)}${
       count && count > 1 ? `, ${count} cópias` : ''
     }.${note ? ` ${note}` : ''}`,
   });
