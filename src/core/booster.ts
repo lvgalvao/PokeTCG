@@ -163,7 +163,7 @@ function drawProfileSlots(
 }
 
 /**
- * `luck` multiplica a chance das cartas raras em cada slot (ver boostHits); 1 = pull rates
+ * `luck` multiplica a chance das cartas acima de Dupla Rara em cada slot (ver boostHits); 1 = pull rates
  * reais.
  */
 export function generateBooster(rng: RNG, catalog: Catalog, seed: number, luck = 1): Booster {
