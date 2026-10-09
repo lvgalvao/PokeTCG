@@ -88,6 +88,7 @@ const SUBSET_LABELS: Readonly<Record<string, string>> = {
   swsh9tg: 'Trainer Gallery',
   swsh45sv: 'Shiny Vault',
   sma: 'Shiny Vault',
+  sve: 'Energia',
 };
 
 export function subsetLabel(subset: string): string {
@@ -97,4 +98,9 @@ export function subsetLabel(subset: string): string {
 /** Categoria da carta para mostrar: a subcoleção (ex.: Clássica) ou a raridade. */
 export function categoryLabel(card: Card, bucket: Bucket = card.bucket): string {
   return card.subset ? subsetLabel(card.subset) : BUCKET_LABELS[bucket];
+}
+
+/** Set (do álbum) a que uma carta pertence, pelo prefixo do id (subsets incluídos). */
+export function setForCard(index: SetsIndex, id: string): SetInfo | undefined {
+  return index.sets.find((s) => [s.id, ...s.subsets].some((p) => id.startsWith(`${p}-`)));
 }

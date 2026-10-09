@@ -1,47 +1,45 @@
 # Supabase
 
-This folder holds the SQL migrations the Pokémon Booster Opener needs in your
-Supabase project.
+Fichário da família (dois jogadores) e trocas de cartas entre eles.
 
-## One-time setup
+## Onde está
 
-1. **Enable Anonymous Sign-Ins**
-   Authentication → Providers → Anonymous → toggle on.
+Projeto **dashboard-jornada** (`urihhfginoiakripiaha`), compartilhado com outras coisas.
+Tudo do jogo tem prefixo `poketcg_` e fica isolado:
 
-2. **Run the migrations**, in order, in the SQL editor:
-   - `migrations/0001_init.sql` — creates `public.profiles`, `public.collections`,
-     enables RLS, and installs the `on_auth_user_created` trigger that
-     auto-creates a profile row whenever a new auth user signs up.
+- As tabelas (`poketcg_family`, `poketcg_players`, `poketcg_collections`, `poketcg_trades`)
+  têm RLS ligado e **nenhuma** policy: ninguém lê nem escreve direto nelas.
+- O app só chama as funções `poketcg_*` (RPC), e todas, menos `poketcg_status` e
+  `poketcg_setup`, exigem o PIN da família. Depois de 10 PINs errados seguidos, trava 15 min.
+- Não usa Supabase Auth; nada da configuração de login do projeto foi mexido.
 
-3. **Set the Vite env vars** in `.env.local` at the repo root:
+O linter do Supabase avisa que as funções `poketcg_*` são `SECURITY DEFINER` executáveis
+por `anon`: é intencional (é a API do jogo, protegida pelo PIN).
 
-   ```
-   VITE_SUPABASE_URL=https://<project>.supabase.co
-   VITE_SUPABASE_ANON_KEY=<anon key>
-   ```
+## Migrações
 
-4. **Restart the dev server** so Vite picks up `.env.local`.
+- `migrations/0002_poketcg_family.sql` — a que está aplicada (tabelas, funções e permissões).
+- `migrations/0001_init.sql` — modelo antigo (um usuário anônimo por aparelho); não é mais usado.
 
-## What gets stored
+## App
 
-- `profiles` — one row per auth user. Holds `is_anonymous`, `display_name`,
-  `created_at`, `last_active`. The frontend bumps `last_active` whenever the
-  Supabase store is initialized.
-- `collections` — one row per user. The whole collection (entries map +
-  per-set stats) lives in a single `jsonb` column. Upserted on every booster.
-
-Both tables have RLS policies so a user can only read/write their own row.
-
-## Verifying it works
-
-Open the browser devtools console with the app running. You should see logs
-like:
+`.env.local` na raiz do repositório (fora do git):
 
 ```
-[supabase] client initialized: https://<project>.supabase.co
-[supabase] anonymous user signed in: <uuid>
-[persistence] Supabase store ready
+VITE_SUPABASE_URL=https://urihhfginoiakripiaha.supabase.co
+VITE_SUPABASE_ANON_KEY=<chave publishable do projeto>
 ```
 
-Open boosters; in the Supabase Table Editor, the `collections` row for that
-user should update with the new `entries` and `bySet` keys.
+Na primeira vez, o app pede o nome dos dois jogadores e cria o PIN. Em cada aparelho,
+depois, é só escolher quem está jogando e digitar o PIN uma vez.
+
+## Recomeçar do zero
+
+No SQL editor (apaga a família, os fichários e as trocas):
+
+```sql
+delete from public.poketcg_trades;
+delete from public.poketcg_collections;
+delete from public.poketcg_players;
+delete from public.poketcg_family;
+```

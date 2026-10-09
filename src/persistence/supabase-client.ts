@@ -12,12 +12,9 @@ export function getSupabaseClient(): SupabaseClient | null {
     );
     return null;
   }
+  // Sem Supabase Auth: o acesso é pelas funções poketcg_*, que exigem o PIN da família.
   cached = createClient(url, key, {
-    auth: {
-      persistSession: true,
-      autoRefreshToken: true,
-      storageKey: 'pkmn-booster:auth:v1',
-    },
+    auth: { persistSession: false, autoRefreshToken: false },
   });
   console.info('[supabase] client initialized:', url);
   return cached;
