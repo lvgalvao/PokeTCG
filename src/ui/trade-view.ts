@@ -5,6 +5,7 @@ import { deserializeCollection, type PlayerSession } from '../persistence/family
 import { el } from '../utils/dom.js';
 import { openCardViewer } from './card-viewer.js';
 import { catalogFor, setForCard, type SetInfo, type SetsIndex } from './sets-index.js';
+import { celebrateTrade } from './trade-celebration.js';
 
 export interface TradeDeps {
   readonly api: FamilyApi;
@@ -16,7 +17,8 @@ export interface TradeDeps {
   readonly onChanged: () => Promise<void>;
 }
 
-async function resolveCards(index: SetsIndex, ids: Iterable<string>): Promise<Map<string, Card>> {
+/** Cartas dos ids dados (carrega os catálogos das coleções envolvidas). */
+export async function resolveCards(index: SetsIndex, ids: Iterable<string>): Promise<Map<string, Card>> {
   const sets = new Map<string, SetInfo>();
   for (const id of ids) {
     const set = setForCard(index, id);
@@ -61,14 +63,32 @@ function cardRow(ids: readonly string[], cards: Map<string, Card>, empty: string
   return row;
 }
 
+/** Mesa de troca: o que você recebe ⇄ o que você dá. */
+function table(get: readonly string[], give: readonly string[], cards: Map<string, Card>, big = false): HTMLElement {
+  return el('div', {
+    className: `trade-table${big ? ' is-big' : ''}`,
+    children: [
+      el('div', {
+        className: 'trade-table__side is-get',
+        children: [el('p', { className: 'trade__label', text: 'Você recebe' }), cardRow(get, cards, 'nada')],
+      }),
+      el('span', { className: 'trade-table__swap', attrs: { 'aria-hidden': 'true' }, text: '⇄' }),
+      el('div', {
+        className: 'trade-table__side is-give',
+        children: [el('p', { className: 'trade__label', text: 'Você dá' }), cardRow(give, cards, 'nada (presente!)')],
+      }),
+    ],
+  });
+}
+
+type Step = 'want' | 'give' | 'review';
+
 /** Página de trocas: propostas recebidas, enviadas, histórico e "Nova troca". */
 export class TradeView {
   private alive = true;
-  private readonly me: Player;
   private readonly partner: Player;
 
   constructor(private readonly root: HTMLElement, private readonly deps: TradeDeps) {
-    this.me = deps.players.find((p) => p.id === deps.session.player)!;
     this.partner = deps.players.find((p) => p.id !== deps.session.player)!;
     void this.renderList();
   }
@@ -101,43 +121,43 @@ export class TradeView {
     const outgoing = trades.filter((t) => t.status === 'pending' && t.from_player === session.player);
     const history = trades.filter((t) => t.status !== 'pending');
 
-    const create = el('button', { className: 'btn btn--primary', attrs: { type: 'button' }, text: 'Nova troca' });
+    const create = el('button', {
+      className: 'trades__new',
+      attrs: { type: 'button' },
+      children: [
+        el('span', { className: 'trades__new-icon', attrs: { 'aria-hidden': 'true' }, text: '⇄' }),
+        el('span', { children: [el('strong', { text: 'Nova troca' }), el('small', { text: `Escolha cartas de ${this.partner.name} e ofereça as suas` })] }),
+      ],
+    });
     create.addEventListener('click', () => void this.renderComposer());
 
     const page = el('div', {
       className: 'trades',
       children: [
         el('h1', { className: 'binder-index__title', text: 'Trocas' }),
-        el('p', {
-          className: 'binder-index__meta',
-          text: `Escolha cartas suas para dar e cartas de ${this.partner.name} para pedir. ${this.partner.name} aceita ou recusa.`,
-        }),
         ...(flash ? [el('p', { className: 'trades__flash', attrs: { role: 'status' }, text: flash })] : []),
-        create,
       ],
     });
 
     if (incoming.length) {
-      page.append(el('h2', { className: 'trades__h', text: 'Para você responder' }));
+      page.append(el('h2', { className: 'trades__h is-hot', text: `${this.partner.name} quer trocar com você!` }));
       for (const t of incoming) page.append(this.tradeCard(t, cards, 'incoming'));
     }
+    page.append(create);
     if (outgoing.length) {
-      page.append(el('h2', { className: 'trades__h', text: `Esperando ${this.partner.name}` }));
+      page.append(el('h2', { className: 'trades__h', text: `Esperando ${this.partner.name} responder` }));
       for (const t of outgoing) page.append(this.tradeCard(t, cards, 'outgoing'));
     }
     if (history.length) {
       page.append(el('h2', { className: 'trades__h', text: 'Últimas trocas' }));
       for (const t of history) page.append(this.tradeCard(t, cards, 'history'));
     }
-    if (!trades.length) {
-      page.append(el('p', { className: 'trades__empty', text: 'Nenhuma troca ainda.' }));
-    }
     this.root.replaceChildren(page);
   }
 
   private tradeCard(t: Trade, cards: Map<string, Card>, kind: 'incoming' | 'outgoing' | 'history'): HTMLElement {
     const mine = t.from_player === this.deps.session.player;
-    // Sempre do ponto de vista de quem olha: o que eu dou e o que eu recebo.
+    // Sempre do ponto de vista de quem olha: o que eu recebo e o que eu dou.
     const give = mine ? t.offer : t.request;
     const get = mine ? t.request : t.offer;
     const status: Record<Trade['status'], string> = {
@@ -147,22 +167,23 @@ export class TradeView {
       cancelled: 'Cancelada',
       failed: 'Não deu certo: alguém não tinha mais uma das cartas',
     };
+    const when = new Date(t.resolved_at ?? t.created_at).toLocaleDateString('pt-BR', { day: 'numeric', month: 'short' });
     const head =
       kind === 'incoming'
-        ? `${this.name(t.from_player)} quer trocar com você`
+        ? `Proposta de ${this.name(t.from_player)}`
         : kind === 'outgoing'
           ? `Você propôs a ${this.name(t.to_player)}`
-          : `${mine ? 'Você' : this.name(t.from_player)} → ${mine ? this.name(t.to_player) : 'você'} · ${status[t.status]}`;
+          : `${status[t.status]} · ${when}`;
 
     const actions = el('div', { className: 'trade__actions' });
     if (kind === 'incoming') {
-      const accept = el('button', { className: 'btn btn--primary', attrs: { type: 'button' }, text: 'Aceitar' });
-      const reject = el('button', { className: 'btn btn--quiet', attrs: { type: 'button' }, text: 'Recusar' });
-      accept.addEventListener('click', () => void this.respond(t, true, [accept, reject]));
-      reject.addEventListener('click', () => void this.respond(t, false, [accept, reject]));
+      const accept = el('button', { className: 'btn btn--primary trade__accept', attrs: { type: 'button' }, text: 'Aceitar troca' });
+      const reject = el('button', { className: 'btn btn--quiet', attrs: { type: 'button' }, text: 'Não, obrigado' });
+      accept.addEventListener('click', () => void this.respond(t, true, [accept, reject], cards));
+      reject.addEventListener('click', () => void this.respond(t, false, [accept, reject], cards));
       actions.append(accept, reject);
     } else if (kind === 'outgoing') {
-      const cancel = el('button', { className: 'btn btn--quiet', attrs: { type: 'button' }, text: 'Cancelar' });
+      const cancel = el('button', { className: 'btn btn--quiet', attrs: { type: 'button' }, text: 'Desistir' });
       cancel.addEventListener('click', () => {
         cancel.disabled = true;
         this.deps.api
@@ -175,25 +196,20 @@ export class TradeView {
 
     return el('article', {
       className: `trade trade--${kind}${t.status === 'accepted' ? ' is-done' : ''}`,
-      children: [
-        el('p', { className: 'trade__head', text: head }),
-        el('div', {
-          className: 'trade__sides',
-          children: [
-            el('div', { children: [el('p', { className: 'trade__label', text: 'Você dá' }), cardRow(give, cards, 'nada')] }),
-            el('div', { children: [el('p', { className: 'trade__label', text: 'Você recebe' }), cardRow(get, cards, 'nada')] }),
-          ],
-        }),
-        actions,
-      ],
+      children: [el('p', { className: 'trade__head', text: head }), table(get, give, cards, kind === 'incoming'), actions],
     });
   }
 
-  private async respond(t: Trade, accept: boolean, buttons: HTMLButtonElement[]): Promise<void> {
+  private async respond(t: Trade, accept: boolean, buttons: HTMLButtonElement[], cards: Map<string, Card>): Promise<void> {
     buttons.forEach((b) => (b.disabled = true));
     try {
       const status = await this.deps.api.respond(this.deps.session.pin, this.deps.session.player, t.id, accept);
       await this.deps.onChanged();
+      if (status === 'accepted') {
+        // Quem aceitou recebe a oferta e dá o pedido.
+        const pick = (ids: readonly string[]) => ids.map((id) => cards.get(id)).filter((c): c is Card => !!c);
+        celebrateTrade(pick(t.request), pick(t.offer), this.name(t.from_player));
+      }
       await this.renderList(
         status === 'accepted'
           ? 'Troca feita! As cartas já estão no seu fichário.'
@@ -206,137 +222,201 @@ export class TradeView {
     }
   }
 
-  // ── Montar uma proposta ────────────────────────────────────────────────────────
+  // ── Montar uma proposta: 1. o que você quer · 2. o que você dá · 3. conferir ─────
 
   private async renderComposer(): Promise<void> {
     const { api, session } = this.deps;
-    let partnerCollection: Collection;
+    let theirs: Collection;
     try {
-      partnerCollection = deserializeCollection(await api.load(session.pin, this.partner.id));
+      theirs = deserializeCollection(await api.load(session.pin, this.partner.id));
     } catch (e) {
       return this.showError(e);
     }
     const mine = this.deps.myCollection();
-    const cards = await resolveCards(this.deps.index, [...mine.entries.keys(), ...partnerCollection.entries.keys()]);
+    const cards = await resolveCards(this.deps.index, [...mine.entries.keys(), ...theirs.entries.keys()]);
     if (!this.alive) return;
 
+    const want = new Set<string>();
     const give = new Set<string>();
-    const ask = new Set<string>();
-    let side: 'give' | 'ask' = 'give';
-    const setFilter: Record<'give' | 'ask', string | null> = { give: null, ask: null };
+    let step: Step = 'want';
+    let onlyMissing = true;
 
-    const tabs = el('div', { className: 'binder__filters', attrs: { role: 'tablist' } });
-    const sets = el('div', { className: 'binder__filters trade-composer__sets' });
-    const grid = el('ol', { className: 'binder__grid' });
-    const summary = el('p', { className: 'trade-composer__summary' });
-    const send = el('button', { className: 'btn btn--primary', attrs: { type: 'button' }, text: 'Enviar proposta' });
-    const cancel = el('button', { className: 'btn btn--quiet', attrs: { type: 'button' }, text: 'Voltar' });
+    const head = el('div', { className: 'composer__head' });
+    const tray = el('div', { className: 'composer__tray' });
+    const body = el('div', { className: 'composer__body' });
+    const back = el('button', { className: 'btn btn--quiet', attrs: { type: 'button' } });
+    const next = el('button', { className: 'btn btn--primary', attrs: { type: 'button' } });
     const err = el('p', { className: 'login__error', attrs: { role: 'alert' } });
-    cancel.addEventListener('click', () => void this.renderList());
 
-    const collectionOf = (s: 'give' | 'ask') => (s === 'give' ? mine : partnerCollection);
-    const selected = (s: 'give' | 'ask') => (s === 'give' ? give : ask);
-
-    const draw = () => {
-      tabs.replaceChildren(
-        ...(['give', 'ask'] as const).map((s) => {
-          const b = el('button', {
-            className: 'chip',
-            attrs: { type: 'button', role: 'tab', 'aria-pressed': String(side === s) },
-            children: [
-              s === 'give' ? 'Você dá' : `Você pede a ${this.partner.name}`,
-              el('span', { className: 'chip__count', text: String(selected(s).size) }),
-            ],
-          });
-          b.addEventListener('click', () => {
-            side = s;
-            draw();
-          });
-          return b;
-        }),
-      );
-
-      const owned = [...collectionOf(side).entries]
+    const owned = (c: Collection) =>
+      [...c.entries]
         .filter(([id, n]) => n > 0 && cards.has(id))
         .map(([id, n]) => ({ card: cards.get(id)!, n }));
-      const bySet = new Map<string, SetInfo>();
-      for (const { card } of owned) {
-        const set = setForCard(this.deps.index, card.id);
-        if (set) bySet.set(set.id, set);
-      }
-      const setList = this.deps.index.sets.filter((s) => bySet.has(s.id));
-      if (!setFilter[side] || !bySet.has(setFilter[side]!)) setFilter[side] = setList[0]?.id ?? null;
-      sets.replaceChildren(
-        ...setList.map((s) => {
-          const b = el('button', {
-            className: 'chip',
-            attrs: { type: 'button', 'aria-pressed': String(setFilter[side] === s.id) },
-            text: s.name,
-          });
-          b.addEventListener('click', () => {
-            setFilter[side] = s.id;
-            draw();
-          });
-          return b;
-        }),
-      );
 
-      const sel = selected(side);
-      grid.replaceChildren(
-        ...owned
-          .filter(({ card }) => setForCard(this.deps.index, card.id)?.id === setFilter[side])
-          .map(({ card, n }) => {
-            const on = sel.has(card.id);
-            const btn = el('button', {
-              className: 'pocket__card',
-              attrs: { type: 'button', 'aria-pressed': String(on), 'aria-label': `${card.name}${on ? ', escolhida' : ''}` },
-              children: [
-                el('img', { attrs: { src: card.imageUrl, alt: '', loading: 'lazy' } }),
-                ...(n > 1 ? [el('span', { className: 'pocket__count', text: `×${n}` })] : []),
-              ],
-            });
-            btn.addEventListener('click', () => {
-              if (sel.has(card.id)) sel.delete(card.id);
-              else sel.add(card.id);
-              draw();
-            });
-            return el('li', { className: `pocket${on ? ' is-picked' : ''}`, children: [btn] });
-          }),
-      );
-      if (!owned.length) {
-        grid.replaceChildren(
-          el('li', {
-            className: 'trades__empty',
-            text: side === 'give' ? 'Você ainda não tem cartas.' : `${this.partner.name} ainda não tem cartas.`,
-          }),
-        );
+    /** Cartas escolhidas, em miniatura; tocar tira da troca. */
+    const miniRow = (ids: Set<string>, label: string, emptyText: string) => {
+      const row = el('div', { className: 'composer__mini' });
+      row.append(el('span', { className: 'composer__mini-label', text: `${label} (${ids.size})` }));
+      if (!ids.size) row.append(el('span', { className: 'composer__mini-empty', text: emptyText }));
+      for (const id of ids) {
+        const card = cards.get(id);
+        if (!card) continue;
+        const b = el('button', {
+          className: 'composer__mini-card',
+          attrs: { type: 'button', 'aria-label': `Tirar ${card.name}` },
+          children: [el('img', { attrs: { src: card.imageUrl, alt: '' } })],
+        });
+        b.addEventListener('click', () => {
+          ids.delete(id);
+          draw();
+        });
+        row.append(b);
       }
-      summary.textContent = `Você dá ${give.size} · Você recebe ${ask.size}`;
-      send.disabled = give.size + ask.size === 0;
+      return row;
     };
 
-    send.addEventListener('click', () => {
-      send.disabled = true;
+    /** Grade de escolha, agrupada por coleção. */
+    const picker = (list: { card: Card; n: number }[], sel: Set<string>, tag: (c: Card, n: number) => string | null) => {
+      const wrap = el('div');
+      const bySet = new Map<string, { set: SetInfo; items: { card: Card; n: number }[] }>();
+      for (const item of list) {
+        const set = setForCard(this.deps.index, item.card.id);
+        if (!set) continue;
+        const g = bySet.get(set.id) ?? { set, items: [] };
+        g.items.push(item);
+        bySet.set(set.id, g);
+      }
+      for (const set of this.deps.index.sets) {
+        const g = bySet.get(set.id);
+        if (!g) continue;
+        const grid = el('ol', { className: 'binder__grid composer__grid' });
+        for (const { card, n } of g.items) {
+          const on = sel.has(card.id);
+          const label = tag(card, n);
+          const btn = el('button', {
+            className: 'pocket__card',
+            attrs: { type: 'button', 'aria-pressed': String(on), 'aria-label': `${card.name}${on ? ', escolhida' : ''}` },
+            children: [
+              el('img', { attrs: { src: card.imageUrl, alt: '', loading: 'lazy' } }),
+              ...(label ? [el('span', { className: 'composer__tag', text: label })] : []),
+              ...(on ? [el('span', { className: 'composer__check', attrs: { 'aria-hidden': 'true' }, text: '✓' })] : []),
+            ],
+          });
+          btn.addEventListener('click', () => {
+            if (sel.has(card.id)) sel.delete(card.id);
+            else sel.add(card.id);
+            draw();
+          });
+          grid.append(el('li', { className: `pocket${on ? ' is-picked' : ''}`, children: [btn] }));
+        }
+        wrap.append(el('h3', { className: 'composer__set', text: g.set.name }), grid);
+      }
+      return wrap;
+    };
+
+    const draw = () => {
+      const n = step === 'want' ? 1 : step === 'give' ? 2 : 3;
+      const title =
+        step === 'want'
+          ? `O que você quer de ${this.partner.name}?`
+          : step === 'give'
+            ? `O que você dá em troca?`
+            : 'Confere a troca';
+      const hint =
+        step === 'want'
+          ? 'Toque nas cartas que você quer. Pode pular se for só dar um presente.'
+          : step === 'give'
+            ? `Toque nas suas cartas que vão para ${this.partner.name}. As repetidas aparecem primeiro.`
+            : `Se ${this.partner.name} aceitar, as cartas trocam de fichário na hora.`;
+      head.replaceChildren(
+        el('ol', {
+          className: 'composer__steps',
+          attrs: { 'aria-label': `Passo ${n} de 3` },
+          children: [1, 2, 3].map((i) => el('li', { className: i === n ? 'is-on' : i < n ? 'is-done' : '' })),
+        }),
+        el('h1', { className: 'composer__title', text: title }),
+        el('p', { className: 'binder-index__meta', text: hint }),
+      );
+
+      if (step === 'review') {
+        tray.replaceChildren();
+        body.replaceChildren(table([...want], [...give], cards, true));
+      } else {
+        tray.replaceChildren(
+          miniRow(want, 'Você recebe', 'nada ainda'),
+          miniRow(give, 'Você dá', 'nada ainda'),
+        );
+        if (step === 'want') {
+          const toggle = el('button', {
+            className: 'chip',
+            attrs: { type: 'button', 'aria-pressed': String(onlyMissing) },
+            text: 'Só as que eu não tenho',
+          });
+          toggle.addEventListener('click', () => {
+            onlyMissing = !onlyMissing;
+            draw();
+          });
+          const list = owned(theirs).filter(({ card }) => !onlyMissing || !mine.entries.get(card.id));
+          body.replaceChildren(
+            el('div', { className: 'binder__filters', children: [toggle] }),
+            list.length
+              ? picker(list, want, (c) => (mine.entries.get(c.id) ? null : 'Nova!'))
+              : el('p', {
+                  className: 'trades__empty',
+                  text: onlyMissing
+                    ? `${this.partner.name} não tem nenhuma carta que falta para você. Desligue o filtro para ver todas.`
+                    : `${this.partner.name} ainda não tem cartas.`,
+                }),
+          );
+        } else {
+          const list = owned(mine).sort((a, b) => Number(b.n > 1) - Number(a.n > 1));
+          body.replaceChildren(
+            list.length
+              ? picker(list, give, (_c, count) => (count > 1 ? `Repetida ×${count}` : null))
+              : el('p', { className: 'trades__empty', text: 'Você ainda não tem cartas. Abra uns pacotes!' }),
+          );
+        }
+      }
+
+      back.textContent = step === 'want' ? 'Cancelar' : 'Voltar';
+      next.textContent =
+        step === 'want'
+          ? want.size ? 'Próximo' : 'Pular'
+          : step === 'give'
+            ? 'Conferir'
+            : `Propor troca a ${this.partner.name}`;
+      next.disabled = step === 'review' && want.size + give.size === 0;
+      if (step === 'give') next.disabled = want.size + give.size === 0;
+      err.textContent = '';
+    };
+
+    back.addEventListener('click', () => {
+      if (step === 'want') return void this.renderList();
+      step = step === 'review' ? 'give' : 'want';
+      draw();
+      window.scrollTo({ top: 0 });
+    });
+    next.addEventListener('click', () => {
+      if (step !== 'review') {
+        step = step === 'want' ? 'give' : 'review';
+        draw();
+        window.scrollTo({ top: 0 });
+        return;
+      }
+      next.disabled = true;
       api
-        .propose(session.pin, session.player, [...give], [...ask])
+        .propose(session.pin, session.player, [...give], [...want])
         .then(() => this.renderList(`Proposta enviada! Agora é com ${this.partner.name}.`))
         .catch((e: unknown) => {
           err.textContent = e instanceof FamilyError ? e.message : 'Não deu para enviar.';
-          send.disabled = false;
+          next.disabled = false;
         });
     });
 
     this.root.replaceChildren(
       el('div', {
         className: 'trades trade-composer',
-        children: [
-          el('h1', { className: 'binder-index__title', text: `Troca com ${this.partner.name}` }),
-          el('p', { className: 'binder-index__meta', text: 'Toque nas cartas para escolher. Toque de novo para tirar.' }),
-          tabs,
-          sets,
-          grid,
-          el('div', { className: 'trade-composer__bar', children: [summary, err, cancel, send] }),
-        ],
+        children: [head, tray, body, el('div', { className: 'trade-composer__bar', children: [err, back, next] })],
       }),
     );
     draw();

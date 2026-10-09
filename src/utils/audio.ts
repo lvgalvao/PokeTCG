@@ -112,3 +112,52 @@ export function playTearSound() {
   gain.connect(audioCtx.destination);
   source.start(t);
 }
+
+function tone(freq: number, start: number, duration: number, type: OscillatorType = 'sine', peak = 0.2) {
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = type;
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0.0001, start);
+  gain.gain.exponentialRampToValueAtTime(peak, start + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(start);
+  osc.stop(start + duration);
+}
+
+/** "Plim-plim": chegou uma proposta de troca. */
+export function playNotifySound() {
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  const t = audioCtx.currentTime;
+  tone(880, t, 0.25, 'sine', 0.25);
+  tone(1318.5, t + 0.13, 0.45, 'sine', 0.25);
+}
+
+/** Troca feita: "zuuum" das cartas cruzando e uma fanfarrinha. */
+export function playTradeSound() {
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  const t = audioCtx.currentTime;
+  // Zuuum: senoide subindo, como as cartas passando de mão.
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sawtooth';
+  osc.frequency.setValueAtTime(180, t);
+  osc.frequency.exponentialRampToValueAtTime(900, t + 0.35);
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'lowpass';
+  filter.frequency.value = 1400;
+  gain.gain.setValueAtTime(0.0001, t);
+  gain.gain.exponentialRampToValueAtTime(0.12, t + 0.05);
+  gain.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
+  osc.connect(filter);
+  filter.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(t);
+  osc.stop(t + 0.42);
+  // Fanfarra: sol-dó-mi-sol… dó!
+  const notes = [392, 523.25, 659.25, 783.99, 1046.5];
+  notes.forEach((f, i) => tone(f, t + 0.45 + i * 0.1, i === notes.length - 1 ? 0.9 : 0.16, 'triangle', 0.22));
+  tone(1318.5, t + 0.95, 0.9, 'sine', 0.1);
+}
