@@ -3,12 +3,15 @@ import type { Catalog } from '../domain/catalog.js';
 import type { Collection, CollectionStore } from '../domain/collection.js';
 import type { FamilyApi, Player } from '../persistence/family-api.js';
 import { clearSession, type FamilyCollectionStore, type PlayerSession } from '../persistence/family-store.js';
-import { $, $$ } from '../utils/dom.js';
+import type { Card } from '../domain/card.js';
+import { playNotifySound } from '../utils/audio.js';
+import { $, $$, el } from '../utils/dom.js';
 import { renderBinderIndex, SetBinderView } from './binder-view.js';
 import { catalogFor, type SetInfo, type SetsIndex } from './sets-index.js';
 import { StageView } from './stage-view.js';
 import { renderStore } from './store-view.js';
-import { TradeView } from './trade-view.js';
+import { celebrateTrade } from './trade-celebration.js';
+import { resolveCards, TradeView } from './trade-view.js';
 
 /** Jogo em família: dois jogadores no Supabase, com trocas entre eles. */
 export interface FamilyContext {
@@ -60,7 +63,8 @@ export class App {
   private baseHash = '#/';
   private renderedBase: string | null = null;
   /** Assinatura das trocas vistas na última consulta, para saber quando algo mudou. */
-  private tradeSignature: string | null = null;
+  /** Status de cada troca na última consulta (null antes da primeira). */
+  private tradeStatus: Map<number, string> | null = null;
 
   constructor(private readonly deps: AppDeps) {
     this.collection = deps.store.load();
@@ -110,15 +114,32 @@ export class App {
   /** Atualiza o aviso de trocas e, se alguma troca mudou, recarrega o fichário (devolve se recarregou). */
   private async pollTrades(): Promise<boolean> {
     const family = this.deps.family!;
+    const me = family.session.player;
     try {
       const list = await family.api.trades(family.session.pin);
-      const incoming = list.filter((t) => t.status === 'pending' && t.to_player === family.session.player).length;
+      const incoming = list.filter((t) => t.status === 'pending' && t.to_player === me);
       const badge = $('.topbar__badge');
-      badge.hidden = incoming === 0;
-      badge.textContent = String(incoming);
-      const signature = list.map((t) => `${t.id}:${t.status}`).join(',');
-      const changed = this.tradeSignature !== null && signature !== this.tradeSignature;
-      this.tradeSignature = signature;
+      badge.hidden = incoming.length === 0;
+      badge.textContent = String(incoming.length);
+
+      const before = this.tradeStatus;
+      this.tradeStatus = new Map(list.map((t) => [t.id, t.status]));
+      if (!before) {
+        if (incoming.length && !this.trades) this.toastTrade(incoming[0]!.from_player, false);
+        return false;
+      }
+      const changed = list.some((t) => before.get(t.id) !== t.status);
+      // Chegou proposta nova: plim e aviso (na página de trocas ela já aparece na lista).
+      const fresh = incoming.find((t) => !before.has(t.id));
+      if (fresh) this.toastTrade(fresh.from_player, true);
+      // A proposta que eu fiz foi aceita: festa aqui também.
+      const accepted = list.find((t) => t.from_player === me && t.status === 'accepted' && before.get(t.id) === 'pending');
+      if (accepted) {
+        const cards = await resolveCards(this.deps.index, [...accepted.offer, ...accepted.request]);
+        const pick = (ids: readonly string[]) => ids.map((id) => cards.get(id)).filter((c): c is Card => !!c);
+        const partner = family.players.find((p) => p.id === accepted.to_player)?.name ?? '';
+        celebrateTrade(pick(accepted.offer), pick(accepted.request), partner);
+      }
       if (changed) await this.syncCollection();
       return changed;
     } catch (err) {
@@ -126,6 +147,34 @@ export class App {
       return false;
     }
   }
+
+  /** Aviso no topo: "Fulano quer trocar com você!", com som quando acabou de chegar. */
+  private toastTrade(from: string, sound: boolean): void {
+    const family = this.deps.family!;
+    const name = family.players.find((p) => p.id === from)?.name ?? 'Alguém';
+    if (sound) {
+      playNotifySound();
+      navigator.vibrate?.([15, 80, 15]);
+    }
+    if (this.trades) {
+      this.trades.refresh();
+      return;
+    }
+    document.querySelector('.trade-toast')?.remove();
+    const toast = el('a', {
+      className: 'trade-toast',
+      attrs: { href: '#/trocas', role: 'status' },
+      children: [
+        el('span', { className: 'trade-toast__icon', attrs: { 'aria-hidden': 'true' }, text: '⇄' }),
+        el('span', { children: [el('strong', { text: `${name} quer trocar com você!` }), el('small', { text: 'Toque para ver' })] }),
+      ],
+    });
+    toast.addEventListener('click', () => toast.remove());
+    document.body.append(toast);
+    window.setTimeout(() => toast.classList.add('is-leaving'), 7000);
+    window.setTimeout(() => toast.remove(), 7400);
+  }
+
 
   /** Recarrega o fichário do servidor e redesenha a página de baixo (fora do palco). */
   private async syncCollection(): Promise<void> {

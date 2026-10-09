@@ -145,9 +145,6 @@ body.is-login .topbar {
   padding: 24px var(--gutter) 64px;
 }
 
-.trades > .btn {
-  margin-top: 8px;
-}
 
 .trades__flash {
   margin: 12px 0;
@@ -194,17 +191,7 @@ body.is-login .topbar {
   font-weight: 600;
 }
 
-.trade__sides {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
 
-@media (max-width: 560px) {
-  .trade__sides {
-    grid-template-columns: 1fr;
-  }
-}
 
 .trade__label {
   margin: 0 0 6px;
@@ -260,9 +247,6 @@ body.is-login .topbar {
   padding-bottom: 140px;
 }
 
-.trade-composer__sets {
-  margin-top: 10px;
-}
 
 .pocket.is-picked .pocket__card {
   box-shadow: 0 0 0 3px var(--pokeball);
@@ -287,12 +271,484 @@ body.is-login .topbar {
   box-shadow: 0 -1px 0 color-mix(in srgb, var(--ink) 8%, transparent);
 }
 
-.trade-composer__summary {
-  margin: 0 auto 0 0;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
 
 .trade-composer__bar .login__error:empty {
   display: none;
+}
+
+/* ── Lista de trocas ─────────────────────────────────────────────────────── */
+
+.trades__new {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin: 20px 0 8px;
+  padding: 18px 20px;
+  border: 0;
+  border-radius: var(--radius-m);
+  background: var(--pokeball);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--pokeball) 35%, transparent);
+  transition: transform 120ms var(--spring-out);
+}
+
+.trades__new:active {
+  transform: scale(0.98);
+}
+
+.trades__new-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.2);
+  font-size: 1.6rem;
+}
+
+.trades__new strong {
+  display: block;
+  font-size: 1.25rem;
+}
+
+.trades__new small {
+  font-size: 0.9375rem;
+  opacity: 0.9;
+}
+
+.trades__h.is-hot {
+  color: var(--pokeball);
+  font-size: 1.25rem;
+}
+
+/* Mesa: recebe ⇄ dá. */
+.trade-table {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 12px;
+}
+
+.trade-table__swap {
+  align-self: center;
+  font-size: 1.5rem;
+  color: var(--ink-faint);
+}
+
+.trade-table__side.is-get .trade__label {
+  color: var(--r2);
+  font-weight: 600;
+}
+
+.trade-table.is-big .trade-row__card {
+  width: clamp(84px, 24vw, 140px);
+}
+
+.trade-table.is-big .trade-table__swap {
+  font-size: 2.25rem;
+  color: var(--pokeball);
+}
+
+@media (max-width: 560px) {
+  .trade-table {
+    grid-template-columns: 1fr;
+  }
+  .trade-table__swap {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+}
+
+.trade__accept {
+  min-height: 52px;
+  padding: 0 28px;
+  font-size: 1.125rem;
+}
+
+/* ── Proposta em 3 passos ───────────────────────────────────────────────── */
+
+.composer__steps {
+  display: flex;
+  gap: 6px;
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.composer__steps li {
+  width: 36px;
+  height: 6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.composer__steps li.is-done {
+  background: color-mix(in srgb, var(--pokeball) 45%, transparent);
+}
+
+.composer__steps li.is-on {
+  background: var(--pokeball);
+}
+
+.composer__title {
+  margin: 0;
+  font: 700 clamp(1.75rem, 6vw, 2.5rem) / 1.1 var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+/* As escolhas ficam sempre à vista, grudadas embaixo do topo. */
+.composer__tray {
+  position: sticky;
+  top: 56px;
+  z-index: 10;
+  display: grid;
+  gap: 6px;
+  margin: 12px calc(var(--gutter) * -1) 0;
+  padding: 10px var(--gutter);
+  background: color-mix(in srgb, var(--shop-white) 92%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.composer__tray:empty {
+  display: none;
+}
+
+.composer__mini {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 46px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.composer__mini-label {
+  flex: none;
+  width: 112px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.composer__mini:first-child .composer__mini-label {
+  color: var(--r2);
+}
+
+.composer__mini-empty {
+  color: var(--ink-faint);
+  font-size: 0.875rem;
+}
+
+.composer__mini-card {
+  flex: none;
+  width: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  background: none;
+  cursor: pointer;
+  animation: mini-in 260ms var(--spring-out);
+}
+
+@keyframes mini-in {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+
+.composer__set {
+  margin: 24px 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.composer__grid {
+  margin-top: 8px;
+}
+
+.composer__grid .pocket__card {
+  position: relative;
+  cursor: pointer;
+}
+
+.composer__tag {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--r2);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.composer__check {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--pokeball) 35%, transparent);
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 0.4);
+  animation: mini-in 220ms var(--spring-out);
+}
+
+/* ── Festa da troca ─────────────────────────────────────────────────────── */
+
+.celebrate {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px var(--gutter);
+  overflow: hidden;
+  background: radial-gradient(120% 80% at 50% 40%, #1f1b3a 0%, var(--stage) 70%);
+  color: var(--stage-ink);
+  text-align: center;
+  animation: viewer-in 220ms var(--spring-out);
+}
+
+.celebrate.is-leaving {
+  animation: celebrate-out 220ms ease-in forwards;
+}
+
+@keyframes celebrate-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.celebrate__table {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(8px, 3vw, 32px);
+  width: min(100%, 760px);
+}
+
+.celebrate__label {
+  margin: 0 0 10px;
+  color: var(--stage-ink-soft);
+  font-size: 0.9375rem;
+}
+
+.celebrate__side.is-in .celebrate__label {
+  color: var(--r7);
+  font-weight: 600;
+}
+
+.celebrate__stack {
+  position: relative;
+  height: clamp(150px, 34vw, 260px);
+}
+
+.celebrate__card {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.5);
+  --spread: calc((var(--i) - (var(--n) - 1) / 2) * 14px);
+  --tilt: calc((var(--i) - (var(--n) - 1) / 2) * 5deg);
+  transform: translateX(calc(-50% + var(--spread))) rotate(var(--tilt));
+}
+
+/* As suas vão embora pela direita; as novas chegam da direita e quicam no lugar. */
+.celebrate__stack.is-out .celebrate__card {
+  animation: card-leave 900ms 200ms var(--spring-out) both;
+  filter: saturate(0.6) brightness(0.8);
+}
+
+.celebrate__stack.is-in .celebrate__card {
+  animation: card-arrive 900ms calc(450ms + var(--i) * 90ms) cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  box-shadow: 0 0 0 3px var(--r7), 0 16px 40px rgb(0 0 0 / 0.5), 0 0 60px color-mix(in srgb, var(--r7) 45%, transparent);
+}
+
+@keyframes card-leave {
+  0% {
+    transform: translateX(calc(-50% + var(--spread) + 160px)) rotate(12deg) scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(calc(-50% + var(--spread))) rotate(var(--tilt));
+    opacity: 1;
+  }
+}
+
+@keyframes card-arrive {
+  0% {
+    transform: translateX(calc(-50% + var(--spread) - 220px)) rotate(-25deg) scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(calc(-50% + var(--spread))) rotate(var(--tilt)) scale(1);
+    opacity: 1;
+  }
+}
+
+.celebrate__more {
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--stage-ink);
+  color: var(--stage);
+  font-weight: 700;
+}
+
+.celebrate__swap {
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  color: var(--r7);
+  animation: swap-spin 900ms 300ms var(--spring-out) both;
+}
+
+@keyframes swap-spin {
+  from {
+    transform: rotate(-180deg) scale(0.3);
+    opacity: 0;
+  }
+}
+
+.celebrate__title {
+  margin: 18px 0 0;
+  font: 800 clamp(2.5rem, 10vw, 4.5rem) / 1 var(--font-display);
+  letter-spacing: -0.04em;
+  background: linear-gradient(90deg, var(--r7), #fff 50%, var(--r7));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: title-pop 700ms 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes title-pop {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+.celebrate__meta {
+  margin: 0;
+  color: var(--stage-ink-soft);
+  animation: title-pop 500ms 1.2s ease-out both;
+}
+
+.celebrate__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  animation: title-pop 500ms 1.4s ease-out both;
+}
+
+.celebrate__confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.celebrate__confetti span {
+  position: absolute;
+  top: -20px;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  animation-name: confetti-fall;
+  animation-timing-function: cubic-bezier(0.25, 0.6, 0.4, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translate(var(--drift), 110vh) rotate(var(--spin));
+  }
+}
+
+@media (max-width: 560px) {
+  .celebrate__table {
+    grid-template-columns: 1fr;
+  }
+  .celebrate__side.is-out {
+    order: 3;
+  }
+  .celebrate__side.is-out .celebrate__stack {
+    height: 90px;
+  }
+  .celebrate__swap {
+    transform: rotate(90deg);
+  }
+}
+
+/* ── Aviso de proposta nova ─────────────────────────────────────────────── */
+
+.trade-toast {
+  position: fixed;
+  top: max(64px, calc(env(safe-area-inset-top) + 56px));
+  left: 50%;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(92vw, 420px);
+  padding: 12px 16px;
+  border-radius: var(--radius-m);
+  background: var(--ink);
+  color: var(--shop-white);
+  text-decoration: none;
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.3);
+  transform: translateX(-50%);
+  animation: toast-drop 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.trade-toast.is-leaving {
+  animation: toast-up 300ms ease-in forwards;
+}
+
+@keyframes toast-drop {
+  from {
+    transform: translate(-50%, -30px);
+    opacity: 0;
+  }
+}
+
+@keyframes toast-up {
+  to {
+    transform: translate(-50%, -30px);
+    opacity: 0;
+  }
+}
+
+.trade-toast__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--pokeball);
+  font-size: 1.3rem;
+}
+
+.trade-toast strong {
+  display: block;
+}
+
+.trade-toast small {
+  color: var(--stage-ink-soft);
 }
