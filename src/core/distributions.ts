@@ -88,3 +88,34 @@ export function boostHits(ps: readonly number[], ranks: readonly number[], luck:
   const restScale = (total - boosted) / (total - hits);
   return ps.map((p, i) => p * (isHit[i] ? hitScale : restScale));
 }
+
+/**
+ * Tabelas do modo família escritas à mão para sets em que o HIT_BOOST genérico desequilibra
+ * (no 30 Anos, a Clássica e a IR disputam o mesmo slot, e as ex engolem a SAR). Com luck > 1
+ * o gerador usa a tabela daqui no lugar de aplicar boostHits ao perfil real.
+ */
+export const FAMILY_PROFILES: Readonly<Record<string, BoosterProfile>> = {
+  me55: {
+    keepOrder: true,
+    slots: [
+      [{ p: 1, rarities: ['Common'] }],
+      [{ p: 1, rarities: ['Common'] }],
+      [
+        { p: 0.45, rarities: ['Common'] },
+        { p: 0.4, rarities: ['Illustration Rare'] },
+        // Clássica: ~1 a cada 7 pacotes (real: 1 a cada 10).
+        { p: 0.15, subset: 'me55c' },
+      ],
+      [
+        { p: 0.25, rarities: ['Rare'] },
+        { p: 0.42, rarities: ['Double Rare'] },
+        // SAR: ~1 a cada 3–4 pacotes (real: 1 a cada 20).
+        { p: 0.28, rarities: ['Special Illustration Rare'] },
+        { p: 0.04, rarities: ['Futuristic Rare'] },
+        { p: 0.01, rarities: ['RGB Rare'] },
+      ],
+      [{ p: 1, rarities: ['Pikachu Rare'] }],
+      [{ p: 1, subset: 'sve' }],
+    ],
+  },
+};

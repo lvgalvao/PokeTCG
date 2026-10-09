@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { generateBooster, type BoosterSlot } from '../../src/core/booster.js';
 import { bucketRank } from '../../src/core/buckets.js';
-import { boostHits, HIT_BOOST, SET_BOOSTER_PROFILES } from '../../src/core/distributions.js';
+import { boostHits, FAMILY_PROFILES, HIT_BOOST, SET_BOOSTER_PROFILES } from '../../src/core/distributions.js';
 import { mulberry32 } from '../../src/core/rng.js';
 import { buildCatalog, type Catalog, type Manifest } from '../../src/domain/catalog.js';
 
@@ -89,8 +89,43 @@ describe(`luck ${HIT_BOOST}: muito mais cartas raras`, () => {
   });
 
   const me55 = loadCatalog('me55');
-  it.skipIf(!me55)('30 Anos: Clássicas e SAR saem bem mais', () => {
-    expect(ratio(me55!, (s) => s.card.subset === 'me55c')).toBeGreaterThan(2.5);
-    expect(ratio(me55!, (s) => s.card.rarityRaw === 'Special Illustration Rare')).toBeGreaterThan(2.5);
+  it.skipIf(!me55)('30 Anos: tabela da família — SAR ~28%, Clássica ~15% por pacote', () => {
+    const sar = perPack(me55!, HIT_BOOST, (s) => s.card.rarityRaw === 'Special Illustration Rare');
+    const classic = perPack(me55!, HIT_BOOST, (s) => s.card.subset === 'me55c');
+    expect(sar).toBeCloseTo(0.28, 1);
+    expect(classic).toBeCloseTo(0.15, 1);
+    expect(sar).toBeGreaterThan(classic);
   });
+});
+
+describe('FAMILY_PROFILES', () => {
+  for (const [setId, profile] of Object.entries(FAMILY_PROFILES)) {
+    it(`${setId}: mesmo tamanho do pacote real e cada slot soma 100%`, () => {
+      expect(profile.slots).toHaveLength(SET_BOOSTER_PROFILES[setId]!.slots.length);
+      for (const outcomes of profile.slots) {
+        expect(outcomes.reduce((a, o) => a + o.p, 0)).toBeCloseTo(1, 9);
+      }
+    });
+
+    const catalog = loadCatalog(setId);
+    it.skipIf(!catalog)(`${setId}: frequências observadas batem com a tabela (±4σ)`, () => {
+      const counts = profile.slots.map((o) => o.map(() => 0));
+      const rng = mulberry32(SEED);
+      for (let i = 0; i < N; i++) {
+        const b = generateBooster(rng, catalog!, SEED, HIT_BOOST);
+        b.slots.forEach((s, slot) => {
+          const k = profile.slots[slot]!.findIndex((o) =>
+            o.subset ? s.card.subset === o.subset : !s.card.subset && o.rarities!.includes(s.card.rarityRaw),
+          );
+          if (k >= 0) counts[slot]![k]!++;
+        });
+      }
+      profile.slots.forEach((outcomes, slot) =>
+        outcomes.forEach((o, k) => {
+          const tol = Math.max(0.01, 4 * Math.sqrt((o.p * (1 - o.p)) / N));
+          expect(Math.abs(counts[slot]![k]! / N - o.p), `${setId} slot ${slot + 1} ${JSON.stringify(o)}`).toBeLessThan(tol);
+        }),
+      );
+    });
+  }
 });
