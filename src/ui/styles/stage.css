@@ -55,6 +55,8 @@
 
 .stage__body {
   cursor: pointer;
+  /* As cartas empilhadas usam z-index; ficam presas aqui, abaixo do fichário. */
+  isolation: isolate;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -428,4 +430,68 @@
   .viewer__card {
     transform: none !important;
   }
+}
+
+/* ── Fichário da coleção, por cima do palco ──────────────────────────────── */
+
+.stage__end {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stage__title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stage-sheet {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  background: var(--shop-white);
+  color: var(--ink);
+  color-scheme: light;
+  animation: sheet-in 320ms var(--spring-out);
+}
+
+.stage-sheet.is-leaving {
+  animation: sheet-out 200ms ease-in forwards;
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-out {
+  to {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+.stage-sheet__bar {
+  display: flex;
+  padding: max(12px, env(safe-area-inset-top)) var(--gutter) 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.stage-sheet__content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.binder.is-embedded {
+  padding-bottom: max(40px, env(safe-area-inset-bottom));
 }

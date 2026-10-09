@@ -194,64 +194,12 @@
   font-variant-numeric: tabular-nums;
 }
 
-.binder__book {
+/* Todas as cartas numa folha só, em bolsos plásticos sobre papel: é só descer. */
+.binder__grid {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.binder__arrow {
-  width: 44px;
-  height: 44px;
-  border: 0;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--ink) 7%, transparent);
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.binder__arrow:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-@media (min-width: 900px) {
-  .binder__spread {
-    max-width: calc((100dvh - 150px) * 1.46);
-  }
-}
-
-@media (max-width: 640px) {
-  .binder__book {
-    grid-template-columns: 1fr;
-  }
-  .binder__arrow {
-    display: none;
-  }
-}
-
-/* Cabe na altura da tela: uma folha 3×3 tem proporção ≈ 0,72 (largura/altura). */
-.binder__spread {
-  justify-self: center;
-  width: 100%;
-  max-width: calc((100dvh - 150px) * 0.72);
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  gap: 18px;
-  touch-action: pan-y;
-  will-change: transform;
-}
-
-/* A folha do fichário: bolsos plásticos sobre papel. */
-.binder__page {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(6px, 1.6vw, 12px);
-  margin: 0;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(96px, 26vw, 150px), 1fr));
+  gap: clamp(8px, 1.6vw, 14px);
+  margin: 20px 0 0;
   padding: clamp(10px, 2.4vw, 18px);
   list-style: none;
   border-radius: var(--radius-m);
@@ -276,11 +224,6 @@
   color: var(--ink-faint);
   font-size: 0.875rem;
   font-variant-numeric: tabular-nums;
-}
-
-.pocket.is-blank {
-  background: none;
-  box-shadow: none;
 }
 
 .pocket__card {
@@ -324,14 +267,6 @@
   color: #fff;
   font-size: 0.75rem;
   font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-
-.binder__pages {
-  margin: 14px 0 0;
-  text-align: center;
-  color: var(--ink-soft);
-  font-size: 0.875rem;
   font-variant-numeric: tabular-nums;
 }
 

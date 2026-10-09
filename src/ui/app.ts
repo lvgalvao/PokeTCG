@@ -261,7 +261,7 @@ export class App {
       const catalog = await this.catalog(set.id);
       const career = this.mode === 'career' ? await this.binderCareer(set.id, catalog) : undefined;
       if (this.renderedBase !== hash) return;
-      const binder = new SetBinderView(this.view, set, catalog, () => this.collection(), career);
+      const binder = new SetBinderView(this.view, set, catalog, () => this.collection(), { career });
       this.baseCleanup = () => binder.destroy();
     } catch (err) {
       this.showError(err);

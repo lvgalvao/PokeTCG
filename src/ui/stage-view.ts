@@ -8,6 +8,7 @@ import { formatBRL, formatSigned, type Cents } from '../game/money.js';
 import type { PriceBook } from '../game/prices.js';
 import { playCelebrationSound, playFlipSound, playTearSound } from '../utils/audio.js';
 import { el } from '../utils/dom.js';
+import { SetBinderView } from './binder-view.js';
 import { attachFoil, prefersReducedMotion, project, spring, VelocityTracker } from './motion.js';
 import { coverUrl, ownedCount, type SetInfo } from './sets-index.js';
 
@@ -70,6 +71,13 @@ export class StageView {
 
   private onKey(ev: KeyboardEvent): void {
     if (document.querySelector('.viewer')) return;
+    if (this.sheet) {
+      if (ev.key === 'Escape') {
+        ev.preventDefault();
+        this.closeBinder();
+      }
+      return;
+    }
     if (ev.key === 'Escape') {
       ev.preventDefault();
       this.deps.onClose();
@@ -92,12 +100,18 @@ export class StageView {
     });
     close.addEventListener('click', () => this.deps.onClose());
     this.counter = el('p', { className: 'stage__counter', attrs: { 'aria-live': 'polite' } });
+    this.binderBtn = el('button', {
+      className: 'stage__close stage__binder',
+      attrs: { type: 'button', 'aria-label': `Ver o fichário de ${this.deps.set.name}` },
+      text: 'Fichário',
+    });
+    this.binderBtn.addEventListener('click', () => this.openBinder());
     const bar = el('div', {
       className: 'stage__bar',
       children: [
         close,
         el('p', { className: 'stage__title', text: this.deps.set.name }),
-        this.counter,
+        el('div', { className: 'stage__end', children: [this.counter, this.binderBtn] }),
       ],
     });
     this.body = el('div', { className: 'stage__body' });
@@ -541,11 +555,12 @@ export class StageView {
       text: 'Abrir outro pacote',
     });
     again.addEventListener('click', () => this.restart());
-    const binder = el('a', {
+    const binder = el('button', {
       className: 'btn btn--on-stage',
-      attrs: { href: `#/fichario/${this.deps.set.id}` },
+      attrs: { type: 'button' },
       text: 'Ver no fichário',
     });
+    binder.addEventListener('click', () => this.openBinder());
 
     this.body.replaceChildren(
       el('div', {
@@ -603,6 +618,41 @@ export class StageView {
       toasts.append(t);
     });
     return [pnl, toasts];
+  }
+
+  // ── Fichário desta coleção, por cima do palco ─────────────────────────────────
+
+  private binderBtn!: HTMLButtonElement;
+  private sheet: HTMLElement | null = null;
+
+  /** Abre o fichário só desta coleção sem sair do palco; fechar volta ao mesmo ponto. */
+  private openBinder(): void {
+    if (this.sheet) return;
+    const back = el('button', {
+      className: 'btn btn--quiet',
+      attrs: { type: 'button' },
+      text: 'Voltar ao pacote',
+    });
+    back.addEventListener('click', () => this.closeBinder());
+    const content = el('div', { className: 'stage-sheet__content' });
+    this.sheet = el('div', {
+      className: 'stage-sheet',
+      attrs: { role: 'dialog', 'aria-modal': 'true', 'aria-label': `Fichário de ${this.deps.set.name}` },
+      children: [el('div', { className: 'stage-sheet__bar', children: [back] }), content],
+    });
+    new SetBinderView(content, this.deps.set, this.deps.catalog, this.deps.getCollection, { embedded: true });
+    this.deps.root.append(this.sheet);
+    back.focus({ preventScroll: true });
+  }
+
+  private closeBinder(): void {
+    const sheet = this.sheet;
+    if (!sheet) return;
+    this.sheet = null;
+    sheet.classList.add('is-leaving');
+    window.setTimeout(() => sheet.remove(), 200);
+    if (this.phase === 'reveal') this.cardEls[this.revealed]?.focus({ preventScroll: true });
+    else this.binderBtn.focus({ preventScroll: true });
   }
 
   private restart(): void {
