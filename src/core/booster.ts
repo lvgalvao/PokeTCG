@@ -3,6 +3,7 @@ import type { Catalog } from '../domain/catalog.js';
 import { BUCKETS, bucketRank, type Bucket } from './buckets.js';
 import {
   boostHits,
+  FAMILY_PROFILES,
   SET_BOOSTER_PROFILES,
   SLOT_DISTRIBUTIONS,
   SLOT_DOWNGRADE_FLOOR,
@@ -164,10 +165,12 @@ function drawProfileSlots(
 
 /**
  * `luck` multiplica a chance das cartas raras em cada slot (ver boostHits); 1 = pull rates
- * reais.
+ * reais. Com luck > 1, um set com tabela própria em FAMILY_PROFILES usa essa tabela.
  */
 export function generateBooster(rng: RNG, catalog: Catalog, seed: number, luck = 1): Booster {
-  const profile = SET_BOOSTER_PROFILES[catalog.setId];
+  const family = luck !== 1 ? FAMILY_PROFILES[catalog.setId] : undefined;
+  if (family) luck = 1;
+  const profile = family ?? SET_BOOSTER_PROFILES[catalog.setId];
   if (!profile && catalog.byBucket['01_comum'].length === 0) {
     throw new EmptyBaseBucketError();
   }
