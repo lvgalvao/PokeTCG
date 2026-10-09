@@ -64,18 +64,18 @@ export const SET_BOOSTER_PROFILES: Readonly<Record<string, BoosterProfile>> = {
   ...RESEARCHED_PROFILES,
 };
 
-/** Quantas vezes mais as cartas acima de Dupla Rara saem do que nos pull rates reais. */
-export const HIT_BOOST = 3;
+/** Quantas vezes mais as cartas raras saem do que nos pull rates reais (modo família). */
+export const HIT_BOOST = 5;
 
-/** Rank mínimo de um hit: acima de Dupla Rara (Arte Secreta, Dupla Arte Secreta, Legendária). */
-export const HIT_MIN_RANK = 5;
+/** Rank mínimo de um hit: Rara ou melhor (Holo, Dupla Rara/ex, IR, SAR, Secretas, Clássicas…). */
+export const HIT_MIN_RANK = 3;
 
 /**
- * Multiplica por `luck` a chance dos "hits" de um slot: os resultados acima de Dupla Rara
- * (SAR, IR, Hyper, Secretas, Clássicas do 30 Anos…) que não são o primeiro do slot (o
- * primeiro é a carta normal daquela posição). Os demais — Rara, Dupla Rara/ex inclusive —
- * encolhem na mesma proporção. Se os hits não cabem (luck × soma > 1), o slot vira só hits,
- * mantendo a proporção entre eles. `ranks[i]` é o rank (1–7) do resultado i; 0 = sem cartas.
+ * Multiplica por `luck` a chance dos "hits" de um slot: os resultados de rank HIT_MIN_RANK ou
+ * maior que não são o primeiro do slot (o primeiro é a carta normal daquela posição — num
+ * slot de Rara, a Rara comum; os hits são Holo, ex, SAR…). Os demais encolhem na mesma
+ * proporção. Se os hits não cabem (luck × soma > 1), o slot vira só hits, mantendo a
+ * proporção entre eles. `ranks[i]` é o rank (1–7) do resultado i; 0 = sem cartas.
  */
 export function boostHits(ps: readonly number[], ranks: readonly number[], luck: number): number[] {
   if (luck === 1) return [...ps];

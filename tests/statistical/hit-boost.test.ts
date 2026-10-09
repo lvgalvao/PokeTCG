@@ -8,41 +8,44 @@ import { mulberry32 } from '../../src/core/rng.js';
 import { buildCatalog, type Catalog, type Manifest } from '../../src/domain/catalog.js';
 
 /**
- * Princípio III — "sorte" (HIT_BOOST): com seed fixa, cartas acima de Dupla Rara saem perto
- * de 3× mais que nos pull rates reais (limitado a 100% no slot); Dupla Rara/ex não sobe.
+ * Princípio III — "sorte" (HIT_BOOST): com seed fixa, as cartas raras acima da carta normal
+ * de cada slot saem perto de HIT_BOOST× mais que nos pull rates reais (limitado a 100% no
+ * slot, quando o slot vira só hits).
  */
 
 describe('boostHits', () => {
   it('luck 1 não muda nada', () => {
-    expect(boostHits([0.7, 0.3], [3, 5], 1)).toEqual([0.7, 0.3]);
+    expect(boostHits([0.7, 0.3], [2, 3], 1)).toEqual([0.7, 0.3]);
   });
 
-  it('triplica os hits e encolhe o resto, somando 100%', () => {
-    const ps = boostHits([0.7, 0.2, 0.1], [3, 4, 5], 3);
-    expect(ps[2]).toBeCloseTo(0.3, 9);
-    expect(ps[0]).toBeCloseTo(0.7 * (0.7 / 0.9), 9);
-    expect(ps[1]).toBeCloseTo(0.2 * (0.7 / 0.9), 9);
+  it('multiplica os hits e encolhe o resto, somando 100%', () => {
+    const ps = boostHits([0.9, 0.06, 0.04], [3, 4, 6], 5);
+    expect(ps[1]).toBeCloseTo(0.3, 9);
+    expect(ps[2]).toBeCloseTo(0.2, 9);
+    expect(ps[0]).toBeCloseTo(0.5, 9);
   });
 
-  it('Rara e Dupla Rara nunca contam como hit', () => {
-    expect(boostHits([0.6, 0.4], [3, 4], 3)).toEqual([0.6, 0.4]);
+  it('comum e incomum nunca contam como hit', () => {
+    expect(boostHits([0.6, 0.4], [1, 2], 5)).toEqual([0.6, 0.4]);
   });
 
-  it('o primeiro resultado do slot é a base, mesmo sendo raro', () => {
-    expect(boostHits([0.5, 0.5], [6, 4], 3)).toEqual([0.5, 0.5]);
+  it('o primeiro resultado do slot é a base, mesmo com o mesmo rank (Rara × Rara Holo)', () => {
+    const ps = boostHits([2 / 3, 1 / 3], [3, 3], 5);
+    expect(ps[0]).toBeCloseTo(0, 9);
+    expect(ps[1]).toBeCloseTo(1, 9);
   });
 
   it('se os hits não cabem, o slot vira só hits na mesma proporção', () => {
-    const ps = boostHits([0.5, 0.3, 0.2], [3, 5, 6], 3);
+    const ps = boostHits([0.6, 0.25, 0.15], [3, 4, 5], 5);
     expect(ps[0]).toBeCloseTo(0, 9);
-    expect(ps[1]! / ps[2]!).toBeCloseTo(0.3 / 0.2, 9);
+    expect(ps[1]! / ps[2]!).toBeCloseTo(0.25 / 0.15, 9);
     expect(ps.reduce((a, p) => a + p, 0)).toBeCloseTo(1, 9);
   });
 
   it('resultado sem cartas (rank 0) não é hit', () => {
-    const ps = boostHits([0.8, 0.1, 0.1], [3, 0, 5], 3);
-    expect(ps[2]).toBeCloseTo(0.3, 9);
-    expect(ps[0]! + ps[1]!).toBeCloseTo(0.7, 9);
+    const ps = boostHits([0.9, 0.05, 0.05], [3, 0, 5], 5);
+    expect(ps[2]).toBeCloseTo(0.25, 9);
+    expect(ps[0]! + ps[1]!).toBeCloseTo(0.75, 9);
   });
 });
 
@@ -61,33 +64,33 @@ function loadCatalog(setId: string) {
   return existsSync(path) ? buildCatalog(JSON.parse(readFileSync(path, 'utf8')) as Manifest) : null;
 }
 
-const aboveDouble = (s: BoosterSlot) => bucketRank(s.effectiveBucket) >= 5;
-const doubleRare = (s: BoosterSlot) => s.card.rarityRaw === 'Double Rare';
+const ratio = (catalog: Catalog, hit: (s: BoosterSlot) => boolean) =>
+  perPack(catalog, HIT_BOOST, hit) / perPack(catalog, 1, hit);
 
-describe(`luck ${HIT_BOOST}: mais cartas acima de Dupla Rara`, () => {
-  for (const setId of ['me5', 'sv8', 'swsh7']) {
-    const catalog = SET_BOOSTER_PROFILES[setId] ? loadCatalog(setId) : null;
-    it.skipIf(!catalog)(`${setId}: acima de Dupla Rara saem ~${HIT_BOOST}×`, () => {
-      const ratio = perPack(catalog!, HIT_BOOST, aboveDouble) / perPack(catalog!, 1, aboveDouble);
-      expect(ratio).toBeGreaterThan(2.5);
-      expect(ratio).toBeLessThan(HIT_BOOST * 1.2);
-    });
-  }
-
+describe(`luck ${HIT_BOOST}: muito mais cartas raras`, () => {
   const sv8 = loadCatalog('sv8');
-  it.skipIf(!sv8)('sv8: Dupla Rara (ex) não sobe', () => {
-    const ratio = perPack(sv8!, HIT_BOOST, doubleRare) / perPack(sv8!, 1, doubleRare);
-    expect(ratio).toBeGreaterThan(0.8);
-    expect(ratio).toBeLessThan(1.05);
+  it.skipIf(!sv8)('sv8: SAR/IR/Hyper saem bem mais (slot de rara fica só hits)', () => {
+    expect(ratio(sv8!, (s) => bucketRank(s.effectiveBucket) >= 5)).toBeGreaterThan(2.5);
+  });
+  it.skipIf(!sv8)('sv8: Dupla Rara (ex) também sobe', () => {
+    expect(ratio(sv8!, (s) => s.card.rarityRaw === 'Double Rare')).toBeGreaterThan(2);
+  });
+
+  const base1 = loadCatalog('base1');
+  it.skipIf(!base1 || !SET_BOOSTER_PROFILES.base1)('base1: Holo vem em todo pacote', () => {
+    expect(perPack(base1!, HIT_BOOST, (s) => s.card.rarityRaw === 'Rare Holo')).toBe(1);
+  });
+
+  const me5 = loadCatalog('me5');
+  it.skipIf(!me5)(`me5: IR/SIR saem ~${HIT_BOOST}×`, () => {
+    const r = ratio(me5!, (s) => ['Illustration Rare', 'Special Illustration Rare'].includes(s.card.rarityRaw));
+    expect(r).toBeGreaterThan(HIT_BOOST * 0.8);
+    expect(r).toBeLessThan(HIT_BOOST * 1.2);
   });
 
   const me55 = loadCatalog('me55');
-  it.skipIf(!me55)('30 Anos: Clássicas e SAR saem ~3×, ex não sobe', () => {
-    const classic = (s: BoosterSlot) => s.card.subset === 'me55c';
-    const sar = (s: BoosterSlot) => s.card.rarityRaw === 'Special Illustration Rare';
-    const ratio = (hit: (s: BoosterSlot) => boolean) => perPack(me55!, HIT_BOOST, hit) / perPack(me55!, 1, hit);
-    expect(ratio(classic)).toBeGreaterThan(2.5);
-    expect(ratio(sar)).toBeGreaterThan(2.5);
-    expect(ratio(doubleRare)).toBeLessThan(1.05);
+  it.skipIf(!me55)('30 Anos: Clássicas e SAR saem bem mais', () => {
+    expect(ratio(me55!, (s) => s.card.subset === 'me55c')).toBeGreaterThan(2.5);
+    expect(ratio(me55!, (s) => s.card.rarityRaw === 'Special Illustration Rare')).toBeGreaterThan(2.5);
   });
 });
