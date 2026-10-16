@@ -161,3 +161,32 @@ export function playTradeSound() {
   notes.forEach((f, i) => tone(f, t + 0.45 + i * 0.1, i === notes.length - 1 ? 0.9 : 0.16, 'triangle', 0.22));
   tone(1318.5, t + 0.95, 0.9, 'sine', 0.1);
 }
+
+/**
+ * Saiu uma das 3 mais valiosas: rufar de tambor subindo e uma fanfarra que fica maior
+ * quanto mais valiosa (`place` 0 = a mais valiosa).
+ */
+export function playChaseSound(place: number) {
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  const t = audioCtx.currentTime;
+  // Rufar: batidinhas de ruído cada vez mais rápidas.
+  const noise = audioCtx.createBuffer(1, audioCtx.sampleRate * 0.05, audioCtx.sampleRate);
+  const data = noise.getChannelData(0);
+  for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
+  let at = t;
+  for (let i = 0; i < 14; i++) {
+    const src = audioCtx.createBufferSource();
+    const gain = audioCtx.createGain();
+    src.buffer = noise;
+    gain.gain.value = 0.08 + i * 0.012;
+    src.connect(gain);
+    gain.connect(audioCtx.destination);
+    src.start(at);
+    at += 0.07 - i * 0.003;
+  }
+  // Fanfarra: dó-mi-sol-dó, e a mais valiosa ganha o agudo final.
+  const notes = [523.25, 659.25, 783.99, 1046.5, ...(place === 0 ? [1318.5, 1567.98] : [])];
+  notes.forEach((f, i) => tone(f, at + i * 0.11, i === notes.length - 1 ? 1.1 : 0.18, 'triangle', 0.24));
+  // Acorde segurado por baixo, brilho de "tcharam".
+  [523.25, 659.25, 783.99].forEach((f) => tone(f, at + notes.length * 0.11, 1.2, 'sine', 0.08));
+}

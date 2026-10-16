@@ -4,11 +4,11 @@ import { HIT_BOOST } from '../core/distributions.js';
 import { mulberry32, type RNG } from '../core/rng.js';
 import type { Catalog } from '../domain/catalog.js';
 import type { Collection } from '../domain/collection.js';
-import { playCelebrationSound, playFlipSound, playTearSound } from '../utils/audio.js';
+import { playCelebrationSound, playChaseSound, playFlipSound, playTearSound } from '../utils/audio.js';
 import { el } from '../utils/dom.js';
 import { SetBinderView } from './binder-view.js';
 import { openCardViewer } from './card-viewer.js';
-import { chaseCardsFor, formatBrl } from './chase-cards.js';
+import { chaseCardsFor, formatBrl, type ChaseCard } from './chase-cards.js';
 import { attachFoil, prefersReducedMotion, project, spring, VelocityTracker } from './motion.js';
 import { categoryLabel, coverUrl, ownedCount, type SetInfo } from './sets-index.js';
 
@@ -30,6 +30,10 @@ const TEAR_COMMIT = 0.5;
 const TEAR_FLICK_VELOCITY = 900;
 const FLING_DISTANCE = 0.35;
 const FLING_VELOCITY = 700;
+/** Por quanto tempo uma das 3 mais valiosas segura o palco antes de deixar passar. */
+const CHASE_HOLD_MS = 2800;
+const CHASE_PLACES = ['A mais valiosa!', 'A 2ª mais valiosa!', 'A 3ª mais valiosa!'];
+const CONFETTI_COLORS = ['#f2c94c', '#ffe08a', '#e3350d', '#ffffff', '#f59e0b'];
 
 /**
  * Palco de abertura: rasgar o lacre com o dedo, passar as cartas uma a uma (comuns na
@@ -43,6 +47,11 @@ export class StageView {
   private readonly cleanups: Array<() => void> = [];
   private body!: HTMLElement;
   private counter!: HTMLElement;
+  /** As 3 mais valiosas do set (vazio se o set não tem preços). */
+  private chase: ChaseCard[] = [];
+  /** Até quando a carta do topo não pode ser passada (mais valiosa em destaque). */
+  private lockedUntil = 0;
+  private chaseFx: HTMLElement | null = null;
 
   constructor(private readonly deps: StageDeps) {
     // O listener de teclado é sempre cleanups[0]: restart() preserva só ele.
@@ -277,7 +286,11 @@ export class StageView {
       { damping: 1, response: 0.4, velocity: Math.max(velocity, 1.5) },
     );
     this.openBooster();
-    window.setTimeout(() => this.renderReveal(), prefersReducedMotion() ? 0 : 380);
+    const chase = chaseCardsFor(this.deps.set.id, this.deps.catalog);
+    window.setTimeout(async () => {
+      this.chase = await chase;
+      this.renderReveal();
+    }, prefersReducedMotion() ? 0 : 380);
   }
 
   private openBooster(): void {
@@ -353,7 +366,7 @@ export class StageView {
       attrs: { type: 'button' },
       text: 'Ver todas',
     });
-    skip.addEventListener('click', () => this.renderSummary());
+    skip.addEventListener('click', () => this.skipAhead());
 
     this.body.replaceChildren(
       el('div', { className: 'stage__deck', children: [this.deck] }),
@@ -378,7 +391,10 @@ export class StageView {
     this.cleanups.push(attachFoil(top, 8));
     this.bindFling(top);
     const slot = booster.slots[this.revealed]!;
-    if (bucketRank(slot.effectiveBucket) >= 4) {
+    const place = this.chaseRank(slot);
+    if (place >= 0) {
+      this.celebrateChase(top, place);
+    } else if (bucketRank(slot.effectiveBucket) >= 4) {
       top.classList.add('is-foil-active', 'is-celebrating');
       playCelebrationSound();
       navigator.vibrate?.([10, 40, 18]);
@@ -410,6 +426,13 @@ export class StageView {
       if (Math.hypot(offset.x, offset.y) > 6) moved = true;
       if (moved) render();
     });
+    const springBack = () => {
+      const from = { ...offset };
+      spring(1, 0, (t) => {
+        offset = { x: from.x * t, y: from.y * t };
+        render();
+      }, { damping: 0.8, response: 0.3 });
+    };
     const end = () => {
       if (!dragging) return;
       dragging = false;
@@ -417,17 +440,11 @@ export class StageView {
       const { vx, vy } = tracker.velocity();
       const w = card.clientWidth;
       const projected = offset.x + project(vx);
-      if (Math.abs(projected) > w * FLING_DISTANCE || Math.abs(vx) > FLING_VELOCITY) {
-        this.suppressClick();
+      this.suppressClick();
+      const flung =
+        (Math.abs(projected) > w * FLING_DISTANCE || Math.abs(vx) > FLING_VELOCITY) &&
         this.flingTop(Math.sign(projected) || 1, vy, vx, offset);
-      } else {
-        this.suppressClick();
-        const from = { ...offset };
-        spring(1, 0, (t) => {
-          offset = { x: from.x * t, y: from.y * t };
-          render();
-        }, { damping: 0.8, response: 0.3 });
-      }
+      if (!flung) springBack();
     };
     card.addEventListener('pointerup', end);
     card.addEventListener('pointercancel', end);
@@ -440,12 +457,17 @@ export class StageView {
     window.setTimeout(() => this.body.removeEventListener('click', stop, { capture: true }), 0);
   }
 
-  /** Joga a carta do topo para o lado (herdando a velocidade) e mostra a próxima. */
-  private flingTop(dir: number, vy: number, vx = 0, from = { x: 0, y: 0 }): void {
+  /**
+   * Joga a carta do topo para o lado (herdando a velocidade) e mostra a próxima. Devolve
+   * `false` se a carta não pôde sair (uma das mais valiosas ainda em destaque).
+   */
+  private flingTop(dir: number, vy: number, vx = 0, from = { x: 0, y: 0 }): boolean {
     const booster = this.booster;
-    if (!booster || this.phase !== 'reveal') return;
+    if (!booster || this.phase !== 'reveal') return false;
     const card = this.cardEls[this.revealed];
-    if (!card) return;
+    if (!card) return false;
+    if (this.isLocked()) return false;
+    this.clearChaseFx();
     playFlipSound();
     const slot = booster.slots[this.revealed]!;
     const travel = window.innerWidth * 0.75 * dir;
@@ -471,6 +493,111 @@ export class StageView {
     } else {
       this.focusTop();
     }
+    return true;
+  }
+
+  // ── As 3 mais valiosas: efeito próprio e não passam rápido ─────────────────────
+
+  /** 0, 1 ou 2 se a carta é a 1ª/2ª/3ª mais valiosa do set; -1 caso contrário. */
+  private chaseRank(slot: BoosterSlot): number {
+    if (this.isPackOnly(slot)) return -1;
+    return this.chase.findIndex((c) => c.card.id === slot.card.id);
+  }
+
+  private isLocked(): boolean {
+    if (performance.now() >= this.lockedUntil) return false;
+    // Tentou passar cedo demais: a carta balança e o selo pisca, "olha bem essa!".
+    const top = this.cardEls[this.revealed];
+    top?.classList.remove('is-chase-nudge');
+    void top?.offsetWidth;
+    top?.classList.add('is-chase-nudge');
+    return true;
+  }
+
+  private celebrateChase(top: HTMLElement, place: number): void {
+    const { brl } = this.chase[place]!;
+    const hold = prefersReducedMotion() ? CHASE_HOLD_MS / 2 : CHASE_HOLD_MS;
+    this.lockedUntil = performance.now() + hold;
+    top.classList.add('is-foil-active', 'is-celebrating', 'is-chase', `is-chase-${place + 1}`);
+    playChaseSound(place);
+    navigator.vibrate?.([30, 60, 30, 60, 120]);
+
+    const hint = el('p', { className: 'chase-fx__hint', text: 'Toque para continuar' });
+    const fx = el('div', {
+      className: `chase-fx is-place-${place + 1}`,
+      attrs: { 'aria-live': 'assertive' },
+      children: [
+        el('div', { className: 'chase-fx__rays', attrs: { 'aria-hidden': 'true' } }),
+        this.chaseConfetti(),
+        el('div', {
+          className: 'chase-fx__banner',
+          children: [
+            el('strong', { className: 'chase-fx__place', text: CHASE_PLACES[place]! }),
+            el('span', { className: 'chase-fx__price', text: `Essa vale ${formatBrl(brl)}` }),
+          ],
+        }),
+        hint,
+      ],
+    });
+    this.deck.parentElement?.append(fx);
+    this.chaseFx = fx;
+    window.setTimeout(() => fx.classList.add('is-unlocked'), hold);
+  }
+
+  private chaseConfetti(): HTMLElement {
+    const layer = el('div', { className: 'chase-fx__confetti', attrs: { 'aria-hidden': 'true' } });
+    if (prefersReducedMotion()) return layer;
+    for (let i = 0; i < 70; i++) {
+      const piece = el('span');
+      piece.style.left = `${Math.random() * 100}%`;
+      piece.style.background = CONFETTI_COLORS[i % CONFETTI_COLORS.length]!;
+      piece.style.animationDelay = `${0.2 + Math.random() * 0.9}s`;
+      piece.style.animationDuration = `${2 + Math.random() * 1.6}s`;
+      piece.style.setProperty('--drift', `${(Math.random() - 0.5) * 160}px`);
+      piece.style.setProperty('--spin', `${(Math.random() - 0.5) * 1440}deg`);
+      layer.append(piece);
+    }
+    return layer;
+  }
+
+  private clearChaseFx(): void {
+    this.chaseFx?.remove();
+    this.chaseFx = null;
+  }
+
+  /** "Ver todas": pula até a próxima das mais valiosas, se houver; senão vai ao resumo. */
+  private skipAhead(): void {
+    const booster = this.booster;
+    if (!booster || this.phase !== 'reveal' || this.isLocked()) return;
+    const slots = booster.slots;
+    let next = -1;
+    for (let i = this.revealed + 1; i < slots.length; i++) {
+      if (this.chaseRank(slots[i]!) >= 0) {
+        next = i;
+        break;
+      }
+    }
+    if (next < 0) {
+      this.clearChaseFx();
+      this.renderSummary();
+      return;
+    }
+    this.clearChaseFx();
+    for (let i = this.revealed; i < next; i++) {
+      if (this.isPackOnly(slots[i]!)) continue;
+      this.cardEls[i]!.remove();
+      this.addToTray(slots[i]!);
+    }
+    this.revealed = next;
+    this.focusTop();
+  }
+
+  /** No resumo: as mais valiosas levam o preço. */
+  private chaseTag(slot: BoosterSlot): HTMLElement[] {
+    const place = this.chaseRank(slot);
+    return place >= 0
+      ? [el('span', { className: 'summary__price', text: formatBrl(this.chase[place]!.brl) })]
+      : [];
   }
 
   /** Selo da subcoleção (ex.: Clássica), para não confundir com a raridade da carta. */
@@ -519,6 +646,7 @@ export class StageView {
           el('img', { attrs: { src: slot.card.imageUrl, alt: '', loading: 'lazy' } }),
           ...(isNew ? [el('span', { className: 'deck__new', text: 'Nova' })] : []),
           ...this.subsetTag(slot),
+          ...this.chaseTag(slot),
         ],
       });
       grid.append(el('li', { children: [btn] }));
@@ -602,6 +730,8 @@ export class StageView {
     this.cleanups.splice(1).forEach((c) => c());
     this.booster = null;
     this.tearProgress = 0;
+    this.lockedUntil = 0;
+    this.chaseFx = null;
     this.renderSealed();
   }
 }

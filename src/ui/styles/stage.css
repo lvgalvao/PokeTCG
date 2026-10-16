@@ -621,3 +621,185 @@
     animation: none;
   }
 }
+
+/* ── As 3 mais valiosas: raios, confete, faixa com o preço ─────────────────── */
+
+.stage__deck {
+  position: relative;
+  isolation: isolate;
+}
+
+.deck__card.is-chase {
+  --glow: var(--r7);
+  --foil-strength: 1;
+  box-shadow:
+    0 0 0 3px #ffe08a,
+    0 0 90px 18px color-mix(in srgb, var(--r7) 70%, transparent),
+    0 24px 50px rgb(0 0 0 / 0.5);
+  animation: chase-arrive 1100ms var(--spring-out);
+}
+
+.deck__card.is-chase-1 {
+  box-shadow:
+    0 0 0 4px #fff3c4,
+    0 0 120px 30px color-mix(in srgb, var(--r7) 80%, transparent),
+    0 24px 50px rgb(0 0 0 / 0.5);
+}
+
+@keyframes chase-arrive {
+  0% {
+    transform: scale(0.6) rotateY(180deg);
+    filter: brightness(3);
+  }
+  55% {
+    transform: scale(1.08) rotateY(0deg);
+    filter: brightness(1.6);
+  }
+  100% {
+    transform: scale(1);
+    filter: none;
+  }
+}
+
+.deck__card.is-chase-nudge {
+  animation: chase-nudge 380ms ease;
+}
+
+@keyframes chase-nudge {
+  20% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  80% { transform: rotate(-1.5deg); }
+}
+
+.chase-fx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+}
+
+.chase-fx__rays {
+  position: absolute;
+  z-index: -1;
+  width: min(150vw, 900px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    color-mix(in srgb, var(--r7) 45%, transparent) 0deg 8deg,
+    transparent 8deg 20deg
+  );
+  mask: radial-gradient(circle, #000 15%, transparent 65%);
+  animation: chase-rays 9s linear infinite, chase-fade-in 600ms ease both;
+}
+
+.chase-fx.is-place-1 .chase-fx__rays {
+  background: repeating-conic-gradient(
+    from 0deg,
+    color-mix(in srgb, #fff3c4 60%, transparent) 0deg 7deg,
+    transparent 7deg 15deg
+  );
+}
+
+@keyframes chase-rays {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes chase-fade-in {
+  from { opacity: 0; transform: scale(0.4); }
+}
+
+.chase-fx__confetti {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.chase-fx__confetti span {
+  position: absolute;
+  top: -20px;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  animation-name: chase-confetti;
+  animation-timing-function: cubic-bezier(0.25, 0.6, 0.4, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes chase-confetti {
+  to { transform: translate(var(--drift), 110vh) rotate(var(--spin)); }
+}
+
+.chase-fx__banner {
+  position: absolute;
+  z-index: 100;
+  bottom: 4%;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 10px 22px 12px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffe08a, #f2c94c 55%, #d99a1e);
+  color: #3a2500;
+  box-shadow: 0 0 0 2px #fff6d6, 0 12px 40px rgb(0 0 0 / 0.55), 0 0 50px rgb(242 201 76 / 0.6);
+  text-align: center;
+  animation: chase-banner 700ms 450ms var(--spring-out) both;
+}
+
+.chase-fx__place {
+  font-size: clamp(1.25rem, 5vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.chase-fx__price {
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-weight: 700;
+}
+
+@keyframes chase-banner {
+  from {
+    transform: translateY(30px) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.chase-fx__hint {
+  position: absolute;
+  bottom: -8px;
+  margin: 0;
+  color: var(--stage-ink);
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.chase-fx.is-unlocked .chase-fx__hint {
+  opacity: 0.8;
+}
+
+.summary__price {
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--r7);
+  color: #3a2500;
+  font-size: 0.72rem;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck__card.is-chase,
+  .chase-fx__rays,
+  .chase-fx__banner {
+    animation: none;
+  }
+}
