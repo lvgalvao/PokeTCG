@@ -6,6 +6,7 @@ import { clearSession, type FamilyCollectionStore, type PlayerSession } from '..
 import type { Card } from '../domain/card.js';
 import { playNotifySound } from '../utils/audio.js';
 import { $, $$, el } from '../utils/dom.js';
+import { FEATURES } from '../features.js';
 import { BattleView } from './battle/battle-view.js';
 import { renderBinderIndex, SetBinderView } from './binder-view.js';
 import { catalogFor, type SetInfo, type SetsIndex } from './sets-index.js';
@@ -43,8 +44,8 @@ function parseRoute(hash: string): Route {
   if (a === 'abrir' && b) return { name: 'open', setId: decodeURIComponent(b) };
   if (a === 'fichario' && b) return { name: 'binder-set', setId: decodeURIComponent(b) };
   if (a === 'fichario') return { name: 'binder' };
-  if (a === 'trocas') return { name: 'trades' };
-  if (a === 'batalha') return { name: 'battle' };
+  if (a === 'trocas' && FEATURES.trades) return { name: 'trades' };
+  if (a === 'batalha' && FEATURES.battle) return { name: 'battle' };
   return { name: 'store' };
 }
 
@@ -76,7 +77,7 @@ export class App {
     this.renderChrome();
     window.addEventListener('hashchange', () => void this.route());
     void this.route();
-    if (deps.family) this.startTradePolling();
+    if (deps.family && FEATURES.trades) this.startTradePolling();
   }
 
   // ── Topo e jogadores ────────────────────────────────────────────────────────────
@@ -85,7 +86,8 @@ export class App {
     const family = this.deps.family;
     const tradesLink = $('[data-nav="trades"]');
     const who = $('.topbar__player');
-    tradesLink.hidden = !family;
+    tradesLink.hidden = !family || !FEATURES.trades;
+    $('[data-nav="battle"]').hidden = !FEATURES.battle;
     who.hidden = !family;
     if (!family) return;
     const me = family.players.find((p) => p.id === family.session.player);

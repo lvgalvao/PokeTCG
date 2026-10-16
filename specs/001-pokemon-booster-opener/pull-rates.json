@@ -8814,5 +8814,1291 @@
     },
     "notes": "No set-specific pull-rate study used: Sword & Shield-era rates as measured for Vivid Voltage (Holo 1/4.6, V 1/7.9, VMAX 1/23.3, Ultra 1/25.2, Rainbow 1/78.7, Secret 1/90.1), plain Rare is the remainder. Alternate arts are 'Rare Ultra' in the data and share that pool. The Basic Energy is omitted.",
     "packSize": 10
+  },
+  "dp1": {
+    "structure": "Real English pack: 10 game cards = 5 commons (one is a Basic Energy in ~1/3 of packs; energy omitted), 3 uncommons, 1 reverse holo (C/U/R/Rare Holo), 1 rare slot (Rare, Rare Holo ~1 in 3.3, Rare Holo LV.X ~1 in 36).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/diamond-pearl/diamond-and-pearl-booster-pack-dp1/",
+      "https://bulbagarden.net/threads/what-are-the-odds-of-a-lv-x-in-a-pack.36047/"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.3346733668341708,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.314572864321608,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.20904522613065327,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.14170854271356784,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6692222222222222,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.303,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.027777777777777776,
+            "rarities": [
+              "Rare Holo LV.X"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: Rare Holo 1/3.3 (30.3%), LV.X 1/36 (~2 per 36-pack box, matching the classic 'two LV.X per box' rule); plain Rare is the remainder. Reverse slot uses Card Codex's observed reverse split (C 33.3%, U 31.3%, R 20.8%, RH 14.1%), normalized. Card Codex shows 4.7 commons + Energy 1/3 packs: the energy shares a common slot; modelled as 5 commons with the energy omitted.",
+    "packSize": 10
+  },
+  "pl1": {
+    "structure": "Real English pack: 10 game cards = 5 commons, 3 uncommons, 1 reverse-holo slot (replaced by a shiny SH1-SH3 'Rare Secret' ~1 in 36), 1 rare slot (Rare, Rare Holo 1 in 4, Rare Holo LV.X 1 in 18).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/platinum/platinum-booster-pack-pl1/"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.31436524334251603,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.33445247933884303,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.18580693296602388,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.13759756657483932,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.027777777777777776,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6944444444444444,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.25,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.05555555555555555,
+            "rarities": [
+              "Rare Holo LV.X"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: Rare Holo 1/4, LV.X 1/18 (6 cards, 1/108 each), 'Reverse Shiny Rare' 1/36 (3 SH cards, 1/108 each). Card Codex also shows a 'Secret Rare' row at 1/36.3 with the same per-card odds; treated as the same SH shinies, which (as from Platinum onward) come in the reverse slot, so they are modelled only there. Reverse holos use Card Codex's observed split (C 31.3%, U 33.3%, R 18.5%, RH 13.7%) scaled to the non-shiny share. Plain Rare is the remainder.",
+    "packSize": 10
+  },
+  "hgss1": {
+    "structure": "Real English pack: 10 game cards = 5 commons (Basic Energy in ~1/3 of packs; omitted), 3 uncommons, 1 reverse-holo slot (replaced by a Pokémon Prime ~1 in 6), 1 rare slot (Rare, Rare Holo ~1 in 4.2, LEGEND half 1 in 12, Alph Lithograph secret 1 in 72).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/heartgold-soulsilver/heartgold-soulsilver-booster-pack-hgss1/",
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762/97"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.22208883553421366,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.3701480592236895,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.1450580232092837,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.09603841536614646,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.16666666666666666,
+            "rarities": [
+              "Rare Prime"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6647777777777778,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.238,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.08333333333333333,
+            "rarities": [
+              "LEGEND"
+            ]
+          },
+          {
+            "p": 0.013888888888888888,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: Prime 1/6 (6 cards, 1/36 each), LEGEND 1/12 (4 halves, 1/48 each — you need both halves of Ho-Oh or Lugia), Secret (Alph Lithograph) 1/72, Rare Holo 1/4.2. Primes come in the reverse slot (Elite Fourum rarity guide: 'Pokémon Prime ... in the reverse slot'; Card Codex reverse rows + Prime sum to 100%). LEGEND halves and the secret come in the rare slot (Rare 66.7% + Holo 23.8% + LEGEND 8.3% + secret 1.4% ≈ 100%). Reverse holos use Card Codex's observed split, scaled. Plain Rare is the remainder.",
+    "packSize": 10
+  },
+  "col1": {
+    "structure": "Real English pack: 10 game cards = 5 commons, 3 uncommons, 1 reverse-holo slot (replaced by a Shiny Legend SL1-SL11 ~1 in 18), 1 rare slot (Rare 2/3, Rare Holo 1/3). No LEGEND/Prime in this set.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/heartgold-soulsilver/call-of-legends/call-of-legends-booster-pack-col1/"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.233156364555682,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.3835798255593477,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.1429022879534825,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.18480596637593222,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.05555555555555555,
+            "rarities": [
+              "Rare Shiny"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6666666666666667,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.3333333333333333,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: Shiny Legendary 1/18 (11 cards, 1/198 each) in the reverse slot (reverse C/U/R/RH + holo energy + Shiny Legend sum to ~100%); Rare Holo 1/3 and Rare 2/3 in the rare slot. Reverse holo energy (6.3%) not modelled; the reverse C/U/R/RH observed split is renormalized over the non-shiny share. Plain Rare is the remainder.",
+    "packSize": 10
+  },
+  "bw1": {
+    "structure": "Real English pack: 10 game cards = 5 commons (Basic Energy in ~1/3 of packs; omitted), 3 uncommons, 1 reverse holo, 1 rare slot (Rare, Rare Holo ~1 in 3.8, full-art Rare Ultra 1 in 18, Rare Secret 1 in 72).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/black-white/black-and-white-booster-pack-bw1/"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.3461950696677385,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.35691318327974275,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.18113612004287247,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.1157556270096463,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6675555555555556,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.263,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.05555555555555555,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.013888888888888888,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: Rare Holo 1/3.8, Ultra Rare (2 full arts: Reshiram/Zekrom) 1/18, Secret Rare (Pikachu 115/114, 1 card) 1/72; plain Rare remainder (Rare 66.7% + holo + UR + secret ≈ 100%). Reverse slot uses Card Codex's observed split (C 32.3%, U 33.3%, R 16.9%, RH 10.8%; reverse energy 7.1% not modelled), normalized.",
+    "packSize": 10
+  },
+  "bw11": {
+    "structure": "Legendary Treasures: 10 game cards = 4 commons, 2 uncommons, 1 reverse slot (reverse holo or a regular Rare Holo at equal odds), 1 rare slot (Rare, Rare Holo EX 1 in 6, Rare Secret 1 in 108), then 2 Radiant Collection cards: RC slot A (RC uncommon or RC ultra rare — full-art RC21-RC25 1 in 4) and RC slot B (always an RC common).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/black-white/legendary-treasures/legendary-treasures-booster-pack-bw11/",
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762/119"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.648,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.133,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.159,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.06,
+            "rarities": [
+              "Rare"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.8240740740740741,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.16666666666666666,
+            "rarities": [
+              "Rare Holo EX"
+            ]
+          },
+          {
+            "p": 0.009259259259259259,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.75,
+            "rarities": [
+              "Radiant Collection"
+            ]
+          },
+          {
+            "p": 0.25,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Radiant Collection"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Elite Fourum guide: 4C + 2U + reverse slot (reverse or regular holo, equal odds) + rare slot (rare / EX / gold secret Reshiram & Zekrom; no full arts in the main set) + 2 RC cards (first = RC uncommon or RC ultra rare, second = RC common). Card Codex: regular holo 50% (all 30 holos come from the reverse slot), EX 1/6, secret 1/108, RC full art (Rare Ultra, 5 cards) 1/4, RC Meloetta-EX 1/20 (counted inside 'Radiant Collection'). Reverse slot = Rare Holo 0.5 + reverse RH 0.149 (Rare Holo total = remainder), reverse C 0.133, U 0.159, R 0.06. Plain Rare is the rare-slot remainder (~82.4%, Elite Fourum: ~29.7 rares per 36-pack box).",
+    "packSize": 10
+  },
+  "xy7": {
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy (omitted) = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare, Rare Holo ~1 in 6.4, Pokémon-EX incl. Mega/Primal 1 in 9, full art 1 in 21.4, secret 1 in 50).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/xy/ancient-origins/ancient-origins-booster-pack-xy7/"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.37968441814595655,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.44871794871794873,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.10650887573964497,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.0650887573964497,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6661599169262721,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.156,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.1111111111111111,
+            "rarities": [
+              "Rare Holo EX"
+            ]
+          },
+          {
+            "p": 0.04672897196261683,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.02,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: Rare Holo 1/6.4, EX 1/9, Ultra Rare (full arts) 1/21.4, Secret 1/50 (5 cards, 1/250 each); plain Rare remainder (Card Codex Rare 1/1.5 — the five outcomes sum to ~100%). Reverse slot uses Card Codex's observed split (C 38.5%, U 45.5%, R 10.8%, RH 6.6%), normalized.",
+    "packSize": 10
+  },
+  "g1": {
+    "structure": "Generations (sold only in collections/ETBs, no booster boxes): 9 game cards + 1 Basic Energy (omitted) = 3 commons, 2 uncommons, 1 reverse holo, 1 rare slot (Rare, Rare Holo ~1 in 9.5, Pokémon-EX ~1 in 4.4), then 2 Radiant Collection cards: RC slot A (RC uncommon/EX, or full-art RC28-RC32 1 in 5) and RC slot B (always an RC common).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/xy/generations/",
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762/134"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.3174946004319654,
+            "rarities": [
+              "Common"
+            ]
+          },
+          {
+            "p": 0.41576673866090713,
+            "rarities": [
+              "Uncommon"
+            ]
+          },
+          {
+            "p": 0.18250539956803455,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.08423326133909287,
+            "rarities": [
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.669,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.105,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.22599999999999998,
+            "rarities": [
+              "Rare Holo EX"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.8,
+            "rarities": [
+              "Radiant Collection"
+            ]
+          },
+          {
+            "p": 0.2,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Radiant Collection"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Elite Fourum guide (170 ETB packs + 516 loose packs + Derium 500): each pack has 1 RC common, 1 RC uncommon-or-ultra-rare, and the rare slot; on the RC sheet each uncommon is printed 6x and each ultra rare 4x (12x6 + 7x4 = 100). Card Codex: RC common 1 per pack, RC uncommon 71.4%, RC full art (Rare Ultra, 5 cards) 1/5, RC EX 1/12.5 (inside 'Radiant Collection'), Rare 66.7%, EX 1/4.9, Rare Holo 1/9.5, non-RC Ultra 1/45 (folded into Rare Holo EX since the data has no non-RC Rare Ultra). Card Codex shows ~3.1 commons + 2 uncommons + Energy 91%: 3 commons modelled. Reverse slot uses Card Codex's observed split, normalized.",
+    "packSize": 9
+  },
+  "sm35": {
+    "structure": "Shining Legends (sold only in collections, no booster boxes): 10 game cards + 1 Basic Energy (omitted) = 5 commons, 3 uncommons, 1 reverse holo (C/U/Rare Holo — the set has no plain Rares), 1 rare slot that is ALWAYS at least Rare Holo; Shining Pokémon 1 in 11.3, GX 1 in 9, full art 1 in 24.2, rainbow 1 in 49.5 and secret 1 in 198 replace the holo.",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sun-moon/shining-legends/",
+      "https://www.elitefourum.com/t/the-english-pokemon-card-rarity-guide/39762/144"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.7338133676870238,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.1111111111111111,
+            "rarities": [
+              "Rare Holo GX"
+            ]
+          },
+          {
+            "p": 0.08849557522123894,
+            "rarities": [
+              "Rare Shining"
+            ]
+          },
+          {
+            "p": 0.04132231404958678,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.020202020202020204,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.005055611729019211,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: GX 1/9 (4 cards), Shining 1/11.3 (6 cards, 1/67.5 each), Ultra Rare 1/24.2, Rainbow 1/49.5, Secret (gold Mewtwo) 1/197.8; Rare Holo is the remainder (~69% vs quoted 1/1.4). Elite Fourum guide: no non-holo rares, all hits in the rare slot, ~3.2 Shinings and ~4 GX per 36 packs (Derium 501-pack openings) — consistent. Reverse slot weighted by card count over C/U/Rare Holo.",
+    "packSize": 10
+  },
+  "swsh3": {
+    "structure": "Real English pack: 10 game cards + 1 Basic Energy and a code card (not modelled) = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare / Holo / V / VMAX / full art / rainbow / gold).",
+    "estimate": false,
+    "sources": [
+      "https://cardcodex.com/pokemon/sword-shield/darkness-ablaze/darkness-ablaze-booster-pack-swsh3/"
+    ],
+    "profile": {
+      "slots": [
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Uncommon"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 1,
+            "rarities": [
+              "Common",
+              "Uncommon",
+              "Rare",
+              "Rare Holo"
+            ]
+          }
+        ],
+        [
+          {
+            "p": 0.6063951370759488,
+            "rarities": [
+              "Rare"
+            ]
+          },
+          {
+            "p": 0.1694915254237288,
+            "rarities": [
+              "Rare Holo"
+            ]
+          },
+          {
+            "p": 0.12658227848101264,
+            "rarities": [
+              "Rare Holo V"
+            ]
+          },
+          {
+            "p": 0.038461538461538464,
+            "rarities": [
+              "Rare Holo VMAX"
+            ]
+          },
+          {
+            "p": 0.038461538461538464,
+            "rarities": [
+              "Rare Ultra"
+            ]
+          },
+          {
+            "p": 0.011904761904761904,
+            "rarities": [
+              "Rare Rainbow"
+            ]
+          },
+          {
+            "p": 0.008703220191470844,
+            "rarities": [
+              "Rare Secret"
+            ]
+          }
+        ]
+      ]
+    },
+    "notes": "Card Codex: Holo 1/5.9, V 1/7.9, VMAX 1/26, Ultra Rare (full arts) 1/26, Rainbow 1/84, Secret (gold) 1/114.9; plain Rare is the remainder (~60.6%). Reverse slot weighted by card count over C/U/R/Rare Holo.",
+    "packSize": 10
   }
 }

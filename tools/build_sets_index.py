@@ -32,6 +32,9 @@ ERAS: list[tuple[str, str, tuple[str, ...]]] = [
     ("swsh", "Sword & Shield", ("Sword & Shield",)),
     ("sm", "Sun & Moon", ("Sun & Moon",)),
     ("xy", "XY", ("XY",)),
+    ("bw", "Black & White", ("Black & White",)),
+    ("hgss", "HeartGold & SoulSilver", ("HeartGold & SoulSilver",)),
+    ("dp", "Diamond & Pearl", ("Diamond & Pearl", "Platinum")),
     ("ex", "e-Card & EX", ("E-Card", "EX")),
     ("wotc", "Wizards of the Coast", ("Base", "Gym", "Neo")),
 ]

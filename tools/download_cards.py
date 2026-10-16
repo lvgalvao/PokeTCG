@@ -65,6 +65,7 @@ RARITY_TO_BUCKET: dict[str, str] = {
     "mega hyper rare": "07_legendaria",
     "futuristic rare": "07_legendaria",
     "pikachu rare": "03_raras",
+    "radiant collection": "03_raras",
     # Classic reprint rarities (e.g. me55c "30th Celebration: Classic Collection").
     "holo rare v": "04_duplo_raras",
     "holo rare vmax": "04_duplo_raras",
@@ -97,7 +98,22 @@ CARD_RARITY_OVERRIDES: dict[str, str] = {
     "rsv10pt5-172": "Black White Rare",
     # Cosmic Eclipse Character Rares (237–248) share "Rare Secret" with the golds.
     **{f"sm12-{n}": "Character Rare" for n in range(237, 249)},
+    # Radiant Collection (Generations RC1–RC27, Legendary Treasures RC1–RC20) share
+    # Common/Uncommon with the main set but come from their own slot; the RC full arts
+    # stay "Rare Ultra" (the only Ultras of both sets).
+    **{f"g1-RC{n}": "Radiant Collection" for n in range(1, 28)},
+    **{f"bw11-RC{n}": "Radiant Collection" for n in range(1, 21)},
+    # Call of Legends Shiny Legends SL1–SL11, listed as Rare Holo.
+    **{f"col1-SL{n}": "Rare Shiny" for n in range(1, 12)},
 }
+
+# Cards in the source data that never came in booster packs (box/blister promos with an
+# "a" number); left out of the album and the packs.
+EXCLUDED_CARDS: frozenset[str] = frozenset(
+    {"g1-28a", "g1-73a", "sm35-10a", "sm35-68a", "sm35-77a"}
+    # Expedition Basic Energy (ecard1 160–165) came only in theme decks.
+    | {f"ecard1-{n}" for n in range(160, 166)}
+)
 
 # Per-set overrides, checked before RARITY_TO_BUCKET. me55 has no Uncommons, so its 30
 # commemorative Pikachus fill the uncommon slot (slot 3 has no downgrade fallback).
@@ -277,6 +293,8 @@ def process_card(
     name = card.get("name", "")
     rarity_raw = CARD_RARITY_OVERRIDES.get(card.get("id", ""), card.get("rarity", ""))
 
+    if card_id in EXCLUDED_CARDS:
+        return
     if not is_safe_card_id(card_id):
         report.failed.append((card_id, "unsafe card id"))
         return

@@ -398,54 +398,6 @@
       "imagePath": "ecard1/01_comum/ecard1-157.jpg"
     },
     {
-      "id": "ecard1-160",
-      "name": "Fighting Energy",
-      "rarityRaw": "",
-      "bucket": "01_comum",
-      "collectionNumber": 160,
-      "imagePath": "ecard1/01_comum/ecard1-160.jpg"
-    },
-    {
-      "id": "ecard1-161",
-      "name": "Fire Energy",
-      "rarityRaw": "",
-      "bucket": "01_comum",
-      "collectionNumber": 161,
-      "imagePath": "ecard1/01_comum/ecard1-161.jpg"
-    },
-    {
-      "id": "ecard1-162",
-      "name": "Grass Energy",
-      "rarityRaw": "",
-      "bucket": "01_comum",
-      "collectionNumber": 162,
-      "imagePath": "ecard1/01_comum/ecard1-162.jpg"
-    },
-    {
-      "id": "ecard1-163",
-      "name": "Lightning Energy",
-      "rarityRaw": "",
-      "bucket": "01_comum",
-      "collectionNumber": 163,
-      "imagePath": "ecard1/01_comum/ecard1-163.jpg"
-    },
-    {
-      "id": "ecard1-164",
-      "name": "Psychic Energy",
-      "rarityRaw": "",
-      "bucket": "01_comum",
-      "collectionNumber": 164,
-      "imagePath": "ecard1/01_comum/ecard1-164.jpg"
-    },
-    {
-      "id": "ecard1-165",
-      "name": "Water Energy",
-      "rarityRaw": "",
-      "bucket": "01_comum",
-      "collectionNumber": 165,
-      "imagePath": "ecard1/01_comum/ecard1-165.jpg"
-    },
-    {
       "id": "ecard1-71",
       "name": "Bayleef",
       "rarityRaw": "Uncommon",
@@ -1327,7 +1279,7 @@
     }
   ],
   "totalsByBucket": {
-    "01_comum": 55,
+    "01_comum": 49,
     "02_incomum": 38,
     "03_raras": 72,
     "04_duplo_raras": 0,

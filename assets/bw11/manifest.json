@@ -1,0 +1,1139 @@
+{
+  "setId": "bw11",
+  "setName": "Legendary Treasures",
+  "generatedAt": "2026-10-16T21:52:09Z",
+  "downloaderVersion": "0.1.0",
+  "totalSet": 140,
+  "cards": [
+    {
+      "id": "bw11-1",
+      "name": "Tangela",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 1,
+      "imagePath": "bw11/01_comum/bw11-1.jpg"
+    },
+    {
+      "id": "bw11-6",
+      "name": "Snivy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 6,
+      "imagePath": "bw11/01_comum/bw11-6.jpg"
+    },
+    {
+      "id": "bw11-9",
+      "name": "Sewaddle",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 9,
+      "imagePath": "bw11/01_comum/bw11-9.jpg"
+    },
+    {
+      "id": "bw11-10",
+      "name": "Sewaddle",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 10,
+      "imagePath": "bw11/01_comum/bw11-10.jpg"
+    },
+    {
+      "id": "bw11-13",
+      "name": "Dwebble",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 13,
+      "imagePath": "bw11/01_comum/bw11-13.jpg"
+    },
+    {
+      "id": "bw11-17",
+      "name": "Charmander",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 17,
+      "imagePath": "bw11/01_comum/bw11-17.jpg"
+    },
+    {
+      "id": "bw11-20",
+      "name": "Vulpix",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 20,
+      "imagePath": "bw11/01_comum/bw11-20.jpg"
+    },
+    {
+      "id": "bw11-25",
+      "name": "Tepig",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 25,
+      "imagePath": "bw11/01_comum/bw11-25.jpg"
+    },
+    {
+      "id": "bw11-30",
+      "name": "Magikarp",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 30,
+      "imagePath": "bw11/01_comum/bw11-30.jpg"
+    },
+    {
+      "id": "bw11-33",
+      "name": "Piplup",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 33,
+      "imagePath": "bw11/01_comum/bw11-33.jpg"
+    },
+    {
+      "id": "bw11-37",
+      "name": "Oshawott",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 37,
+      "imagePath": "bw11/01_comum/bw11-37.jpg"
+    },
+    {
+      "id": "bw11-40",
+      "name": "Tympole",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 40,
+      "imagePath": "bw11/01_comum/bw11-40.jpg"
+    },
+    {
+      "id": "bw11-55",
+      "name": "Natu",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 55,
+      "imagePath": "bw11/01_comum/bw11-55.jpg"
+    },
+    {
+      "id": "bw11-57",
+      "name": "Misdreavus",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 57,
+      "imagePath": "bw11/01_comum/bw11-57.jpg"
+    },
+    {
+      "id": "bw11-59",
+      "name": "Ralts",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 59,
+      "imagePath": "bw11/01_comum/bw11-59.jpg"
+    },
+    {
+      "id": "bw11-62",
+      "name": "Croagunk",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 62,
+      "imagePath": "bw11/01_comum/bw11-62.jpg"
+    },
+    {
+      "id": "bw11-64",
+      "name": "Woobat",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 64,
+      "imagePath": "bw11/01_comum/bw11-64.jpg"
+    },
+    {
+      "id": "bw11-67",
+      "name": "Trubbish",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 67,
+      "imagePath": "bw11/01_comum/bw11-67.jpg"
+    },
+    {
+      "id": "bw11-69",
+      "name": "Gothita",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 69,
+      "imagePath": "bw11/01_comum/bw11-69.jpg"
+    },
+    {
+      "id": "bw11-70",
+      "name": "Gothita",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 70,
+      "imagePath": "bw11/01_comum/bw11-70.jpg"
+    },
+    {
+      "id": "bw11-73",
+      "name": "Solosis",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 73,
+      "imagePath": "bw11/01_comum/bw11-73.jpg"
+    },
+    {
+      "id": "bw11-74",
+      "name": "Solosis",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 74,
+      "imagePath": "bw11/01_comum/bw11-74.jpg"
+    },
+    {
+      "id": "bw11-89",
+      "name": "Zorua",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 89,
+      "imagePath": "bw11/01_comum/bw11-89.jpg"
+    },
+    {
+      "id": "bw11-94",
+      "name": "Gible",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 94,
+      "imagePath": "bw11/01_comum/bw11-94.jpg"
+    },
+    {
+      "id": "bw11-97",
+      "name": "Deino",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 97,
+      "imagePath": "bw11/01_comum/bw11-97.jpg"
+    },
+    {
+      "id": "bw11-103",
+      "name": "Swablu",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 103,
+      "imagePath": "bw11/01_comum/bw11-103.jpg"
+    },
+    {
+      "id": "bw11-104",
+      "name": "Minccino",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 104,
+      "imagePath": "bw11/01_comum/bw11-104.jpg"
+    },
+    {
+      "id": "bw11-3",
+      "name": "Shuckle",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 3,
+      "imagePath": "bw11/02_incomum/bw11-3.jpg"
+    },
+    {
+      "id": "bw11-4",
+      "name": "Cherubi",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 4,
+      "imagePath": "bw11/02_incomum/bw11-4.jpg"
+    },
+    {
+      "id": "bw11-5",
+      "name": "Carnivine",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 5,
+      "imagePath": "bw11/02_incomum/bw11-5.jpg"
+    },
+    {
+      "id": "bw11-7",
+      "name": "Servine",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 7,
+      "imagePath": "bw11/02_incomum/bw11-7.jpg"
+    },
+    {
+      "id": "bw11-11",
+      "name": "Swadloon",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 11,
+      "imagePath": "bw11/02_incomum/bw11-11.jpg"
+    },
+    {
+      "id": "bw11-14",
+      "name": "Crustle",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 14,
+      "imagePath": "bw11/02_incomum/bw11-14.jpg"
+    },
+    {
+      "id": "bw11-18",
+      "name": "Charmeleon",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 18,
+      "imagePath": "bw11/02_incomum/bw11-18.jpg"
+    },
+    {
+      "id": "bw11-26",
+      "name": "Pignite",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 26,
+      "imagePath": "bw11/02_incomum/bw11-26.jpg"
+    },
+    {
+      "id": "bw11-34",
+      "name": "Prinplup",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 34,
+      "imagePath": "bw11/02_incomum/bw11-34.jpg"
+    },
+    {
+      "id": "bw11-38",
+      "name": "Dewott",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 38,
+      "imagePath": "bw11/02_incomum/bw11-38.jpg"
+    },
+    {
+      "id": "bw11-41",
+      "name": "Palpitoad",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 41,
+      "imagePath": "bw11/02_incomum/bw11-41.jpg"
+    },
+    {
+      "id": "bw11-47",
+      "name": "Plusle",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 47,
+      "imagePath": "bw11/02_incomum/bw11-47.jpg"
+    },
+    {
+      "id": "bw11-48",
+      "name": "Minun",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 48,
+      "imagePath": "bw11/02_incomum/bw11-48.jpg"
+    },
+    {
+      "id": "bw11-49",
+      "name": "Emolga",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 49,
+      "imagePath": "bw11/02_incomum/bw11-49.jpg"
+    },
+    {
+      "id": "bw11-60",
+      "name": "Kirlia",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 60,
+      "imagePath": "bw11/02_incomum/bw11-60.jpg"
+    },
+    {
+      "id": "bw11-61",
+      "name": "Sableye",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 61,
+      "imagePath": "bw11/02_incomum/bw11-61.jpg"
+    },
+    {
+      "id": "bw11-65",
+      "name": "Swoobat",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 65,
+      "imagePath": "bw11/02_incomum/bw11-65.jpg"
+    },
+    {
+      "id": "bw11-71",
+      "name": "Gothorita",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 71,
+      "imagePath": "bw11/02_incomum/bw11-71.jpg"
+    },
+    {
+      "id": "bw11-75",
+      "name": "Duosion",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 75,
+      "imagePath": "bw11/02_incomum/bw11-75.jpg"
+    },
+    {
+      "id": "bw11-79",
+      "name": "Riolu",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 79,
+      "imagePath": "bw11/02_incomum/bw11-79.jpg"
+    },
+    {
+      "id": "bw11-83",
+      "name": "Stunfisk",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 83,
+      "imagePath": "bw11/02_incomum/bw11-83.jpg"
+    },
+    {
+      "id": "bw11-87",
+      "name": "Spiritomb",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 87,
+      "imagePath": "bw11/02_incomum/bw11-87.jpg"
+    },
+    {
+      "id": "bw11-92",
+      "name": "Altaria",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 92,
+      "imagePath": "bw11/02_incomum/bw11-92.jpg"
+    },
+    {
+      "id": "bw11-95",
+      "name": "Gabite",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 95,
+      "imagePath": "bw11/02_incomum/bw11-95.jpg"
+    },
+    {
+      "id": "bw11-98",
+      "name": "Zweilous",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 98,
+      "imagePath": "bw11/02_incomum/bw11-98.jpg"
+    },
+    {
+      "id": "bw11-106",
+      "name": "Druddigon",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 106,
+      "imagePath": "bw11/02_incomum/bw11-106.jpg"
+    },
+    {
+      "id": "bw11-107",
+      "name": "Bouffalant",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 107,
+      "imagePath": "bw11/02_incomum/bw11-107.jpg"
+    },
+    {
+      "id": "bw11-109",
+      "name": "Bianca",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 109,
+      "imagePath": "bw11/02_incomum/bw11-109.jpg"
+    },
+    {
+      "id": "bw11-110",
+      "name": "Cedric Juniper",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 110,
+      "imagePath": "bw11/02_incomum/bw11-110.jpg"
+    },
+    {
+      "id": "bw11-111",
+      "name": "Crushing Hammer",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 111,
+      "imagePath": "bw11/02_incomum/bw11-111.jpg"
+    },
+    {
+      "id": "bw11-112",
+      "name": "Energy Switch",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 112,
+      "imagePath": "bw11/02_incomum/bw11-112.jpg"
+    },
+    {
+      "id": "bw11-113",
+      "name": "Double Colorless Energy",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 113,
+      "imagePath": "bw11/02_incomum/bw11-113.jpg"
+    },
+    {
+      "id": "bw11-RC1",
+      "name": "Snivy",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 1,
+      "imagePath": "bw11/03_raras/bw11-RC1.jpg"
+    },
+    {
+      "id": "bw11-2",
+      "name": "Tangrowth",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 2,
+      "imagePath": "bw11/03_raras/bw11-2.jpg"
+    },
+    {
+      "id": "bw11-RC2",
+      "name": "Servine",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 2,
+      "imagePath": "bw11/03_raras/bw11-RC2.jpg"
+    },
+    {
+      "id": "bw11-RC3",
+      "name": "Serperior",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 3,
+      "imagePath": "bw11/03_raras/bw11-RC3.jpg"
+    },
+    {
+      "id": "bw11-RC4",
+      "name": "Growlithe",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 4,
+      "imagePath": "bw11/03_raras/bw11-RC4.jpg"
+    },
+    {
+      "id": "bw11-RC5",
+      "name": "Torchic",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 5,
+      "imagePath": "bw11/03_raras/bw11-RC5.jpg"
+    },
+    {
+      "id": "bw11-RC6",
+      "name": "Piplup",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 6,
+      "imagePath": "bw11/03_raras/bw11-RC6.jpg"
+    },
+    {
+      "id": "bw11-RC7",
+      "name": "Pikachu",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 7,
+      "imagePath": "bw11/03_raras/bw11-RC7.jpg"
+    },
+    {
+      "id": "bw11-8",
+      "name": "Serperior",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 8,
+      "imagePath": "bw11/03_raras/bw11-8.jpg"
+    },
+    {
+      "id": "bw11-RC8",
+      "name": "Ralts",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 8,
+      "imagePath": "bw11/03_raras/bw11-RC8.jpg"
+    },
+    {
+      "id": "bw11-RC9",
+      "name": "Kirlia",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 9,
+      "imagePath": "bw11/03_raras/bw11-RC9.jpg"
+    },
+    {
+      "id": "bw11-RC10",
+      "name": "Gardevoir",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 10,
+      "imagePath": "bw11/03_raras/bw11-RC10.jpg"
+    },
+    {
+      "id": "bw11-RC11",
+      "name": "Meloetta-EX",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 11,
+      "imagePath": "bw11/03_raras/bw11-RC11.jpg"
+    },
+    {
+      "id": "bw11-12",
+      "name": "Leavanny",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 12,
+      "imagePath": "bw11/03_raras/bw11-12.jpg"
+    },
+    {
+      "id": "bw11-RC12",
+      "name": "Stunfisk",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 12,
+      "imagePath": "bw11/03_raras/bw11-RC12.jpg"
+    },
+    {
+      "id": "bw11-RC13",
+      "name": "Purrloin",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 13,
+      "imagePath": "bw11/03_raras/bw11-RC13.jpg"
+    },
+    {
+      "id": "bw11-RC14",
+      "name": "Eevee",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 14,
+      "imagePath": "bw11/03_raras/bw11-RC14.jpg"
+    },
+    {
+      "id": "bw11-15",
+      "name": "Virizion",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 15,
+      "imagePath": "bw11/03_raras/bw11-15.jpg"
+    },
+    {
+      "id": "bw11-RC15",
+      "name": "Teddiursa",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 15,
+      "imagePath": "bw11/03_raras/bw11-RC15.jpg"
+    },
+    {
+      "id": "bw11-16",
+      "name": "Genesect",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 16,
+      "imagePath": "bw11/03_raras/bw11-16.jpg"
+    },
+    {
+      "id": "bw11-RC16",
+      "name": "Ursaring",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 16,
+      "imagePath": "bw11/03_raras/bw11-RC16.jpg"
+    },
+    {
+      "id": "bw11-RC17",
+      "name": "Audino",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 17,
+      "imagePath": "bw11/03_raras/bw11-RC17.jpg"
+    },
+    {
+      "id": "bw11-RC18",
+      "name": "Minccino",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 18,
+      "imagePath": "bw11/03_raras/bw11-RC18.jpg"
+    },
+    {
+      "id": "bw11-19",
+      "name": "Charizard",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 19,
+      "imagePath": "bw11/03_raras/bw11-19.jpg"
+    },
+    {
+      "id": "bw11-RC19",
+      "name": "Cinccino",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 19,
+      "imagePath": "bw11/03_raras/bw11-RC19.jpg"
+    },
+    {
+      "id": "bw11-RC20",
+      "name": "Elesa",
+      "rarityRaw": "Radiant Collection",
+      "bucket": "03_raras",
+      "collectionNumber": 20,
+      "imagePath": "bw11/03_raras/bw11-RC20.jpg"
+    },
+    {
+      "id": "bw11-21",
+      "name": "Ninetales",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 21,
+      "imagePath": "bw11/03_raras/bw11-21.jpg"
+    },
+    {
+      "id": "bw11-22",
+      "name": "Moltres",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 22,
+      "imagePath": "bw11/03_raras/bw11-22.jpg"
+    },
+    {
+      "id": "bw11-23",
+      "name": "Victini",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 23,
+      "imagePath": "bw11/03_raras/bw11-23.jpg"
+    },
+    {
+      "id": "bw11-27",
+      "name": "Emboar",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 27,
+      "imagePath": "bw11/03_raras/bw11-27.jpg"
+    },
+    {
+      "id": "bw11-28",
+      "name": "Reshiram",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 28,
+      "imagePath": "bw11/03_raras/bw11-28.jpg"
+    },
+    {
+      "id": "bw11-31",
+      "name": "Gyarados",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 31,
+      "imagePath": "bw11/03_raras/bw11-31.jpg"
+    },
+    {
+      "id": "bw11-32",
+      "name": "Articuno",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 32,
+      "imagePath": "bw11/03_raras/bw11-32.jpg"
+    },
+    {
+      "id": "bw11-35",
+      "name": "Empoleon",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 35,
+      "imagePath": "bw11/03_raras/bw11-35.jpg"
+    },
+    {
+      "id": "bw11-36",
+      "name": "Phione",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 36,
+      "imagePath": "bw11/03_raras/bw11-36.jpg"
+    },
+    {
+      "id": "bw11-39",
+      "name": "Samurott",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 39,
+      "imagePath": "bw11/03_raras/bw11-39.jpg"
+    },
+    {
+      "id": "bw11-42",
+      "name": "Seismitoad",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 42,
+      "imagePath": "bw11/03_raras/bw11-42.jpg"
+    },
+    {
+      "id": "bw11-43",
+      "name": "Kyurem",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 43,
+      "imagePath": "bw11/03_raras/bw11-43.jpg"
+    },
+    {
+      "id": "bw11-46",
+      "name": "Zapdos",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 46,
+      "imagePath": "bw11/03_raras/bw11-46.jpg"
+    },
+    {
+      "id": "bw11-50",
+      "name": "Thundurus",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 50,
+      "imagePath": "bw11/03_raras/bw11-50.jpg"
+    },
+    {
+      "id": "bw11-51",
+      "name": "Zekrom",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 51,
+      "imagePath": "bw11/03_raras/bw11-51.jpg"
+    },
+    {
+      "id": "bw11-53",
+      "name": "Mewtwo",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 53,
+      "imagePath": "bw11/03_raras/bw11-53.jpg"
+    },
+    {
+      "id": "bw11-56",
+      "name": "Xatu",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 56,
+      "imagePath": "bw11/03_raras/bw11-56.jpg"
+    },
+    {
+      "id": "bw11-58",
+      "name": "Mismagius",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 58,
+      "imagePath": "bw11/03_raras/bw11-58.jpg"
+    },
+    {
+      "id": "bw11-63",
+      "name": "Toxicroak",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 63,
+      "imagePath": "bw11/03_raras/bw11-63.jpg"
+    },
+    {
+      "id": "bw11-66",
+      "name": "Sigilyph",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 66,
+      "imagePath": "bw11/03_raras/bw11-66.jpg"
+    },
+    {
+      "id": "bw11-68",
+      "name": "Garbodor",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 68,
+      "imagePath": "bw11/03_raras/bw11-68.jpg"
+    },
+    {
+      "id": "bw11-72",
+      "name": "Gothitelle",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 72,
+      "imagePath": "bw11/03_raras/bw11-72.jpg"
+    },
+    {
+      "id": "bw11-76",
+      "name": "Reuniclus",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 76,
+      "imagePath": "bw11/03_raras/bw11-76.jpg"
+    },
+    {
+      "id": "bw11-78",
+      "name": "Meloetta",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 78,
+      "imagePath": "bw11/03_raras/bw11-78.jpg"
+    },
+    {
+      "id": "bw11-80",
+      "name": "Lucario",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 80,
+      "imagePath": "bw11/03_raras/bw11-80.jpg"
+    },
+    {
+      "id": "bw11-81",
+      "name": "Gallade",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 81,
+      "imagePath": "bw11/03_raras/bw11-81.jpg"
+    },
+    {
+      "id": "bw11-84",
+      "name": "Terrakion",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 84,
+      "imagePath": "bw11/03_raras/bw11-84.jpg"
+    },
+    {
+      "id": "bw11-85",
+      "name": "Landorus",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 85,
+      "imagePath": "bw11/03_raras/bw11-85.jpg"
+    },
+    {
+      "id": "bw11-86",
+      "name": "Meloetta",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 86,
+      "imagePath": "bw11/03_raras/bw11-86.jpg"
+    },
+    {
+      "id": "bw11-90",
+      "name": "Zoroark",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 90,
+      "imagePath": "bw11/03_raras/bw11-90.jpg"
+    },
+    {
+      "id": "bw11-91",
+      "name": "Cobalion",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 91,
+      "imagePath": "bw11/03_raras/bw11-91.jpg"
+    },
+    {
+      "id": "bw11-93",
+      "name": "Rayquaza",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 93,
+      "imagePath": "bw11/03_raras/bw11-93.jpg"
+    },
+    {
+      "id": "bw11-96",
+      "name": "Garchomp",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 96,
+      "imagePath": "bw11/03_raras/bw11-96.jpg"
+    },
+    {
+      "id": "bw11-99",
+      "name": "Hydreigon",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 99,
+      "imagePath": "bw11/03_raras/bw11-99.jpg"
+    },
+    {
+      "id": "bw11-105",
+      "name": "Cinccino",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 105,
+      "imagePath": "bw11/03_raras/bw11-105.jpg"
+    },
+    {
+      "id": "bw11-108",
+      "name": "Tornadus",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 108,
+      "imagePath": "bw11/03_raras/bw11-108.jpg"
+    },
+    {
+      "id": "bw11-RC21",
+      "name": "Shaymin-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 21,
+      "imagePath": "bw11/04_duplo_raras/bw11-RC21.jpg"
+    },
+    {
+      "id": "bw11-RC22",
+      "name": "Reshiram",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 22,
+      "imagePath": "bw11/04_duplo_raras/bw11-RC22.jpg"
+    },
+    {
+      "id": "bw11-RC23",
+      "name": "Emolga",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 23,
+      "imagePath": "bw11/04_duplo_raras/bw11-RC23.jpg"
+    },
+    {
+      "id": "bw11-24",
+      "name": "Victini-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 24,
+      "imagePath": "bw11/04_duplo_raras/bw11-24.jpg"
+    },
+    {
+      "id": "bw11-RC24",
+      "name": "Mew-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 24,
+      "imagePath": "bw11/04_duplo_raras/bw11-RC24.jpg"
+    },
+    {
+      "id": "bw11-RC25",
+      "name": "Meloetta-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 25,
+      "imagePath": "bw11/04_duplo_raras/bw11-RC25.jpg"
+    },
+    {
+      "id": "bw11-29",
+      "name": "Reshiram-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 29,
+      "imagePath": "bw11/04_duplo_raras/bw11-29.jpg"
+    },
+    {
+      "id": "bw11-44",
+      "name": "Kyurem-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 44,
+      "imagePath": "bw11/04_duplo_raras/bw11-44.jpg"
+    },
+    {
+      "id": "bw11-45",
+      "name": "Keldeo-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 45,
+      "imagePath": "bw11/04_duplo_raras/bw11-45.jpg"
+    },
+    {
+      "id": "bw11-52",
+      "name": "Zekrom-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 52,
+      "imagePath": "bw11/04_duplo_raras/bw11-52.jpg"
+    },
+    {
+      "id": "bw11-54",
+      "name": "Mewtwo-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 54,
+      "imagePath": "bw11/04_duplo_raras/bw11-54.jpg"
+    },
+    {
+      "id": "bw11-77",
+      "name": "Chandelure-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 77,
+      "imagePath": "bw11/04_duplo_raras/bw11-77.jpg"
+    },
+    {
+      "id": "bw11-82",
+      "name": "Excadrill-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 82,
+      "imagePath": "bw11/04_duplo_raras/bw11-82.jpg"
+    },
+    {
+      "id": "bw11-88",
+      "name": "Darkrai-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 88,
+      "imagePath": "bw11/04_duplo_raras/bw11-88.jpg"
+    },
+    {
+      "id": "bw11-100",
+      "name": "Black Kyurem-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 100,
+      "imagePath": "bw11/04_duplo_raras/bw11-100.jpg"
+    },
+    {
+      "id": "bw11-101",
+      "name": "White Kyurem-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 101,
+      "imagePath": "bw11/04_duplo_raras/bw11-101.jpg"
+    },
+    {
+      "id": "bw11-102",
+      "name": "Lugia-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 102,
+      "imagePath": "bw11/04_duplo_raras/bw11-102.jpg"
+    },
+    {
+      "id": "bw11-114",
+      "name": "Reshiram",
+      "rarityRaw": "Rare Secret",
+      "bucket": "06_duplo_arte_secreta",
+      "collectionNumber": 114,
+      "imagePath": "bw11/06_duplo_arte_secreta/bw11-114.jpg"
+    },
+    {
+      "id": "bw11-115",
+      "name": "Zekrom",
+      "rarityRaw": "Rare Secret",
+      "bucket": "06_duplo_arte_secreta",
+      "collectionNumber": 115,
+      "imagePath": "bw11/06_duplo_arte_secreta/bw11-115.jpg"
+    }
+  ],
+  "totalsByBucket": {
+    "01_comum": 27,
+    "02_incomum": 32,
+    "03_raras": 62,
+    "04_duplo_raras": 17,
+    "05_arte_secreta": 0,
+    "06_duplo_arte_secreta": 2,
+    "07_legendaria": 0
+  },
+  "unmapped": []
+}

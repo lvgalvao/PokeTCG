@@ -1,0 +1,827 @@
+{
+  "setId": "xy7",
+  "setName": "Ancient Origins",
+  "generatedAt": "2026-10-16T21:52:43Z",
+  "downloaderVersion": "0.1.0",
+  "totalSet": 101,
+  "cards": [
+    {
+      "id": "xy7-1",
+      "name": "Oddish",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 1,
+      "imagePath": "xy7/01_comum/xy7-1.jpg"
+    },
+    {
+      "id": "xy7-5",
+      "name": "Spinarak",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 5,
+      "imagePath": "xy7/01_comum/xy7-5.jpg"
+    },
+    {
+      "id": "xy7-9",
+      "name": "Combee",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 9,
+      "imagePath": "xy7/01_comum/xy7-9.jpg"
+    },
+    {
+      "id": "xy7-16",
+      "name": "Larvesta",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 16,
+      "imagePath": "xy7/01_comum/xy7-16.jpg"
+    },
+    {
+      "id": "xy7-19",
+      "name": "Magikarp",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 19,
+      "imagePath": "xy7/01_comum/xy7-19.jpg"
+    },
+    {
+      "id": "xy7-23",
+      "name": "Relicanth",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 23,
+      "imagePath": "xy7/01_comum/xy7-23.jpg"
+    },
+    {
+      "id": "xy7-30",
+      "name": "Unown",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 30,
+      "imagePath": "xy7/01_comum/xy7-30.jpg"
+    },
+    {
+      "id": "xy7-31",
+      "name": "Baltoy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 31,
+      "imagePath": "xy7/01_comum/xy7-31.jpg"
+    },
+    {
+      "id": "xy7-32",
+      "name": "Baltoy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 32,
+      "imagePath": "xy7/01_comum/xy7-32.jpg"
+    },
+    {
+      "id": "xy7-34",
+      "name": "Golett",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 34,
+      "imagePath": "xy7/01_comum/xy7-34.jpg"
+    },
+    {
+      "id": "xy7-38",
+      "name": "Wooper",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 38,
+      "imagePath": "xy7/01_comum/xy7-38.jpg"
+    },
+    {
+      "id": "xy7-39",
+      "name": "Quagsire",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 39,
+      "imagePath": "xy7/01_comum/xy7-39.jpg"
+    },
+    {
+      "id": "xy7-41",
+      "name": "Golurk",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 41,
+      "imagePath": "xy7/01_comum/xy7-41.jpg"
+    },
+    {
+      "id": "xy7-45",
+      "name": "Inkay",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 45,
+      "imagePath": "xy7/01_comum/xy7-45.jpg"
+    },
+    {
+      "id": "xy7-46",
+      "name": "Malamar",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 46,
+      "imagePath": "xy7/01_comum/xy7-46.jpg"
+    },
+    {
+      "id": "xy7-47",
+      "name": "Beldum",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 47,
+      "imagePath": "xy7/01_comum/xy7-47.jpg"
+    },
+    {
+      "id": "xy7-52",
+      "name": "Ralts",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 52,
+      "imagePath": "xy7/01_comum/xy7-52.jpg"
+    },
+    {
+      "id": "xy7-55",
+      "name": "Cottonee",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 55,
+      "imagePath": "xy7/01_comum/xy7-55.jpg"
+    },
+    {
+      "id": "xy7-58",
+      "name": "Goomy",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 58,
+      "imagePath": "xy7/01_comum/xy7-58.jpg"
+    },
+    {
+      "id": "xy7-61",
+      "name": "Meowth",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 61,
+      "imagePath": "xy7/01_comum/xy7-61.jpg"
+    },
+    {
+      "id": "xy7-62",
+      "name": "Persian",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 62,
+      "imagePath": "xy7/01_comum/xy7-62.jpg"
+    },
+    {
+      "id": "xy7-63",
+      "name": "Eevee",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 63,
+      "imagePath": "xy7/01_comum/xy7-63.jpg"
+    },
+    {
+      "id": "xy7-64",
+      "name": "Porygon",
+      "rarityRaw": "Common",
+      "bucket": "01_comum",
+      "collectionNumber": 64,
+      "imagePath": "xy7/01_comum/xy7-64.jpg"
+    },
+    {
+      "id": "xy7-2",
+      "name": "Gloom",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 2,
+      "imagePath": "xy7/02_incomum/xy7-2.jpg"
+    },
+    {
+      "id": "xy7-4",
+      "name": "Bellossom",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 4,
+      "imagePath": "xy7/02_incomum/xy7-4.jpg"
+    },
+    {
+      "id": "xy7-6",
+      "name": "Ariados",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 6,
+      "imagePath": "xy7/02_incomum/xy7-6.jpg"
+    },
+    {
+      "id": "xy7-10",
+      "name": "Vespiquen",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 10,
+      "imagePath": "xy7/02_incomum/xy7-10.jpg"
+    },
+    {
+      "id": "xy7-13",
+      "name": "Flareon",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 13,
+      "imagePath": "xy7/02_incomum/xy7-13.jpg"
+    },
+    {
+      "id": "xy7-22",
+      "name": "Vaporeon",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 22,
+      "imagePath": "xy7/02_incomum/xy7-22.jpg"
+    },
+    {
+      "id": "xy7-29",
+      "name": "Rotom",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 29,
+      "imagePath": "xy7/02_incomum/xy7-29.jpg"
+    },
+    {
+      "id": "xy7-44",
+      "name": "Sableye",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 44,
+      "imagePath": "xy7/02_incomum/xy7-44.jpg"
+    },
+    {
+      "id": "xy7-48",
+      "name": "Metang",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 48,
+      "imagePath": "xy7/02_incomum/xy7-48.jpg"
+    },
+    {
+      "id": "xy7-53",
+      "name": "Kirlia",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 53,
+      "imagePath": "xy7/02_incomum/xy7-53.jpg"
+    },
+    {
+      "id": "xy7-56",
+      "name": "Whimsicott",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 56,
+      "imagePath": "xy7/02_incomum/xy7-56.jpg"
+    },
+    {
+      "id": "xy7-59",
+      "name": "Sliggoo",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 59,
+      "imagePath": "xy7/02_incomum/xy7-59.jpg"
+    },
+    {
+      "id": "xy7-65",
+      "name": "Porygon2",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 65,
+      "imagePath": "xy7/02_incomum/xy7-65.jpg"
+    },
+    {
+      "id": "xy7-69",
+      "name": "Ace Trainer",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 69,
+      "imagePath": "xy7/02_incomum/xy7-69.jpg"
+    },
+    {
+      "id": "xy7-70",
+      "name": "Ampharos Spirit Link",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 70,
+      "imagePath": "xy7/02_incomum/xy7-70.jpg"
+    },
+    {
+      "id": "xy7-71",
+      "name": "Eco Arm",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 71,
+      "imagePath": "xy7/02_incomum/xy7-71.jpg"
+    },
+    {
+      "id": "xy7-72",
+      "name": "Energy Recycler",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 72,
+      "imagePath": "xy7/02_incomum/xy7-72.jpg"
+    },
+    {
+      "id": "xy7-73",
+      "name": "Faded Town",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 73,
+      "imagePath": "xy7/02_incomum/xy7-73.jpg"
+    },
+    {
+      "id": "xy7-74",
+      "name": "Forest of Giant Plants",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 74,
+      "imagePath": "xy7/02_incomum/xy7-74.jpg"
+    },
+    {
+      "id": "xy7-75",
+      "name": "Hex Maniac",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 75,
+      "imagePath": "xy7/02_incomum/xy7-75.jpg"
+    },
+    {
+      "id": "xy7-76",
+      "name": "Level Ball",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 76,
+      "imagePath": "xy7/02_incomum/xy7-76.jpg"
+    },
+    {
+      "id": "xy7-77",
+      "name": "Lucky Helmet",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 77,
+      "imagePath": "xy7/02_incomum/xy7-77.jpg"
+    },
+    {
+      "id": "xy7-78",
+      "name": "Lysandre",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 78,
+      "imagePath": "xy7/02_incomum/xy7-78.jpg"
+    },
+    {
+      "id": "xy7-79",
+      "name": "Paint Roller",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 79,
+      "imagePath": "xy7/02_incomum/xy7-79.jpg"
+    },
+    {
+      "id": "xy7-80",
+      "name": "Sceptile Spirit Link",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 80,
+      "imagePath": "xy7/02_incomum/xy7-80.jpg"
+    },
+    {
+      "id": "xy7-81",
+      "name": "Tyranitar Spirit Link",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 81,
+      "imagePath": "xy7/02_incomum/xy7-81.jpg"
+    },
+    {
+      "id": "xy7-82",
+      "name": "Dangerous Energy",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 82,
+      "imagePath": "xy7/02_incomum/xy7-82.jpg"
+    },
+    {
+      "id": "xy7-83",
+      "name": "Flash Energy",
+      "rarityRaw": "Uncommon",
+      "bucket": "02_incomum",
+      "collectionNumber": 83,
+      "imagePath": "xy7/02_incomum/xy7-83.jpg"
+    },
+    {
+      "id": "xy7-3",
+      "name": "Vileplume",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 3,
+      "imagePath": "xy7/03_raras/xy7-3.jpg"
+    },
+    {
+      "id": "xy7-11",
+      "name": "Vespiquen",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 11,
+      "imagePath": "xy7/03_raras/xy7-11.jpg"
+    },
+    {
+      "id": "xy7-12",
+      "name": "Virizion",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 12,
+      "imagePath": "xy7/03_raras/xy7-12.jpg"
+    },
+    {
+      "id": "xy7-14",
+      "name": "Entei",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 14,
+      "imagePath": "xy7/03_raras/xy7-14.jpg"
+    },
+    {
+      "id": "xy7-15",
+      "name": "Entei",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 15,
+      "imagePath": "xy7/03_raras/xy7-15.jpg"
+    },
+    {
+      "id": "xy7-17",
+      "name": "Volcarona",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 17,
+      "imagePath": "xy7/03_raras/xy7-17.jpg"
+    },
+    {
+      "id": "xy7-18",
+      "name": "Volcarona",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 18,
+      "imagePath": "xy7/03_raras/xy7-18.jpg"
+    },
+    {
+      "id": "xy7-20",
+      "name": "Gyarados",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 20,
+      "imagePath": "xy7/03_raras/xy7-20.jpg"
+    },
+    {
+      "id": "xy7-21",
+      "name": "Gyarados",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 21,
+      "imagePath": "xy7/03_raras/xy7-21.jpg"
+    },
+    {
+      "id": "xy7-24",
+      "name": "Regice",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 24,
+      "imagePath": "xy7/03_raras/xy7-24.jpg"
+    },
+    {
+      "id": "xy7-26",
+      "name": "Jolteon",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 26,
+      "imagePath": "xy7/03_raras/xy7-26.jpg"
+    },
+    {
+      "id": "xy7-33",
+      "name": "Claydol",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 33,
+      "imagePath": "xy7/03_raras/xy7-33.jpg"
+    },
+    {
+      "id": "xy7-35",
+      "name": "Golurk",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 35,
+      "imagePath": "xy7/03_raras/xy7-35.jpg"
+    },
+    {
+      "id": "xy7-40",
+      "name": "Regirock",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 40,
+      "imagePath": "xy7/03_raras/xy7-40.jpg"
+    },
+    {
+      "id": "xy7-49",
+      "name": "Metagross",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 49,
+      "imagePath": "xy7/03_raras/xy7-49.jpg"
+    },
+    {
+      "id": "xy7-50",
+      "name": "Metagross",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 50,
+      "imagePath": "xy7/03_raras/xy7-50.jpg"
+    },
+    {
+      "id": "xy7-51",
+      "name": "Registeel",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 51,
+      "imagePath": "xy7/03_raras/xy7-51.jpg"
+    },
+    {
+      "id": "xy7-54",
+      "name": "Gardevoir",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 54,
+      "imagePath": "xy7/03_raras/xy7-54.jpg"
+    },
+    {
+      "id": "xy7-60",
+      "name": "Goodra",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 60,
+      "imagePath": "xy7/03_raras/xy7-60.jpg"
+    },
+    {
+      "id": "xy7-66",
+      "name": "Porygon-Z",
+      "rarityRaw": "Rare",
+      "bucket": "03_raras",
+      "collectionNumber": 66,
+      "imagePath": "xy7/03_raras/xy7-66.jpg"
+    },
+    {
+      "id": "xy7-67",
+      "name": "Porygon-Z",
+      "rarityRaw": "Rare Holo",
+      "bucket": "03_raras",
+      "collectionNumber": 67,
+      "imagePath": "xy7/03_raras/xy7-67.jpg"
+    },
+    {
+      "id": "xy7-7",
+      "name": "Sceptile-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 7,
+      "imagePath": "xy7/04_duplo_raras/xy7-7.jpg"
+    },
+    {
+      "id": "xy7-8",
+      "name": "M Sceptile-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 8,
+      "imagePath": "xy7/04_duplo_raras/xy7-8.jpg"
+    },
+    {
+      "id": "xy7-25",
+      "name": "Kyurem-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 25,
+      "imagePath": "xy7/04_duplo_raras/xy7-25.jpg"
+    },
+    {
+      "id": "xy7-27",
+      "name": "Ampharos-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 27,
+      "imagePath": "xy7/04_duplo_raras/xy7-27.jpg"
+    },
+    {
+      "id": "xy7-28",
+      "name": "M Ampharos-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 28,
+      "imagePath": "xy7/04_duplo_raras/xy7-28.jpg"
+    },
+    {
+      "id": "xy7-36",
+      "name": "Hoopa-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 36,
+      "imagePath": "xy7/04_duplo_raras/xy7-36.jpg"
+    },
+    {
+      "id": "xy7-37",
+      "name": "Machamp-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 37,
+      "imagePath": "xy7/04_duplo_raras/xy7-37.jpg"
+    },
+    {
+      "id": "xy7-42",
+      "name": "Tyranitar-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 42,
+      "imagePath": "xy7/04_duplo_raras/xy7-42.jpg"
+    },
+    {
+      "id": "xy7-43",
+      "name": "M Tyranitar-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 43,
+      "imagePath": "xy7/04_duplo_raras/xy7-43.jpg"
+    },
+    {
+      "id": "xy7-57",
+      "name": "Giratina-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 57,
+      "imagePath": "xy7/04_duplo_raras/xy7-57.jpg"
+    },
+    {
+      "id": "xy7-68",
+      "name": "Lugia-EX",
+      "rarityRaw": "Rare Holo EX",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 68,
+      "imagePath": "xy7/04_duplo_raras/xy7-68.jpg"
+    },
+    {
+      "id": "xy7-75a",
+      "name": "Hex Maniac",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 75,
+      "imagePath": "xy7/04_duplo_raras/xy7-75a.jpg"
+    },
+    {
+      "id": "xy7-84",
+      "name": "Sceptile-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 84,
+      "imagePath": "xy7/04_duplo_raras/xy7-84.jpg"
+    },
+    {
+      "id": "xy7-85",
+      "name": "M Sceptile-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 85,
+      "imagePath": "xy7/04_duplo_raras/xy7-85.jpg"
+    },
+    {
+      "id": "xy7-86",
+      "name": "Kyurem-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 86,
+      "imagePath": "xy7/04_duplo_raras/xy7-86.jpg"
+    },
+    {
+      "id": "xy7-87",
+      "name": "Ampharos-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 87,
+      "imagePath": "xy7/04_duplo_raras/xy7-87.jpg"
+    },
+    {
+      "id": "xy7-88",
+      "name": "M Ampharos-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 88,
+      "imagePath": "xy7/04_duplo_raras/xy7-88.jpg"
+    },
+    {
+      "id": "xy7-89",
+      "name": "Hoopa-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 89,
+      "imagePath": "xy7/04_duplo_raras/xy7-89.jpg"
+    },
+    {
+      "id": "xy7-90",
+      "name": "Machamp-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 90,
+      "imagePath": "xy7/04_duplo_raras/xy7-90.jpg"
+    },
+    {
+      "id": "xy7-91",
+      "name": "Tyranitar-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 91,
+      "imagePath": "xy7/04_duplo_raras/xy7-91.jpg"
+    },
+    {
+      "id": "xy7-92",
+      "name": "M Tyranitar-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 92,
+      "imagePath": "xy7/04_duplo_raras/xy7-92.jpg"
+    },
+    {
+      "id": "xy7-93",
+      "name": "Giratina-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 93,
+      "imagePath": "xy7/04_duplo_raras/xy7-93.jpg"
+    },
+    {
+      "id": "xy7-94",
+      "name": "Lugia-EX",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 94,
+      "imagePath": "xy7/04_duplo_raras/xy7-94.jpg"
+    },
+    {
+      "id": "xy7-95",
+      "name": "Steven",
+      "rarityRaw": "Rare Ultra",
+      "bucket": "04_duplo_raras",
+      "collectionNumber": 95,
+      "imagePath": "xy7/04_duplo_raras/xy7-95.jpg"
+    },
+    {
+      "id": "xy7-96",
+      "name": "Primal Kyogre-EX",
+      "rarityRaw": "Rare Secret",
+      "bucket": "06_duplo_arte_secreta",
+      "collectionNumber": 96,
+      "imagePath": "xy7/06_duplo_arte_secreta/xy7-96.jpg"
+    },
+    {
+      "id": "xy7-97",
+      "name": "Primal Groudon-EX",
+      "rarityRaw": "Rare Secret",
+      "bucket": "06_duplo_arte_secreta",
+      "collectionNumber": 97,
+      "imagePath": "xy7/06_duplo_arte_secreta/xy7-97.jpg"
+    },
+    {
+      "id": "xy7-98",
+      "name": "M Rayquaza-EX",
+      "rarityRaw": "Rare Secret",
+      "bucket": "06_duplo_arte_secreta",
+      "collectionNumber": 98,
+      "imagePath": "xy7/06_duplo_arte_secreta/xy7-98.jpg"
+    },
+    {
+      "id": "xy7-99",
+      "name": "Energy Retrieval",
+      "rarityRaw": "Rare Secret",
+      "bucket": "06_duplo_arte_secreta",
+      "collectionNumber": 99,
+      "imagePath": "xy7/06_duplo_arte_secreta/xy7-99.jpg"
+    },
+    {
+      "id": "xy7-100",
+      "name": "Trainers' Mail",
+      "rarityRaw": "Rare Secret",
+      "bucket": "06_duplo_arte_secreta",
+      "collectionNumber": 100,
+      "imagePath": "xy7/06_duplo_arte_secreta/xy7-100.jpg"
+    }
+  ],
+  "totalsByBucket": {
+    "01_comum": 23,
+    "02_incomum": 28,
+    "03_raras": 21,
+    "04_duplo_raras": 24,
+    "05_arte_secreta": 0,
+    "06_duplo_arte_secreta": 5,
+    "07_legendaria": 0
+  },
+  "unmapped": []
+}
