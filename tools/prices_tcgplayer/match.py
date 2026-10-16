@@ -41,8 +41,9 @@ def products(setnames):
         if n not in cache: cache[n]=[p for p in all_cards(n) if p.get('rarityName')!='Code Card' and 'Code Card' not in p['productName']]
         out+=cache[n]
     return out
-def run(verbose=False):
+def run(verbose=False, only=None):
     sets=json.load(open(f'{REPO}/assets/data/sets.json'))['sets']
+    if only: sets=[s for s in sets if s['id'] in only]
     res={}
     for s in sets:
         sid=s['id']; man=json.load(open(f'{REPO}/assets/{sid}/manifest.json'))

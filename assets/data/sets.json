@@ -365,6 +365,16 @@
       "subsets": []
     },
     {
+      "id": "swsh6",
+      "name": "Chilling Reign",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2021-06-18",
+      "packSize": 10,
+      "albumSize": 233,
+      "subsets": []
+    },
+    {
       "id": "swsh45",
       "name": "Shining Fates",
       "series": "Sword & Shield",
@@ -419,6 +429,16 @@
       ]
     },
     {
+      "id": "sm10",
+      "name": "Unbroken Bonds",
+      "series": "Sun & Moon",
+      "era": "sm",
+      "releaseDate": "2019-05-03",
+      "packSize": 10,
+      "albumSize": 238,
+      "subsets": []
+    },
+    {
       "id": "sm9",
       "name": "Team Up",
       "series": "Sun & Moon",
@@ -429,6 +449,16 @@
       "subsets": []
     },
     {
+      "id": "sm3",
+      "name": "Burning Shadows",
+      "series": "Sun & Moon",
+      "era": "sm",
+      "releaseDate": "2017-08-05",
+      "packSize": 10,
+      "albumSize": 177,
+      "subsets": []
+    },
+    {
       "id": "xy12",
       "name": "Evolutions",
       "series": "XY",
@@ -436,6 +466,76 @@
       "releaseDate": "2016-11-02",
       "packSize": 10,
       "albumSize": 113,
+      "subsets": []
+    },
+    {
+      "id": "xy6",
+      "name": "Roaring Skies",
+      "series": "XY",
+      "era": "xy",
+      "releaseDate": "2015-05-06",
+      "packSize": 10,
+      "albumSize": 112,
+      "subsets": []
+    },
+    {
+      "id": "xy2",
+      "name": "Flashfire",
+      "series": "XY",
+      "era": "xy",
+      "releaseDate": "2014-05-07",
+      "packSize": 10,
+      "albumSize": 110,
+      "subsets": []
+    },
+    {
+      "id": "ex15",
+      "name": "Dragon Frontiers",
+      "series": "EX",
+      "era": "ex",
+      "releaseDate": "2006-11-01",
+      "packSize": 9,
+      "albumSize": 101,
+      "subsets": []
+    },
+    {
+      "id": "ex13",
+      "name": "Holon Phantoms",
+      "series": "EX",
+      "era": "ex",
+      "releaseDate": "2006-05-01",
+      "packSize": 9,
+      "albumSize": 111,
+      "subsets": []
+    },
+    {
+      "id": "ex11",
+      "name": "Delta Species",
+      "series": "EX",
+      "era": "ex",
+      "releaseDate": "2005-10-31",
+      "packSize": 9,
+      "albumSize": 114,
+      "subsets": []
+    },
+    {
+      "id": "ex10",
+      "name": "Unseen Forces",
+      "series": "EX",
+      "era": "ex",
+      "releaseDate": "2005-08-01",
+      "packSize": 9,
+      "albumSize": 143,
+      "subsets": []
+    },
+    {
+      "id": "ex8",
+      "name": "Deoxys",
+      "series": "EX",
+      "era": "ex",
+      "releaseDate": "2005-02-01",
+      "packSize": 9,
+      "albumSize": 108,
       "subsets": []
     },
     {

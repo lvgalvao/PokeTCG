@@ -6,6 +6,7 @@ import { clearSession, type FamilyCollectionStore, type PlayerSession } from '..
 import type { Card } from '../domain/card.js';
 import { playNotifySound } from '../utils/audio.js';
 import { $, $$, el } from '../utils/dom.js';
+import { BattleView } from './battle/battle-view.js';
 import { renderBinderIndex, SetBinderView } from './binder-view.js';
 import { catalogFor, type SetInfo, type SetsIndex } from './sets-index.js';
 import { StageView } from './stage-view.js';
@@ -34,7 +35,8 @@ type Route =
   | { readonly name: 'open'; readonly setId: string }
   | { readonly name: 'binder' }
   | { readonly name: 'binder-set'; readonly setId: string }
-  | { readonly name: 'trades' };
+  | { readonly name: 'trades' }
+  | { readonly name: 'battle' };
 
 function parseRoute(hash: string): Route {
   const [, a, b] = hash.replace(/^#\/?/, '#/').split('/');
@@ -42,6 +44,7 @@ function parseRoute(hash: string): Route {
   if (a === 'fichario' && b) return { name: 'binder-set', setId: decodeURIComponent(b) };
   if (a === 'fichario') return { name: 'binder' };
   if (a === 'trocas') return { name: 'trades' };
+  if (a === 'batalha') return { name: 'battle' };
   return { name: 'store' };
 }
 
@@ -50,7 +53,7 @@ const TRADE_POLL_MS = 12_000;
 
 /**
  * Loja (#/), palco de abertura (#/abrir/<set>) por cima da página de onde veio, fichário
- * (#/fichario[/<set>]) e trocas (#/trocas).
+ * (#/fichario[/<set>]), trocas (#/trocas) e batalha (#/batalha).
  */
 export class App {
   private collection: Collection;
@@ -59,6 +62,7 @@ export class App {
   private stage: StageView | null = null;
   private baseCleanup: (() => void) | null = null;
   private trades: TradeView | null = null;
+  private battle: BattleView | null = null;
   /** Página por baixo do palco; é para onde fechar o palco volta. */
   private baseHash = '#/';
   private renderedBase: string | null = null;
@@ -182,7 +186,7 @@ export class App {
     if (!family) return;
     this.collection = await family.store.refresh();
     if (this.trades) this.trades.refresh();
-    else if (!this.stage) this.renderBase(this.baseHash, false);
+    else if (!this.stage && !this.battle) this.renderBase(this.baseHash, false);
   }
 
   // ── Rotas ───────────────────────────────────────────────────────────────────────
@@ -210,7 +214,11 @@ export class App {
     this.baseCleanup = null;
     this.trades = null;
     this.renderedBase = hash;
-    const section = route.name.startsWith('binder') ? 'binder' : route.name === 'trades' ? 'trades' : 'store';
+    const section = route.name.startsWith('binder')
+      ? 'binder'
+      : route.name === 'trades' || route.name === 'battle'
+        ? route.name
+        : 'store';
     for (const link of $$('[data-nav]')) {
       if (link.dataset.nav === section) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
@@ -240,6 +248,18 @@ export class App {
       });
       this.trades = view;
       this.baseCleanup = () => view.destroy();
+    } else if (route.name === 'battle') {
+      document.title = 'Batalha · Loja de Boosters';
+      const battle = new BattleView(this.view, {
+        index: this.deps.index,
+        collection: () => this.collection,
+        masterRng: this.deps.masterRng,
+      });
+      this.battle = battle;
+      this.baseCleanup = () => {
+        battle.destroy();
+        this.battle = null;
+      };
     } else {
       this.baseCleanup = renderStore(this.view, this.deps.index, this.collection);
       document.title = 'Loja de Boosters';

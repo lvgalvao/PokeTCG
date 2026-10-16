@@ -2365,4 +2365,403 @@ export const RESEARCHED_PROFILES: Readonly<Record<string, BoosterProfile>> = {
       ],
     ],
   },
+  // Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse holo, 1 rare slot (non-holo rare, holo, ex, Gold Star, secret rare where the set has one). (estimativa)
+  "ex8": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.3368421052631579, rarities: ["Common"] },
+        { p: 0.35789473684210527, rarities: ["Uncommon"] },
+        { p: 0.14736842105263157, rarities: ["Rare"] },
+        { p: 0.15789473684210525, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666667, rarities: ["Rare"] },
+        { p: 0.22685185185185186, rarities: ["Rare Holo"] },
+        { p: 0.08333333333333333, rarities: ["Rare Holo EX"] },
+        { p: 0.013888888888888888, rarities: ["Rare Holo Star"] },
+        { p: 0.009259259259259259, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse holo, 1 rare slot (non-holo rare, holo, ex, Gold Star, secret rare where the set has one). (estimativa)
+  "ex10": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.24603174603174602, rarities: ["Common"] },
+        { p: 0.2698412698412698, rarities: ["Uncommon"] },
+        { p: 0.3333333333333333, rarities: ["Rare"] },
+        { p: 0.15079365079365079, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666667, rarities: ["Rare"] },
+        { p: 0.22685185185185186, rarities: ["Rare Holo"] },
+        { p: 0.08333333333333333, rarities: ["Rare Holo EX"] },
+        { p: 0.013888888888888888, rarities: ["Rare Holo Star"] },
+        { p: 0.009259259259259259, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse holo, 1 rare slot (non-holo rare, holo, ex, Gold Star, secret rare where the set has one). (estimativa)
+  "ex11": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.3177570093457944, rarities: ["Common"] },
+        { p: 0.32710280373831774, rarities: ["Uncommon"] },
+        { p: 0.18691588785046728, rarities: ["Rare"] },
+        { p: 0.16822429906542055, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666667, rarities: ["Rare"] },
+        { p: 0.22685185185185186, rarities: ["Rare Holo"] },
+        { p: 0.08333333333333333, rarities: ["Rare Holo EX"] },
+        { p: 0.013888888888888888, rarities: ["Rare Holo Star"] },
+        { p: 0.009259259259259259, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse holo, 1 rare slot (non-holo rare, holo, ex, Gold Star, secret rare where the set has one). (estimativa)
+  "ex13": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.2980769230769231, rarities: ["Common"] },
+        { p: 0.28846153846153844, rarities: ["Uncommon"] },
+        { p: 0.19230769230769232, rarities: ["Rare"] },
+        { p: 0.22115384615384615, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666667, rarities: ["Rare"] },
+        { p: 0.22685185185185186, rarities: ["Rare Holo"] },
+        { p: 0.08333333333333333, rarities: ["Rare Holo EX"] },
+        { p: 0.013888888888888888, rarities: ["Rare Holo Star"] },
+        { p: 0.009259259259259259, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 9 cards = 5 commons, 2 uncommons, 1 reverse holo, 1 rare slot (non-holo rare, holo, ex, Gold Star, secret rare where the set has one). (estimativa)
+  "ex15": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.33707865168539325, rarities: ["Common"] },
+        { p: 0.34831460674157305, rarities: ["Uncommon"] },
+        { p: 0.1797752808988764, rarities: ["Rare"] },
+        { p: 0.1348314606741573, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666667, rarities: ["Rare"] },
+        { p: 0.2361111111111111, rarities: ["Rare Holo"] },
+        { p: 0.08333333333333333, rarities: ["Rare Holo EX"] },
+        { p: 0.013888888888888888, rarities: ["Rare Holo Star"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards + 1 Basic Energy (energy omitted) = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare, Rare Holo, Pokémon-EX incl. Mega, full art, secret rare). (estimativa)
+  "xy2": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.34065934065934067, rarities: ["Common"] },
+        { p: 0.3516483516483517, rarities: ["Uncommon"] },
+        { p: 0.21978021978021978, rarities: ["Rare"] },
+        { p: 0.08791208791208792, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.5974932249322493, rarities: ["Rare"] },
+        { p: 0.2, rarities: ["Rare Holo"] },
+        { p: 0.12195121951219513, rarities: ["Rare Holo EX"] },
+        { p: 0.06666666666666667, rarities: ["Rare Ultra"] },
+        { p: 0.013888888888888888, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards + 1 Basic Energy (energy omitted) = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare, Rare Holo, Pokémon-EX incl. Mega, full art, secret rare). (estimativa)
+  "xy6": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.2988505747126437, rarities: ["Common"] },
+        { p: 0.3793103448275862, rarities: ["Uncommon"] },
+        { p: 0.20689655172413793, rarities: ["Rare"] },
+        { p: 0.11494252873563218, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.5974932249322493, rarities: ["Rare"] },
+        { p: 0.2, rarities: ["Rare Holo"] },
+        { p: 0.12195121951219513, rarities: ["Rare Holo EX"] },
+        { p: 0.06666666666666667, rarities: ["Rare Ultra"] },
+        { p: 0.013888888888888888, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 cards = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare / Holo / GX / full art / rainbow / gold). Plus 1 Basic Energy and a code card (not modelled). (estimativa)
+  "sm3": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Common", "Uncommon", "Rare", "Rare Holo"] },
+      ],
+      [
+        { p: 0.665692, rarities: ["Rare"] },
+        { p: 0.144928, rarities: ["Rare Holo"] },
+        { p: 0.128205, rarities: ["Rare Holo GX"] },
+        { p: 0.038168, rarities: ["Rare Ultra"] },
+        { p: 0.014006, rarities: ["Rare Rainbow"] },
+        { p: 0.009001, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 cards = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare / Holo / GX / full art / rainbow / gold). Plus 1 Basic Energy and a code card (not modelled). (estimativa)
+  "sm10": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Common", "Uncommon", "Rare", "Rare Holo"] },
+      ],
+      [
+        { p: 0.665692, rarities: ["Rare"] },
+        { p: 0.144928, rarities: ["Rare Holo"] },
+        { p: 0.128205, rarities: ["Rare Holo GX"] },
+        { p: 0.038168, rarities: ["Rare Ultra"] },
+        { p: 0.014006, rarities: ["Rare Rainbow"] },
+        { p: 0.009001, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Chilling Reign: 10 cards = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare / Holo / V / VMAX / full art & alternate art / rainbow / gold). Plus 1 Basic Energy and a code card (not modelled). (estimativa)
+  "swsh6": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Common", "Uncommon", "Rare", "Rare Holo"] },
+      ],
+      [
+        { p: 0.549621, rarities: ["Rare"] },
+        { p: 0.217391, rarities: ["Rare Holo"] },
+        { p: 0.126582, rarities: ["Rare Holo V"] },
+        { p: 0.042918, rarities: ["Rare Holo VMAX"] },
+        { p: 0.039683, rarities: ["Rare Ultra"] },
+        { p: 0.012706, rarities: ["Rare Rainbow"] },
+        { p: 0.011099, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
 };

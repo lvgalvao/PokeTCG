@@ -7,6 +7,8 @@ import type { Collection } from '../domain/collection.js';
 import { playCelebrationSound, playFlipSound, playTearSound } from '../utils/audio.js';
 import { el } from '../utils/dom.js';
 import { SetBinderView } from './binder-view.js';
+import { openCardViewer } from './card-viewer.js';
+import { chaseCardsFor, formatBrl } from './chase-cards.js';
 import { attachFoil, prefersReducedMotion, project, spring, VelocityTracker } from './motion.js';
 import { categoryLabel, coverUrl, ownedCount, type SetInfo } from './sets-index.js';
 
@@ -144,10 +146,9 @@ export class StageView {
     this.cleanups.push(attachFoil(this.pack, 6));
     this.bindTear();
 
-    this.body.replaceChildren(
-      el('div', { className: 'stage__pack', children: [this.pack] }),
-      el('p', { className: 'stage__hint', text: 'Toque para abrir' }),
-    );
+    const sealed = el('div', { className: 'stage__pack', children: [this.pack] });
+    this.body.replaceChildren(sealed, el('p', { className: 'stage__hint', text: 'Toque para abrir' }));
+    void this.showChase(sealed);
     this.pack.focus({ preventScroll: true });
     // Affordance: o lacre se ergue um pouco sozinho, mostrando o gesto.
     window.setTimeout(() => {
@@ -157,6 +158,34 @@ export class StageView {
         this.renderTear();
       }, { damping: 0.45, response: 0.5 });
     }, 650);
+  }
+
+  /** Todo pacote lacrado: ao lado do booster, as 3 cartas mais valiosas e quanto valem. */
+  private async showChase(sealed: HTMLElement): Promise<void> {
+    const { set, catalog } = this.deps;
+    const chase = await chaseCardsFor(set.id, catalog);
+    if (!chase.length || this.phase !== 'sealed' || !sealed.isConnected) return;
+    const items = chase.map(({ card, brl }) => {
+      const price = formatBrl(brl);
+      const item = el('button', {
+        className: 'chase__card',
+        attrs: { type: 'button', 'aria-label': `${card.name}, vale cerca de ${price}. Ampliar.` },
+        children: [
+          el('img', { attrs: { src: card.imageUrl, alt: '', draggable: 'false' } }),
+          el('span', { children: [el('small', { text: card.name }), el('strong', { text: price })] }),
+        ],
+      });
+      item.addEventListener('click', () => openCardViewer(card, undefined, [], `Vale cerca de ${price} (TCGplayer).`));
+      return item;
+    });
+    sealed.classList.add('has-chase');
+    sealed.append(
+      el('aside', {
+        className: 'chase',
+        attrs: { 'aria-label': `As 3 cartas mais valiosas de ${set.name}` },
+        children: [el('p', { className: 'chase__title', text: 'As 3 mais valiosas' }), ...items],
+      }),
+    );
   }
 
   private renderTear(): void {

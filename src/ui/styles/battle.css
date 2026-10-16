@@ -1,0 +1,756 @@
+/* Batalha — escolha do time (vitrine clara, como o fichário) e arena 3D em tela cheia. */
+
+.battle {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) 150px;
+}
+
+.battle__lead {
+  max-width: 56ch;
+  margin: 6px 0 20px;
+  color: var(--ink-soft);
+}
+
+.battle__go {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--pokeball);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.battle__search {
+  width: min(100%, 340px);
+  margin-bottom: 20px;
+  padding: 11px 16px;
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  border-radius: 999px;
+  background: var(--shop-paper);
+  font: inherit;
+  color: var(--ink);
+}
+
+.battle__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 14px;
+}
+
+.battle-card {
+  position: relative;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: none;
+  cursor: pointer;
+  transition: transform 180ms var(--spring-out);
+}
+
+.battle-card img {
+  width: 100%;
+  aspect-ratio: var(--card-ratio);
+  border-radius: var(--radius-s);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.16);
+}
+
+.battle-card:hover {
+  transform: translateY(-3px);
+}
+
+.battle-card.is-picked {
+  transform: translateY(-6px);
+}
+
+.battle-card.is-picked img {
+  box-shadow:
+    0 0 0 3px var(--type),
+    0 10px 22px rgb(0 0 0 / 0.26);
+}
+
+.battle-card__hp {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 0.72);
+  color: #fff;
+  font: 600 0.75rem/1.5 var(--font);
+  font-variant-numeric: tabular-nums;
+}
+
+.battle-card__order {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--pokeball);
+  color: #fff;
+  font: 700 0.875rem/1 var(--font);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.3);
+}
+
+/* Bandeja fixa embaixo: o time escolhido e o botão de começar. */
+.battle__tray {
+  position: fixed;
+  z-index: 15;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px var(--gutter) max(12px, env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--shop-white) 80%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.battle__slots {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  min-width: 0;
+}
+
+.battle__slot {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 64px;
+  padding: 6px 10px 6px 6px;
+  border: 0;
+  border-left: 4px solid var(--type);
+  border-radius: var(--radius-s);
+  background: var(--shop-paper);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+  text-align: left;
+  cursor: pointer;
+}
+
+.battle__slot.is-empty {
+  justify-content: center;
+  border: 2px dashed color-mix(in srgb, var(--ink) 18%, transparent);
+  background: none;
+  box-shadow: none;
+  color: var(--ink-faint);
+  font-weight: 600;
+  cursor: default;
+}
+
+.battle__slot img {
+  width: 37px;
+  height: 52px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.battle__slot span {
+  display: grid;
+  min-width: 0;
+}
+
+.battle__slot strong,
+.battle__slot small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.battle__slot strong {
+  font-size: 0.9375rem;
+}
+
+.battle__slot small {
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+}
+
+.battle__start {
+  flex: none;
+  min-width: 132px;
+  min-height: 52px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--pokeball);
+  color: #fff;
+  font: 700 1.0625rem/1 var(--font-display);
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms var(--spring-out);
+}
+
+.battle__start:active {
+  background: var(--pokeball-press);
+  transform: scale(0.97);
+}
+
+.battle__start:disabled {
+  background: color-mix(in srgb, var(--ink) 14%, transparent);
+  color: var(--ink-soft);
+  cursor: default;
+}
+
+@media (max-width: 640px) {
+  .battle__grid {
+    grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+    gap: 10px;
+  }
+
+  .battle__tray {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .battle__slot {
+    min-height: 56px;
+    padding: 4px;
+    justify-content: center;
+  }
+
+  .battle__slot span {
+    display: none;
+  }
+
+  .battle__start {
+    min-height: 48px;
+  }
+}
+
+/* ── Arena ─────────────────────────────────────────────────────────────────────── */
+
+body.is-battle {
+  overflow: hidden;
+}
+
+.arena {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  background: #8fd3ff;
+  color: #fff;
+  font-family: var(--font);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  --pad-l: max(18px, env(safe-area-inset-left));
+  --pad-r: max(18px, env(safe-area-inset-right));
+  --pad-b: max(18px, env(safe-area-inset-bottom));
+  --pad-t: max(10px, env(safe-area-inset-top));
+}
+
+.arena__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.arena__loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: #0b3a57;
+  font-weight: 600;
+}
+
+/* Vida e time: o jogador à esquerda, o adversário à direita. */
+.arena__hud {
+  position: absolute;
+  top: var(--pad-t);
+  display: grid;
+  gap: 4px;
+  width: min(30vw, 260px);
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgb(10 14 24 / 0.6);
+  pointer-events: none;
+}
+
+.arena__hud--me {
+  left: var(--pad-l);
+}
+
+.arena__hud--foe {
+  right: var(--pad-r);
+  text-align: right;
+}
+
+.arena__name {
+  overflow: hidden;
+  font: 700 0.9375rem/1.2 var(--font-display);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.arena__hp,
+.arena__tag {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.22);
+}
+
+.arena__hp i,
+.arena__tag i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: #34c759;
+  transition: width 220ms ease-out;
+}
+
+.arena__hud--foe .arena__hp i {
+  margin-left: auto;
+}
+
+.arena__hp i.is-low {
+  background: #ff453a;
+}
+
+.arena__hpnum {
+  font: 600 0.75rem/1 var(--font);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+}
+
+.arena__team {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.arena__hud--foe .arena__team {
+  justify-content: flex-end;
+}
+
+.arena__slot {
+  position: relative;
+  width: 34px;
+  height: 46px;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background: #1c2230;
+  pointer-events: auto;
+}
+
+button.arena__slot {
+  /* Alvo de toque de 44 px sem aumentar a miniatura. */
+  width: 44px;
+  height: 56px;
+  cursor: pointer;
+}
+
+.arena__slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arena__slot i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  background: #34c759;
+}
+
+.arena__slot.is-active {
+  border-color: #fff;
+}
+
+.arena__slot.is-out {
+  filter: grayscale(1) brightness(0.45);
+}
+
+button.arena__slot.is-waiting:not(.is-active) {
+  opacity: 0.55;
+}
+
+.arena__tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 8px;
+  border: 1px solid rgb(0 0 0 / 0.5);
+  background: rgb(0 0 0 / 0.45);
+  pointer-events: none;
+}
+
+.arena__tag i {
+  background: #ff453a;
+}
+
+.arena__exit {
+  position: absolute;
+  top: var(--pad-t);
+  left: 50%;
+  min-width: 64px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(10 14 24 / 0.6);
+  color: #fff;
+  font-weight: 600;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.arena__banner {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  margin: 0;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: rgb(10 14 24 / 0.72);
+  font: 700 1.125rem/1.2 var(--font-display);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 8px) scale(0.96);
+  transition: opacity 180ms ease, transform 240ms var(--spring-out);
+  pointer-events: none;
+}
+
+.arena__banner.is-on {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.arena__floats {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.arena__float {
+  position: absolute;
+  font: 800 1.5rem/1 var(--font-display);
+  color: #fff;
+  text-shadow:
+    0 2px 0 rgb(0 0 0 / 0.55),
+    0 0 8px rgb(0 0 0 / 0.4);
+  transform: translate(-50%, -50%);
+  animation: arena-float 900ms ease-out forwards;
+}
+
+.arena__float--me {
+  color: #ff6b61;
+}
+
+.arena__float.is-strong {
+  color: #ffd60a;
+  font-size: 2rem;
+}
+
+@keyframes arena-float {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(-50%, -90%) scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -260%) scale(1);
+  }
+}
+
+/* Alavancas: andar à esquerda, câmera à direita. */
+.stick {
+  position: absolute;
+  bottom: var(--pad-b);
+  display: grid;
+  place-items: center;
+  border: 2px solid rgb(255 255 255 / 0.55);
+  border-radius: 50%;
+  background: rgb(10 14 24 / 0.28);
+  touch-action: none;
+}
+
+.stick--move {
+  left: var(--pad-l);
+  width: 132px;
+  height: 132px;
+}
+
+.stick--look {
+  right: var(--pad-r);
+  width: 112px;
+  height: 112px;
+}
+
+.stick__knob {
+  width: 44%;
+  height: 44%;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.85);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.35);
+  pointer-events: none;
+}
+
+.stick.is-active {
+  background: rgb(10 14 24 / 0.42);
+}
+
+/* Botões de ação em arco ao redor da alavanca da câmera. */
+.arena__btn {
+  position: absolute;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 2px;
+  padding: 6px;
+  overflow: hidden;
+  border: 3px solid rgb(255 255 255 / 0.9);
+  border-radius: 50%;
+  color: #fff;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.5);
+  box-shadow: 0 4px 0 rgb(0 0 0 / 0.3);
+  cursor: pointer;
+  touch-action: none;
+  transition: transform 90ms ease;
+}
+
+.arena__btn.is-pressed {
+  transform: translateY(3px) scale(0.96);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.3);
+}
+
+.arena__btn strong {
+  font: 800 1.25rem/1 var(--font-display);
+}
+
+.arena__btn small {
+  max-width: 68px;
+  overflow: hidden;
+  font: 600 0.625rem/1.1 var(--font);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Recarga: uma sombra que vai abrindo como um relógio. */
+.arena__btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(rgb(0 0 0 / 0.6) calc(var(--cd, 0) * 1turn), transparent 0);
+  pointer-events: none;
+}
+
+.arena__btn--attack {
+  right: calc(var(--pad-r) + 128px);
+  bottom: calc(var(--pad-b) + 4px);
+  width: 92px;
+  height: 92px;
+  background: var(--pokeball);
+}
+
+.arena__btn--special {
+  right: calc(var(--pad-r) + 118px);
+  bottom: calc(var(--pad-b) + 108px);
+  width: 76px;
+  height: 76px;
+  background: #7c3aed;
+}
+
+.arena__btn--special.is-ready {
+  box-shadow:
+    0 4px 0 rgb(0 0 0 / 0.3),
+    0 0 0 4px rgb(255 214 10 / 0.75);
+}
+
+.arena__btn--jump {
+  right: calc(var(--pad-r) + 18px);
+  bottom: calc(var(--pad-b) + 126px);
+  width: 76px;
+  height: 76px;
+  background: #1f8f4e;
+}
+
+.arena__btn--jump strong {
+  font-size: 1rem;
+}
+
+/* Fim de luta. */
+.arena__end {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  padding: 24px;
+  background: rgb(10 14 24 / 0.72);
+  text-align: center;
+  animation: arena-end 320ms ease-out;
+}
+
+.arena__end h2 {
+  margin: 0;
+  font: 800 clamp(2rem, 7vw, 3.25rem) / 1.05 var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+.arena__end.is-win h2 {
+  color: #ffd60a;
+}
+
+.arena__end p {
+  margin: 0 0 8px;
+  opacity: 0.9;
+}
+
+.arena__end small {
+  margin-top: 6px;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.5;
+}
+
+.arena__end-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.arena__cta {
+  min-height: 50px;
+  padding: 0 26px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--pokeball);
+  color: #fff;
+  font: 700 1.0625rem/1 var(--font-display);
+  cursor: pointer;
+}
+
+.arena__cta--quiet {
+  background: rgb(255 255 255 / 0.18);
+}
+
+@keyframes arena-end {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Celular em pé: pede para deitar (a luta fica pausada). */
+.arena__rotate {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: none;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 24px;
+  background: #0b0b0f;
+  text-align: center;
+}
+
+.arena__rotate strong {
+  font: 700 1.375rem/1.2 var(--font-display);
+}
+
+.arena__rotate small {
+  color: var(--stage-ink-soft);
+}
+
+.arena__rotate-icon {
+  width: 46px;
+  height: 78px;
+  margin-bottom: 14px;
+  border: 4px solid #fff;
+  border-radius: 10px;
+  animation: arena-rotate 1.8s ease-in-out infinite;
+}
+
+@keyframes arena-rotate {
+  0%,
+  20% {
+    transform: rotate(0);
+  }
+  60%,
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+@media (orientation: portrait) and (pointer: coarse) {
+  .arena__rotate {
+    display: grid;
+  }
+}
+
+/* Telas baixas (celular deitado): tudo um pouco menor para sobrar arena. */
+@media (max-height: 420px) {
+  .arena__hud {
+    padding: 6px 8px;
+  }
+
+  .arena__slot,
+  button.arena__slot {
+    width: 44px;
+    height: 44px;
+  }
+
+  .stick--move {
+    width: 116px;
+    height: 116px;
+  }
+
+  .stick--look {
+    width: 100px;
+    height: 100px;
+  }
+
+  .arena__btn--attack {
+    right: calc(var(--pad-r) + 112px);
+    width: 84px;
+    height: 84px;
+  }
+
+  .arena__btn--special {
+    right: calc(var(--pad-r) + 104px);
+    bottom: calc(var(--pad-b) + 96px);
+    width: 68px;
+    height: 68px;
+  }
+
+  .arena__btn--jump {
+    bottom: calc(var(--pad-b) + 110px);
+    width: 68px;
+    height: 68px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arena__rotate-icon,
+  .arena__end {
+    animation: none;
+  }
+}
