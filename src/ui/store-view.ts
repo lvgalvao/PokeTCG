@@ -2,6 +2,7 @@ import type { Collection } from '../domain/collection.js';
 import { el } from '../utils/dom.js';
 import { attachFoil } from './motion.js';
 import {
+  classicsFrom,
   coverUrl,
   eraYears,
   formatReleaseDate,
@@ -38,6 +39,26 @@ export function progressRing(owned: number, total: number, size = 28): SVGSVGEle
   return svg;
 }
 
+/**
+ * Coleção de onde saiu uma Clássica do 30 anos: a carta original espia por trás do pacote,
+ * com o selo "30 anos".
+ */
+function classicPeek(pack: HTMLElement, index: SetsIndex, set: SetInfo): void {
+  const classic = classicsFrom(index, set.id)[0];
+  if (!classic) return;
+  pack.classList.add('has-classic');
+  pack.prepend(
+    el('span', {
+      className: 'pack__classic',
+      attrs: { 'aria-hidden': 'true' },
+      children: [
+        el('img', { attrs: { src: classic.originImage, alt: '', loading: 'lazy', decoding: 'async', draggable: 'false' } }),
+        el('span', { className: 'pack__classic-tag', text: '30 anos' }),
+      ],
+    }),
+  );
+}
+
 function packImage(set: SetInfo, eager = false): HTMLImageElement {
   return el('img', {
     className: 'pack__img',
@@ -60,7 +81,7 @@ export function renderStore(
   const store = el('div', { className: 'store' });
 
   const hero = index.sets[0];
-  if (hero) store.append(renderHero(hero, collection, cleanups));
+  if (hero) store.append(renderHero(hero, index, collection, cleanups));
 
   for (const era of index.eras) {
     const sets = index.sets.filter((s) => s.era === era.id);
@@ -87,6 +108,7 @@ export function renderStore(
       const owned = ownedCount(set, collection);
       const pack = el('span', { className: 'pack' });
       pack.append(packImage(set));
+      classicPeek(pack, index, set);
       cleanups.push(attachFoil(pack, 8));
       const item = el('a', {
         className: 'shelf__item',
@@ -117,6 +139,7 @@ export function renderStore(
 
 function renderHero(
   set: SetInfo,
+  index: SetsIndex,
   collection: Collection,
   cleanups: Array<() => void>,
 ): HTMLElement {
@@ -126,6 +149,7 @@ function renderHero(
     attrs: { href: `#/abrir/${set.id}`, 'aria-hidden': 'true', tabindex: '-1', 'data-set-id': set.id },
   });
   pack.append(packImage(set, true));
+  classicPeek(pack, index, set);
   cleanups.push(attachFoil(pack, 12));
 
   return el('section', {

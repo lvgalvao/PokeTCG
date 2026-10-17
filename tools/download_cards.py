@@ -66,6 +66,7 @@ RARITY_TO_BUCKET: dict[str, str] = {
     "futuristic rare": "07_legendaria",
     "pikachu rare": "03_raras",
     "radiant collection": "03_raras",
+    "rare ace": "04_duplo_raras",
     # Classic reprint rarities (e.g. me55c "30th Celebration: Classic Collection").
     "holo rare v": "04_duplo_raras",
     "holo rare vmax": "04_duplo_raras",
@@ -110,7 +111,8 @@ CARD_RARITY_OVERRIDES: dict[str, str] = {
 # Cards in the source data that never came in booster packs (box/blister promos with an
 # "a" number); left out of the album and the packs.
 EXCLUDED_CARDS: frozenset[str] = frozenset(
-    {"g1-28a", "g1-73a", "sm35-10a", "sm35-68a", "sm35-77a"}
+    {"g1-28a", "g1-73a", "sm35-10a", "sm35-68a", "sm35-77a",
+     "xy9-98a", "xy9-98b", "xy9-107a", "sm1-101a", "sm4-63a", "sm4-84a"}
     # Expedition Basic Energy (ecard1 160–165) came only in theme decks.
     | {f"ecard1-{n}" for n in range(160, 166)}
 )

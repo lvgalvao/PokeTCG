@@ -3170,4 +3170,467 @@ export const RESEARCHED_PROFILES: Readonly<Record<string, BoosterProfile>> = {
       ],
     ],
   },
+  // Real English pack: 10 game cards = 5 commons (Basic Energy in some packs; omitted), 3 uncommons, 1 reverse holo (C/U/R/Rare Holo), 1 rare slot (Rare, Rare Holo ~1 in 3.3, Rare Holo LV.X 1 in 36).
+  "dp4": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.38654618473895586, rarities: ["Common"] },
+        { p: 0.32429718875502006, rarities: ["Uncommon"] },
+        { p: 0.1897590361445783, rarities: ["Rare"] },
+        { p: 0.0993975903614458, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6691919191919191, rarities: ["Rare"] },
+        { p: 0.30303030303030304, rarities: ["Rare Holo"] },
+        { p: 0.027777777777777776, rarities: ["Rare Holo LV.X"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards = 5 commons (Basic Energy in some packs; omitted), 3 uncommons, 1 reverse holo (C/U/R/Rare Holo), 1 rare slot (Rare, Rare Holo ~1 in 3.6, Rare Holo LV.X 1 in 18).
+  "dp6": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.24777006937561952, rarities: ["Common"] },
+        { p: 0.38156590683845387, rarities: ["Uncommon"] },
+        { p: 0.2309217046580773, rarities: ["Rare"] },
+        { p: 0.13974231912784935, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6666666666666666, rarities: ["Rare"] },
+        { p: 0.2777777777777778, rarities: ["Rare Holo"] },
+        { p: 0.05555555555555555, rarities: ["Rare Holo LV.X"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards = 5 commons (Basic Energy in ~1/3 of packs; omitted), 3 uncommons, 1 reverse-holo slot (replaced by a Pokémon Prime ~1 in 7.2), 1 rare slot (Rare, Rare Holo ~1 in 3.9, LEGEND half 1 in 14.4, Alph Lithograph FOUR 1 in 216).
+  "hgss4": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.1388888888888889, rarities: ["Rare Prime"] },
+        { p: 0.38775178687459394, rarities: ["Common"] },
+        { p: 0.25178687459389215, rarities: ["Uncommon"] },
+        { p: 0.13596491228070176, rarities: ["Rare"] },
+        { p: 0.08560753736192334, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6695156695156694, rarities: ["Rare"] },
+        { p: 0.25641025641025644, rarities: ["Rare Holo"] },
+        { p: 0.06944444444444445, rarities: ["LEGEND"] },
+        { p: 0.004629629629629629, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards = 5 commons (Basic Energy in ~1/3 of packs; omitted), 3 uncommons, 1 reverse holo, 1 rare slot (Rare, Rare Holo ~1 in 3.8, full-art Rare Ultra 1 in 18, Rare Secret 1 in 72).
+  "bw3": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.3236472945891783, rarities: ["Common"] },
+        { p: 0.31362725450901807, rarities: ["Uncommon"] },
+        { p: 0.22745490981963928, rarities: ["Rare"] },
+        { p: 0.13527054108216433, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6673976608187135, rarities: ["Rare"] },
+        { p: 0.2631578947368421, rarities: ["Rare Holo"] },
+        { p: 0.05555555555555555, rarities: ["Rare Ultra"] },
+        { p: 0.013888888888888888, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards = 5 commons (Basic Energy omitted), 3 uncommons, 1 reverse holo, 1 rare slot (Rare, Rare Holo ~1 in 4.2, Pokémon-EX 1 in 18, full art 1 in 36, secret 1 in 108).
+  "bw6": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.3460381143430291, rarities: ["Common"] },
+        { p: 0.3239719157472417, rarities: ["Uncommon"] },
+        { p: 0.2136409227683049, rarities: ["Rare"] },
+        { p: 0.11634904714142427, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6693121693121693, rarities: ["Rare"] },
+        { p: 0.23809523809523808, rarities: ["Rare Holo"] },
+        { p: 0.05555555555555555, rarities: ["Rare Holo EX"] },
+        { p: 0.027777777777777776, rarities: ["Rare Ultra"] },
+        { p: 0.009259259259259259, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards = 5 commons (Basic Energy omitted), 3 uncommons, 1 reverse-holo slot (replaced by an ACE SPEC trainer 1 in 24), 1 rare slot (Rare, Rare Holo ~1 in 4.2, Pokémon-EX 1 in 18, full art 1 in 35.5, secret 1 in 112.5).
+  "bw10": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.041666666666666664, rarities: ["Rare ACE"] },
+        { p: 0.31310890744606823, rarities: ["Common"] },
+        { p: 0.41714509394572025, rarities: ["Uncommon"] },
+        { p: 0.13904836464857342, rarities: ["Rare"] },
+        { p: 0.08903096729297146, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6692913033758104, rarities: ["Rare"] },
+        { p: 0.23809523809523808, rarities: ["Rare Holo"] },
+        { p: 0.05555555555555555, rarities: ["Rare Holo EX"] },
+        { p: 0.028169014084507043, rarities: ["Rare Ultra"] },
+        { p: 0.008888888888888889, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards + 1 Basic Energy (omitted) = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare, Rare Holo ~1 in 6.4, Pokémon-EX incl. Mega/Primal 1 in 9, full art 1 in 17, secret 1 in 125).
+  "xy5": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.29253731343283584, rarities: ["Common"] },
+        { p: 0.38308457711442784, rarities: ["Uncommon"] },
+        { p: 0.1880597014925373, rarities: ["Rare"] },
+        { p: 0.136318407960199, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6658153594771241, rarities: ["Rare"] },
+        { p: 0.15625, rarities: ["Rare Holo"] },
+        { p: 0.1111111111111111, rarities: ["Rare Holo EX"] },
+        { p: 0.058823529411764705, rarities: ["Rare Ultra"] },
+        { p: 0.008, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards + 1 Basic Energy (omitted) = 5 commons, 3 uncommons, 1 reverse-holo slot (replaced by a BREAK card 1 in 15), 1 rare slot (Rare, Rare Holo 1 in 6, Pokémon-EX 1 in 10, full art 1 in 17, secret 1 in 125).
+  "xy9": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.06666666666666667, rarities: ["Rare BREAK"] },
+        { p: 0.31901234567901227, rarities: ["Common"] },
+        { p: 0.39506172839506176, rarities: ["Uncommon"] },
+        { p: 0.15209876543209877, rarities: ["Rare"] },
+        { p: 0.0671604938271605, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6665098039215687, rarities: ["Rare"] },
+        { p: 0.16666666666666666, rarities: ["Rare Holo"] },
+        { p: 0.1, rarities: ["Rare Holo EX"] },
+        { p: 0.058823529411764705, rarities: ["Rare Ultra"] },
+        { p: 0.008, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards + 1 Basic Energy and a code card (not modelled) = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare / Holo 1 in 6.4 / GX 1 in 9 / full art 1 in 23.1 / rainbow 1 in 75 / gold 1 in 100).
+  "sm1": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.3477822580645161, rarities: ["Common"] },
+        { p: 0.38810483870967744, rarities: ["Uncommon"] },
+        { p: 0.13608870967741934, rarities: ["Rare"] },
+        { p: 0.1280241935483871, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6660155122655123, rarities: ["Rare"] },
+        { p: 0.15625, rarities: ["Rare Holo"] },
+        { p: 0.1111111111111111, rarities: ["Rare Holo GX"] },
+        { p: 0.04329004329004329, rarities: ["Rare Ultra"] },
+        { p: 0.013333333333333334, rarities: ["Rare Rainbow"] },
+        { p: 0.01, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards + 1 Basic Energy and a code card (not modelled) = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare / Holo 1 in 5.5 / GX 1 in 12 / full art 1 in 22.2 / rainbow 1 in 75 / gold 1 in 120).
+  "sm4": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.3688933200398803, rarities: ["Common"] },
+        { p: 0.28514456630109675, rarities: ["Uncommon"] },
+        { p: 0.21635094715852443, rarities: ["Rare"] },
+        { p: 0.1296111665004985, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.6681367731367731, rarities: ["Rare"] },
+        { p: 0.18181818181818182, rarities: ["Rare Holo"] },
+        { p: 0.08333333333333333, rarities: ["Rare Holo GX"] },
+        { p: 0.04504504504504505, rarities: ["Rare Ultra"] },
+        { p: 0.013333333333333334, rarities: ["Rare Rainbow"] },
+        { p: 0.008333333333333333, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
+  // Real English pack: 10 game cards + 1 Basic Energy and a code card (not modelled) = 5 commons, 3 uncommons, 1 reverse holo, 1 rare slot (Rare / Holo 1 in 5.5 / V 1 in 7 / VMAX 1 in 45.5 / full art 1 in 26.7 / rainbow 1 in 81.3 / gold 1 in 109.9).
+  "swsh1": {
+    slots: [
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Common"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 1, rarities: ["Uncommon"] },
+      ],
+      [
+        { p: 0.35807422266800404, rarities: ["Common"] },
+        { p: 0.34603811434302906, rarities: ["Uncommon"] },
+        { p: 0.19257773319959878, rarities: ["Rare"] },
+        { p: 0.10330992978936811, rarities: ["Rare Holo"] },
+      ],
+      [
+        { p: 0.5944941657511207, rarities: ["Rare"] },
+        { p: 0.18181818181818182, rarities: ["Rare Holo"] },
+        { p: 0.14285714285714285, rarities: ["Rare Holo V"] },
+        { p: 0.02197802197802198, rarities: ["Rare Holo VMAX"] },
+        { p: 0.03745318352059925, rarities: ["Rare Ultra"] },
+        { p: 0.012300123001230012, rarities: ["Rare Rainbow"] },
+        { p: 0.009099181073703366, rarities: ["Rare Secret"] },
+      ],
+    ],
+  },
 };

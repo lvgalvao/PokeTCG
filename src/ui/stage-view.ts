@@ -1,6 +1,5 @@
 import { generateBooster, type Booster, type BoosterSlot } from '../core/booster.js';
 import { bucketRank } from '../core/buckets.js';
-import { HIT_BOOST } from '../core/distributions.js';
 import { mulberry32, type RNG } from '../core/rng.js';
 import type { Catalog } from '../domain/catalog.js';
 import type { Collection } from '../domain/collection.js';
@@ -8,14 +7,17 @@ import { playCelebrationSound, playChaseSound, playFlipSound, playTearSound } fr
 import { el } from '../utils/dom.js';
 import { SetBinderView } from './binder-view.js';
 import { openCardViewer } from './card-viewer.js';
-import { chaseCardsFor, formatBrl, type ChaseCard } from './chase-cards.js';
+import { chaseCardsFor, formatBrl, setPricesFor, type ChaseCard, type SetPrices } from './chase-cards.js';
+import { loadLuck, LUCK_OPTIONS, luckLabel, saveLuck, type Luck } from './luck.js';
 import { attachFoil, prefersReducedMotion, project, spring, VelocityTracker } from './motion.js';
-import { categoryLabel, coverUrl, ownedCount, type SetInfo } from './sets-index.js';
+import { categoryLabel, coverUrl, ownedCount, type ClassicInfo, type SetInfo } from './sets-index.js';
 
 export interface StageDeps {
   readonly root: HTMLElement;
   readonly set: SetInfo;
   readonly catalog: Catalog;
+  /** Todas as Clássicas do 30 anos, com a coleção e o ano da original. */
+  readonly classics: readonly ClassicInfo[];
   readonly masterRng: RNG;
   readonly getCollection: () => Collection;
   /** Chamado assim que o pacote é rasgado: as cartas já são do jogador. */
@@ -52,6 +54,9 @@ export class StageView {
   /** Até quando a carta do topo não pode ser passada (mais valiosa em destaque). */
   private lockedUntil = 0;
   private chaseFx: HTMLElement | null = null;
+  /** Pull rate escolhido (1 = real). */
+  private luck: Luck = loadLuck();
+  private prices: SetPrices | null = null;
 
   constructor(private readonly deps: StageDeps) {
     // O listener de teclado é sempre cleanups[0]: restart() preserva só ele.
@@ -133,7 +138,7 @@ export class StageView {
 
   private renderSealed(): void {
     this.phase = 'sealed';
-    this.counter.textContent = `${this.deps.set.packSize} cartas`;
+    this.counter.textContent = '';
     const src = coverUrl(this.deps.set.id);
     const img = (cls: string) =>
       el('img', { className: cls, attrs: { src, alt: '', draggable: 'false' } });
@@ -156,8 +161,21 @@ export class StageView {
     this.bindTear();
 
     const sealed = el('div', { className: 'stage__pack', children: [this.pack] });
-    this.body.replaceChildren(sealed, el('p', { className: 'stage__hint', text: 'Toque para abrir' }));
+    const price = el('p', { className: 'stage__price', attrs: { 'aria-live': 'polite' } });
+    this.body.replaceChildren(
+      sealed,
+      el('div', {
+        className: 'stage__below',
+        children: [price, el('p', { className: 'stage__hint', text: 'Toque no pacote para abrir' })],
+      }),
+      this.luckPicker(),
+    );
     void this.showChase(sealed);
+    this.showClassic(sealed);
+    void setPricesFor(this.deps.set.id).then((prices) => {
+      this.prices = prices;
+      if (prices?.packBrl != null && price.isConnected) price.textContent = `${formatBrl(prices.packBrl)} o pacote`;
+    });
     this.pack.focus({ preventScroll: true });
     // Affordance: o lacre se ergue um pouco sozinho, mostrando o gesto.
     window.setTimeout(() => {
@@ -167,6 +185,68 @@ export class StageView {
         this.renderTear();
       }, { damping: 0.45, response: 0.5 });
     }, 650);
+  }
+
+  /** Pull rate: real ou acelerado (2×, 3×, 5×, 10× mais cartas raras). Vale para todas as coleções. */
+  private luckPicker(): HTMLElement {
+    const group = el('div', {
+      className: 'luck',
+      attrs: { role: 'radiogroup', 'aria-label': 'Chance de cartas raras' },
+    });
+    const buttons = LUCK_OPTIONS.map((luck) => {
+      const btn = el('button', {
+        className: 'luck__opt',
+        attrs: { type: 'button', role: 'radio', 'aria-checked': String(luck === this.luck) },
+        text: luckLabel(luck),
+      });
+      btn.addEventListener('click', () => {
+        this.luck = luck;
+        saveLuck(luck);
+        buttons.forEach((b, i) => b.setAttribute('aria-checked', String(LUCK_OPTIONS[i] === luck)));
+      });
+      return btn;
+    });
+    group.append(...buttons);
+    return el('div', {
+      className: 'luck__wrap',
+      children: [el('span', { className: 'luck__label', text: 'Cartas raras' }), group],
+    });
+  }
+
+  /**
+   * Coleção de onde saiu uma Clássica do 30 anos: a carta original espia por trás do pacote,
+   * com o selo "Coleção 30 anos" e o ano. Tocar amplia e conta a história.
+   */
+  private showClassic(sealed: HTMLElement): void {
+    const { set, catalog, classics } = this.deps;
+    const mine = classics.filter((c) => c.set === set.id);
+    const card = mine.length ? catalog.cards.find((c) => c.id === mine[0]!.origin) : undefined;
+    if (!card) return;
+    const names = [...new Set(mine.map((c) => c.name))];
+    const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} e ${names[names.length - 1]}` : names[0]!;
+    const note =
+      `${list} ${names.length > 1 ? 'viraram Clássicas' : 'virou Clássica'} na coleção 30 anos ` +
+      `(30th Celebration, 2026). ${names.length > 1 ? 'As originais saíram' : 'A original saiu'} ` +
+      `em ${mine[0]!.year}, neste pacote.`;
+    const peek = el('button', {
+      className: 'classic-peek',
+      attrs: { type: 'button', 'aria-label': `${note} Ampliar.` },
+      children: [
+        el('img', { attrs: { src: card.imageUrl, alt: '', draggable: 'false' } }),
+        el('span', {
+          className: 'classic-peek__tag',
+          children: [el('strong', { text: 'Coleção 30 anos' }), el('small', { text: `${card.name} · ${mine[0]!.year}` })],
+        }),
+      ],
+    });
+    // A carta sai por cima do pacote e inclina junto com ele; tocá-la não rasga o lacre.
+    peek.addEventListener('pointerdown', (ev) => ev.stopPropagation());
+    peek.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      openCardViewer(card, undefined, [], note);
+    });
+    sealed.classList.add('has-classic');
+    this.pack.prepend(peek);
   }
 
   /** Todo pacote lacrado: ao lado do booster, as 3 cartas mais valiosas e quanto valem. */
@@ -297,7 +377,7 @@ export class StageView {
     const seed = Math.floor(this.deps.masterRng.next() * 0x100000000);
     (window as unknown as Record<string, unknown>).__pkmnLastBoosterSeed = seed;
     this.ownedBefore = new Set(this.deps.getCollection().entries.keys());
-    this.booster = generateBooster(mulberry32(seed), this.deps.catalog, seed, HIT_BOOST);
+    this.booster = generateBooster(mulberry32(seed), this.deps.catalog, seed, this.luck);
     this.revealed = 0;
     this.deps.onCardsOpened(this.booster.slots.map((s) => s.card.id));
   }
@@ -600,11 +680,18 @@ export class StageView {
       : [];
   }
 
-  /** Selo da subcoleção (ex.: Clássica), para não confundir com a raridade da carta. */
+  /**
+   * Selo da subcoleção (ex.: Clássica, com o ano da original), para não confundir com a
+   * raridade; e "30 anos" na carta original que virou Clássica.
+   */
   private subsetTag(slot: BoosterSlot): HTMLElement[] {
-    return slot.card.subset && !this.isPackOnly(slot)
-      ? [el('span', { className: 'deck__subset', text: categoryLabel(slot.card) })]
-      : [];
+    if (this.isPackOnly(slot)) return [];
+    const classic = this.deps.classics.find((c) => c.id === slot.card.id);
+    if (classic) return [el('span', { className: 'deck__subset', text: `Clássica · ${classic.year}` })];
+    if (this.deps.classics.some((c) => c.origin === slot.card.id)) {
+      return [el('span', { className: 'deck__subset', text: '30 anos' })];
+    }
+    return slot.card.subset ? [el('span', { className: 'deck__subset', text: categoryLabel(slot.card) })] : [];
   }
 
   private addToTray(slot: BoosterSlot): void {
@@ -665,30 +752,53 @@ export class StageView {
     });
     binder.addEventListener('click', () => this.openBinder());
 
+    const freshText =
+      fresh === 0 ? 'Nenhuma carta nova' : fresh === 1 ? '1 carta nova' : `${fresh} cartas novas`;
+    const progress = `${owned} de ${this.deps.set.albumSize} no fichário`;
     this.body.replaceChildren(
       el('div', {
         className: 'summary',
         children: [
-          el('h2', {
-            className: 'summary__title',
-            text:
-              fresh === 0
-                ? 'Nenhuma carta nova desta vez'
-                : fresh === 1
-                  ? '1 carta nova'
-                  : `${fresh} cartas novas`,
-          }),
-          el('p', {
-            className: 'summary__meta',
-            text: `Agora você tem ${owned} de ${this.deps.set.albumSize} cartas de ${this.deps.set.name}.`,
-          }),
+          ...this.moneyLine(booster, `${freshText} · ${progress}`),
           grid,
           el('div', { className: 'summary__actions', children: [again, binder] }),
-          el('p', { className: 'stage__hint', text: 'Toque em qualquer lugar para abrir outro' }),
         ],
       }),
     );
     again.focus({ preventScroll: true });
+  }
+
+  /**
+   * Topo do resumo: lucro ou prejuízo (valor das cartas menos o preço do pacote), quando o
+   * set tem preços; senão, só as cartas novas.
+   */
+  private moneyLine(booster: Booster, detail: string): HTMLElement[] {
+    const prices = this.prices;
+    const pack = prices?.packBrl;
+    if (!prices || pack == null) {
+      const [first, ...rest] = detail.split(' · ');
+      return [
+        el('h2', { className: 'summary__title', text: first! }),
+        el('p', { className: 'summary__meta', text: rest.join(' · ') }),
+      ];
+    }
+    const value = booster.slots.reduce((sum, s) => sum + prices.cardBrl(s.card.id), 0);
+    const diff = value - pack;
+    const even = Math.abs(diff) < 0.5;
+    const tone = even ? 'is-even' : diff > 0 ? 'is-gain' : 'is-loss';
+    const amount = even ? 'Empatou' : `${diff > 0 ? '+' : '−'}${formatBrl(Math.abs(diff))}`;
+    const label = even ? 'as cartas valem o pacote' : diff > 0 ? 'de lucro' : 'de prejuízo';
+    return [
+      el('h2', {
+        className: `summary__money ${tone}`,
+        children: [el('strong', { text: amount }), el('span', { text: label })],
+      }),
+      el('p', {
+        className: 'summary__meta',
+        text: `Cartas ${formatBrl(value)} · pacote ${formatBrl(pack)}`,
+      }),
+      el('p', { className: 'summary__meta summary__meta--quiet', text: detail }),
+    ];
   }
 
   // ── Fichário desta coleção, por cima do palco ─────────────────────────────────

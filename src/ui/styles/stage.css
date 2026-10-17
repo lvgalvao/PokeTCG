@@ -19,6 +19,8 @@
 }
 
 .stage__bar {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -48,6 +50,7 @@
 .stage__counter {
   justify-self: end;
   margin: 0;
+  white-space: nowrap;
   font-size: 0.9375rem;
   color: var(--stage-ink-soft);
   font-variant-numeric: tabular-nums;
@@ -313,6 +316,112 @@
 .summary__meta {
   margin: 8px 0 24px;
   color: var(--stage-ink-soft);
+}
+
+/* Lucro ou prejuízo: o número é o título do resumo. */
+.summary__money {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+}
+
+.summary__money strong {
+  font: 700 clamp(2.25rem, 10vw, 3.25rem) / 1 var(--font-display);
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary__money span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--stage-ink-soft);
+}
+
+.summary__money.is-gain strong {
+  color: #34c759;
+}
+
+.summary__money.is-loss strong {
+  color: #ff6b5e;
+}
+
+.summary__money + .summary__meta {
+  margin: 10px 0 2px;
+  color: var(--stage-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.summary__meta--quiet {
+  margin-top: 0;
+  font-size: 0.875rem;
+}
+
+/* ── Abaixo do pacote lacrado: preço e chance de raras ───────────────────── */
+
+.stage__below {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stage__price {
+  margin: 0;
+  min-height: 1.4em;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.luck__wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.luck__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--stage-ink-soft);
+}
+
+.luck {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--stage-ink) 10%, transparent);
+}
+
+.luck__opt {
+  min-width: 52px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--stage-ink-soft);
+  font: 600 0.875rem / 1 var(--font);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.luck__opt[aria-checked='true'] {
+  background: var(--stage-ink);
+  color: var(--stage);
+}
+
+@media (max-width: 360px) {
+  .luck__opt {
+    min-width: 44px;
+    padding: 0 8px;
+  }
 }
 
 .summary__grid {
@@ -800,6 +909,90 @@
   .deck__card.is-chase,
   .chase-fx__rays,
   .chase-fx__banner {
+    animation: none;
+  }
+}
+
+/* ── Clássica do 30 anos saindo por cima do pacote lacrado ───────────────── */
+
+.stage__pack.has-classic {
+  padding-top: 11dvh;
+}
+
+.stage__pack.has-classic .tear {
+  width: min(52vw, 34dvh, 270px);
+}
+
+.stage__pack.has-classic.has-chase .tear {
+  width: min(46vw, 32dvh, 260px);
+}
+
+.summary__card .deck__subset {
+  white-space: nowrap;
+  font-size: 0.6875rem;
+  padding: 2px 7px;
+}
+
+.classic-peek {
+  position: absolute;
+  z-index: -1;
+  top: -20%;
+  left: 20%;
+  width: 60%;
+  padding: 0;
+  border: 0;
+  background: none;
+  transform: rotate(7deg);
+  cursor: pointer;
+  transition: opacity 200ms ease;
+  animation: classic-peek-in 800ms var(--spring-out) 300ms both;
+}
+
+.tear.is-torn .classic-peek {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.classic-peek img {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.5);
+}
+
+.classic-peek__tag {
+  position: absolute;
+  top: -10px;
+  right: -12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f7d774, #d4a017);
+  color: #3b2a00;
+  line-height: 1.15;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.4);
+}
+
+.classic-peek__tag strong {
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+}
+
+.classic-peek__tag small {
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+@keyframes classic-peek-in {
+  from {
+    translate: 0 40%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .classic-peek {
     animation: none;
   }
 }

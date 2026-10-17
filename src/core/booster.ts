@@ -4,6 +4,7 @@ import { BUCKETS, bucketRank, type Bucket } from './buckets.js';
 import {
   boostHits,
   FAMILY_PROFILES,
+  HIT_BOOST,
   SET_BOOSTER_PROFILES,
   SLOT_DISTRIBUTIONS,
   SLOT_DOWNGRADE_FLOOR,
@@ -165,10 +166,10 @@ function drawProfileSlots(
 
 /**
  * `luck` multiplica a chance das cartas raras em cada slot (ver boostHits); 1 = pull rates
- * reais. Com luck > 1, um set com tabela própria em FAMILY_PROFILES usa essa tabela.
+ * reais. Com luck ≥ HIT_BOOST, um set com tabela própria em FAMILY_PROFILES usa essa tabela.
  */
 export function generateBooster(rng: RNG, catalog: Catalog, seed: number, luck = 1): Booster {
-  const family = luck !== 1 ? FAMILY_PROFILES[catalog.setId] : undefined;
+  const family = luck >= HIT_BOOST ? FAMILY_PROFILES[catalog.setId] : undefined;
   if (family) luck = 1;
   const profile = family ?? SET_BOOSTER_PROFILES[catalog.setId];
   if (!profile && catalog.byBucket['01_comum'].length === 0) {

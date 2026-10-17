@@ -21,10 +21,29 @@ export interface EraInfo {
   readonly name: string;
 }
 
+/** Uma Clássica do 30 anos (me55c) e a carta original, na coleção de onde veio. */
+export interface ClassicInfo {
+  /** Id da Clássica (ex.: `me55c-4`). */
+  readonly id: string;
+  readonly name: string;
+  /** Id da carta original (ex.: `base1-4`) e o caminho da imagem dela. */
+  readonly origin: string;
+  readonly originImage: string;
+  /** Coleção da original e o ano em que saiu. */
+  readonly set: string;
+  readonly year: number;
+}
+
 export interface SetsIndex {
   readonly eras: readonly EraInfo[];
   /** Mais novo primeiro. */
   readonly sets: readonly SetInfo[];
+  readonly classics?: readonly ClassicInfo[];
+}
+
+/** As Clássicas do 30 anos cuja original vem desta coleção. */
+export function classicsFrom(index: SetsIndex, setId: string): readonly ClassicInfo[] {
+  return (index.classics ?? []).filter((c) => c.set === setId);
 }
 
 /** Gerado por tools/build_sets_index.py. */

@@ -16,5 +16,8 @@ for p in j['results'][0]['results']:
 out=f'{REPO}/assets/data/prices'; os.makedirs(out,exist_ok=True)
 for sid,(p,miss,info) in res.items():
     d={"asOf":date.today().isoformat(),"usdBrl":5.0212,"rateDate":"2026-10-08 05:46:42","source":"TCGplayer marketPrice via mp-search-api","cards":p}
+    # Mantém o preço do pacote gravado por packs.py.
+    old=f'{out}/{sid}.json'
+    if os.path.exists(old) and 'pack' in (prev:=json.load(open(old))): d['pack']=prev['pack']
     with open(f'{out}/{sid}.json','w') as f: json.dump(d,f,ensure_ascii=False,separators=(',',':'))
     n=len(p); ok=sum(v is not None for v in p.values()); print(f'{sid} {ok}/{n} {100*ok/n:.1f}%')

@@ -64,7 +64,7 @@ export const SET_BOOSTER_PROFILES: Readonly<Record<string, BoosterProfile>> = {
   ...RESEARCHED_PROFILES,
 };
 
-/** Quantas vezes mais as cartas raras saem do que nos pull rates reais (modo família). */
+/** Sorte padrão: quantas vezes mais as cartas raras saem do que nos pull rates reais. */
 export const HIT_BOOST = 5;
 
 /** Rank mínimo de um hit: Rara ou melhor (Holo, Dupla Rara/ex, IR, SAR, Secretas, Clássicas…). */
@@ -90,7 +90,7 @@ export function boostHits(ps: readonly number[], ranks: readonly number[], luck:
 }
 
 /**
- * Tabelas do modo família escritas à mão para sets em que o HIT_BOOST genérico desequilibra
+ * Tabelas de sorte escritas à mão para sets em que o HIT_BOOST genérico desequilibra
  * (no 30 Anos, a Clássica e a IR disputam o mesmo slot, e as ex engolem a SAR). Com luck > 1
  * o gerador usa a tabela daqui no lugar de aplicar boostHits ao perfil real.
  */

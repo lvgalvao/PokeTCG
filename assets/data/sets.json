@@ -429,6 +429,16 @@
       "subsets": []
     },
     {
+      "id": "swsh1",
+      "name": "Sword & Shield",
+      "series": "Sword & Shield",
+      "era": "swsh",
+      "releaseDate": "2020-02-07",
+      "packSize": 10,
+      "albumSize": 216,
+      "subsets": []
+    },
+    {
       "id": "sm12",
       "name": "Cosmic Eclipse",
       "series": "Sun & Moon",
@@ -471,6 +481,16 @@
       "subsets": []
     },
     {
+      "id": "sm4",
+      "name": "Crimson Invasion",
+      "series": "Sun & Moon",
+      "era": "sm",
+      "releaseDate": "2017-11-03",
+      "packSize": 10,
+      "albumSize": 124,
+      "subsets": []
+    },
+    {
       "id": "sm35",
       "name": "Shining Legends",
       "series": "Sun & Moon",
@@ -488,6 +508,16 @@
       "releaseDate": "2017-08-05",
       "packSize": 10,
       "albumSize": 177,
+      "subsets": []
+    },
+    {
+      "id": "sm1",
+      "name": "Sun & Moon",
+      "series": "Sun & Moon",
+      "era": "sm",
+      "releaseDate": "2017-02-03",
+      "packSize": 10,
+      "albumSize": 172,
       "subsets": []
     },
     {
@@ -511,6 +541,16 @@
       "subsets": []
     },
     {
+      "id": "xy9",
+      "name": "BREAKpoint",
+      "series": "XY",
+      "era": "xy",
+      "releaseDate": "2016-02-03",
+      "packSize": 10,
+      "albumSize": 123,
+      "subsets": []
+    },
+    {
       "id": "xy7",
       "name": "Ancient Origins",
       "series": "XY",
@@ -528,6 +568,16 @@
       "releaseDate": "2015-05-06",
       "packSize": 10,
       "albumSize": 112,
+      "subsets": []
+    },
+    {
+      "id": "xy5",
+      "name": "Primal Clash",
+      "series": "XY",
+      "era": "xy",
+      "releaseDate": "2015-02-04",
+      "packSize": 10,
+      "albumSize": 164,
       "subsets": []
     },
     {
@@ -551,6 +601,36 @@
       "subsets": []
     },
     {
+      "id": "bw10",
+      "name": "Plasma Blast",
+      "series": "Black & White",
+      "era": "bw",
+      "releaseDate": "2013-08-14",
+      "packSize": 10,
+      "albumSize": 105,
+      "subsets": []
+    },
+    {
+      "id": "bw6",
+      "name": "Dragons Exalted",
+      "series": "Black & White",
+      "era": "bw",
+      "releaseDate": "2012-08-15",
+      "packSize": 10,
+      "albumSize": 128,
+      "subsets": []
+    },
+    {
+      "id": "bw3",
+      "name": "Noble Victories",
+      "series": "Black & White",
+      "era": "bw",
+      "releaseDate": "2011-11-16",
+      "packSize": 10,
+      "albumSize": 102,
+      "subsets": []
+    },
+    {
       "id": "bw1",
       "name": "Black & White",
       "series": "Black & White",
@@ -571,6 +651,16 @@
       "subsets": []
     },
     {
+      "id": "hgss4",
+      "name": "HS—Triumphant",
+      "series": "HeartGold & SoulSilver",
+      "era": "hgss",
+      "releaseDate": "2010-11-03",
+      "packSize": 10,
+      "albumSize": 103,
+      "subsets": []
+    },
+    {
       "id": "hgss1",
       "name": "HeartGold & SoulSilver",
       "series": "HeartGold & SoulSilver",
@@ -588,6 +678,26 @@
       "releaseDate": "2009-02-11",
       "packSize": 10,
       "albumSize": 133,
+      "subsets": []
+    },
+    {
+      "id": "dp6",
+      "name": "Legends Awakened",
+      "series": "Diamond & Pearl",
+      "era": "dp",
+      "releaseDate": "2008-08-01",
+      "packSize": 10,
+      "albumSize": 146,
+      "subsets": []
+    },
+    {
+      "id": "dp4",
+      "name": "Great Encounters",
+      "series": "Diamond & Pearl",
+      "era": "dp",
+      "releaseDate": "2008-02-01",
+      "packSize": 10,
+      "albumSize": 106,
       "subsets": []
     },
     {
@@ -829,6 +939,248 @@
       "packSize": 11,
       "albumSize": 102,
       "subsets": []
+    }
+  ],
+  "classics": [
+    {
+      "id": "me55c-106",
+      "name": "Shining Celebi",
+      "origin": "neo4-106",
+      "originImage": "neo4/06_duplo_arte_secreta/neo4-106.jpg",
+      "set": "neo4",
+      "year": 2002
+    },
+    {
+      "id": "me55c-149",
+      "name": "Lugia",
+      "origin": "ecard2-149",
+      "originImage": "ecard2/06_duplo_arte_secreta/ecard2-149.jpg",
+      "set": "ecard2",
+      "year": 2003
+    },
+    {
+      "id": "me55c-203",
+      "name": "Magikarp",
+      "origin": "sv2-203",
+      "originImage": "sv2/05_arte_secreta/sv2-203.jpg",
+      "set": "sv2",
+      "year": 2023
+    },
+    {
+      "id": "me55c-11g",
+      "name": "Genesect-EX",
+      "origin": "bw10-11",
+      "originImage": "bw10/04_duplo_raras/bw10-11.jpg",
+      "set": "bw10",
+      "year": 2013
+    },
+    {
+      "id": "me55c-33",
+      "name": "Pikachu & Zekrom-GX",
+      "origin": "sm9-33",
+      "originImage": "sm9/04_duplo_raras/sm9-33.jpg",
+      "set": "sm9",
+      "year": 2019
+    },
+    {
+      "id": "me55c-41",
+      "name": "Greninja BREAK",
+      "origin": "xy9-41",
+      "originImage": "xy9/04_duplo_raras/xy9-41.jpg",
+      "set": "xy9",
+      "year": 2016
+    },
+    {
+      "id": "me55c-50",
+      "name": "Raikou",
+      "origin": "swsh4-50",
+      "originImage": "swsh4/04_duplo_raras/swsh4-50.jpg",
+      "set": "swsh4",
+      "year": 2020
+    },
+    {
+      "id": "me55c-57",
+      "name": "Buzzwole-GX",
+      "origin": "sm4-57",
+      "originImage": "sm4/04_duplo_raras/sm4-57.jpg",
+      "set": "sm4",
+      "year": 2017
+    },
+    {
+      "id": "me55c-85",
+      "name": "Rayquaza-EX",
+      "origin": "bw6-85",
+      "originImage": "bw6/04_duplo_raras/bw6-85.jpg",
+      "set": "bw6",
+      "year": 2012
+    },
+    {
+      "id": "me55c-89",
+      "name": "Solgaleo-GX",
+      "origin": "sm1-89",
+      "originImage": "sm1/04_duplo_raras/sm1-89.jpg",
+      "set": "sm1",
+      "year": 2017
+    },
+    {
+      "id": "me55c-94",
+      "name": "Gengar",
+      "origin": "hgss4-94",
+      "originImage": "hgss4/04_duplo_raras/hgss4-94.jpg",
+      "set": "hgss4",
+      "year": 2010
+    },
+    {
+      "id": "me55c-101",
+      "name": "N",
+      "origin": "bw3-101",
+      "originImage": "bw3/04_duplo_raras/bw3-101.jpg",
+      "set": "bw3",
+      "year": 2011
+    },
+    {
+      "id": "me55c-106p",
+      "name": "Palkia LV.X",
+      "origin": "dp4-106",
+      "originImage": "dp4/04_duplo_raras/dp4-106.jpg",
+      "set": "dp4",
+      "year": 2008
+    },
+    {
+      "id": "me55c-106m",
+      "name": "M Gardevoir-EX",
+      "origin": "xy5-106",
+      "originImage": "xy5/04_duplo_raras/xy5-106.jpg",
+      "set": "xy5",
+      "year": 2015
+    },
+    {
+      "id": "me55c-108",
+      "name": "Scizor ex",
+      "origin": "ex10-108",
+      "originImage": "ex10/04_duplo_raras/ex10-108.jpg",
+      "set": "ex10",
+      "year": 2005
+    },
+    {
+      "id": "me55c-114",
+      "name": "Mew VMAX",
+      "origin": "swsh8-114",
+      "originImage": "swsh8/04_duplo_raras/swsh8-114.jpg",
+      "set": "swsh8",
+      "year": 2021
+    },
+    {
+      "id": "me55c-123",
+      "name": "Arceus VSTAR",
+      "origin": "swsh9-123",
+      "originImage": "swsh9/04_duplo_raras/swsh9-123.jpg",
+      "set": "swsh9",
+      "year": 2022
+    },
+    {
+      "id": "me55c-138",
+      "name": "Zacian V",
+      "origin": "swsh1-138",
+      "originImage": "swsh1/04_duplo_raras/swsh1-138.jpg",
+      "set": "swsh1",
+      "year": 2020
+    },
+    {
+      "id": "me55c-4",
+      "name": "Charizard",
+      "origin": "base1-4",
+      "originImage": "base1/03_raras/base1-4.jpg",
+      "set": "base1",
+      "year": 1999
+    },
+    {
+      "id": "me55c-5",
+      "name": "Delcatty",
+      "origin": "ex1-5",
+      "originImage": "ex1/03_raras/ex1-5.jpg",
+      "set": "ex1",
+      "year": 2003
+    },
+    {
+      "id": "me55c-11",
+      "name": "Metagross",
+      "origin": "ex8-11",
+      "originImage": "ex8/03_raras/ex8-11.jpg",
+      "set": "ex8",
+      "year": 2005
+    },
+    {
+      "id": "me55c-18",
+      "name": "Misty",
+      "origin": "gym1-18",
+      "originImage": "gym1/03_raras/gym1-18.jpg",
+      "set": "gym1",
+      "year": 2000
+    },
+    {
+      "id": "me55c-19",
+      "name": "Dark Tyranitar",
+      "origin": "ex7-19",
+      "originImage": "ex7/03_raras/ex7-19.jpg",
+      "set": "ex7",
+      "year": 2004
+    },
+    {
+      "id": "me55c-25",
+      "name": "Sneasel",
+      "origin": "neo1-25",
+      "originImage": "neo1/03_raras/neo1-25.jpg",
+      "set": "neo1",
+      "year": 2000
+    },
+    {
+      "id": "me55c-43",
+      "name": "Uxie",
+      "origin": "dp6-43",
+      "originImage": "dp6/03_raras/dp6-43.jpg",
+      "set": "dp6",
+      "year": 2008
+    },
+    {
+      "id": "me55c-47",
+      "name": "Crobat G",
+      "origin": "pl1-47",
+      "originImage": "pl1/02_incomum/pl1-47.jpg",
+      "set": "pl1",
+      "year": 2009
+    },
+    {
+      "id": "me55c-58",
+      "name": "Pikachu",
+      "origin": "base1-58",
+      "originImage": "base1/01_comum/base1-58.jpg",
+      "set": "base1",
+      "year": 1999
+    },
+    {
+      "id": "me55c-69",
+      "name": "Erika's Jigglypuff",
+      "origin": "gym2-69",
+      "originImage": "gym2/01_comum/gym2-69.jpg",
+      "set": "gym2",
+      "year": 2000
+    },
+    {
+      "id": "me55c-99",
+      "name": "Darkrai & Cresselia LEGEND",
+      "origin": "hgss4-99",
+      "originImage": "hgss4/07_legendaria/hgss4-99.jpg",
+      "set": "hgss4",
+      "year": 2010
+    },
+    {
+      "id": "me55c-100",
+      "name": "Darkrai & Cresselia LEGEND",
+      "origin": "hgss4-100",
+      "originImage": "hgss4/07_legendaria/hgss4-100.jpg",
+      "set": "hgss4",
+      "year": 2010
     }
   ]
 }
