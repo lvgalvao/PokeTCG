@@ -63,6 +63,8 @@ export class App {
       await this.openStage(route.setId);
       return;
     }
+    // Endereço desconhecido (ex.: links antigos de batalha ou trocas): vira a loja.
+    if (route.name === 'store' && !/^(#\/?)?$/.test(location.hash)) history.replaceState(null, '', '#/');
     this.closeStage();
     this.baseHash = location.hash || '#/';
     this.renderBase(this.baseHash);

@@ -15,7 +15,7 @@ import {
   type SetsIndex,
 } from './sets-index.js';
 
-/** Lista de coleções com o progresso de cada uma. */
+/** As coleções que o jogador já começou, com o progresso de cada uma. */
 export function renderBinderIndex(
   root: HTMLElement,
   index: SetsIndex,
@@ -41,9 +41,13 @@ export function renderBinderIndex(
           : `${totalOwned} cartas guardadas em ${started} ${started === 1 ? 'coleção' : 'coleções'}.`,
     }),
   );
+  if (totalOwned === 0) {
+    page.append(el('a', { className: 'btn btn--primary binder-index__cta', attrs: { href: '#/' }, text: 'Ir para a loja' }));
+  }
 
   for (const era of index.eras) {
-    const sets = index.sets.filter((s) => s.era === era.id);
+    // Só as coleções com alguma carta: as outras estão na loja, esperando o primeiro pacote.
+    const sets = index.sets.filter((s) => s.era === era.id && ownedCount(s, collection) > 0);
     if (!sets.length) continue;
     const list = el('ul', { className: 'binder-list' });
     for (const set of sets) {
