@@ -32,6 +32,8 @@ const TEAR_COMMIT = 0.5;
 const TEAR_FLICK_VELOCITY = 900;
 const FLING_DISTANCE = 0.35;
 const FLING_VELOCITY = 700;
+/** Quanto esperar as imagens do pacote carregarem antes de mostrar a primeira carta. */
+const PRELOAD_MAX_MS = 1500;
 /** Por quanto tempo uma das 3 mais valiosas segura o palco antes de deixar passar. */
 const CHASE_HOLD_MS = 2800;
 const CHASE_PLACES = ['A mais valiosa!', 'A 2ª mais valiosa!', 'A 3ª mais valiosa!'];
@@ -378,10 +380,28 @@ export class StageView {
     );
     this.openBooster();
     const chase = chaseCardsFor(this.deps.set.id, this.deps.catalog);
+    // As imagens do pacote carregam enquanto o lacre voa; a primeira carta só aparece
+    // com elas prontas (até PRELOAD_MAX_MS), para nenhuma surgir fora de ordem.
+    const images = this.preloadImages();
     window.setTimeout(async () => {
       this.chase = await chase;
-      this.renderReveal();
+      await images;
+      if (this.phase === 'reveal' && this.deps.root.isConnected) this.renderReveal();
     }, prefersReducedMotion() ? 0 : 380);
+  }
+
+  /** Baixa e decodifica as imagens do pacote; resolve quando prontas ou após PRELOAD_MAX_MS. */
+  private preloadImages(): Promise<void> {
+    const slots = this.booster?.slots ?? [];
+    const ready = Promise.all(
+      slots.map((s) => {
+        const img = new Image();
+        img.src = s.card.imageUrl;
+        return img.decode().catch(() => undefined);
+      }),
+    ).then(() => undefined);
+    const timeout = new Promise<void>((r) => window.setTimeout(r, PRELOAD_MAX_MS));
+    return Promise.race([ready, timeout]);
   }
 
   private openBooster(): void {

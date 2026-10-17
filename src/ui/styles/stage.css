@@ -197,6 +197,8 @@
   transform: translateY(calc(var(--depth) * 3px));
   box-shadow: 0 24px 50px rgb(0 0 0 / 0.5);
   outline: none;
+  /* Opaca enquanto a imagem carrega: a carta de trás nunca aparece pela da frente. */
+  background: linear-gradient(160deg, #2a2a35, #15151c);
 }
 
 .deck__card img {
@@ -425,12 +427,24 @@
 }
 
 .summary__grid {
+  /* Largura da carta limitada também pela altura: em notebook (tela baixa) as duas
+     fileiras do pacote cabem inteiras, sem rolagem escondida. No celular, 4 por fileira. */
+  --card-w: min(20vw, 128px, calc((100dvh - 340px) / 2.8));
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(28vw, 128px), 1fr));
+  grid-template-columns: repeat(auto-fill, var(--card-w));
+  justify-content: center;
   gap: 14px;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+/* Celular: 4 por fileira, 3 fileiras; em tela baixa (iPhone SE) as cartas encolhem para caber. */
+@media (max-width: 600px) {
+  .summary__grid {
+    --card-w: min(20vw, calc((100dvh - 380px) / 4.4));
+    gap: 10px;
+  }
 }
 
 .summary__card {
