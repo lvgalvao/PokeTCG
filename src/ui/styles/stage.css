@@ -916,7 +916,7 @@
 /* ── Clássica do 30 anos saindo por cima do pacote lacrado ───────────────── */
 
 .stage__pack.has-classic {
-  padding-top: 11dvh;
+  padding-top: 14dvh;
 }
 
 .stage__pack.has-classic .tear {
@@ -934,15 +934,16 @@
 }
 
 .classic-peek {
+  --fan: 0;
   position: absolute;
   z-index: -1;
-  top: -20%;
-  left: 20%;
+  top: -24%;
+  left: calc(20% + var(--fan) * 30%);
   width: 60%;
   padding: 0;
   border: 0;
   background: none;
-  transform: rotate(7deg);
+  transform: rotate(calc(7deg + var(--fan) * 12deg));
   cursor: pointer;
   transition: opacity 200ms ease;
   animation: classic-peek-in 800ms var(--spring-out) 300ms both;
@@ -961,8 +962,10 @@
 
 .classic-peek__tag {
   position: absolute;
-  top: -10px;
-  right: -12px;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  translate: -50% 0;
+  rotate: -7deg;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -971,7 +974,9 @@
   background: linear-gradient(135deg, #f7d774, #d4a017);
   color: #3b2a00;
   line-height: 1.15;
-  white-space: nowrap;
+  width: max-content;
+  max-width: 190px;
+  text-align: center;
   box-shadow: 0 4px 12px rgb(0 0 0 / 0.4);
 }
 

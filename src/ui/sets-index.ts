@@ -14,6 +14,8 @@ export interface SetInfo {
   readonly albumSize: number;
   /** Prefixos de id dos subsets do álbum incorporados ao set (ex.: `me55c`). */
   readonly subsets: readonly string[];
+  /** Preço do pacote avulso em reais (TCGplayer); ausente se não há anúncio. */
+  readonly packPrice?: number;
 }
 
 export interface EraInfo {
@@ -39,6 +41,14 @@ export interface SetsIndex {
   /** Mais novo primeiro. */
   readonly sets: readonly SetInfo[];
   readonly classics?: readonly ClassicInfo[];
+}
+
+/**
+ * Posição no leque (−1 esquerda … 1 direita) da i-ésima de n cartas: a primeira, a mais
+ * icônica, fica no centro e na frente; as outras abrem para os lados.
+ */
+export function fanPosition(i: number, n: number): number {
+  return n === 3 ? [0, -1, 1][i]! : i - (n - 1) / 2;
 }
 
 /** As Clássicas do 30 anos cuja original vem desta coleção. */

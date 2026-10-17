@@ -135,6 +135,12 @@ def main() -> int:
                 ),
             }
         )
+        # Preço do pacote avulso em reais (tools/prices_tcgplayer/packs.py), para a vitrine.
+        prices_path = ASSETS / "data/prices" / f"{set_id}.json"
+        if prices_path.exists():
+            prices = json.loads(prices_path.read_text())
+            if prices.get("pack"):
+                entries[-1]["packPrice"] = round(prices["pack"] * prices["usdBrl"], 2)
         write_cover(set_id)
     entries.sort(key=lambda e: (e["releaseDate"], e["id"]), reverse=True)
     eras = [

@@ -211,12 +211,21 @@
 
 /* Coleção de onde saiu uma Clássica do 30 anos: a carta original espia por trás do pacote. */
 .pack__classic {
+  --fan: 0;
   position: absolute;
   z-index: -1;
   top: -16%;
-  left: 20%;
+  left: calc(20% + var(--fan) * 26%);
   width: 60%;
-  transform: rotate(7deg);
+  transform: rotate(calc(7deg + var(--fan) * 12deg));
+}
+
+.shelf__price {
+  margin-top: 1px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
 }
 
 .pack__classic img {

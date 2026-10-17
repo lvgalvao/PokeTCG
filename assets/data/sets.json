@@ -52,7 +52,8 @@
       "albumSize": 191,
       "subsets": [
         "me55c"
-      ]
+      ],
+      "packPrice": 59.9
     },
     {
       "id": "me5",
@@ -62,7 +63,8 @@
       "releaseDate": "2026-07-17",
       "packSize": 11,
       "albumSize": 120,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 28.82
     },
     {
       "id": "me4",
@@ -72,7 +74,8 @@
       "releaseDate": "2026-05-22",
       "packSize": 11,
       "albumSize": 122,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 28.32
     },
     {
       "id": "me3",
@@ -82,7 +85,8 @@
       "releaseDate": "2026-03-27",
       "packSize": 11,
       "albumSize": 124,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 28.67
     },
     {
       "id": "me2pt5",
@@ -92,7 +96,8 @@
       "releaseDate": "2026-01-30",
       "packSize": 11,
       "albumSize": 295,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 52.67
     },
     {
       "id": "me2",
@@ -102,7 +107,8 @@
       "releaseDate": "2025-11-14",
       "packSize": 11,
       "albumSize": 130,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 58.8
     },
     {
       "id": "me1",
@@ -112,7 +118,8 @@
       "releaseDate": "2025-09-26",
       "packSize": 11,
       "albumSize": 188,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 45.14
     },
     {
       "id": "zsv10pt5",
@@ -122,7 +129,8 @@
       "releaseDate": "2025-07-18",
       "packSize": 11,
       "albumSize": 172,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 74.77
     },
     {
       "id": "rsv10pt5",
@@ -132,7 +140,8 @@
       "releaseDate": "2025-07-18",
       "packSize": 11,
       "albumSize": 173,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 74.72
     },
     {
       "id": "sv10",
@@ -142,7 +151,8 @@
       "releaseDate": "2025-05-30",
       "packSize": 11,
       "albumSize": 244,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 41.83
     },
     {
       "id": "sv9",
@@ -152,7 +162,8 @@
       "releaseDate": "2025-03-28",
       "packSize": 11,
       "albumSize": 190,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 30.23
     },
     {
       "id": "sv8pt5",
@@ -162,7 +173,8 @@
       "releaseDate": "2025-01-17",
       "packSize": 11,
       "albumSize": 180,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 68.24
     },
     {
       "id": "sv8",
@@ -172,7 +184,8 @@
       "releaseDate": "2024-11-08",
       "packSize": 11,
       "albumSize": 252,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 43.43
     },
     {
       "id": "sv7",
@@ -182,7 +195,8 @@
       "releaseDate": "2024-09-13",
       "packSize": 11,
       "albumSize": 175,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 54.58
     },
     {
       "id": "sv6pt5",
@@ -192,7 +206,8 @@
       "releaseDate": "2024-08-02",
       "packSize": 11,
       "albumSize": 99,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 69.54
     },
     {
       "id": "sv6",
@@ -202,7 +217,8 @@
       "releaseDate": "2024-05-24",
       "packSize": 11,
       "albumSize": 226,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 46.4
     },
     {
       "id": "sv5",
@@ -212,7 +228,8 @@
       "releaseDate": "2024-03-22",
       "packSize": 11,
       "albumSize": 218,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 51.77
     },
     {
       "id": "sv4pt5",
@@ -222,7 +239,8 @@
       "releaseDate": "2024-01-26",
       "packSize": 11,
       "albumSize": 245,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 119.91
     },
     {
       "id": "sv4",
@@ -232,7 +250,8 @@
       "releaseDate": "2023-11-03",
       "packSize": 11,
       "albumSize": 266,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 41.93
     },
     {
       "id": "sv3pt5",
@@ -242,7 +261,8 @@
       "releaseDate": "2023-09-22",
       "packSize": 11,
       "albumSize": 207,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 133.36
     },
     {
       "id": "sv3",
@@ -252,7 +272,8 @@
       "releaseDate": "2023-08-11",
       "packSize": 11,
       "albumSize": 230,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 62.06
     },
     {
       "id": "sv2",
@@ -262,7 +283,8 @@
       "releaseDate": "2023-06-09",
       "packSize": 11,
       "albumSize": 279,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 81.95
     },
     {
       "id": "sv1",
@@ -272,7 +294,8 @@
       "releaseDate": "2023-03-31",
       "packSize": 11,
       "albumSize": 258,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 44.24
     },
     {
       "id": "swsh12pt5",
@@ -284,7 +307,8 @@
       "albumSize": 230,
       "subsets": [
         "swsh12pt5gg"
-      ]
+      ],
+      "packPrice": 132.16
     },
     {
       "id": "swsh12",
@@ -296,7 +320,8 @@
       "albumSize": 245,
       "subsets": [
         "swsh12tg"
-      ]
+      ],
+      "packPrice": 74.16
     },
     {
       "id": "swsh11",
@@ -308,7 +333,8 @@
       "albumSize": 247,
       "subsets": [
         "swsh11tg"
-      ]
+      ],
+      "packPrice": 92.44
     },
     {
       "id": "pgo",
@@ -318,7 +344,8 @@
       "releaseDate": "2022-07-01",
       "packSize": 10,
       "albumSize": 88,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 75.42
     },
     {
       "id": "swsh10",
@@ -330,7 +357,8 @@
       "albumSize": 246,
       "subsets": [
         "swsh10tg"
-      ]
+      ],
+      "packPrice": 50.26
     },
     {
       "id": "swsh9",
@@ -342,7 +370,8 @@
       "albumSize": 216,
       "subsets": [
         "swsh9tg"
-      ]
+      ],
+      "packPrice": 79.59
     },
     {
       "id": "swsh8",
@@ -352,7 +381,8 @@
       "releaseDate": "2021-11-12",
       "packSize": 10,
       "albumSize": 284,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 89.68
     },
     {
       "id": "cel25",
@@ -364,7 +394,8 @@
       "albumSize": 50,
       "subsets": [
         "cel25c"
-      ]
+      ],
+      "packPrice": 167.16
     },
     {
       "id": "swsh7",
@@ -374,7 +405,8 @@
       "releaseDate": "2021-08-27",
       "packSize": 10,
       "albumSize": 237,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 215.46
     },
     {
       "id": "swsh6",
@@ -384,7 +416,8 @@
       "releaseDate": "2021-06-18",
       "packSize": 10,
       "albumSize": 233,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 63.37
     },
     {
       "id": "swsh45",
@@ -396,7 +429,8 @@
       "albumSize": 195,
       "subsets": [
         "swsh45sv"
-      ]
+      ],
+      "packPrice": 89.23
     },
     {
       "id": "swsh4",
@@ -406,7 +440,8 @@
       "releaseDate": "2020-11-13",
       "packSize": 10,
       "albumSize": 203,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 53.17
     },
     {
       "id": "swsh35",
@@ -416,7 +451,8 @@
       "releaseDate": "2020-09-25",
       "packSize": 10,
       "albumSize": 80,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 98.92
     },
     {
       "id": "swsh3",
@@ -426,7 +462,8 @@
       "releaseDate": "2020-08-14",
       "packSize": 10,
       "albumSize": 201,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 48.86
     },
     {
       "id": "swsh1",
@@ -436,7 +473,8 @@
       "releaseDate": "2020-02-07",
       "packSize": 10,
       "albumSize": 216,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 58.15
     },
     {
       "id": "sm12",
@@ -446,7 +484,8 @@
       "releaseDate": "2019-11-01",
       "packSize": 10,
       "albumSize": 272,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 362.28
     },
     {
       "id": "sm115",
@@ -458,7 +497,8 @@
       "albumSize": 163,
       "subsets": [
         "sma"
-      ]
+      ],
+      "packPrice": 240.06
     },
     {
       "id": "sm10",
@@ -468,7 +508,8 @@
       "releaseDate": "2019-05-03",
       "packSize": 10,
       "albumSize": 238,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 340.99
     },
     {
       "id": "sm9",
@@ -478,7 +519,8 @@
       "releaseDate": "2019-02-01",
       "packSize": 10,
       "albumSize": 198,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1643.34
     },
     {
       "id": "sm4",
@@ -488,7 +530,8 @@
       "releaseDate": "2017-11-03",
       "packSize": 10,
       "albumSize": 124,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 92.34
     },
     {
       "id": "sm35",
@@ -498,7 +541,8 @@
       "releaseDate": "2017-10-06",
       "packSize": 10,
       "albumSize": 78,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 558.91
     },
     {
       "id": "sm3",
@@ -508,7 +552,8 @@
       "releaseDate": "2017-08-05",
       "packSize": 10,
       "albumSize": 177,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 154.75
     },
     {
       "id": "sm1",
@@ -518,7 +563,8 @@
       "releaseDate": "2017-02-03",
       "packSize": 10,
       "albumSize": 172,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 116.34
     },
     {
       "id": "xy12",
@@ -528,7 +574,8 @@
       "releaseDate": "2016-11-02",
       "packSize": 10,
       "albumSize": 113,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 361.43
     },
     {
       "id": "g1",
@@ -538,7 +585,8 @@
       "releaseDate": "2016-02-22",
       "packSize": 9,
       "albumSize": 115,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1568.77
     },
     {
       "id": "xy9",
@@ -548,7 +596,8 @@
       "releaseDate": "2016-02-03",
       "packSize": 10,
       "albumSize": 123,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 240.42
     },
     {
       "id": "xy7",
@@ -558,7 +607,8 @@
       "releaseDate": "2015-08-12",
       "packSize": 10,
       "albumSize": 101,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 736.56
     },
     {
       "id": "xy6",
@@ -568,7 +618,8 @@
       "releaseDate": "2015-05-06",
       "packSize": 10,
       "albumSize": 112,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 428.76
     },
     {
       "id": "xy5",
@@ -578,7 +629,8 @@
       "releaseDate": "2015-02-04",
       "packSize": 10,
       "albumSize": 164,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 339.38
     },
     {
       "id": "xy2",
@@ -588,7 +640,8 @@
       "releaseDate": "2014-05-07",
       "packSize": 10,
       "albumSize": 110,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 808.36
     },
     {
       "id": "bw11",
@@ -598,7 +651,8 @@
       "releaseDate": "2013-11-06",
       "packSize": 10,
       "albumSize": 140,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1920.26
     },
     {
       "id": "bw10",
@@ -608,7 +662,8 @@
       "releaseDate": "2013-08-14",
       "packSize": 10,
       "albumSize": 105,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1383.09
     },
     {
       "id": "bw6",
@@ -618,7 +673,8 @@
       "releaseDate": "2012-08-15",
       "packSize": 10,
       "albumSize": 128,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1784.53
     },
     {
       "id": "bw3",
@@ -628,7 +684,8 @@
       "releaseDate": "2011-11-16",
       "packSize": 10,
       "albumSize": 102,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 849.24
     },
     {
       "id": "bw1",
@@ -638,7 +695,8 @@
       "releaseDate": "2011-04-25",
       "packSize": 10,
       "albumSize": 115,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1021.76
     },
     {
       "id": "col1",
@@ -648,7 +706,8 @@
       "releaseDate": "2011-02-09",
       "packSize": 10,
       "albumSize": 106,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 5597.88
     },
     {
       "id": "hgss4",
@@ -658,7 +717,8 @@
       "releaseDate": "2010-11-03",
       "packSize": 10,
       "albumSize": 103,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 2008.48
     },
     {
       "id": "hgss1",
@@ -668,7 +728,8 @@
       "releaseDate": "2010-02-10",
       "packSize": 10,
       "albumSize": 124,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 2343.19
     },
     {
       "id": "pl1",
@@ -678,7 +739,8 @@
       "releaseDate": "2009-02-11",
       "packSize": 10,
       "albumSize": 133,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1956.96
     },
     {
       "id": "dp6",
@@ -688,7 +750,8 @@
       "releaseDate": "2008-08-01",
       "packSize": 10,
       "albumSize": 146,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 2324.51
     },
     {
       "id": "dp4",
@@ -698,7 +761,8 @@
       "releaseDate": "2008-02-01",
       "packSize": 10,
       "albumSize": 106,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1658.2
     },
     {
       "id": "dp1",
@@ -708,7 +772,8 @@
       "releaseDate": "2007-05-01",
       "packSize": 10,
       "albumSize": 130,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1527.3
     },
     {
       "id": "ex15",
@@ -718,7 +783,8 @@
       "releaseDate": "2006-11-01",
       "packSize": 9,
       "albumSize": 101,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 20084.8
     },
     {
       "id": "ex13",
@@ -728,7 +794,8 @@
       "releaseDate": "2006-05-01",
       "packSize": 9,
       "albumSize": 111,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 9550.27
     },
     {
       "id": "ex11",
@@ -758,7 +825,8 @@
       "releaseDate": "2005-02-01",
       "packSize": 9,
       "albumSize": 108,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 25106.0
     },
     {
       "id": "ex7",
@@ -778,7 +846,8 @@
       "releaseDate": "2004-09-01",
       "packSize": 9,
       "albumSize": 116,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 5071.21
     },
     {
       "id": "ex1",
@@ -788,7 +857,8 @@
       "releaseDate": "2003-07-01",
       "packSize": 9,
       "albumSize": 109,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 4016.91
     },
     {
       "id": "ecard3",
@@ -808,7 +878,8 @@
       "releaseDate": "2003-01-15",
       "packSize": 9,
       "albumSize": 182,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 10042.35
     },
     {
       "id": "ecard1",
@@ -818,7 +889,8 @@
       "releaseDate": "2002-09-15",
       "packSize": 9,
       "albumSize": 159,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 24101.76
     },
     {
       "id": "base6",
@@ -838,7 +910,8 @@
       "releaseDate": "2002-02-28",
       "packSize": 11,
       "albumSize": 113,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 8084.13
     },
     {
       "id": "neo3",
@@ -848,7 +921,8 @@
       "releaseDate": "2001-09-21",
       "packSize": 11,
       "albumSize": 66,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 4468.82
     },
     {
       "id": "neo2",
@@ -858,7 +932,8 @@
       "releaseDate": "2001-06-01",
       "packSize": 11,
       "albumSize": 75,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 3640.37
     },
     {
       "id": "neo1",
@@ -868,7 +943,8 @@
       "releaseDate": "2000-12-16",
       "packSize": 11,
       "albumSize": 111,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 3173.35
     },
     {
       "id": "gym2",
@@ -878,7 +954,8 @@
       "releaseDate": "2000-10-16",
       "packSize": 11,
       "albumSize": 132,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 2108.85
     },
     {
       "id": "gym1",
@@ -888,7 +965,8 @@
       "releaseDate": "2000-08-14",
       "packSize": 11,
       "albumSize": 132,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1354.32
     },
     {
       "id": "base5",
@@ -898,7 +976,8 @@
       "releaseDate": "2000-04-24",
       "packSize": 11,
       "albumSize": 83,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1634.6
     },
     {
       "id": "base4",
@@ -908,7 +987,8 @@
       "releaseDate": "2000-02-24",
       "packSize": 11,
       "albumSize": 130,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 2241.06
     },
     {
       "id": "base3",
@@ -918,7 +998,8 @@
       "releaseDate": "1999-10-10",
       "packSize": 11,
       "albumSize": 62,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1708.76
     },
     {
       "id": "base2",
@@ -928,7 +1009,8 @@
       "releaseDate": "1999-06-16",
       "packSize": 11,
       "albumSize": 64,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 1659.26
     },
     {
       "id": "base1",
@@ -938,7 +1020,8 @@
       "releaseDate": "1999-01-09",
       "packSize": 11,
       "albumSize": 102,
-      "subsets": []
+      "subsets": [],
+      "packPrice": 4674.18
     }
   ],
   "classics": [

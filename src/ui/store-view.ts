@@ -1,9 +1,11 @@
 import type { Collection } from '../domain/collection.js';
 import { el } from '../utils/dom.js';
+import { formatBrl } from './chase-cards.js';
 import { attachFoil } from './motion.js';
 import {
   classicsFrom,
   coverUrl,
+  fanPosition,
   eraYears,
   formatReleaseDate,
   ownedCount,
@@ -39,24 +41,36 @@ export function progressRing(owned: number, total: number, size = 28): SVGSVGEle
   return svg;
 }
 
+/** Até quantas Clássicas espiam de um pacote (o HS—Triumphant tem 3). */
+const MAX_PEEK = 3;
+
 /**
- * Coleção de onde saiu uma Clássica do 30 anos: a carta original espia por trás do pacote,
- * com o selo "30 anos".
+ * Coleção de onde saíram Clássicas do 30 anos: as cartas originais espiam por trás do pacote,
+ * em leque, com o selo "30 anos" na da frente.
  */
 function classicPeek(pack: HTMLElement, index: SetsIndex, set: SetInfo): void {
-  const classic = classicsFrom(index, set.id)[0];
-  if (!classic) return;
+  const classics = classicsFrom(index, set.id).slice(0, MAX_PEEK);
+  if (!classics.length) return;
   pack.classList.add('has-classic');
-  pack.prepend(
-    el('span', {
+  const cards = classics.map((classic, i) => {
+    const card = el('span', {
       className: 'pack__classic',
       attrs: { 'aria-hidden': 'true' },
       children: [
         el('img', { attrs: { src: classic.originImage, alt: '', loading: 'lazy', decoding: 'async', draggable: 'false' } }),
-        el('span', { className: 'pack__classic-tag', text: '30 anos' }),
+        ...(i === 0 ? [el('span', { className: 'pack__classic-tag', text: '30 anos' })] : []),
       ],
-    }),
-  );
+    });
+    card.style.setProperty('--fan', String(fanPosition(i, classics.length)));
+    return card;
+  });
+  // A primeira (a mais icônica) fica na frente do leque.
+  pack.prepend(...cards.reverse());
+}
+
+/** "R$ 133 o pacote", ou nada se o pacote não tem preço. */
+function packPriceLabel(set: SetInfo, className: string): HTMLElement[] {
+  return set.packPrice ? [el('span', { className, text: formatBrl(set.packPrice) })] : [];
 }
 
 function packImage(set: SetInfo, eager = false): HTMLImageElement {
@@ -115,12 +129,13 @@ export function renderStore(
         attrs: {
           role: 'listitem',
           href: `#/abrir/${set.id}`,
-          'aria-label': `${set.name}: abrir pacote. ${owned} de ${set.albumSize} cartas no fichário.`,
+          'aria-label': `${set.name}: abrir pacote${set.packPrice ? ` de ${formatBrl(set.packPrice)}` : ''}. ${owned} de ${set.albumSize} cartas no fichário.`,
           'data-set-id': set.id,
         },
         children: [
           pack,
           el('span', { className: 'shelf__name', text: set.name }),
+          ...packPriceLabel(set, 'shelf__price'),
           el('span', {
             className: 'shelf__progress',
             children: [progressRing(owned, set.albumSize, 16), `${owned}/${set.albumSize}`],
@@ -165,7 +180,8 @@ function renderHero(
           el('p', {
             className: 'hero__meta',
             text:
-              `Lançada em ${formatReleaseDate(set.releaseDate)}. Cada pacote traz ${set.packSize} cartas.`,
+              `Lançada em ${formatReleaseDate(set.releaseDate)}. Cada pacote traz ${set.packSize} cartas` +
+              (set.packPrice ? ` e custa ${formatBrl(set.packPrice)}.` : '.'),
           }),
           el('a', {
             className: 'btn btn--primary hero__cta',

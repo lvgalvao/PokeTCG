@@ -10,7 +10,7 @@ import { openCardViewer } from './card-viewer.js';
 import { chaseCardsFor, formatBrl, setPricesFor, type ChaseCard, type SetPrices } from './chase-cards.js';
 import { loadLuck, LUCK_OPTIONS, luckLabel, saveLuck, type Luck } from './luck.js';
 import { attachFoil, prefersReducedMotion, project, spring, VelocityTracker } from './motion.js';
-import { categoryLabel, coverUrl, ownedCount, type ClassicInfo, type SetInfo } from './sets-index.js';
+import { categoryLabel, coverUrl, fanPosition, ownedCount, type ClassicInfo, type SetInfo } from './sets-index.js';
 
 export interface StageDeps {
   readonly root: HTMLElement;
@@ -219,34 +219,45 @@ export class StageView {
    */
   private showClassic(sealed: HTMLElement): void {
     const { set, catalog, classics } = this.deps;
-    const mine = classics.filter((c) => c.set === set.id);
-    const card = mine.length ? catalog.cards.find((c) => c.id === mine[0]!.origin) : undefined;
-    if (!card) return;
+    const mine = classics.filter((c) => c.set === set.id).slice(0, 3);
+    const cards = mine.flatMap((c) => catalog.cards.find((card) => card.id === c.origin) ?? []);
+    if (!cards.length) return;
     const names = [...new Set(mine.map((c) => c.name))];
     const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} e ${names[names.length - 1]}` : names[0]!;
     const note =
       `${list} ${names.length > 1 ? 'viraram Clássicas' : 'virou Clássica'} na coleção 30 anos ` +
       `(30th Celebration, 2026). ${names.length > 1 ? 'As originais saíram' : 'A original saiu'} ` +
       `em ${mine[0]!.year}, neste pacote.`;
-    const peek = el('button', {
-      className: 'classic-peek',
-      attrs: { type: 'button', 'aria-label': `${note} Ampliar.` },
-      children: [
-        el('img', { attrs: { src: card.imageUrl, alt: '', draggable: 'false' } }),
-        el('span', {
-          className: 'classic-peek__tag',
-          children: [el('strong', { text: 'Coleção 30 anos' }), el('small', { text: `${card.name} · ${mine[0]!.year}` })],
-        }),
-      ],
-    });
-    // A carta sai por cima do pacote e inclina junto com ele; tocá-la não rasga o lacre.
-    peek.addEventListener('pointerdown', (ev) => ev.stopPropagation());
-    peek.addEventListener('click', (ev) => {
-      ev.stopPropagation();
-      openCardViewer(card, undefined, [], note);
+    // No selo, nomes curtos por extenso; senão, a contagem (os nomes aparecem ao ampliar).
+    const short = list.length <= 24 ? list : `${cards.length} Clássicas`;
+    // As cartas saem por cima do pacote em leque e inclinam junto com ele; tocá-las não rasga
+    // o lacre. O selo vai na da frente (a mais icônica).
+    const peeks = cards.map((card, i) => {
+      const peek = el('button', {
+        className: 'classic-peek',
+        attrs: { type: 'button', 'aria-label': `${card.name}: ${note} Ampliar.` },
+        children: [
+          el('img', { attrs: { src: card.imageUrl, alt: '', draggable: 'false' } }),
+          ...(i === 0
+            ? [
+                el('span', {
+                  className: 'classic-peek__tag',
+                  children: [el('strong', { text: 'Coleção 30 anos' }), el('small', { text: `${short} · ${mine[0]!.year}` })],
+                }),
+              ]
+            : []),
+        ],
+      });
+      peek.style.setProperty('--fan', String(fanPosition(i, cards.length)));
+      peek.addEventListener('pointerdown', (ev) => ev.stopPropagation());
+      peek.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        openCardViewer(card, undefined, [], note);
+      });
+      return peek;
     });
     sealed.classList.add('has-classic');
-    this.pack.prepend(peek);
+    this.pack.prepend(...peeks.reverse());
   }
 
   /** Todo pacote lacrado: ao lado do booster, as 3 cartas mais valiosas e quanto valem. */
