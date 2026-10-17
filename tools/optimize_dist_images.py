@@ -1,7 +1,8 @@
 """Deixa o build (dist/) leve para publicar: cartas em WebP de 600 px e sem as capas PNG.
 
 Roda depois de `npm run build`. Só mexe em dist/; os assets originais (assets/, Princípio V)
-continuam intactos. Cada manifest.json copiado passa a apontar para os .webp.
+continuam intactos. Cada manifest.json copiado (e as Clássicas em data/sets.json) passa a
+apontar para os .webp.
 
     python3 tools/optimize_dist_images.py [dist]
 """
@@ -46,6 +47,15 @@ def main() -> None:
             if card.get("imagePath", "").endswith(".jpg"):
                 card["imagePath"] = card["imagePath"][: -len(".jpg")] + ".webp"
         manifest.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
+
+    # As Clássicas do 30 anos apontam para a imagem da carta original (que agora é .webp).
+    sets_index = dist / "data" / "sets.json"
+    if sets_index.exists():
+        data = json.loads(sets_index.read_text())
+        for classic in data.get("classics", []):
+            if classic.get("originImage", "").endswith(".jpg"):
+                classic["originImage"] = classic["originImage"][: -len(".jpg")] + ".webp"
+        sets_index.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
 
     # A loja usa capa.webp; o PNG é só a fonte.
     for png in dist.glob("*/capa.png"):
